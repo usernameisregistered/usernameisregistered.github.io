@@ -1,9 +1,14 @@
-# The Docker image that will be used to build your app
-image: node:18.15.0
-
 pages:
+  stage: deploy
+  environment: production
+  script:
+    - mkdir .public
+    - cp -r ./frontend/dist/* .public
+    - rm -rf public
+    - mv .public public
   artifacts:
     paths:
-      - frontend/dist
+      - public
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
