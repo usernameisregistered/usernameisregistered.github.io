@@ -1,2 +1,9 @@
 # The Docker image that will be used to build your app
 image: node:18.15.0
+
+pages:
+  artifacts:
+    paths:
+      - frontend/dist
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
