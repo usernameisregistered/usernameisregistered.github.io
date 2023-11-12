@@ -14,6 +14,10 @@ export default createRouter({
             component: Empty
         },
         {
+            path: "/book/:id",
+            component: Empty
+        },
+        {
             path: "/:category",
             component: Category
         },

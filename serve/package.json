@@ -5,11 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "generate:classify": "node ./generateClassify.js"
+    "generate:classify": "node ./generateClassify.js",
+    "get:books": "node ./getBooks.js"
   },
   "author": "liming_longxi@163.com",
   "license": "ISC",
   "dependencies": {
+    "compressing": "^1.10.0",
+    "iniparser": "^1.0.5",
+    "md5": "^2.3.0",
     "moment": "^2.29.4"
   }
 }

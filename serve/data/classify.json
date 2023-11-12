@@ -63,28 +63,42 @@
     {
         "parent": "knowledge",
         "title": "数学",
-        "description": "这个本人在研发过程中遇到的一些关于数学相关的类型，包括概率论、现行代数和其他",
+        "description": "这个本人在研发过程中遇到的一些关于数学相关的学习记录，包括概率论、现行代数和其他",
         "key": "math",
         "className": "icon-shuxue"
     },
     {
         "parent": "knowledge",
         "title": "图形图像",
-        "description": "这个本人在图形图像领域中学习的几率，包括计算机图形学、图像处理等",
+        "description": "这个本人在图形图像领域中学习的记录，包括计算机图形学、图像处理等",
         "key": "graph",
         "className": "icon-a-PhotoEditor"
     },
     {
-        "title": "常用工具",
-        "key": "util",
-        "className": "icon-gongju",
+        "parent": "knowledge",
+        "title": "GIS",
+        "description": "地理信息系统（Geographic Information System或 Geo－Information system，GIS）,它是一种特定的十分重要的空间信息系统。它是在计算机硬、软件系统支持下，对整个或部分地球表层（包括大气层）空间中的有关地理分布数据进行采集、储存、管理、运算、分析、显示和描述的技术系统。",
+        "key": "gis",
+        "className": "icon-dili"
+    },
+    {
+        "title": "杂类",
+        "key": "other",
+        "className": "icon-icon_supplies2",
         "parent": null
     },
     {
-        "parent":  "util",
-        "title": "测试",
+        "parent": "other",
+        "title": "开发工具",
+        "description": "这是本人在开发过程中接触到的，开发相关的利器，包括markdown、git、svn等",
+        "key": "develop",
+        "className": "icon-gongju"
+    },
+    {
+        "parent": "util",
+        "title": "常用工具",
         "description": "测试专用",
         "key": "test",
-        "className": null
+        "className": "icon-gongju"
     }
 ]
