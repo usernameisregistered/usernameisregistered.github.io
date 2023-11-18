@@ -1,11 +1,9 @@
 <script setup>
-import { useRouter } from 'vue-router'
 import { ref } from 'vue'
-import classifyData from "../data/classify.json"
-const router = useRouter();
+import classifyData from "../data/study.json"
 const classifyList = ref(classifyData);
 function gotoPage(url) {
-    router.push(url);
+    window.open(url)
 }
 </script>
 
@@ -21,16 +19,10 @@ function gotoPage(url) {
                 <div class="title">{{ classifyItem.label }}</div>
             </div>
             <div class="children-container">
-                <div class="children-item" v-for="item in classifyItem.children" :key="item.value" @click="gotoPage(item.url)">
-                    <div class="icon">
-                        <svg class="icon" aria-hidden="true">
-                            <use :xlink:href='"#" + item.className'></use>
-                        </svg>
-                    </div>
-                    <div class="info">
-                        <div class="title" :title="item.label">{{ item.label }}</div>
-                        <div class="desc" :title="item.description">{{ item.description }}</div>
-                    </div>
+                <div class="children-item" v-for="item in classifyItem.children" :key="item.value"
+                    @click="gotoPage(item.url)">
+                    <div class="title">{{ item.name }}</div>
+                    <div class="desc" :title="item.desc">{{ item.desc }}</div>
                 </div>
             </div>
         </div>
@@ -39,7 +31,7 @@ function gotoPage(url) {
 
 <style scoped lang="less">
 .home-container {
-    padding:0  @lm-common-offset @lm-common-offset @lm-common-offset;
+    padding: 0 @lm-common-offset @lm-common-offset @lm-common-offset;
 
     .item {
         .header {
@@ -66,7 +58,6 @@ function gotoPage(url) {
             .children-item {
                 margin-right: @lm-common-offset;
                 width: calc((100% - @lm-common-offset - @lm-common-offset - @lm-common-offset - 8px) / 4);
-                display: flex;
                 border: 1px solid @lm-border-color;
                 background-color: white;
                 margin-bottom: @lm-common-offset-small;
@@ -78,32 +69,23 @@ function gotoPage(url) {
                     margin-right: 0;
                 }
 
-                .icon {
-                    width: 40px;
-                    height: 55px;
-                    fill: currentColor;
-                    overflow: hidden;
+                .title {
+                    color: @lm-color-title;
+                    line-height: 30px;
+
                 }
 
-                .info {
-                    width: calc(100% - @lm-common-offset-small - 40px);
-                    margin-left: @lm-common-offset-small;
-
-                    .title {
-                        font-size: @lm-font-size-h5;
-                        color: @lm-color-title;
-                        line-height: 30px;
-                        white-space: nowrap;
-                        overflow: hidden;
-                        text-overflow: ellipsis;
-                    }
-
-                    .desc {
-                        line-height: 25px;
-                        white-space: nowrap;
-                        overflow: hidden;
-                        text-overflow: ellipsis;
-                    }
+                .desc {
+                    line-height: 25px;
+                    color: @lm-color-default;
+                    display: -webkit-box;
+                    line-clamp: 2;
+                    -moz-box-orient: vertical;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 2;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: normal;
                 }
             }
         }

@@ -1,0 +1,25 @@
+{
+  "name": "passerby",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build.js",
+  "scripts": {
+    "general": "gulp general",
+    "parse": "gulp parse"
+  },
+  "author": "liming_longxi@163.com",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  },
+  "dependencies": {
+    "compressing": "^1.10.0",
+    "gulp-clean": "^0.4.0",
+    "iniparser": "^1.0.5",
+    "marked": "^10.0.0",
+    "md5": "^2.3.0",
+    "moment": "^2.29.4",
+    "rimraf": "^5.0.5",
+    "texme": "^1.2.2"
+  }
+}

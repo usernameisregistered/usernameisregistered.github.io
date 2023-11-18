@@ -1,48 +1,61 @@
-const moment = require('moment');
 const fs = require("fs");
 const path = require('path');
 const md5 = require('md5');
-let result = {};
+const { STATUS } = require("../common/constants");
+const parseMarkdown = require("./parseMarkdown");
+let result = {
+    status: STATUS.PROCESS,
+    category: []
+};
 /**
  * 解析某一本具体的数据
  * @param {String} iniConfig 
  * @param {String} bookDirectory
  * @param {String} outputDir
  */
-exports.ParseBook = function (iniConfig, bookDirectory, outputDir) {
-    console.log(`[${moment().format("YYYY-MM-DD HH:mm:ss")} 开始解析书籍 《${iniConfig.name}》] `);
-    result.filename = iniConfig.id;
+exports.ParseBook = function (iniConfig, bookDirectory) {
+    console.log(`开始解析书籍 ${iniConfig.name}》] `);
     result.category = [];
-    _parseBook(bookDirectory, result);
-    if (!fs.existsSync(outputDir)) {
-        fs.mkdirSync(outputDir)
-    }
-    fs.writeFileSync(path.join(outputDir, result.filename + '.json'), JSON.stringify(result));
-    console.log(`[${moment().format("YYYY-MM-DD HH:mm:ss")} 完成解析书籍 《${iniConfig.name}》] `);
+    getFile(bookDirectory, result, iniConfig.name);
+    return result
 }
 
-function _parseBook(rootPath, categoryNode) {
+function getFile(rootPath, categoryNode, bookName, pid = null) {
     const dirs = fs.readdirSync(rootPath);
     for (const dir of dirs) {
-        const dirPath = path.join(rootPath, dir);
-        let categoryItem = {
-            name: dir,
-            category: []
+        if (dir[0] !== '.' && dir !== "readme.ini") {
+            const dirPath = path.join(rootPath, dir);
+            let categoryItem = {
+                name: pid ? dir : bookName,
+                category: [],
+                type: 'category',
+                selectable: false,
+                id: pid ? pid + "-" + md5(dirPath) : md5(dirPath),
+            }
+            if (fs.statSync(dirPath).isDirectory() && result.status === STATUS.PROCESS) {
+                getFile(dirPath, categoryItem, bookName, categoryItem.id)
+            } else {
+                if (result.status === STATUS.PROCESS) {
+                    parseFile(dirPath, categoryItem, bookName, categoryItem.id);
+                }
+            }
+            categoryNode.category.push(categoryItem)
         }
-        if (fs.statSync(dirPath).isDirectory()) {
-            _parseBook(dirPath, categoryItem)
-        } else {
-            _parseFile(dirPath, categoryItem);
-        }
-        categoryNode.category.push(categoryItem)
+    }
+    if (result.status === STATUS.PROCESS) {
+        result.status = STATUS.SUCCESS
     }
 }
 
-function _parseFile(filePath, categoryItem) {
-    const pageName = path.basename(filePath, ".md")
-    if (pageName !== 'readme.ini') {
-        console.log(`[${moment().format("YYYY-MM-DD HH:mm:ss")} 开始解析页面内容 《${pageName}》] `);
-        categoryItem.id = md5(pageName + moment().format("YYYY-MM-DD HH:mm:ss"))
+function parseFile(filePath, categoryItem, bookName, pid) {
+    if (path.extname(filePath) === '.md') {
+        const pageName = path.basename(filePath, ".md")
+        console.log(`[开始解析《${pageName}》页面内容《${pageName}》] `);
+        categoryItem.type = "file"
+        categoryItem.id = pid
+        categoryItem.selectable = true;
+        const fileName = parseMarkdown(filePath, pageName, bookName, md5(filePath));
+        const replaceValue = (process.cwd() + "/temp_" + bookName).split(path.sep).join("/")
+        categoryItem.htmlPath = fileName.split(path.sep).join("/").replace(replaceValue, "/" + md5(bookName))
     }
-
 }

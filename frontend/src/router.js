@@ -2,6 +2,8 @@ import { createRouter, createWebHashHistory } from "vue-router"
 import Home from "./pages/Home.vue"
 import Category from "./pages/Category.vue"
 import Empty from "./pages/Empty.vue"
+import Book from "./pages/Book.vue"
+import Study from "./pages/Study.vue"
 export default createRouter({
     history: createWebHashHistory(),
     routes: [
@@ -14,8 +16,12 @@ export default createRouter({
             component: Empty
         },
         {
+            path: "/study",
+            component: Study
+        },
+        {
             path: "/book/:id",
-            component: Empty
+            component: Book
         },
         {
             path: "/:category",

@@ -10,12 +10,12 @@ const classifyItem = ref(null);
 const books = ref([])
 onBeforeMount(() => {
     const categorys = route.params.category.split("_");
-    const firstCategory = classifyData.filter(el => el.key === categorys[0])[0]
-    if (firstCategory && firstCategory.list && firstCategory.list.length) {
-        const secondCategory = firstCategory.list.filter(el => el.key === categorys[1])[0];
+    const firstCategory = classifyData.filter(el => el.value === categorys[0])[0]
+    if (firstCategory && firstCategory.children && firstCategory.children.length) {
+        const secondCategory = firstCategory.children.filter(el => el.value === categorys[1])[0];
         if (secondCategory) {
             classifyItem.value = secondCategory;
-            getBook(secondCategory.key);
+            getBooks(secondCategory.value);
         } else {
             router.replace("/404")
         }
@@ -24,7 +24,7 @@ onBeforeMount(() => {
     }
 })
 
-function getBook(category) {
+function getBooks(category) {
     loadJSON(`/json/${category}.json`).then(res => {
         if (res !== null) {
             books.value = res;
@@ -46,15 +46,17 @@ function gotoPage(id) {
                 </svg>
             </div>
             <div class="info">
-                <div class="title" :title="classifyItem.title">{{ classifyItem.title }}</div>
+                <div class="title" :title="classifyItem.label">{{ classifyItem.label }}</div>
                 <div class="desc" :title="classifyItem.description">{{ classifyItem.description }}</div>
             </div>
         </div>
         <div class="category-list" v-if="books.length !== 0">
-            <div class="book-item" v-for="book in books" :key="book.id" @click="gotoPage(book.id)">
-                <div class="name">{{ book.name }}</div>
-                <div class="desc">{{ book.description }}</div>
-            </div>
+            <a-card :bordered="false" v-for="book in books" :key="book.id" @click="gotoPage(book.id)">
+                <template #title>
+                    <div class="name" :title="book.name">{{ book.name }}</div>
+                </template>
+                <p class="desc" :title="book.description">{{ book.description }}</p>
+            </a-card>
         </div>
         <div v-else>
             <NoData></NoData>
@@ -102,32 +104,30 @@ function gotoPage(id) {
         margin: @lm-common-offset-large auto;
         width: 1200px;
 
-        .book-item {
+        .ant-card {
             cursor: pointer;
-            width: calc(20% - 40px);
-            border: 1px solid @lm-border-color;
-            padding: @lm-common-offset-small;
-            background: white;
+            width: calc(25% - 12px);
             margin-right: @lm-common-offset;
             margin-bottom: @lm-common-offset;
             border-radius: 2px;
 
-            &:nth-child(5n) {
+            &:nth-child(4n) {
                 margin-right: 0;
             }
 
-            .name {
-                font-size: @lm-font-size-h3;
-                line-height: 40px;
-                color: @lm-color-title
+            .name{
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                color: @lm-color-title;
             }
 
-            .desc {
+            .desc{
+                line-height: 28px;
                 color: @lm-color-default;
-                font-size: @lm-font-size-h5;
-                line-height: 25px;
-                height: 150px;
+                
             }
+
         }
     }
 }
