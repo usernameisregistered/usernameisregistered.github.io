@@ -4,12 +4,16 @@ const router = useRouter();
 function gotoHome() {
     router.replace("/")
 }
+function gotoStudy() {
+    router.replace("/study")
+}
 </script>
 
 <template>
     <div class="common-header-container">
         <div class="logo" @click="gotoHome"> </div>
         <div class="title" @click="gotoHome">路人甲的进阶之路</div>
+        <div class="title" @click="gotoStudy">学习资源</div>
         <a class="contact" href="mailto:liming_longxi@163.com">联系本人</a>
     </div>
 </template>

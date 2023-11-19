@@ -11,24 +11,24 @@ function gotoPage(url) {
 
 <template>
     <div class="home-container">
-        <div class="item" v-for="classifyItem in classifyList" :key="classifyItem.key">
-            <div class="header">
+        <div class="item" v-for="classifyItem in classifyList" :key="classifyItem.value">
+            <div class="header" v-if="classifyItem.children.length">
                 <div class="icon">
                     <svg class="icon" aria-hidden="true">
                         <use :xlink:href='"#" + classifyItem.className'></use>
                     </svg>
                 </div>
-                <div class="title">{{ classifyItem.title }}</div>
+                <div class="title">{{ classifyItem.label }}</div>
             </div>
             <div class="children-container">
-                <div class="children-item" v-for="item in classifyItem.list" :key="item.key" @click="gotoPage(item.url)">
+                <div class="children-item" v-for="item in classifyItem.children" :key="item.value" @click="gotoPage(item.url)">
                     <div class="icon">
                         <svg class="icon" aria-hidden="true">
                             <use :xlink:href='"#" + item.className'></use>
                         </svg>
                     </div>
                     <div class="info">
-                        <div class="title" :title="item.title">{{ item.title }}</div>
+                        <div class="title" :title="item.label">{{ item.label }}</div>
                         <div class="desc" :title="item.description">{{ item.description }}</div>
                     </div>
                 </div>

@@ -1,0 +1,14 @@
+[
+    {
+        "label": "进行中",
+        "value": "process"
+    },
+    {
+        "label": "已完成",
+        "value": "success"
+    },
+    {
+        "label": "已中断",
+        "value": "fail"
+    }
+]

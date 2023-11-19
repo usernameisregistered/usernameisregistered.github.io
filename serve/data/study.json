@@ -1,0 +1,32 @@
+[
+    {
+        "name": "jsdoc",
+        "url": "https://jsdoc.bootcss.com/index.html",
+        "desc": "JSDoc3是一个用于 JavaScript 的API文档生成器",
+        "value": "language"
+    },
+    {
+        "name": "GIS空间站",
+        "url": "http://www.gissky.net/",
+        "desc": "GIS空间站- 中文地理信息系统门户网站；提供地理信息系统、遥感、国土调查、国土空间规划等方面的相关资料和行业动态",
+        "value": "knowledge"
+    },
+    {
+        "name": "latex",
+        "url": "https://www.latex-project.org/",
+        "desc": "LaTeX（LATEX，音译“拉泰赫”）是一种基于ΤΕΧ的排版系统，非常适用于生成高印刷质量的科技和数学类文档",
+        "value": "language"
+    },
+    {
+        "name": "puppeteer",
+        "url": "https://puppeteer.bootcss.com/",
+        "desc": "Puppeteer 是一个 Node 库，它提供了一个高级 API 来通过 DevTools 协议控制 Chromium 或 Chrome。Puppeteer 默认以 headless 模式运行，但是可以通过修改配置文件运行“有头”模式。",
+        "value": "language"
+    },
+    {
+        "name": "marked",
+        "url": "https://marked.js.org/",
+        "desc": "一个快速的markdown文档解析和编译工具",
+        "value": "language"
+    }
+]

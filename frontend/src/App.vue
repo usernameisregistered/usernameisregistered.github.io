@@ -19,7 +19,7 @@ import CommonHeader from './components/CommonHeader.vue';
   background-color: @lm-background-color;
   font-size: @lm-font-size-defalut;
   .page-container{
-    height: calc(100vh - @lm-common-header-height - 1px);
+    height: calc(100vh - @lm-common-header-height);
     overflow: auto;
   }
 }

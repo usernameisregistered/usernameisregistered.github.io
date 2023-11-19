@@ -1,20 +1,14 @@
-const moment = require('moment');
-const fs = require("fs");
 const path = require("path")
-function start() {
-    const startTime = moment();
-    console.log(`${startTime.format("YYYY-MM-DD HH:mm:ss")} 开始读取目录静态数据`)
-    const filePath = path.join(__dirname, "data/classify.json");
+const categoryList = require("../constants/category.json")
+const readFile = require('./common/readFile.js')
+const writeFile = require('./common/writeFile.js')
+module.exports = function generateClassify() {
     try {
-        const classify = JSON.parse(fs.readFileSync(filePath));
-        console.log(`${moment().format("YYYY-MM-DD HH:mm:ss")} 开始生成目录结构`);
-        const result = general(classify);
-        console.log(`${moment().format("YYYY-MM-DD HH:mm:ss")} 完成生成目录结构`);
-        writeFile(JSON.stringify(result))
-        console.log(`${moment().format("YYYY-MM-DD HH:mm:ss")} 开始写入文件`);
-        const endTime = moment();
-        console.log(`${endTime.format("YYYY-MM-DD HH:mm:ss")} 完成写入文件`);
-        console.log(`生成目录结构任务耗时${endTime.diff(startTime, "seconds")}秒`)
+        console.log(`开始子任务：生成分类数据`)
+        const readFilePath = path.join(process.cwd(), "/serve/data/classify.json");
+        const result = general(JSON.parse(readFile(readFilePath)));
+        const writeFilePath = path.join(process.cwd(), "/frontend/src/data/classify.json");
+        writeFile(writeFilePath, JSON.stringify(result, null, 4))
     } catch (error) {
         throw error;
     }
@@ -22,31 +16,17 @@ function start() {
 
 function general(classify) {
     const result = [];
-    let item = classify.shift();
-    while (item) {
-        if (!item.parent) {
-            result.push({ ...item, list: [] })
-        } else {
-            const parentNode = result.filter(el => el.key === item.parent)[0];
-            if (parentNode) {
-                parentNode.list.push({
-                    ...item, url: `/${parentNode.key}_${item.key}`.toLowerCase(),
-                    className: item.className || "icon-text__easyiconnet"
-                })
-            }
-        }
-        item = classify.shift();
+    for (const category of categoryList) {
+        result.push({ ...category, children: [] });
+    }
+    for (const item of classify) {
+        result.filter(el => el.value === item.category)[0].children.push({
+            ...item,
+            url: `/${item.category}_${item.value}`.toLowerCase(),
+            className: item.className || "icon-text__easyiconnet"
+        })
     }
     return result;
 }
 
-function writeFile(content) {
-    const writeFilePath = path.join(__dirname, "../frontend/src/data/classify.json");
-    if (fs.existsSync(writeFilePath)) {
-        console.log(`${moment().format("YYYY-MM-DD HH:mm:ss")} 删除已存在的文件`);
-        fs.rmSync(writeFilePath);
-    }
-    fs.writeFileSync(writeFilePath, content);
-}
 
-start();
