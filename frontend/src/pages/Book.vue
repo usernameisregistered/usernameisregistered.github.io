@@ -40,7 +40,7 @@ function getBook(id) {
     })
 }
 function viewPage(id, { node }) {
-    loadHTML(`http://localhost:4173/${node.htmlPath}`).then(res => {
+    loadHTML(`${location.origin}${node.htmlPath}`).then(res => {
         const link = document.createElement("link")
         link.rel = "stylesheet"
         link.href = "https://cdn.jsdelivr.net/github-markdown-css/2.2.1/github-markdown.css";
