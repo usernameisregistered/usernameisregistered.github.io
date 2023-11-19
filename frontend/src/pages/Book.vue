@@ -1,11 +1,11 @@
 <script setup>
 import { useRouter, useRoute } from 'vue-router'
-import { loadJSON } from "../core/https.js"
+import { loadJSON, loadHTML } from "../core/https.js"
 import { ref, onBeforeMount } from 'vue'
 const router = useRouter();
 const route = useRoute();
 const treeData = ref([])
-const pageUrl = ref("");
+const bookname = ref("");
 const currentKey = ref([])
 const fieldNames = { children: 'category', title: 'name', key: 'id' }
 onBeforeMount(() => {
@@ -22,39 +22,43 @@ function getFirstPage(res) {
             }
         }
     }
-    for (const item of res.category) {
+    for (const item of res) {
         find(item)
     }
-    return {
-        url: `${location.origin}${result.htmlPath}`,
-        key: [result.id]
-    }
+    return result
 }
 function getBook(id) {
     loadJSON(`/json/${id}.json`).then(res => {
         if (res !== null) {
-            treeData.value = [res]
-            const defalutItem = getFirstPage(JSON.parse(JSON.stringify(res)))
-            pageUrl.value = defalutItem.url;
-            currentKey.value = defalutItem.key;
+            treeData.value = res.categoryInfos
+            bookname.value = res.name;
+            const node = getFirstPage(JSON.parse(JSON.stringify(res.categoryInfos)))
+            viewPage(node.id, { node })
         } else {
             outer.replace("/404")
         }
     })
 }
 function viewPage(id, { node }) {
-    pageUrl.value = node.htmlPath;
+    loadHTML(`http://localhost:4173/${node.htmlPath}`).then(res => {
+        const link = document.createElement("link")
+        link.rel = "stylesheet"
+        link.href = "https://cdn.jsdelivr.net/github-markdown-css/2.2.1/github-markdown.css";
+        document.head.appendChild(link);
+        document.getElementById("content").innerHTML = res
+    })
 }
 </script>
 <template>
     <a-layout class="book-container">
         <a-layout-sider width="360">
-            <a-directory-tree :tree-data="treeData" :autoExpandParent="true" v-model:selectedKeys="currentKey" :fieldNames="fieldNames"
-                @select="viewPage"></a-directory-tree>
+            <a-alert :message="bookname" type="info" />
+            <a-directory-tree :tree-data="treeData" :autoExpandParent="true" v-model:selectedKeys="currentKey"
+                :fieldNames="fieldNames" @select="viewPage"></a-directory-tree>
         </a-layout-sider>
         <a-layout>
             <a-layout-content>
-                <iframe :src="pageUrl" frameborder="0"></iframe>
+                <div class="content" id="content"></div>
             </a-layout-content>
         </a-layout>
     </a-layout>
@@ -68,7 +72,9 @@ function viewPage(id, { node }) {
         background: inherit !important;
         border-right: 1px solid @lm-border-color;
         padding: @lm-common-offset;
-
+        ::v-deep .ant-alert{
+            margin-bottom:  @lm-common-offset-small;
+        }
         ::v-deep .ant-tree-list {
             .ant-tree-treenode {
                 padding: 0;
@@ -103,9 +109,14 @@ function viewPage(id, { node }) {
     .ant-layout {
         padding: @lm-common-offset;
 
-        iframe {
-            width: 100%;
+        .content {
+            overflow: hidden;
             height: 100%;
+        }
+
+        .markdown-container {
+            max-height: 100%;
+            overflow: auto;
         }
     }
 }

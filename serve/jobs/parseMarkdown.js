@@ -2,21 +2,30 @@ const fs = require("fs");
 const readFile = require('../common/readFile');
 const path = require('path');
 const writeFile = require("../common/writeFile");
-module.exports = function parseMarkdown(filePath, pageName, bookName, fileName) {
-    const content = readFile(filePath);
-    const outputHTML = `
-<!DOCTYPE html>
-<html lang="en">
-<title>${bookName}-${pageName}</title>
-<script src="https://cdn.jsdelivr.net/npm/texme@0.7.0"></script>
-<textarea>
-${content}
-</textarea>`
+const staratPuppeter = require("./staratPuppeter");
+module.exports = async function parseMarkdown(filePath, bookName, fileName) {
     const outputDir = path.join(process.cwd(), `temp_${bookName}`)
-    if(!fs.existsSync(outputDir)){
+    if (!fs.existsSync(outputDir)) {
         fs.mkdirSync(outputDir)
     }
-    const fileFullName = path.join(outputDir, `${fileName}.html`)
-    writeFile(fileFullName, outputHTML)
-    return fileFullName
+    const content = readFile(filePath);
+    const outputHTML = `
+    <!DOCTYPE html>
+    <html lang="en">
+    
+    <head>
+        <title>${bookName}-${fileName}</title>
+        <script src="https://cdn.jsdelivr.net/npm/texme"></script>
+    </head>
+    
+    <body>
+        <textarea>
+            ${content}
+        </textarea>
+    </body>
+</html>`
+    const outputFile = path.join(outputDir, `${fileName}.html`)
+    writeFile(outputFile, outputHTML)
+    await staratPuppeter(outputFile)
+    return outputFile
 }

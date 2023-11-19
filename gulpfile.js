@@ -1,5 +1,5 @@
 const moment = require("moment");
-const { task, series } = require('gulp');
+const { task, series, src, dest } = require('gulp');
 const generateClassify = require("./serve/generateClassify");
 const generateStudy = require("./serve/generateStudy");
 const getBooks = require("./serve/getBooks.js");
@@ -8,6 +8,7 @@ const path = require("path");
 const fs = require("fs");
 const { backups } = require("./serve/jobs/backups.js");
 const { rimrafSync } = require('rimraf')
+const gulpCopy = require('gulp-copy');
 function general(cb) {
     console.log(`[${moment().format("HH:mm:ss")}] 开始数据生成任务`)
     generateClassify();
@@ -17,7 +18,14 @@ function general(cb) {
 }
 
 function parse(cb) {
-    backups(path.join(process.cwd(), 'bak'), path.join(process.cwd(), 'data'), "data_bak").then(async () => {
+    const dataDir = path.join(process.cwd(), 'data');
+    if (!fs.existsSync(dataDir)) {
+        fs.mkdirSync(dataDir)
+    }
+    backups(path.join(process.cwd(), 'bak'), dataDir, "data_bak").then(async () => {
+        console.log(`[${moment().format("HH:mm:ss")} ] 清空data目录`)
+        rimrafSync(dataDir)
+        fs.mkdirSync(dataDir)
         console.log(`[${moment().format("HH:mm:ss")} ] 开始解析任务`)
         const config = require("./parseConfig.json");
         const result = await getBooks(config);
@@ -35,5 +43,15 @@ function parse(cb) {
     })
 }
 
+function move(cb) {
+    rimrafSync(process.cwd() + "/public/json/")
+    src(process.cwd() + "/data/*.json")
+        .pipe(dest(process.cwd() + "/public/json"))
+    src(process.cwd() + "/data/**/*.html")
+        .pipe(dest(process.cwd() + "/public"))
+    cb()
+}
+
 exports.general = task(general)
 exports.parse = task(parse)
+exports.move = task(move)

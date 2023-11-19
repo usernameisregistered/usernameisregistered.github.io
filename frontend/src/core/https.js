@@ -10,3 +10,7 @@ axios.interceptors.response.use(function (response) {
 export function loadJSON(url) {
     return axios.get(url)
 }
+
+export function loadHTML(url) {
+    return axios.get(url)
+}

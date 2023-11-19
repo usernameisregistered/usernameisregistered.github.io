@@ -5,7 +5,8 @@
   "main": "build.js",
   "scripts": {
     "general": "gulp general",
-    "parse": "gulp parse"
+    "parse": "gulp parse",
+    "move": "gulp move"
   },
   "author": "liming_longxi@163.com",
   "license": "ISC",
@@ -15,10 +16,11 @@
   "dependencies": {
     "compressing": "^1.10.0",
     "gulp-clean": "^0.4.0",
+    "gulp-copy": "^4.0.1",
     "iniparser": "^1.0.5",
-    "marked": "^10.0.0",
     "md5": "^2.3.0",
     "moment": "^2.29.4",
+    "puppeteer-core": "^21.5.2",
     "rimraf": "^5.0.5",
     "texme": "^1.2.2"
   }

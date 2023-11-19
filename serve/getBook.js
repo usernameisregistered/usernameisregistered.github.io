@@ -46,10 +46,10 @@ async function parseBookInfo(bookDirectory) {
             } else {
                 historyBooks.splice(index, 1, iniConfig)
             }
-            const bookResult = ParseBook(iniConfig, bookDirectory)
+            const bookResult = await ParseBook(iniConfig, bookDirectory)
             result.status = bookResult.status;
             if (bookResult.status = STATUS.SUCCESS) {
-                writeFile(path.join(outputDir, iniConfig.id + ".json"), JSON.stringify(bookResult.category[0]))
+                writeFile(path.join(outputDir, iniConfig.id + ".json"), JSON.stringify({ ...iniConfig, categoryInfos: bookResult.category }))
                 writeFile(fileName, JSON.stringify(historyBooks))
                 const temp = path.join(process.cwd(), `temp_${iniConfig.name}`)
                 src(path.join(`${temp}/*`)).pipe(clean({ force: true })).pipe(dest(path.join(process.cwd(), `data/${iniConfig.id}`)))
