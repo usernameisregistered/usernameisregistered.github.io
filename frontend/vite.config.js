@@ -19,10 +19,18 @@ export default defineConfig({
       less: {
         additionalData: `@import "${path.resolve(__dirname, './src/assets/style/var.less')}";`,
       },
-
     },
   },
   build: {
     outDir: path.resolve(__dirname, '../public')
+  },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:4173/',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    }
   }
 })

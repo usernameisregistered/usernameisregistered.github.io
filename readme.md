@@ -6,6 +6,10 @@ https://gitlab.com/liming_longxi/liming_longxi.gitlab.io.git
 https://gitee.com/usernameisregistered/usernameisregistered.gitee.io.git
 
 page地址
-https://usernameisregistered.github.io/
+
+https://usernameisregistered.github.io/l
+
 https://liming_longxi.gitlab.io/
+
+
 

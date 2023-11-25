@@ -7,12 +7,16 @@ function gotoHome() {
 function gotoStudy() {
     router.replace("/study")
 }
+function gotoBlog() {
+    router.replace("/blogList")
+}
 </script>
 
 <template>
     <div class="common-header-container">
         <div class="logo" @click="gotoHome"> </div>
         <div class="title" @click="gotoHome">路人甲的进阶之路</div>
+        <div class="title" @click="gotoBlog">随笔</div>
         <div class="title" @click="gotoStudy">学习资源</div>
         <a class="contact" href="mailto:liming_longxi@163.com">联系本人</a>
     </div>

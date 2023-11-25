@@ -27,7 +27,7 @@ exports.ParseBook = async function (iniConfig, bookDirectory) {
 async function getFile(rootPath, categoryNode, bookName, pid = null) {
     const dirs = fs.readdirSync(rootPath);
     for (const dir of dirs) {
-        if (dir[0] !== '.' && dir !== "readme.ini") {
+        if (dir[0] !== '.' && dir !== "readme.ini" && dir !== 'assets') {
             const dirPath = path.join(rootPath, dir);
             let categoryItem = {
                 name: dir,

@@ -4,6 +4,8 @@ import Category from "./pages/Category.vue"
 import Empty from "./pages/Empty.vue"
 import Book from "./pages/Book.vue"
 import Study from "./pages/Study.vue"
+import BlogList from "./pages/blog/index.vue"
+import Blog from "./pages/blog/detail.vue"
 export default createRouter({
     history: createWebHashHistory(),
     routes: [
@@ -18,6 +20,14 @@ export default createRouter({
         {
             path: "/study",
             component: Study
+        },
+        {
+            path: "/blogList",
+            component: BlogList
+        },
+        {
+            path: "/blog/:id/:title",
+            component: Blog
         },
         {
             path: "/book/:id",

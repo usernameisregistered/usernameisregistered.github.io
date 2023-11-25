@@ -15,7 +15,7 @@ exports.backups = async function (bakDir, sourceDir, name) {
     if (!fs.existsSync(bakDir)) {
         fs.mkdirSync(bakDir);
     }
-    const dest = path.join(bakDir, name + '.zip');
+    const dest = path.join(bakDir, name + moment().format("YYYYMMDDHHmmss") + '.zip');
     await compressing.zip.compressDir(sourceDir, dest, { ignoreBase: true })
         .then(() => {
             console.log(`完成备份数据 [${dest}]`);

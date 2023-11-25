@@ -33,7 +33,7 @@ async function parseBookInfo(bookDirectory) {
     const inifile = path.join(bookDirectory, 'readme.ini');
     if (fs.existsSync(inifile)) {
         let iniConfig = ini.parseSync(inifile);
-        if (iniConfig.name && iniConfig.classify && iniConfig.description && iniConfig.status) {
+        if (iniConfig.name && iniConfig.classify && iniConfig.description) {
             const fileName = path.join(outputDir, iniConfig.classify + ".json");
             iniConfig.id = md5(iniConfig.name);
             let historyBooks = [];

@@ -15,7 +15,7 @@ module.exports = async function parseMarkdown(filePath, bookName, fileName) {
     
     <head>
         <title>${bookName}-${fileName}</title>
-        <script src="https://cdn.jsdelivr.net/npm/texme"></script>
+        <script src="http://localhost:60000/texme.js"></script>
     </head>
     
     <body>

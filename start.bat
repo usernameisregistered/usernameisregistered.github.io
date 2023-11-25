@@ -1,7 +1,8 @@
 chcp 65001
 @echo off
 call gulp general
-call gulp parse
+call gulp parseBook
+call gulp parseBlog
 cd ./frontend
 call npm run build
 cd ../
