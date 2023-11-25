@@ -1,7 +1,7 @@
 import axios from 'axios';
 const isDev = import.meta.env.MODE === 'development';
 axios.interceptors.request.use(function (config) {
-    config.url = '/api' + config.url;
+    config.url = (isDev ? '/api' : "") + config.url;
     return config;
 }, function (error) {
     return null;
