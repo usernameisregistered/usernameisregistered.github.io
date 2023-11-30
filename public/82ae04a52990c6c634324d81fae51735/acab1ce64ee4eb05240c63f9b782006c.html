@@ -1,0 +1,217 @@
+
+<style>
+.markdown-container .CtxtMenu_InfoClose { top: 0.2em; right: 0.2em; }
+.markdown-container .CtxtMenu_InfoContent { overflow: auto; text-align: left; font-size: 80%; padding: 0.4em 0.6em; border: 1px inset; margin: 1em 0px; max-height: 20em; max-width: 30em; background-color: rgb(238, 238, 238); white-space: normal; }
+.markdown-container .CtxtMenu_Info.CtxtMenu_MousePost { outline: none; }
+.markdown-container .CtxtMenu_Info { position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: rgb(221, 221, 221); color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; box-shadow: rgb(128, 128, 128) 0px 10px 20px; }
+.markdown-container .CtxtMenu_MenuClose { position: absolute; cursor: pointer; display: inline-block; border: 2px solid rgb(170, 170, 170); border-radius: 18px; font-family: "Courier New", Courier; font-size: 24px; color: rgb(240, 240, 240); }
+.markdown-container .CtxtMenu_MenuClose span { display: block; background-color: rgb(170, 170, 170); border: 1.5px solid; border-radius: 18px; line-height: 0; padding: 8px 0px 6px; }
+.markdown-container .CtxtMenu_MenuClose:hover { color: white !important; border: 2px solid rgb(204, 204, 204) !important; }
+.markdown-container .CtxtMenu_MenuClose:hover span { background-color: rgb(204, 204, 204) !important; }
+.markdown-container .CtxtMenu_MenuClose:hover:focus { outline: none; }
+.markdown-container .CtxtMenu_Menu { position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid rgb(204, 204, 204); margin: 0px; cursor: default; font-style: ; font-variant: normal; font-weight: ; font-stretch: ; font-size: ; font-family: ; font-optical-sizing: ; font-kerning: ; font-feature-settings: ; font-variation-settings: ; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; box-shadow: rgb(128, 128, 128) 0px 10px 20px; }
+.markdown-container .CtxtMenu_MenuItem { padding: 1px 2em; background: transparent; }
+.markdown-container .CtxtMenu_MenuArrow { position: absolute; right: 0.5em; padding-top: 0.25em; color: rgb(102, 102, 102); font-family: null; font-size: 0.75em; }
+.markdown-container .CtxtMenu_MenuActive .CtxtMenu_MenuArrow { color: white; }
+.markdown-container .CtxtMenu_MenuArrow.CtxtMenu_RTL { left: 0.5em; right: auto; }
+.markdown-container .CtxtMenu_MenuCheck { position: absolute; left: 0.7em; font-family: null; }
+.markdown-container .CtxtMenu_MenuCheck.CtxtMenu_RTL { right: 0.7em; left: auto; }
+.markdown-container .CtxtMenu_MenuRadioCheck { position: absolute; left: 0.7em; }
+.markdown-container .CtxtMenu_MenuRadioCheck.CtxtMenu_RTL { right: 0.7em; left: auto; }
+.markdown-container .CtxtMenu_MenuInputBox { padding-left: 1em; right: 0.5em; color: rgb(102, 102, 102); font-family: null; }
+.markdown-container .CtxtMenu_MenuInputBox.CtxtMenu_RTL { left: 0.1em; }
+.markdown-container .CtxtMenu_MenuComboBox { left: 0.1em; padding-bottom: 0.5em; }
+.markdown-container .CtxtMenu_MenuSlider { left: 0.1em; }
+.markdown-container .CtxtMenu_SliderValue { position: absolute; right: 0.1em; padding-top: 0.25em; color: rgb(51, 51, 51); font-size: 0.75em; }
+.markdown-container .CtxtMenu_SliderBar { outline: none; background: rgb(211, 211, 211); }
+.markdown-container .CtxtMenu_MenuLabel { padding: 1px 2em 3px 1.33em; font-style: italic; }
+.markdown-container .CtxtMenu_MenuRule { border-top: 1px solid rgb(221, 221, 221); margin: 4px 3px; }
+.markdown-container .CtxtMenu_MenuDisabled { color: graytext; }
+.markdown-container .CtxtMenu_MenuActive { background-color: rgb(96, 104, 114); color: white; }
+.markdown-container .CtxtMenu_MenuDisabled:focus { background-color: rgb(232, 232, 232); }
+.markdown-container .CtxtMenu_MenuLabel:focus { background-color: rgb(232, 232, 232); }
+.markdown-container .CtxtMenu_ContextMenu:focus { outline: none; }
+.markdown-container .CtxtMenu_ContextMenu .CtxtMenu_MenuItem:focus { outline: none; }
+.markdown-container .CtxtMenu_SelectionMenu { position: relative; float: left; border-bottom: none; box-shadow: none; border-radius: 0px; }
+.markdown-container .CtxtMenu_SelectionItem { padding-right: 1em; }
+.markdown-container .CtxtMenu_Selection { right: 40%; width: 50%; }
+.markdown-container .CtxtMenu_SelectionBox { padding: 0em; max-height: 20em; max-width: none; background-color: rgb(255, 255, 255); }
+.markdown-container .CtxtMenu_SelectionDivider { clear: both; border-top: 2px solid rgb(0, 0, 0); }
+.markdown-container .CtxtMenu_Menu .CtxtMenu_MenuClose { top: -10px; left: -10px; }
+.markdown-container body { color: rgb(51, 51, 51); line-height: 1.5; }
+.markdown-container main { max-width: 40em; margin-left: auto; margin-right: auto; }
+.markdown-container h1, h2, h3, h4, h5, h6, h7 { margin: 1em 0px 0.5em; line-height: 1.2; }
+.markdown-container img { max-width: 100%; }
+.markdown-container pre, code, samp, kbd { color: rgb(0, 0, 153); font-family: monospace, monospace; }
+.markdown-container pre, blockquote { background: rgb(238, 238, 238); padding: 0.5em; }
+.markdown-container pre { overflow: auto; }
+.markdown-container blockquote { border-left: medium solid rgb(204, 204, 204); margin: 1em 0px; }
+.markdown-container blockquote :first-child { margin-top: 0px; }
+.markdown-container blockquote :last-child { margin-bottom: 0px; }
+.markdown-container table { border-collapse: collapse; }
+.markdown-container th, td { border: thin solid rgb(153, 153, 153); padding: 0.3em 0.4em; text-align: left; }
+
+@media screen and (min-width: 40em) {
+    body { background: rgb(68, 68, 68); }
+    .markdown-container main { background: rgb(255, 255, 255); padding: 5em 6em; margin: 1em auto; box-shadow: rgb(34, 34, 34) 0.4em 0.4em 0.4em; }
+}
+                    .markdown-container mjx-container[jax="CHTML"] { line-height: 0; }
+.markdown-container mjx-container [space="1"] { margin-left: 0.111em; }
+.markdown-container mjx-container [space="2"] { margin-left: 0.167em; }
+.markdown-container mjx-container [space="3"] { margin-left: 0.222em; }
+.markdown-container mjx-container [space="4"] { margin-left: 0.278em; }
+.markdown-container mjx-container [space="5"] { margin-left: 0.333em; }
+.markdown-container mjx-container [rspace="1"] { margin-right: 0.111em; }
+.markdown-container mjx-container [rspace="2"] { margin-right: 0.167em; }
+.markdown-container mjx-container [rspace="3"] { margin-right: 0.222em; }
+.markdown-container mjx-container [rspace="4"] { margin-right: 0.278em; }
+.markdown-container mjx-container [rspace="5"] { margin-right: 0.333em; }
+.markdown-container mjx-container [size="s"] { font-size: 70.7%; }
+.markdown-container mjx-container [size="ss"] { font-size: 50%; }
+.markdown-container mjx-container [size="Tn"] { font-size: 60%; }
+.markdown-container mjx-container [size="sm"] { font-size: 85%; }
+.markdown-container mjx-container [size="lg"] { font-size: 120%; }
+.markdown-container mjx-container [size="Lg"] { font-size: 144%; }
+.markdown-container mjx-container [size="LG"] { font-size: 173%; }
+.markdown-container mjx-container [size="hg"] { font-size: 207%; }
+.markdown-container mjx-container [size="HG"] { font-size: 249%; }
+.markdown-container mjx-container [width="full"] { width: 100%; }
+.markdown-container mjx-box { display: inline-block; }
+.markdown-container mjx-block { display: block; }
+.markdown-container mjx-itable { display: inline-table; }
+.markdown-container mjx-row { display: table-row; }
+.markdown-container mjx-row > * { display: table-cell; }
+.markdown-container mjx-mtext { display: inline-block; }
+.markdown-container mjx-mstyle { display: inline-block; }
+.markdown-container mjx-merror { display: inline-block; color: red; background-color: yellow; }
+.markdown-container mjx-mphantom { visibility: hidden; }
+.markdown-container mjx-assistive-mml { top: 0px; left: 0px; clip: rect(1px, 1px, 1px, 1px); user-select: none; position: absolute !important; padding: 1px 0px 0px !important; border: 0px !important; display: block !important; width: auto !important; overflow: hidden !important; }
+.markdown-container mjx-assistive-mml[display="block"] { width: 100% !important; }
+.markdown-container mjx-math { display: inline-block; text-align: left; line-height: 0; text-indent: 0px; font-style: normal; font-weight: normal; font-size: 100%; letter-spacing: normal; border-collapse: collapse; overflow-wrap: normal; word-spacing: normal; white-space: nowrap; direction: ltr; padding: 1px 0px; }
+.markdown-container mjx-container[jax="CHTML"][display="true"] { display: block; text-align: center; margin: 1em 0px; }
+.markdown-container mjx-container[jax="CHTML"][display="true"][width="full"] { display: flex; }
+.markdown-container mjx-container[jax="CHTML"][display="true"] mjx-math { padding: 0px; }
+.markdown-container mjx-container[jax="CHTML"][justify="left"] { text-align: left; }
+.markdown-container mjx-container[jax="CHTML"][justify="right"] { text-align: right; }
+.markdown-container mjx-msub { display: inline-block; text-align: left; }
+.markdown-container mjx-mi { display: inline-block; text-align: left; }
+.markdown-container mjx-c { display: inline-block; }
+.markdown-container mjx-utext { display: inline-block; padding: 0.75em 0px 0.2em; }
+.markdown-container mjx-mn { display: inline-block; text-align: left; }
+.markdown-container mjx-mo { display: inline-block; text-align: left; }
+.markdown-container mjx-stretchy-h { display: inline-table; width: 100%; }
+.markdown-container mjx-stretchy-h > * { display: table-cell; width: 0px; }
+.markdown-container mjx-stretchy-h > * > mjx-c { display: inline-block; transform: scaleX(1); }
+.markdown-container mjx-stretchy-h > * > mjx-c::before { display: inline-block; width: initial; }
+.markdown-container mjx-stretchy-h > mjx-ext { overflow: clip visible; width: 100%; }
+.markdown-container mjx-stretchy-h > mjx-ext > mjx-c::before { transform: scaleX(500); }
+.markdown-container mjx-stretchy-h > mjx-ext > mjx-c { width: 0px; }
+.markdown-container mjx-stretchy-h > mjx-beg > mjx-c { margin-right: -0.1em; }
+.markdown-container mjx-stretchy-h > mjx-end > mjx-c { margin-left: -0.1em; }
+.markdown-container mjx-stretchy-v { display: inline-block; }
+.markdown-container mjx-stretchy-v > * { display: block; }
+.markdown-container mjx-stretchy-v > mjx-beg { height: 0px; }
+.markdown-container mjx-stretchy-v > mjx-end > mjx-c { display: block; }
+.markdown-container mjx-stretchy-v > * > mjx-c { transform: scaleY(1); transform-origin: left center; overflow: hidden; }
+.markdown-container mjx-stretchy-v > mjx-ext { display: block; height: 100%; box-sizing: border-box; border: 0px solid transparent; overflow: visible clip; }
+.markdown-container mjx-stretchy-v > mjx-ext > mjx-c::before { width: initial; box-sizing: border-box; }
+.markdown-container mjx-stretchy-v > mjx-ext > mjx-c { transform: scaleY(500) translateY(0.075em); overflow: visible; }
+.markdown-container mjx-mark { display: inline-block; height: 0px; }
+.markdown-container mjx-c::before { display: block; width: 0px; }
+.markdown-container .MJX-TEX { font-family: MJXZERO, MJXTEX; }
+.markdown-container .TEX-B { font-family: MJXZERO, MJXTEX-B; }
+.markdown-container .TEX-I { font-family: MJXZERO, MJXTEX-I; }
+.markdown-container .TEX-MI { font-family: MJXZERO, MJXTEX-MI; }
+.markdown-container .TEX-BI { font-family: MJXZERO, MJXTEX-BI; }
+.markdown-container .TEX-S1 { font-family: MJXZERO, MJXTEX-S1; }
+.markdown-container .TEX-S2 { font-family: MJXZERO, MJXTEX-S2; }
+.markdown-container .TEX-S3 { font-family: MJXZERO, MJXTEX-S3; }
+.markdown-container .TEX-S4 { font-family: MJXZERO, MJXTEX-S4; }
+.markdown-container .TEX-A { font-family: MJXZERO, MJXTEX-A; }
+.markdown-container .TEX-C { font-family: MJXZERO, MJXTEX-C; }
+.markdown-container .TEX-CB { font-family: MJXZERO, MJXTEX-CB; }
+.markdown-container .TEX-FR { font-family: MJXZERO, MJXTEX-FR; }
+.markdown-container .TEX-FRB { font-family: MJXZERO, MJXTEX-FRB; }
+.markdown-container .TEX-SS { font-family: MJXZERO, MJXTEX-SS; }
+.markdown-container .TEX-SSB { font-family: MJXZERO, MJXTEX-SSB; }
+.markdown-container .TEX-SSI { font-family: MJXZERO, MJXTEX-SSI; }
+.markdown-container .TEX-SC { font-family: MJXZERO, MJXTEX-SC; }
+.markdown-container .TEX-T { font-family: MJXZERO, MJXTEX-T; }
+.markdown-container .TEX-V { font-family: MJXZERO, MJXTEX-V; }
+.markdown-container .TEX-VB { font-family: MJXZERO, MJXTEX-VB; }
+.markdown-container mjx-stretchy-v mjx-c, mjx-stretchy-h mjx-c { font-family: MJXZERO, MJXTEX-S1, MJXTEX-S4, MJXTEX, MJXTEX-A !important; }
+@font-face { font-family: MJXZERO; src: url("/output/chtml/fonts/woff-v2/MathJax_Zero.woff") format("woff"); }
+@font-face { font-family: MJXTEX; src: url("/output/chtml/fonts/woff-v2/MathJax_Main-Regular.woff") format("woff"); }
+@font-face { font-family: MJXTEX-B; src: url("/output/chtml/fonts/woff-v2/MathJax_Main-Bold.woff") format("woff"); }
+@font-face { font-family: MJXTEX-I; src: url("/output/chtml/fonts/woff-v2/MathJax_Math-Italic.woff") format("woff"); }
+@font-face { font-family: MJXTEX-MI; src: url("/output/chtml/fonts/woff-v2/MathJax_Main-Italic.woff") format("woff"); }
+@font-face { font-family: MJXTEX-BI; src: url("/output/chtml/fonts/woff-v2/MathJax_Math-BoldItalic.woff") format("woff"); }
+@font-face { font-family: MJXTEX-S1; src: url("/output/chtml/fonts/woff-v2/MathJax_Size1-Regular.woff") format("woff"); }
+@font-face { font-family: MJXTEX-S2; src: url("/output/chtml/fonts/woff-v2/MathJax_Size2-Regular.woff") format("woff"); }
+@font-face { font-family: MJXTEX-S3; src: url("/output/chtml/fonts/woff-v2/MathJax_Size3-Regular.woff") format("woff"); }
+@font-face { font-family: MJXTEX-S4; src: url("/output/chtml/fonts/woff-v2/MathJax_Size4-Regular.woff") format("woff"); }
+@font-face { font-family: MJXTEX-A; src: url("/output/chtml/fonts/woff-v2/MathJax_AMS-Regular.woff") format("woff"); }
+@font-face { font-family: MJXTEX-C; src: url("/output/chtml/fonts/woff-v2/MathJax_Calligraphic-Regular.woff") format("woff"); }
+@font-face { font-family: MJXTEX-CB; src: url("/output/chtml/fonts/woff-v2/MathJax_Calligraphic-Bold.woff") format("woff"); }
+@font-face { font-family: MJXTEX-FR; src: url("/output/chtml/fonts/woff-v2/MathJax_Fraktur-Regular.woff") format("woff"); }
+@font-face { font-family: MJXTEX-FRB; src: url("/output/chtml/fonts/woff-v2/MathJax_Fraktur-Bold.woff") format("woff"); }
+@font-face { font-family: MJXTEX-SS; src: url("/output/chtml/fonts/woff-v2/MathJax_SansSerif-Regular.woff") format("woff"); }
+@font-face { font-family: MJXTEX-SSB; src: url("/output/chtml/fonts/woff-v2/MathJax_SansSerif-Bold.woff") format("woff"); }
+@font-face { font-family: MJXTEX-SSI; src: url("/output/chtml/fonts/woff-v2/MathJax_SansSerif-Italic.woff") format("woff"); }
+@font-face { font-family: MJXTEX-SC; src: url("/output/chtml/fonts/woff-v2/MathJax_Script-Regular.woff") format("woff"); }
+@font-face { font-family: MJXTEX-T; src: url("/output/chtml/fonts/woff-v2/MathJax_Typewriter-Regular.woff") format("woff"); }
+@font-face { font-family: MJXTEX-V; src: url("/output/chtml/fonts/woff-v2/MathJax_Vector-Regular.woff") format("woff"); }
+@font-face { font-family: MJXTEX-VB; src: url("/output/chtml/fonts/woff-v2/MathJax_Vector-Bold.woff") format("woff"); }
+.markdown-container mjx-c.mjx-c1D443.TEX-I::before { padding: 0.683em 0.751em 0px 0px; content: "P"; }
+.markdown-container mjx-c.mjx-c30::before { padding: 0.666em 0.5em 0.022em 0px; content: "0"; }
+.markdown-container mjx-c.mjx-c2C::before { padding: 0.121em 0.278em 0.194em 0px; content: ","; }
+.markdown-container mjx-c.mjx-c31::before { padding: 0.666em 0.5em 0px 0px; content: "1"; }
+.markdown-container mjx-c.mjx-c1D463.TEX-I::before { padding: 0.443em 0.485em 0.011em 0px; content: "v"; }
+.markdown-container mjx-c.mjx-c1D459.TEX-I::before { padding: 0.694em 0.298em 0.011em 0px; content: "l"; }
+.markdown-container mjx-c.mjx-c3D::before { padding: 0.583em 0.778em 0.082em 0px; content: "="; }
+.markdown-container mjx-c.mjx-c1D458.TEX-I::before { padding: 0.694em 0.521em 0.011em 0px; content: "k"; }
+.markdown-container mjx-c.mjx-c1D465.TEX-I::before { padding: 0.442em 0.572em 0.011em 0px; content: "x"; }
+.markdown-container mjx-c.mjx-c2B::before { padding: 0.583em 0.778em 0.082em 0px; content: "+"; }
+.markdown-container mjx-c.mjx-c1D44F.TEX-I::before { padding: 0.694em 0.429em 0.011em 0px; content: "b"; }
+.markdown-container mjx-c.mjx-c1D44E.TEX-I::before { padding: 0.441em 0.529em 0.01em 0px; content: "a"; }
+.markdown-container mjx-c.mjx-c1D466.TEX-I::before { padding: 0.442em 0.49em 0.205em 0px; content: "y"; }
+.markdown-container mjx-c.mjx-c1D450.TEX-I::before { padding: 0.442em 0.433em 0.011em 0px; content: "c"; }
+.markdown-container mjx-c.mjx-c1D461.TEX-I::before { padding: 0.626em 0.361em 0.011em 0px; content: "t"; }
+
+</style>
+<div class="markdown-container">
+    <main>
+        <h1>直线和距离</h1>
+<h2>直线</h2>
+<p>最初定义一条直线L的方法是给出直线上的不同的两点<mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="0" style="font-size: 101.1%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-msub><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D443 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.15em; margin-left: -0.109em;"><mjx-mn class="mjx-n" size="s"><mjx-c class="mjx-c30"></mjx-c></mjx-mn></mjx-script></mjx-msub><mjx-mo class="mjx-n"><mjx-c class="mjx-c2C"></mjx-c></mjx-mo><mjx-msub space="2"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D443 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.15em; margin-left: -0.109em;"><mjx-mn class="mjx-n" size="s"><mjx-c class="mjx-c31"></mjx-c></mjx-mn></mjx-script></mjx-msub></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>P</mi><mn>0</mn></msub><mo>,</mo><msub><mi>P</mi><mn>1</mn></msub></math></mjx-assistive-mml></mjx-container>，事实上，这定义了一条有限的从<mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="1" style="font-size: 101.1%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-msub><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D443 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.15em; margin-left: -0.109em;"><mjx-mn class="mjx-n" size="s"><mjx-c class="mjx-c30"></mjx-c></mjx-mn></mjx-script></mjx-msub><mjx-mi class="mjx-n"><mjx-utext variant="normal" style="font-size: 98.9%; padding: 0.758em 0px 0.202em; font-family: MJXZERO, serif;">到</mjx-utext></mjx-mi><mjx-msub><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D443 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.15em; margin-left: -0.109em;"><mjx-mn class="mjx-n" size="s"><mjx-c class="mjx-c31"></mjx-c></mjx-mn></mjx-script></mjx-msub></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>P</mi><mn>0</mn></msub><mi mathvariant="normal">到</mi><msub><mi>P</mi><mn>1</mn></msub></math></mjx-assistive-mml></mjx-container>的线段，这就是希腊人理解的直线，它符合我们对方向和2点间最短路径的自然的直觉，延伸这条直线的任意一个端点都会得到无限长的直线，当同时延长2端点则将得到一个概念上的无限长的直线，这也是我们现在所理解的直线的概念</p>
+<p>直线L也可以通过一个点和方向来定义。令<mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="2" style="font-size: 101.1%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-msub><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D443 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.15em; margin-left: -0.109em;"><mjx-mn class="mjx-n" size="s"><mjx-c class="mjx-c30"></mjx-c></mjx-mn></mjx-script></mjx-msub></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>P</mi><mn>0</mn></msub></math></mjx-assistive-mml></mjx-container>是直线L的一个点，<mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="3" style="font-size: 101.1%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D463 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D459 TEX-I"></mjx-c></mjx-mi></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>v</mi><mi>l</mi></math></mjx-assistive-mml></mjx-container>是一个非零矢量，<mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="4" style="font-size: 101.1%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D463 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D459 TEX-I"></mjx-c></mjx-mi></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>v</mi><mi>l</mi></math></mjx-assistive-mml></mjx-container>给出了直线的方向。</p>
+<h3>直线方程</h3>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>方程</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>显式二维</td>
+<td>y<mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="5" style="font-size: 101.1%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mo class="mjx-n"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-mi class="mjx-i" space="4"><mjx-c class="mjx-c1D458 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D465 TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n" space="3"><mjx-c class="mjx-c2B"></mjx-c></mjx-mo><mjx-mi class="mjx-i" space="3"><mjx-c class="mjx-c1D44F TEX-I"></mjx-c></mjx-mi></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mo>=</mo><mi>k</mi><mi>x</mi><mo>+</mo><mi>b</mi></math></mjx-assistive-mml></mjx-container></td>
+<td>非垂直的二维直线</td>
+</tr>
+<tr>
+<td>隐式二维</td>
+<td><mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="6" style="font-size: 101.1%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D44E TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D465 TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n" space="3"><mjx-c class="mjx-c2B"></mjx-c></mjx-mo><mjx-mi class="mjx-i" space="3"><mjx-c class="mjx-c1D44F TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D466 TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n" space="3"><mjx-c class="mjx-c2B"></mjx-c></mjx-mo><mjx-mi class="mjx-i" space="3"><mjx-c class="mjx-c1D450 TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="4"><mjx-c class="mjx-c30"></mjx-c></mjx-mn></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>a</mi><mi>x</mi><mo>+</mo><mi>b</mi><mi>y</mi><mo>+</mo><mi>c</mi><mo>=</mo><mn>0</mn></math></mjx-assistive-mml></mjx-container></td>
+<td>任意二维直线</td>
+</tr>
+<tr>
+<td>显式二维</td>
+<td><mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="7" style="font-size: 101.1%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D443 TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-msub space="4"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D443 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.15em; margin-left: -0.109em;"><mjx-mn class="mjx-n" size="s"><mjx-c class="mjx-c30"></mjx-c></mjx-mn></mjx-script></mjx-msub><mjx-mo class="mjx-n" space="3"><mjx-c class="mjx-c2B"></mjx-c></mjx-mo><mjx-mi class="mjx-i" space="3"><mjx-c class="mjx-c1D461 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D463 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D459 TEX-I"></mjx-c></mjx-mi></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>P</mi><mo>=</mo><msub><mi>P</mi><mn>0</mn></msub><mo>+</mo><mi>t</mi><mi>v</mi><mi>l</mi></math></mjx-assistive-mml></mjx-container></td>
+<td>任意维数的直线</td>
+</tr>
+</tbody></table>
+<h3>点到直线的距离</h3>
+
+    </main>
+</div>
+        

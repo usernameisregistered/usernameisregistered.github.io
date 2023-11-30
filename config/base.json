@@ -1,0 +1,9 @@
+{
+    "backupEnable": true,
+    "backupSingle": true,
+    "backupDirectory": "./bak",
+    "outputDirectory": "./output",
+    "tempServicePort": 60000,
+    "bookList": [],
+    "blogList": []
+}

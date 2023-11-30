@@ -36,6 +36,24 @@
                 "value": "language"
             },
             {
+                "name": "selenium",
+                "url": "https://www.selenium.dev/zh-cn",
+                "desc": "Selenium适合你吗? 请参见不同项目组件的概述.",
+                "value": "language"
+            },
+            {
+                "name": "async",
+                "url": "https://caolan.github.io/async/v3/docs.html",
+                "desc": "Async is a utility module which provides straight-forward, powerful functions for working with asynchronous JavaScript. Although originally designed for use with Node.js and installable via npm install --save async, it can also be used directly in the browser.",
+                "value": "language"
+            },
+            {
+                "name": "phantomjs",
+                "url": "http://wenku.kuryun.com/docs/phantomjs/index.html",
+                "desc": "PhantomJS是一个自带JavaScript API的无头WebKit脚本。 它对各种web标准有快速和原生化的支持，包括DOM处理、CSS选择器、JSON、Canvas和SVG",
+                "value": "language"
+            },
+            {
                 "name": "marked",
                 "url": "https://marked.js.org/",
                 "desc": "一个快速的markdown文档解析和编译工具",

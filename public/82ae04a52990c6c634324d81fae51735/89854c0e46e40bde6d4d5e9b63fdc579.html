@@ -1,0 +1,236 @@
+
+<style>
+.markdown-container .CtxtMenu_InfoClose { top: 0.2em; right: 0.2em; }
+.markdown-container .CtxtMenu_InfoContent { overflow: auto; text-align: left; font-size: 80%; padding: 0.4em 0.6em; border: 1px inset; margin: 1em 0px; max-height: 20em; max-width: 30em; background-color: rgb(238, 238, 238); white-space: normal; }
+.markdown-container .CtxtMenu_Info.CtxtMenu_MousePost { outline: none; }
+.markdown-container .CtxtMenu_Info { position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: rgb(221, 221, 221); color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; box-shadow: rgb(128, 128, 128) 0px 10px 20px; }
+.markdown-container .CtxtMenu_MenuClose { position: absolute; cursor: pointer; display: inline-block; border: 2px solid rgb(170, 170, 170); border-radius: 18px; font-family: "Courier New", Courier; font-size: 24px; color: rgb(240, 240, 240); }
+.markdown-container .CtxtMenu_MenuClose span { display: block; background-color: rgb(170, 170, 170); border: 1.5px solid; border-radius: 18px; line-height: 0; padding: 8px 0px 6px; }
+.markdown-container .CtxtMenu_MenuClose:hover { color: white !important; border: 2px solid rgb(204, 204, 204) !important; }
+.markdown-container .CtxtMenu_MenuClose:hover span { background-color: rgb(204, 204, 204) !important; }
+.markdown-container .CtxtMenu_MenuClose:hover:focus { outline: none; }
+.markdown-container .CtxtMenu_Menu { position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid rgb(204, 204, 204); margin: 0px; cursor: default; font-style: ; font-variant: normal; font-weight: ; font-stretch: ; font-size: ; font-family: ; font-optical-sizing: ; font-kerning: ; font-feature-settings: ; font-variation-settings: ; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; box-shadow: rgb(128, 128, 128) 0px 10px 20px; }
+.markdown-container .CtxtMenu_MenuItem { padding: 1px 2em; background: transparent; }
+.markdown-container .CtxtMenu_MenuArrow { position: absolute; right: 0.5em; padding-top: 0.25em; color: rgb(102, 102, 102); font-family: null; font-size: 0.75em; }
+.markdown-container .CtxtMenu_MenuActive .CtxtMenu_MenuArrow { color: white; }
+.markdown-container .CtxtMenu_MenuArrow.CtxtMenu_RTL { left: 0.5em; right: auto; }
+.markdown-container .CtxtMenu_MenuCheck { position: absolute; left: 0.7em; font-family: null; }
+.markdown-container .CtxtMenu_MenuCheck.CtxtMenu_RTL { right: 0.7em; left: auto; }
+.markdown-container .CtxtMenu_MenuRadioCheck { position: absolute; left: 0.7em; }
+.markdown-container .CtxtMenu_MenuRadioCheck.CtxtMenu_RTL { right: 0.7em; left: auto; }
+.markdown-container .CtxtMenu_MenuInputBox { padding-left: 1em; right: 0.5em; color: rgb(102, 102, 102); font-family: null; }
+.markdown-container .CtxtMenu_MenuInputBox.CtxtMenu_RTL { left: 0.1em; }
+.markdown-container .CtxtMenu_MenuComboBox { left: 0.1em; padding-bottom: 0.5em; }
+.markdown-container .CtxtMenu_MenuSlider { left: 0.1em; }
+.markdown-container .CtxtMenu_SliderValue { position: absolute; right: 0.1em; padding-top: 0.25em; color: rgb(51, 51, 51); font-size: 0.75em; }
+.markdown-container .CtxtMenu_SliderBar { outline: none; background: rgb(211, 211, 211); }
+.markdown-container .CtxtMenu_MenuLabel { padding: 1px 2em 3px 1.33em; font-style: italic; }
+.markdown-container .CtxtMenu_MenuRule { border-top: 1px solid rgb(221, 221, 221); margin: 4px 3px; }
+.markdown-container .CtxtMenu_MenuDisabled { color: graytext; }
+.markdown-container .CtxtMenu_MenuActive { background-color: rgb(96, 104, 114); color: white; }
+.markdown-container .CtxtMenu_MenuDisabled:focus { background-color: rgb(232, 232, 232); }
+.markdown-container .CtxtMenu_MenuLabel:focus { background-color: rgb(232, 232, 232); }
+.markdown-container .CtxtMenu_ContextMenu:focus { outline: none; }
+.markdown-container .CtxtMenu_ContextMenu .CtxtMenu_MenuItem:focus { outline: none; }
+.markdown-container .CtxtMenu_SelectionMenu { position: relative; float: left; border-bottom: none; box-shadow: none; border-radius: 0px; }
+.markdown-container .CtxtMenu_SelectionItem { padding-right: 1em; }
+.markdown-container .CtxtMenu_Selection { right: 40%; width: 50%; }
+.markdown-container .CtxtMenu_SelectionBox { padding: 0em; max-height: 20em; max-width: none; background-color: rgb(255, 255, 255); }
+.markdown-container .CtxtMenu_SelectionDivider { clear: both; border-top: 2px solid rgb(0, 0, 0); }
+.markdown-container .CtxtMenu_Menu .CtxtMenu_MenuClose { top: -10px; left: -10px; }
+.markdown-container body { color: rgb(51, 51, 51); line-height: 1.5; }
+.markdown-container main { max-width: 40em; margin-left: auto; margin-right: auto; }
+.markdown-container h1, h2, h3, h4, h5, h6, h7 { margin: 1em 0px 0.5em; line-height: 1.2; }
+.markdown-container img { max-width: 100%; }
+.markdown-container pre, code, samp, kbd { color: rgb(0, 0, 153); font-family: monospace, monospace; }
+.markdown-container pre, blockquote { background: rgb(238, 238, 238); padding: 0.5em; }
+.markdown-container pre { overflow: auto; }
+.markdown-container blockquote { border-left: medium solid rgb(204, 204, 204); margin: 1em 0px; }
+.markdown-container blockquote :first-child { margin-top: 0px; }
+.markdown-container blockquote :last-child { margin-bottom: 0px; }
+.markdown-container table { border-collapse: collapse; }
+.markdown-container th, td { border: thin solid rgb(153, 153, 153); padding: 0.3em 0.4em; text-align: left; }
+
+@media screen and (min-width: 40em) {
+    body { background: rgb(68, 68, 68); }
+    .markdown-container main { background: rgb(255, 255, 255); padding: 5em 6em; margin: 1em auto; box-shadow: rgb(34, 34, 34) 0.4em 0.4em 0.4em; }
+}
+                    .markdown-container mjx-container[jax="CHTML"] { line-height: 0; }
+.markdown-container mjx-container [space="1"] { margin-left: 0.111em; }
+.markdown-container mjx-container [space="2"] { margin-left: 0.167em; }
+.markdown-container mjx-container [space="3"] { margin-left: 0.222em; }
+.markdown-container mjx-container [space="4"] { margin-left: 0.278em; }
+.markdown-container mjx-container [space="5"] { margin-left: 0.333em; }
+.markdown-container mjx-container [rspace="1"] { margin-right: 0.111em; }
+.markdown-container mjx-container [rspace="2"] { margin-right: 0.167em; }
+.markdown-container mjx-container [rspace="3"] { margin-right: 0.222em; }
+.markdown-container mjx-container [rspace="4"] { margin-right: 0.278em; }
+.markdown-container mjx-container [rspace="5"] { margin-right: 0.333em; }
+.markdown-container mjx-container [size="s"] { font-size: 70.7%; }
+.markdown-container mjx-container [size="ss"] { font-size: 50%; }
+.markdown-container mjx-container [size="Tn"] { font-size: 60%; }
+.markdown-container mjx-container [size="sm"] { font-size: 85%; }
+.markdown-container mjx-container [size="lg"] { font-size: 120%; }
+.markdown-container mjx-container [size="Lg"] { font-size: 144%; }
+.markdown-container mjx-container [size="LG"] { font-size: 173%; }
+.markdown-container mjx-container [size="hg"] { font-size: 207%; }
+.markdown-container mjx-container [size="HG"] { font-size: 249%; }
+.markdown-container mjx-container [width="full"] { width: 100%; }
+.markdown-container mjx-box { display: inline-block; }
+.markdown-container mjx-block { display: block; }
+.markdown-container mjx-itable { display: inline-table; }
+.markdown-container mjx-row { display: table-row; }
+.markdown-container mjx-row > * { display: table-cell; }
+.markdown-container mjx-mtext { display: inline-block; }
+.markdown-container mjx-mstyle { display: inline-block; }
+.markdown-container mjx-merror { display: inline-block; color: red; background-color: yellow; }
+.markdown-container mjx-mphantom { visibility: hidden; }
+.markdown-container mjx-assistive-mml { top: 0px; left: 0px; clip: rect(1px, 1px, 1px, 1px); user-select: none; position: absolute !important; padding: 1px 0px 0px !important; border: 0px !important; display: block !important; width: auto !important; overflow: hidden !important; }
+.markdown-container mjx-assistive-mml[display="block"] { width: 100% !important; }
+.markdown-container mjx-math { display: inline-block; text-align: left; line-height: 0; text-indent: 0px; font-style: normal; font-weight: normal; font-size: 100%; letter-spacing: normal; border-collapse: collapse; overflow-wrap: normal; word-spacing: normal; white-space: nowrap; direction: ltr; padding: 1px 0px; }
+.markdown-container mjx-container[jax="CHTML"][display="true"] { display: block; text-align: center; margin: 1em 0px; }
+.markdown-container mjx-container[jax="CHTML"][display="true"][width="full"] { display: flex; }
+.markdown-container mjx-container[jax="CHTML"][display="true"] mjx-math { padding: 0px; }
+.markdown-container mjx-container[jax="CHTML"][justify="left"] { text-align: left; }
+.markdown-container mjx-container[jax="CHTML"][justify="right"] { text-align: right; }
+.markdown-container mjx-mi { display: inline-block; text-align: left; }
+.markdown-container mjx-c { display: inline-block; }
+.markdown-container mjx-utext { display: inline-block; padding: 0.75em 0px 0.2em; }
+.markdown-container mjx-mo { display: inline-block; text-align: left; }
+.markdown-container mjx-stretchy-h { display: inline-table; width: 100%; }
+.markdown-container mjx-stretchy-h > * { display: table-cell; width: 0px; }
+.markdown-container mjx-stretchy-h > * > mjx-c { display: inline-block; transform: scaleX(1); }
+.markdown-container mjx-stretchy-h > * > mjx-c::before { display: inline-block; width: initial; }
+.markdown-container mjx-stretchy-h > mjx-ext { overflow: clip visible; width: 100%; }
+.markdown-container mjx-stretchy-h > mjx-ext > mjx-c::before { transform: scaleX(500); }
+.markdown-container mjx-stretchy-h > mjx-ext > mjx-c { width: 0px; }
+.markdown-container mjx-stretchy-h > mjx-beg > mjx-c { margin-right: -0.1em; }
+.markdown-container mjx-stretchy-h > mjx-end > mjx-c { margin-left: -0.1em; }
+.markdown-container mjx-stretchy-v { display: inline-block; }
+.markdown-container mjx-stretchy-v > * { display: block; }
+.markdown-container mjx-stretchy-v > mjx-beg { height: 0px; }
+.markdown-container mjx-stretchy-v > mjx-end > mjx-c { display: block; }
+.markdown-container mjx-stretchy-v > * > mjx-c { transform: scaleY(1); transform-origin: left center; overflow: hidden; }
+.markdown-container mjx-stretchy-v > mjx-ext { display: block; height: 100%; box-sizing: border-box; border: 0px solid transparent; overflow: visible clip; }
+.markdown-container mjx-stretchy-v > mjx-ext > mjx-c::before { width: initial; box-sizing: border-box; }
+.markdown-container mjx-stretchy-v > mjx-ext > mjx-c { transform: scaleY(500) translateY(0.075em); overflow: visible; }
+.markdown-container mjx-mark { display: inline-block; height: 0px; }
+.markdown-container mjx-msup { display: inline-block; text-align: left; }
+.markdown-container mjx-mn { display: inline-block; text-align: left; }
+.markdown-container mjx-c::before { display: block; width: 0px; }
+.markdown-container .MJX-TEX { font-family: MJXZERO, MJXTEX; }
+.markdown-container .TEX-B { font-family: MJXZERO, MJXTEX-B; }
+.markdown-container .TEX-I { font-family: MJXZERO, MJXTEX-I; }
+.markdown-container .TEX-MI { font-family: MJXZERO, MJXTEX-MI; }
+.markdown-container .TEX-BI { font-family: MJXZERO, MJXTEX-BI; }
+.markdown-container .TEX-S1 { font-family: MJXZERO, MJXTEX-S1; }
+.markdown-container .TEX-S2 { font-family: MJXZERO, MJXTEX-S2; }
+.markdown-container .TEX-S3 { font-family: MJXZERO, MJXTEX-S3; }
+.markdown-container .TEX-S4 { font-family: MJXZERO, MJXTEX-S4; }
+.markdown-container .TEX-A { font-family: MJXZERO, MJXTEX-A; }
+.markdown-container .TEX-C { font-family: MJXZERO, MJXTEX-C; }
+.markdown-container .TEX-CB { font-family: MJXZERO, MJXTEX-CB; }
+.markdown-container .TEX-FR { font-family: MJXZERO, MJXTEX-FR; }
+.markdown-container .TEX-FRB { font-family: MJXZERO, MJXTEX-FRB; }
+.markdown-container .TEX-SS { font-family: MJXZERO, MJXTEX-SS; }
+.markdown-container .TEX-SSB { font-family: MJXZERO, MJXTEX-SSB; }
+.markdown-container .TEX-SSI { font-family: MJXZERO, MJXTEX-SSI; }
+.markdown-container .TEX-SC { font-family: MJXZERO, MJXTEX-SC; }
+.markdown-container .TEX-T { font-family: MJXZERO, MJXTEX-T; }
+.markdown-container .TEX-V { font-family: MJXZERO, MJXTEX-V; }
+.markdown-container .TEX-VB { font-family: MJXZERO, MJXTEX-VB; }
+.markdown-container mjx-stretchy-v mjx-c, mjx-stretchy-h mjx-c { font-family: MJXZERO, MJXTEX-S1, MJXTEX-S4, MJXTEX, MJXTEX-A !important; }
+@font-face { font-family: MJXZERO; src: url("/output/chtml/fonts/woff-v2/MathJax_Zero.woff") format("woff"); }
+@font-face { font-family: MJXTEX; src: url("/output/chtml/fonts/woff-v2/MathJax_Main-Regular.woff") format("woff"); }
+@font-face { font-family: MJXTEX-B; src: url("/output/chtml/fonts/woff-v2/MathJax_Main-Bold.woff") format("woff"); }
+@font-face { font-family: MJXTEX-I; src: url("/output/chtml/fonts/woff-v2/MathJax_Math-Italic.woff") format("woff"); }
+@font-face { font-family: MJXTEX-MI; src: url("/output/chtml/fonts/woff-v2/MathJax_Main-Italic.woff") format("woff"); }
+@font-face { font-family: MJXTEX-BI; src: url("/output/chtml/fonts/woff-v2/MathJax_Math-BoldItalic.woff") format("woff"); }
+@font-face { font-family: MJXTEX-S1; src: url("/output/chtml/fonts/woff-v2/MathJax_Size1-Regular.woff") format("woff"); }
+@font-face { font-family: MJXTEX-S2; src: url("/output/chtml/fonts/woff-v2/MathJax_Size2-Regular.woff") format("woff"); }
+@font-face { font-family: MJXTEX-S3; src: url("/output/chtml/fonts/woff-v2/MathJax_Size3-Regular.woff") format("woff"); }
+@font-face { font-family: MJXTEX-S4; src: url("/output/chtml/fonts/woff-v2/MathJax_Size4-Regular.woff") format("woff"); }
+@font-face { font-family: MJXTEX-A; src: url("/output/chtml/fonts/woff-v2/MathJax_AMS-Regular.woff") format("woff"); }
+@font-face { font-family: MJXTEX-C; src: url("/output/chtml/fonts/woff-v2/MathJax_Calligraphic-Regular.woff") format("woff"); }
+@font-face { font-family: MJXTEX-CB; src: url("/output/chtml/fonts/woff-v2/MathJax_Calligraphic-Bold.woff") format("woff"); }
+@font-face { font-family: MJXTEX-FR; src: url("/output/chtml/fonts/woff-v2/MathJax_Fraktur-Regular.woff") format("woff"); }
+@font-face { font-family: MJXTEX-FRB; src: url("/output/chtml/fonts/woff-v2/MathJax_Fraktur-Bold.woff") format("woff"); }
+@font-face { font-family: MJXTEX-SS; src: url("/output/chtml/fonts/woff-v2/MathJax_SansSerif-Regular.woff") format("woff"); }
+@font-face { font-family: MJXTEX-SSB; src: url("/output/chtml/fonts/woff-v2/MathJax_SansSerif-Bold.woff") format("woff"); }
+@font-face { font-family: MJXTEX-SSI; src: url("/output/chtml/fonts/woff-v2/MathJax_SansSerif-Italic.woff") format("woff"); }
+@font-face { font-family: MJXTEX-SC; src: url("/output/chtml/fonts/woff-v2/MathJax_Script-Regular.woff") format("woff"); }
+@font-face { font-family: MJXTEX-T; src: url("/output/chtml/fonts/woff-v2/MathJax_Typewriter-Regular.woff") format("woff"); }
+@font-face { font-family: MJXTEX-V; src: url("/output/chtml/fonts/woff-v2/MathJax_Vector-Regular.woff") format("woff"); }
+@font-face { font-family: MJXTEX-VB; src: url("/output/chtml/fonts/woff-v2/MathJax_Vector-Bold.woff") format("woff"); }
+.markdown-container mjx-c.mjx-c1D447.TEX-I::before { padding: 0.677em 0.704em 0px 0px; content: "T"; }
+.markdown-container mjx-c.mjx-c28::before { padding: 0.75em 0.389em 0.25em 0px; content: "("; }
+.markdown-container mjx-c.mjx-c1D45B.TEX-I::before { padding: 0.442em 0.6em 0.011em 0px; content: "n"; }
+.markdown-container mjx-c.mjx-c29::before { padding: 0.75em 0.389em 0.25em 0px; content: ")"; }
+.markdown-container mjx-c.mjx-c1D446.TEX-I::before { padding: 0.705em 0.645em 0.022em 0px; content: "S"; }
+.markdown-container mjx-c.mjx-c1D450.TEX-I::before { padding: 0.442em 0.433em 0.011em 0px; content: "c"; }
+.markdown-container mjx-c.mjx-c32::before { padding: 0.666em 0.5em 0px 0px; content: "2"; }
+.markdown-container mjx-c.mjx-c1D451.TEX-I::before { padding: 0.694em 0.52em 0.01em 0px; content: "d"; }
+.markdown-container mjx-c.mjx-c33::before { padding: 0.665em 0.5em 0.022em 0px; content: "3"; }
+.markdown-container mjx-c.mjx-c1D453.TEX-I::before { padding: 0.705em 0.55em 0.205em 0px; content: "f"; }
+.markdown-container mjx-c.mjx-c3D::before { padding: 0.583em 0.778em 0.082em 0px; content: "="; }
+.markdown-container mjx-c.mjx-c1D459.TEX-I::before { padding: 0.694em 0.298em 0.011em 0px; content: "l"; }
+.markdown-container mjx-c.mjx-c1D45C.TEX-I::before { padding: 0.441em 0.485em 0.011em 0px; content: "o"; }
+.markdown-container mjx-c.mjx-c1D454.TEX-I::before { padding: 0.442em 0.477em 0.205em 0px; content: "g"; }
+.markdown-container mjx-c.mjx-c2B::before { padding: 0.583em 0.778em 0.082em 0px; content: "+"; }
+.markdown-container mjx-c.mjx-c31::before { padding: 0.666em 0.5em 0px 0px; content: "1"; }
+.markdown-container mjx-c.mjx-c30::before { padding: 0.666em 0.5em 0.022em 0px; content: "0"; }
+
+</style>
+<div class="markdown-container">
+    <main>
+        <h1>算法设计与分析</h1>
+<h2>概述</h2>
+<blockquote>
+<p>算法是解决问题方法的精确描述;但是并不是所有问题都有算法，有些问题经研究可行，则相应的有算法，但这并不是说问题就有结果，上述中的“可行”，是指对算法的研究可行</p>
+</blockquote>
+<h3>待解问题的描述</h3>
+<p>待解问题的描述应精确、简练、清楚、使用形式化模型刻画问题是最恰当的。例如，使用数学模型刻画问题是最简明、严格的，一旦问题形式化了，就可依据严格的模型对问题求解</p>
+<h3>算法设计</h3>
+<p>算法设计的任务是对各类具体问题设计良好的的算法以及研究设计算法的规律和方法，常用的算法有穷举搜索法、递归法、回溯法、贪心法、分治法等</p>
+<h3>算法分析</h3>
+<p>算法分析的任务是对设计出的每一个具体的算法，利用数学工具，讨论各种复杂度度，探讨某种具体算法适用于哪类问题或某类问题宜采用那种算法。</p>
+<h2>算法设计原则</h2>
+<blockquote>
+<p>设计的真谛，就是在一些互相冲突的需求和越少条件之间寻找平衡点，什么是一个良好的算法，这个问题可以从许多方面来阐述，不管是那种情况，都无法放之四海而皆准，但总有一些原则是在不断的探索中被发现并潜移默化的影响着我们的思维。算法的设计应当遵循一下一些原则</p>
+</blockquote>
+<h3>正确性</h3>
+<blockquote>
+<p>算法的正确性是指对于一个问题，之所以将其放在第一位是因为如果一个算法自身存在缺陷，或者不适合于问题的求解，那么该算法将不会解决问题。</p>
+</blockquote>
+<h3>确定性</h3>
+<blockquote>
+<p>算法的确定性是指算法的每个步骤必须含义明确，对每种可能的情况，算法都能给出确定的操作。即采用同一种算法，在同样的条件下无论计算多少次，始终能够得到确定的结果</p>
+</blockquote>
+<h3>清晰行</h3>
+<blockquote>
+<p>一个良好的算法必须思路清晰，结构合理。算法的设计要模块化，模块化是指将一个大的算法分解成若干小而简单的部分---模块。每个模块可以独立的编写、测试，最后组装完成整个算法。模块化的目的是使算法的结构清晰，容易阅读、容易理解、容易测试、容易修改。模块的分割原则是要符合抽象原则，即指每个模块都要有明确的抽象意义。例如，在面向对象方法中，建立一个类的主要依据是该类描述的抽象数据类型</p>
+</blockquote>
+<h2>算法复杂性的度量</h2>
+<blockquote>
+<p>算法复杂性的包括算法的时间复杂性和空间复杂性。为了说明复杂性的概念。先介绍问题规模的概念，用一个与问题相关的整数量来衡量问题的大小，该整数量表示输入数据量的尺度，称为问题的规模。例如，行列式的规模可以用其阶数n来表示，图问题的规模可以用其边数或者定点数来表示等。</p>
+</blockquote>
+<p>利用某算法来处理一个问题规模为n的输入所需要的的时间称为该算法的时间复杂度，它显示是n的函数记为<mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="0" style="font-size: 101.1%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D447 TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n"><mjx-c class="mjx-c28"></mjx-c></mjx-mo><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D45B TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n"><mjx-c class="mjx-c29"></mjx-c></mjx-mo></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>T</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></math></mjx-assistive-mml></mjx-container></p>
+<p>类似的可以定义算法的空间复杂性<mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="1" style="font-size: 101.1%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D446 TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n"><mjx-c class="mjx-c28"></mjx-c></mjx-mo><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D45B TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n"><mjx-c class="mjx-c29"></mjx-c></mjx-mo></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>S</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></math></mjx-assistive-mml></mjx-container></p>
+<h3>时间复杂性</h3>
+<h4>阶的增长</h4>
+<p>显而易见，说一个算法A对于输入x，要用y秒运行是没有意义的，这是因为影响实际时间的因素不仅有相应的算法，还有其他诸多因素，例如，算法在什么机器上和怎样执行的，用的是哪一种编程语言，甚至于编译程序或者程序员的能力都有影响。因此只要的出确切实际的近似数就可以了，但是最重要的是，在评估一个算法效率的时候，我们需要的是确切时间还是近似时间，事实上，我们甚至不需要近似时间，这是由许多因素造成的，首先，在分析算法运行时间时，我们通常会将算法和解决同一个问题甚至是不同问题的算法相比较，这样，估计时间是相对的而不是绝对的，其次，我们希望一个算法不仅是独立于机器的，而且他能够用各种语言来表示，甚至是人类语言，再者，它还应该是技术独立的，也就是说，无论科技如何进步，我们对算法运行时间的测量始终成立，第四，我们主要不是关心小规模输入量的情况，最关心的是在大的输入实例时算法的运行情况</p>
+<p>事实上，在算法的某个“合理”实现中的计算运算次数，是比它所需要的的多了一些，作为上面第四种因素的推论，我们可以前进一大步，要精确计算所有的运算次数，如果不是不可能的话，也是非常麻烦的，由于我们只对大的输入时的运行时间感兴趣，可以讨论运行时间的增长率或者增长的阶，例如，如果可以寻找到某个常量c &gt; 0, 当给算法A以大小为n的输入时，算法的运行时间至多为<mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="2" style="font-size: 101.1%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D450 TEX-I"></mjx-c></mjx-mi><mjx-msup><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D45B TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: 0.363em;"><mjx-mn class="mjx-n" size="s"><mjx-c class="mjx-c32"></mjx-c></mjx-mn></mjx-script></mjx-msup></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>c</mi><msup><mi>n</mi><mn>2</mn></msup></math></mjx-assistive-mml></mjx-container>,随着n越来越大，c将主键不起作用，进一步吧这个函数和另一个求解同一个问题的算法B的不同阶函数(<mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="3" style="font-size: 101.1%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D451 TEX-I"></mjx-c></mjx-mi><mjx-msup><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D45B TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: 0.363em;"><mjx-mn class="mjx-n" size="s"><mjx-c class="mjx-c33"></mjx-c></mjx-mn></mjx-script></mjx-msup></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>d</mi><msup><mi>n</mi><mn>3</mn></msup></math></mjx-assistive-mml></mjx-container>)作比较，很明显，该常量并不会有太大的作用。同样的道理使用与函数<mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="4" style="font-size: 101.1%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D453 TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n"><mjx-c class="mjx-c28"></mjx-c></mjx-mo><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D45B TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n"><mjx-c class="mjx-c29"></mjx-c></mjx-mo><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-msup space="4"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D45B TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: 0.363em;"><mjx-mn class="mjx-n" size="s"><mjx-c class="mjx-c32"></mjx-c></mjx-mn></mjx-script></mjx-msup><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D459 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D45C TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D454 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D45B TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n" space="3"><mjx-c class="mjx-c2B"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="3"><mjx-c class="mjx-c31"></mjx-c><mjx-c class="mjx-c30"></mjx-c></mjx-mn><mjx-msup><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D45B TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: 0.363em;"><mjx-mn class="mjx-n" size="s"><mjx-c class="mjx-c32"></mjx-c></mjx-mn></mjx-script></mjx-msup><mjx-mo class="mjx-n" space="3"><mjx-c class="mjx-c2B"></mjx-c></mjx-mo><mjx-mi class="mjx-i" space="3"><mjx-c class="mjx-c1D45B TEX-I"></mjx-c></mjx-mi></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo><mo>=</mo><msup><mi>n</mi><mn>2</mn></msup><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo>+</mo><mn>10</mn><msup><mi>n</mi><mn>2</mn></msup><mo>+</mo><mi>n</mi></math></mjx-assistive-mml></mjx-container>中的低阶项，我们观察到，当n的值越大，低阶项<mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="5" style="font-size: 101.1%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mn class="mjx-n"><mjx-c class="mjx-c31"></mjx-c><mjx-c class="mjx-c30"></mjx-c></mjx-mn><mjx-msup><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D45B TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: 0.363em;"><mjx-mn class="mjx-n" size="s"><mjx-c class="mjx-c32"></mjx-c></mjx-mn></mjx-script></mjx-msup></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>10</mn><msup><mi>n</mi><mn>2</mn></msup></math></mjx-assistive-mml></mjx-container>和n的影响就越小，因此，可以说算法A和B的运行时间分别是“<mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="6" style="font-size: 101.1%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-msup><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D45B TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: 0.363em;"><mjx-mn class="mjx-n" size="s"><mjx-c class="mjx-c32"></mjx-c></mjx-mn></mjx-script></mjx-msup></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>n</mi><mn>2</mn></msup></math></mjx-assistive-mml></mjx-container>阶”和“<mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="7" style="font-size: 101.1%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-msup><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D45B TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: 0.363em;"><mjx-mn class="mjx-n" size="s"><mjx-c class="mjx-c33"></mjx-c></mjx-mn></mjx-script></mjx-msup></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>n</mi><mn>3</mn></msup></math></mjx-assistive-mml></mjx-container>阶”的或者属于“<mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="8" style="font-size: 101.1%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-msup><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D45B TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: 0.363em;"><mjx-mn class="mjx-n" size="s"><mjx-c class="mjx-c32"></mjx-c></mjx-mn></mjx-script></mjx-msup></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>n</mi><mn>2</mn></msup></math></mjx-assistive-mml></mjx-container>阶”和“<mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="9" style="font-size: 101.1%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-msup><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D45B TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: 0.363em;"><mjx-mn class="mjx-n" size="s"><mjx-c class="mjx-c33"></mjx-c></mjx-mn></mjx-script></mjx-msup></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>n</mi><mn>3</mn></msup></math></mjx-assistive-mml></mjx-container>阶”，类似的我们可以说上面的函数<mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="10" style="font-size: 101.1%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D453 TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n"><mjx-c class="mjx-c28"></mjx-c></mjx-mo><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D45B TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n"><mjx-c class="mjx-c29"></mjx-c></mjx-mo></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>f</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></math></mjx-assistive-mml></mjx-container>是<mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="11" style="font-size: 101.1%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-msup><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D45B TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: 0.363em;"><mjx-mn class="mjx-n" size="s"><mjx-c class="mjx-c32"></mjx-c></mjx-mn></mjx-script></mjx-msup><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D459 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D45C TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D454 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D45B TEX-I"></mjx-c></mjx-mi></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msup><mi>n</mi><mn>2</mn></msup><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi></math></mjx-assistive-mml></mjx-container>阶的</p>
+<p>一旦去除了表示算法运行时间的函数中的低阶项和首项常数，就成是在度量算法的渐近运行时间，与此相同，在算法分析的术语中，可以用更为技术性的术语“时间复杂性”来表示这一渐近时间</p>
+<p>对任何计算步骤，他的代价总是以一个时间常量为上界，而不管输入数据或者执行的算法，我们称该计算步骤为“元运算”。例如，取2个整数相加的运算，不管使用何种算法，我们都规定他的运算对象的大小是固定的，这一运算的运行时间是常数，而且由于显示是处理渐近的运行时间，我们可以任意选择正整数k为计算模型的“字长”</p>
+<h3>空间复杂性</h3>
+<p>我们把算法使用的空间定义成：为了求解问题的实例而执行的计算步骤所需要的的内存空间数目，他不包括分配用来存储输入的空间；换句话说，仅仅是算法需要的工作空间</p>
+<h2>算法的评价</h2>
+<h3>如何估计算法运行时间</h3>
+<ul>
+<li>计算迭代次数</li>
+<li>计算基本运算的频度</li>
+</ul>
+
+    </main>
+</div>
+        

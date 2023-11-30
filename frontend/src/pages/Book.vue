@@ -1,52 +1,57 @@
 <script setup>
-import { useRouter, useRoute } from 'vue-router'
-import { loadJSON, loadHTML } from "../core/https.js"
-import { ref, onBeforeMount } from 'vue'
+import { useRouter, useRoute } from "vue-router";
+import { loadJSON, loadHTML } from "../core/https.js";
+import { ref, onBeforeMount } from "vue";
 const router = useRouter();
 const route = useRoute();
-const treeData = ref([])
+const treeData = ref([]);
 const bookname = ref("");
-const currentKey = ref([])
-const fieldNames = { children: 'category', title: 'name', key: 'id' }
+const currentKey = ref([]);
+const fieldNames = { children: "category", title: "name", key: "id" };
 onBeforeMount(() => {
-    getBook(route.params.id)
-})
+    getBook(route.params.id);
+});
 function getFirstPage(res) {
     let result;
     function find(children) {
         for (const item of children.category) {
             if (item.selectable) {
-                result = item
+                result = item;
             } else {
-                !result && find(item)
+                !result && find(item);
             }
         }
     }
     for (const item of res) {
-        find(item)
+        if (item.selectable) {
+            result = item;
+        } else {
+            !result && find(item);
+        }
     }
-    return result
+    return result;
 }
 function getBook(id) {
-    loadJSON(`/json/${id}.json`).then(res => {
+    loadJSON(`/json/${id}.json`).then((res) => {
         if (res !== null) {
-            treeData.value = res.categoryInfos
+            treeData.value = res.categoryInfos;
             bookname.value = res.name;
-            const node = getFirstPage(JSON.parse(JSON.stringify(res.categoryInfos)))
-            viewPage(node.id, { node })
+            const node = getFirstPage(JSON.parse(JSON.stringify(res.categoryInfos)));
+            viewPage(node.id, { node });
         } else {
-            outer.replace("/404")
+            outer.replace("/404");
         }
-    })
+    });
 }
 function viewPage(id, { node }) {
-    loadHTML(`${location.origin}${node.htmlPath}`).then(res => {
-        const link = document.createElement("link")
-        link.rel = "stylesheet"
-        link.href = "https://cdn.jsdelivr.net/github-markdown-css/2.2.1/github-markdown.css";
+    loadHTML(`${location.origin}${node.htmlPath}`).then((res) => {
+        const link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.href =
+            "https://cdn.jsdelivr.net/github-markdown-css/2.2.1/github-markdown.css";
         document.head.appendChild(link);
-        document.getElementById("content").innerHTML = res
-    })
+        document.getElementById("content").innerHTML = res;
+    });
 }
 </script>
 <template>
@@ -72,9 +77,11 @@ function viewPage(id, { node }) {
         background: inherit !important;
         border-right: 1px solid @lm-border-color;
         padding: @lm-common-offset;
-        ::v-deep .ant-alert{
-            margin-bottom:  @lm-common-offset-small;
+
+        ::v-deep .ant-alert {
+            margin-bottom: @lm-common-offset-small;
         }
+
         ::v-deep .ant-tree-list {
             .ant-tree-treenode {
                 padding: 0;
@@ -110,7 +117,7 @@ function viewPage(id, { node }) {
         padding: @lm-common-offset;
 
         .content {
-            overflow: hidden;
+            overflow: auto;
             height: 100%;
         }
 
