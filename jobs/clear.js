@@ -17,6 +17,7 @@ function clear() {
             rimrafSync(absolutePath)
         }
     })
+    fs.writeFileSync(path.join(config.VitePressRootDir, "sidebar.json"), "{}");
     console.log(`完成任务：${taskName}`);
 }
 
@@ -28,7 +29,7 @@ function removeMDRootDir(directory){
         ],
         paths: [
             path.join(config.AssetsRootDir, "style"),
-            path.join(config.AssetsRootDir, "script"),
+            path.join(config.AssetsRootDir, "scripts"),
         ]
     }
     fs.readdirSync(directory).forEach(dir => {
@@ -60,7 +61,7 @@ function removeVitePressRootDir(directory){
             path.join(config.VitePressRootDir, "config.mts")
         ],
         paths: [
-            path.join(config.VitePressRootDir, "theme"),
+            path.join(config.VitePressRootDir, "theme")
         ]
     }
     fs.readdirSync(directory).forEach(dir => {

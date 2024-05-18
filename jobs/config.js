@@ -3,7 +3,7 @@ const fs = require("fs")
 const InputRootDir = "D:\\personal\\文档\\passerBy"; // 绝对路径
 module.exports = {
     CategoryListTempFile: path.join(__dirname, "./template/categoryList.md"),
-    CategoryTempFile: path.join(__dirname, "./template/categor.md"),
+    CategoryTempFile: path.join(__dirname, "./template/category.md"),
     CategoryDataSource: getCategoryDataSource(),
     InputRootDir: InputRootDir, 
     AssetsRootDir: path.join(__dirname, "../docs/src/static"),

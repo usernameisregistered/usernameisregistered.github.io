@@ -37,7 +37,7 @@ const CategoryData = ref(dataSource);
     </div>
 </div>
 
-<style scoped lang="less">
+<style lang="less">
 .book-layout-container {
     padding: 0 16px 16px 16px;
 

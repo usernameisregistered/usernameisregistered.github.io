@@ -31,9 +31,9 @@ const books = ref(bookSource)
         <li class="layui-col-md4" v-for="book in books" :key="book.name">
             <div>
                 <fieldset class="layui-elem-field layui-field-title">
-                <legend>{{book.name}}</legend>
-                <p v-for="chapter in book.chapter.slice(0,5)" :key="chapter.name">
-                    <a>{{chapter.name}}</a>
+                <legend>{{book.bookname}}</legend>
+                <p v-for="chapter in book.chapters.slice(0,5)" :key="chapter">
+                    <a :href="`${classifyItem.value}/${book.bookname}/${chapter}`">{{chapter}}</a>
                 </p>
                 </fieldset>
             </div>
@@ -105,7 +105,7 @@ const books = ref(bookSource)
     </div>
 </div>
 
-<style scoped lang="less">
+<style lang="less">
 .category-container {
     .category-header {
         padding:24px;
