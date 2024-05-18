@@ -2,27 +2,26 @@
   "name": "passerby",
   "version": "1.0.0",
   "description": "",
-  "main": "build.js",
+  "main": "index.js",
   "scripts": {
-    "general": "gulp general",
-    "parse": "gulp parse",
-    "move": "gulp move"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs:clear": "node ./jobs/clear.js",
+    "docs:category": "node ./jobs/syncCategory.js",
+    "docs:book": "node ./jobs/syncBooks.js",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
-  "author": "liming_longxi@163.com",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
   "devDependencies": {
-    "gulp": "^4.0.2"
+    "less": "^4.2.0",
+    "rimraf": "^5.0.7",
+    "vitepress": "^1.1.4",
+    "vue": "^3.4.27"
   },
   "dependencies": {
-    "async": "^3.2.5",
-    "compressing": "^1.10.0",
-    "gulp-clean": "^0.4.0",
-    "gulp-copy": "^4.0.1",
-    "http-server": "^14.1.1",
-    "iniparser": "^1.0.5",
-    "md5": "^2.3.0",
-    "moment": "^2.29.4",
-    "puppeteer-core": "^21.5.2",
-    "rimraf": "^5.0.5"
+    "vue-router": "^4.3.2"
   }
 }
