@@ -1,0 +1,33 @@
+.VPHomeHero .container {
+    flex-direction: column-reverse !important;
+}
+
+.VPHomeHero .container .image {
+    margin-top: 15%;
+}
+
+.VPHomeHero .container .main{
+    max-width: 100% !important;
+    width: 100% !important;
+    margin-top: 18%;
+    text-align: center;
+}
+
+.VPHomeHero .container .main .text{
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-top: 3%;
+    line-height: 50px;
+    font-size: 36px;
+}
+
+.VPHomeHero .container .main .name{
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-top: 4%;
+    line-height: 50px;
+    font-size: 36px;
+}
+.VPHomeHero .actions{
+    justify-content: center !important;
+}
