@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const config = require("./config")
-const { clear } = require("./clear")
+const clear = require("./handlerClear.js");
 function copyDir(src, dest) {
     const entries = fs.readdirSync(src, { withFileTypes: true });
 

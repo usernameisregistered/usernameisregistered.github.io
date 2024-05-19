@@ -4,10 +4,10 @@ const fs = require("fs");
 const { rimrafSync } = require('rimraf')
 /**
  * 
- * @param {boolean} flag 是否清理dist
+ * @param {boolean} flag 是否保留dist
  */
-function clear(flag = false) {
-    const taskName = "开始清理缓存信息"
+module.exports = function clear(flag = false) {
+    const taskName = "清理缓存信息"
     console.log(`开始任务：${taskName}`)
     fs.readdirSync(config.OutputRootDir).forEach(dir => {
         let absolutePath = path.join(config.OutputRootDir, dir);
@@ -84,5 +84,3 @@ function removeVitePressRootDir(directory, flag){
         }
     })
 }
-exports.clear = clear;
-clear();

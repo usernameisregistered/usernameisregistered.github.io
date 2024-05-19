@@ -1,8 +1,9 @@
 const fs = require("fs");
 const path = require("path")
 const config = require("./config");
-
+const clear = require("./handlerClear.js");
 function buildCategoryList() {
+    clear();
     const taskName = "构建分类页面"
     console.log(`开始任务：${taskName}`);
     const outputFile = path.join(config.MDRootDir, "categoryList.md");

@@ -102,7 +102,14 @@ article.images.forEach(imageInfo => {
 
     appendIndexFile(){
         const filename = path.join(config.MDRootDir, config.ArticleRouter, "index.md");
-        const content = `<script>location.href=location.href + "${this.result[0].name}.html"</script>`;
+        const content = `<script setup>
+import { useRouter   } from 'vitepress'
+
+const { go } = useRouter();
+let url = "/article/${this.result[0].name}"
+console.log(url)
+go(url)
+</script>`;
         fs.writeFileSync(filename, content);
     }
 
