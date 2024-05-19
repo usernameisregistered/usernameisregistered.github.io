@@ -56,6 +56,10 @@ const CategoryData = ref(dataSource);
                 fill: currentColor;
                 overflow: hidden;
             }
+
+            .title {
+                color: var(--vp-c-text-1);
+            }
         }
 
         .children-container {
@@ -67,8 +71,8 @@ const CategoryData = ref(dataSource);
                 margin-right: 16px;
                 width: calc((100% - 16px - 16px - 16px - 8px) / 4);
                 display: flex;
-                border: 1px solid #D9D9D9FF;
-                background-color: white;
+                border: 1px solid var(--vp-c-border);
+                background-color: var(--vp-c-bg);
                 margin-bottom: 12px;
                 padding: 12px;
                 box-sizing: border-box;
@@ -96,6 +100,7 @@ const CategoryData = ref(dataSource);
                         white-space: nowrap;
                         overflow: hidden;
                         text-overflow: ellipsis;
+                        color: var(--vp-c-text-2);
                     }
 
                     .desc {
@@ -103,6 +108,7 @@ const CategoryData = ref(dataSource);
                         white-space: nowrap;
                         overflow: hidden;
                         text-overflow: ellipsis;
+                        color: var(--vp-c-text-3);
                     }
                 }
             }

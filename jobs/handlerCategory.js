@@ -94,6 +94,7 @@ module.exports = class HandlerCategory {
         }
         fs.writeFileSync(chapter.outoutPath, `---
 layout: doc
+title: ${chapter.chapterName}
 ---
 
 ${chapter.content}`);

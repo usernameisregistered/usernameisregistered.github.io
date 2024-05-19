@@ -112,7 +112,7 @@ const books = ref(bookSource)
         display: flex;
         margin:24px auto;
         width: 1200px;
-        border-bottom: 1px solid #D9D9D9FF;
+        border-bottom: 1px solid var(--vp-c-border);
 
         .icon {
             width: 260px;
@@ -127,7 +127,7 @@ const books = ref(bookSource)
 
             .title {
                 font-size: 20px;
-                color: #373e4a;
+                color: var(--vp-c-text-1);
                 line-height: 30px;
                 background: var(--vp-home-hero-name-background);
                 -webkit-background-clip: text;
@@ -138,6 +138,7 @@ const books = ref(bookSource)
             .desc {
                 font-size: 18px;
                 line-height: 25px;
+                color: var(--vp-c-text-2);
             }
         }
     }
@@ -154,6 +155,12 @@ const books = ref(bookSource)
 
             p {
                 cursor: pointer;
+                > a {
+                   color: var(--vp-c-text-2); 
+                   &:active,  &:hover{
+                    color: var(--vp-c-text-2); 
+                   }
+                }
             }
         }
 
@@ -169,6 +176,7 @@ const books = ref(bookSource)
                 text-align: center;
                 font-size: 20px;
                 font-weight: 300;
+                color: var(--vp-c-text-1);
             }
         }
     }

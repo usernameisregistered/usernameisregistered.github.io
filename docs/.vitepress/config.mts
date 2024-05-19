@@ -12,9 +12,10 @@ export default defineConfig({
     outlineTitle: "页面导航",
     nav: [
       { text: '首页', link: '/' },
-      { text: '教程', link: '/categoryList' },
-      { text: '随笔', link: '/article' },
-      { text: '关于', link: '/markdown-examples' }
+      { text: '书册', link: '/categoryList' },
+      { text: '随笔', link: '/article/index' },
+      { text: '学习资料', link: '/study' },
+      { text: '关于', link: '/about' }
     ],
     socialLinks: [
       { icon: 'github', link: 'https://github.com/usernameisregistered/usernameisregistered.github.io' }

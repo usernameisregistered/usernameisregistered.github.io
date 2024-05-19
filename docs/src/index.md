@@ -19,8 +19,8 @@ hero:
     alt: 路人甲的进阶之路
   actions:
     - theme: brand
-      text: 教程
+      text: 书册
       link: /categoryList
     - theme: alt
       text: 随笔
-      link: /article
+      link: /article/index
