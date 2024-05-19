@@ -10,6 +10,7 @@ module.exports = {
     MDRootDir: path.join(__dirname, "../docs/src"),
     VitePressRootDir: path.join(__dirname, "../docs/.vitepress"),
     OutputRootDir:  path.join(__dirname, "../docs"),
+    ArticleRouter: "article"
 }
 
 function getCategoryDataSource(){
