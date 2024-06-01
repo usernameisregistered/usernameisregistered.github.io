@@ -14,6 +14,13 @@ head:
 import { ref } from 'vue'
 const classifyItem = ref(dataSource);
 const books = ref(bookSource)
+const showName = (name)=>{
+    if(name.length > 9){
+        return name.slice(0,8).concat("...")
+    } else {
+        return name;
+    }
+}
 </script>
 <div class="category-container">
     <div class="category-header">
@@ -31,7 +38,7 @@ const books = ref(bookSource)
         <li class="layui-col-md4" v-for="book in books" :key="book.name">
             <div>
                 <fieldset class="layui-elem-field layui-field-title">
-                <legend>{{book.bookname}}</legend>
+                <legend :title="book.bookname">{{showName(book.bookname)}}</legend>
                 <p v-for="chapter in book.chapters.slice(0,5)" :key="chapter">
                     <a :href="`${classifyItem.value}/${book.bookname}/${chapter}`">{{chapter}}</a>
                 </p>

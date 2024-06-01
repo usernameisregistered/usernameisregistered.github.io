@@ -13,7 +13,7 @@ head:
 
 hero:
   name: "路人甲的进阶之路"
-  text: "星光不问赶路人,时光不负有心人"
+  text: "天地与我并生，而万物与我为一"
   image:
     src: ./static/logo.svg
     alt: 路人甲的进阶之路
