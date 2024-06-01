@@ -29,8 +29,9 @@ module.exports = class HandlerCategory {
         this.currentBook = { bookname, bookPath: bookPath, outoutPath: path.join(config.MDRootDir, this.category, bookname), chapters: [] };
         console.log(`开始任务: ${childTaskName}`);
         fs.readdirSync(bookPath).forEach(chapter => {
+            let currentPath =  path.join(bookPath, chapter)
             if (path.extname(chapter) === ".md") {
-                this._handlerChapter(path.basename(chapter, ".md"), path.join(bookPath, chapter));
+                this._handlerChapter(path.basename(chapter, ".md"), currentPath);
             }
         })
         console.log(`完成任务: ${childTaskName}`);
