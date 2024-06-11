@@ -13,7 +13,7 @@
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
     "build": "npm run docs:category && npm run docs:book && npm run docs:article && npm run docs:build && npm run docs:copy",
-    "start": "npm run docs:category && npm run docs:book && npm run docs:article && vitepress dev docs"
+    "start": "npm run docs:category && npm run docs:book && npm run docs:article && vitepress dev docs --host"
   },
   "keywords": [],
   "author": "",

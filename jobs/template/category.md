@@ -36,7 +36,7 @@ const showName = (name)=>{
     </div>
     <ul class="layui-row layui-col-space30"  v-if="books.length !== 0">
         <li class="layui-col-md4" v-for="book in books" :key="book.name">
-            <div>
+            <div style="height: 225px;" >
                 <fieldset class="layui-elem-field layui-field-title">
                 <legend :title="book.bookname">{{showName(book.bookname)}}</legend>
                 <p v-for="chapter in book.chapters.slice(0,5)" :key="chapter">
