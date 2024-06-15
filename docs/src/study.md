@@ -15,3 +15,4 @@ title: 学习资料
 | [puppeteer](https://puppeteer.bootcss.com/) | Puppeteer是一个Node库，它提供了一个高级API来通过DevTools协议控制Chromium或Chrome | 
 | [phantomjs](http://wenku.kuryun.com/docs/phantomjs/index.html) | PhantomJS是一个自带JavaScript API的无头WebKit脚本 |
 | [西安科技大学网络教学平台](http://study.xust.edu.cn/portal) |西安科技大学网络教学平台 | 
+| [高教书苑](https://ebook.hep.com.cn/index.html#/index) | 高教书苑, 一个电子书的在线阅读地址| 
