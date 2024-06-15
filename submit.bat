@@ -1,3 +1,4 @@
+chcp 65001
 @echo off
 setlocal
  
@@ -16,5 +17,5 @@ git push github
 git push gitlab
 git push origin
  
-:: 清理环境变量
+:: 清理环境变量git
 endlocal
