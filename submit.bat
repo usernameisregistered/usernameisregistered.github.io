@@ -13,7 +13,7 @@ git add .
 git commit -m "[modify]更新内容"
 
 :: 推送到远程仓库
-git push github
+git push
 git push gitlab
 git push origin
  
