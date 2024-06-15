@@ -2,33 +2,39 @@ const config = require("./config");
 const path = require("path")
 const fs = require("fs");
 const { rimrafSync } = require('rimraf')
-
-function clear() {
-    const taskName = "开始清理缓存信息"
+/**
+ * 
+ * @param {boolean} flag 是否保留dist
+ */
+module.exports = function clear(flag = false) {
+    const taskName = "清理缓存信息"
     console.log(`开始任务：${taskName}`)
     fs.readdirSync(config.OutputRootDir).forEach(dir => {
         let absolutePath = path.join(config.OutputRootDir, dir);
         if(absolutePath === config.MDRootDir){
-            removeMDRootDir(absolutePath);
+            removeMDRootDir(absolutePath, flag);
         } else if(absolutePath === config.VitePressRootDir){
-            removeVitePressRootDir(absolutePath);
+            removeVitePressRootDir(absolutePath, flag);
         } else {
             console.log("清楚无用的目录或者文件" + absolutePath);
             rimrafSync(absolutePath)
         }
     })
+    fs.writeFileSync(path.join(config.VitePressRootDir, "sidebar.json"), "{}");
     console.log(`完成任务：${taskName}`);
 }
 
-function removeMDRootDir(directory){
+function removeMDRootDir(directory, flag){
     const retainMDRootDir = {
         files: [
             path.join(config.MDRootDir, "index.md"),
+            path.join(config.MDRootDir, "about.md"),
+            path.join(config.MDRootDir, "study.md"),
             path.join(config.AssetsRootDir, "logo.svg"), 
         ],
         paths: [
             path.join(config.AssetsRootDir, "style"),
-            path.join(config.AssetsRootDir, "script"),
+            path.join(config.AssetsRootDir, "scripts"),
         ]
     }
     fs.readdirSync(directory).forEach(dir => {
@@ -54,14 +60,17 @@ function removeMDRootDir(directory){
     })
 }
 
-function removeVitePressRootDir(directory){
+function removeVitePressRootDir(directory, flag){
     const retainVitePressDir = {
         files: [
             path.join(config.VitePressRootDir, "config.mts")
         ],
         paths: [
-            path.join(config.VitePressRootDir, "theme"),
+            path.join(config.VitePressRootDir, "theme")
         ]
+    }
+    if(flag){
+        retainVitePressDir.paths.push(path.join(config.VitePressRootDir, "dist"))
     }
     fs.readdirSync(directory).forEach(dir => {
         let absolutePath = path.join(directory, dir);
@@ -75,4 +84,3 @@ function removeVitePressRootDir(directory){
         }
     })
 }
-clear();

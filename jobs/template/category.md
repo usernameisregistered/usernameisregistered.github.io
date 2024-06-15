@@ -14,6 +14,13 @@ head:
 import { ref } from 'vue'
 const classifyItem = ref(dataSource);
 const books = ref(bookSource)
+const showName = (name)=>{
+    if(name.length > 9){
+        return name.slice(0,8).concat("...")
+    } else {
+        return name;
+    }
+}
 </script>
 <div class="category-container">
     <div class="category-header">
@@ -29,11 +36,11 @@ const books = ref(bookSource)
     </div>
     <ul class="layui-row layui-col-space30"  v-if="books.length !== 0">
         <li class="layui-col-md4" v-for="book in books" :key="book.name">
-            <div>
+            <div style="height: 225px;" >
                 <fieldset class="layui-elem-field layui-field-title">
-                <legend>{{book.name}}</legend>
-                <p v-for="chapter in book.chapter.slice(0,5)" :key="chapter.name">
-                    <a>{{chapter.name}}</a>
+                <legend :title="book.bookname">{{showName(book.bookname)}}</legend>
+                <p v-for="chapter in book.chapters.slice(0,5)" :key="chapter">
+                    <a :href="`${classifyItem.value}/${book.bookname}/${chapter}`">{{chapter}}</a>
                 </p>
                 </fieldset>
             </div>
@@ -105,14 +112,14 @@ const books = ref(bookSource)
     </div>
 </div>
 
-<style scoped lang="less">
+<style lang="less">
 .category-container {
     .category-header {
         padding:24px;
         display: flex;
         margin:24px auto;
         width: 1200px;
-        border-bottom: 1px solid #D9D9D9FF;
+        border-bottom: 1px solid var(--vp-c-border);
 
         .icon {
             width: 260px;
@@ -127,7 +134,7 @@ const books = ref(bookSource)
 
             .title {
                 font-size: 20px;
-                color: #373e4a;
+                color: var(--vp-c-text-1);
                 line-height: 30px;
                 background: var(--vp-home-hero-name-background);
                 -webkit-background-clip: text;
@@ -138,6 +145,7 @@ const books = ref(bookSource)
             .desc {
                 font-size: 18px;
                 line-height: 25px;
+                color: var(--vp-c-text-2);
             }
         }
     }
@@ -154,6 +162,12 @@ const books = ref(bookSource)
 
             p {
                 cursor: pointer;
+                > a {
+                   color: var(--vp-c-text-2); 
+                   &:active,  &:hover{
+                    color: var(--vp-c-text-2); 
+                   }
+                }
             }
         }
 
@@ -169,6 +183,7 @@ const books = ref(bookSource)
                 text-align: center;
                 font-size: 20px;
                 font-weight: 300;
+                color: var(--vp-c-text-1);
             }
         }
     }
