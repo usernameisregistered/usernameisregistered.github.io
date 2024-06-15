@@ -15,7 +15,7 @@ title "开始提交gitlab"
 git config user.name "liming"
 git config user.email "liming_longxi@163.com"
 :: 推送到远程仓库
-git push gitlab
+git push origin
 git push github
  
 :: 清理环境变量git
