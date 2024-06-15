@@ -3,8 +3,10 @@ pages:
   environment: production
   script:
     - echo "The site will be deployed to $CI_PAGES_URL"
+    - mkdir public
+    - cp -r docs/.vitepress/dist public
   artifacts:
     paths:
-      - docs/.vitepress/dist
+      - public
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH

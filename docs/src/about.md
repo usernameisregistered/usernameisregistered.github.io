@@ -17,6 +17,10 @@ title: 关于
 + [gitlab](https://gitlab.com/liming_longxi)
 + [gitee](https://gitee.com/usernameisregistered)
 
+## 网站地址
++ [gitlab](https://liming_longxi.gitlab.io)
++ [github](https://usernameisregistered.github.io)
+
 ## 联系本人
 
 1. 发送邮件到 <a href="mailto:liming_longxi@163.com"> liming_longxi@163.com </a> 
