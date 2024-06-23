@@ -31,18 +31,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: 开始获取源文档地址
-        run: git clone https://gitee.com/usernameisregistered/passerby.git
-      - name: Use Node.js 14.x
-        uses: actions/setup-node@v1
-        with:
-          node-version: 14.x
-      - name: 安装依赖
-        run: npm cache clear --force
-        run: npm -g install vitepress@1.1.4
-        run: npm install
-      - name: 构建页面
-        run: npm run build
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
