@@ -4,7 +4,7 @@ include:
     # 2: set/override component inputs
     inputs:
       image: "registry.hub.docker.com/library/node:14" # ⚠ this is only an example
-      lint-enabled: "true"
+
 pages:
   stage: deploy
   environment: production
