@@ -5,8 +5,6 @@ pages:
   stage: deploy
   environment: production
   script:
-    - echo "修改镜像为阿里镜像"
-    - npm set config registry http://registry.npmmirror.com
     - echo "开始获取源文档地址"
     - git clone https://gitee.com/usernameisregistered/passerby.git
     - echo "完成获取源文档地址"
