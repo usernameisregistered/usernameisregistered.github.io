@@ -1,11 +1,15 @@
+
+include:
+  - component: gitlab.com/to-be-continuous/node/gitlab-ci-node@3.15.2
+    # 2: set/override component inputs
+    inputs:
+      image: "registry.hub.docker.com/library/node:14" # ⚠ this is only an example
+      lint-enabled: "true"
+
 pages:
   stage: deploy
   environment: production
   script:
-    - echo "开始下载node环境"
-    - wget -O /usr/temp https://mirrors.aliyun.com/nodejs-release/v14.12.0/node-v14.12.0-linux-arm64.tar.xz
-    - tar xf /usr/temp/node-v14.12.0-linux-arm64.tar.xz -C /usr/local
-    - export PATH=$PATH:/usr/temp/node-v14.12.0-linux-arm64
     - echo "修改镜像为阿里镜像"
     - npm set config registry http://registry.npmmirror.com
     - echo "开始获取源文档地址"
