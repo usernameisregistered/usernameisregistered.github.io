@@ -2,7 +2,16 @@ pages:
   stage: deploy
   environment: production
   script:
-    - echo "The site will be deployed to $CI_PAGES_URL"
+    - echo "开始获取源文档地址"
+    - git clone https://gitee.com/usernameisregistered/passerby.git
+    - echo "完成获取源文档地址"
+    - echo "开始安装依赖"
+    - npm install
+    - echo "完成安装依赖"
+    - echo "开始构建页面"
+    - npm run build
+    - echo "完成构建页面"
+    - echo "开始发布站点： $CI_PAGES_URL"
   artifacts:
     paths:
       - public
