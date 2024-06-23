@@ -38,6 +38,7 @@ jobs:
         with:
           node-version: 14.x
       - name: 安装依赖
+        run: npm -g install vitepress
         run: npm install
       - name: 构建页面
         run: npm run build

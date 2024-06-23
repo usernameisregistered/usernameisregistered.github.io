@@ -9,6 +9,7 @@ pages:
     - git clone https://gitee.com/usernameisregistered/passerby.git
     - echo "完成获取源文档地址"
     - echo "开始安装依赖"
+    - npm -g install vitepress
     - npm install
     - echo "完成安装依赖"
     - echo "开始构建页面"
