@@ -2,9 +2,10 @@ pages:
   stage: deploy
   environment: production
   script:
-    - echo "开始发布站点： $CI_PAGES_URL"
+    - echo "The site will be deployed to $CI_PAGES_URL"
   artifacts:
     paths:
       - public
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+

@@ -2,31 +2,27 @@
   "name": "passerby",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "build.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "docs:category": "node ./jobs/syncCategory.js",
-    "docs:book": "node ./jobs/syncBooks.js",
-    "docs:copy": "node ./jobs/copy.js",
-    "docs:article": "node ./jobs/syncArticle.js",
-    "docs:move": "node ./jobs/move.js",
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs",
-    "build": "npm run docs:category && npm run docs:book && npm run docs:article && npm run docs:build && npm run docs:copy && npm run docs:move",
-    "start": "npm run docs:category && npm run docs:book && npm run docs:article && vitepress dev docs --host"
+    "general": "gulp general",
+    "parse": "gulp parse",
+    "move": "gulp move"
   },
-  "keywords": [],
-  "author": "",
+  "author": "liming_longxi@163.com",
   "license": "ISC",
   "devDependencies": {
-    "less": "^4.2.0",
-    "markdown-it-mathjax3": "^4.3.2",
-    "rimraf": "^5.0.7",
-    "vitepress": "^1.1.4",
-    "vue": "^3.4.27"
+    "gulp": "^4.0.2"
   },
   "dependencies": {
-    "vue-router": "^4.3.2"
+    "async": "^3.2.5",
+    "compressing": "^1.10.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-copy": "^4.0.1",
+    "http-server": "^14.1.1",
+    "iniparser": "^1.0.5",
+    "md5": "^2.3.0",
+    "moment": "^2.29.4",
+    "puppeteer-core": "^21.5.2",
+    "rimraf": "^5.0.5"
   }
 }

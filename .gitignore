@@ -1,17 +1,26 @@
-/coverage
-/src/client/shared.ts
-/src/node/shared.ts
-*.log
-*.tgz
-.DS_Store
-.idea
-.temp
-.vite_opt_cache
-.vscode
-cache
-temp
-examples-temp
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
 node_modules
-pnpm-global
-TODOs.md
-*.timestamp-*.mjs
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+/**/dist
+/output
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+error*
