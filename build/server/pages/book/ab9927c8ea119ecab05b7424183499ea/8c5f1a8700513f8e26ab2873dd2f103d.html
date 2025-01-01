@@ -1,0 +1,72 @@
+<!DOCTYPE html><html lang="zh-cn"><head><meta charSet="utf-8" data-next-head=""/><meta name="viewport" content="width=device-width" data-next-head=""/><title data-next-head=""></title><link data-next-font="size-adjust" rel="preconnect" href="/" crossorigin="anonymous"/><link rel="preload" href="/_next/static/css/dd450422b6219466.css" as="style"/><link rel="stylesheet" href="/_next/static/css/dd450422b6219466.css" data-n-g=""/><noscript data-n-css=""></noscript><script defer="" noModule="" src="/_next/static/chunks/polyfills-42372ed130431b0a.js"></script><script src="/_next/static/chunks/webpack-a9de24c27879d5d9.js" defer=""></script><script src="/_next/static/chunks/framework-a4ddb9b21624b39b.js" defer=""></script><script src="/_next/static/chunks/main-40e151073ba9b914.js" defer=""></script><script src="/_next/static/chunks/pages/_app-c801a419d8851d78.js" defer=""></script><script src="/_next/static/chunks/121-ea166289b6b9b64f.js" defer=""></script><script src="/_next/static/chunks/278-09ee5e026e1c614e.js" defer=""></script><script src="/_next/static/chunks/pages/book/%5BbookId%5D/%5BchapterId%5D-a6b1c6cf0c55150d.js" defer=""></script><script src="/_next/static/9T_JOYik5yRbROaOtA62o/_buildManifest.js" defer=""></script><script src="/_next/static/9T_JOYik5yRbROaOtA62o/_ssgManifest.js" defer=""></script></head><body data-for="html-export" class="antialiased"><div id="__next"><div class="w-screen flex flex-col h-screen"><header class="flex flex-grow-0 justify-between p-4 border-b border-neutral-200"><a class="flex items-center text-2xl text-neutral-700 cursor-pointer" href="/"><img alt="无事人" loading="lazy" width="40" height="40" decoding="async" data-nimg="1" style="color:transparent" src="/logo.svg"/><span class="text-4 ml-4">无事人</span></a><div class="right flex items-center cursor-pointer"><a class="mr-2  text-md " href="/classify">书架</a><a class="mr-2  text-md " href="/study">学习资料</a><a class="mr-2  text-md " href="/about">关于本人</a></div></header><div class="w-screen flex flex-1"><aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden"><div class="text-md font-bold text-gray-700 m-4">markdig源码解析</div><div dir="ltr" class="relative overflow-hidden scroll--chapter-height" style="position:relative;--radix-scroll-area-corner-width:0px;--radix-scroll-area-corner-height:0px"><style>[data-radix-scroll-area-viewport]{scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;}[data-radix-scroll-area-viewport]::-webkit-scrollbar{display:none}</style><div data-radix-scroll-area-viewport="" class="h-full w-full rounded-[inherit]" style="overflow-x:hidden;overflow-y:hidden"><div style="min-width:100%;display:table"><a class="text-md text-sky-300 block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/book/ab9927c8ea119ecab05b7424183499ea/8c5f1a8700513f8e26ab2873dd2f103d">语法_行内.md</a></div></div></div></aside><section class="basis-10/12 flex flex-col p-1"><div class="flex-1"><div dir="ltr" class="relative overflow-hidden scroll-content-height" style="position:relative;--radix-scroll-area-corner-width:0px;--radix-scroll-area-corner-height:0px"><style>[data-radix-scroll-area-viewport]{scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;}[data-radix-scroll-area-viewport]::-webkit-scrollbar{display:none}</style><div data-radix-scroll-area-viewport="" class="h-full w-full rounded-[inherit]" style="overflow-x:hidden;overflow-y:hidden"><div style="min-width:100%;display:table"><div>
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="连接">连接 </h1>
+<h2 id="autolinkinline">AutolinkInline </h2>
+<pre data-role="codeBlock" data-info="c#" class="language-c# c#"><code>public class AutolinkInline{
+     public AutolinkInline(string url)
+    {
+        Url = url;
+    }
+    public bool IsEmail { get; set; }
+
+    public string Url { get; set; }
+
+    public override string ToString()
+    {
+        return Url;
+    }
+}
+</code></pre><h2 id="codeinline">CodeInline </h2>
+<pre data-role="codeBlock" data-info="c#" class="language-c# c#"><code>public class CodeInline{
+    
+}
+</code></pre>
+      </div>
+      <div class="md-sidebar-toc">
+<div class="md-toc">
+<details style="padding:0;;padding-left:0px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#连接" class="md-toc-link"><p>连接</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#autolinkinline" class="md-toc-link">
+            <p>AutolinkInline</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#codeinline" class="md-toc-link">
+            <p>CodeInline</p>
+
+          </a></div>
+        </div>
+      </details>
+    
+</div>
+</div>
+      <a id="sidebar-toc-btn">≡</a>
+    
+    
+    
+    
+    
+    
+<script>
+
+var sidebarTOCBtn = document.getElementById('sidebar-toc-btn')
+sidebarTOCBtn.addEventListener('click', function(event) {
+  event.stopPropagation()
+  if (document.body.hasAttribute('html-show-sidebar-toc')) {
+    document.body.removeAttribute('html-show-sidebar-toc')
+  } else {
+    document.body.setAttribute('html-show-sidebar-toc', true)
+  }
+})
+</script>
+      
+  
+    <script>
+</script></div></div></div></div></div><div class="flex justify-between"><div class="invisible border min-w-60 h-10 px-4 leading-10 border-gray-300 text-center cursor-pointer rounded-md hover:text-sky-300"></div><div class="invisible border min-w-60 px-4  h-10 leading-10 border-gray-300 text-center cursor-pointer rounded-md hover:text-sky-300"></div></div></section></div></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"bookInfo":{"id":"ab9927c8ea119ecab05b7424183499ea","name":"markdig源码解析","fullPath":"F:\\passerby\\source\\markdig源码解析","chapterList":[{"id":"8c5f1a8700513f8e26ab2873dd2f103d","type":"chapter","name":"语法_行内.md","fullPath":"F:\\passerby\\source\\markdig源码解析\\语法_行内.md","url":"/book/ab9927c8ea119ecab05b7424183499ea/8c5f1a8700513f8e26ab2873dd2f103d"}],"title":"语法_行内","type":"book","url":"/book/ab9927c8ea119ecab05b7424183499ea","content":"\n    \n    \n      \u003cdiv class=\"crossnote markdown-preview  \"\u003e\n      \n\u003ch1 id=\"连接\"\u003e连接 \u003c/h1\u003e\n\u003ch2 id=\"autolinkinline\"\u003eAutolinkInline \u003c/h2\u003e\n\u003cpre data-role=\"codeBlock\" data-info=\"c#\" class=\"language-c# c#\"\u003e\u003ccode\u003epublic class AutolinkInline{\n     public AutolinkInline(string url)\n    {\n        Url = url;\n    }\n    public bool IsEmail { get; set; }\n\n    public string Url { get; set; }\n\n    public override string ToString()\n    {\n        return Url;\n    }\n}\n\u003c/code\u003e\u003c/pre\u003e\u003ch2 id=\"codeinline\"\u003eCodeInline \u003c/h2\u003e\n\u003cpre data-role=\"codeBlock\" data-info=\"c#\" class=\"language-c# c#\"\u003e\u003ccode\u003epublic class CodeInline{\n    \n}\n\u003c/code\u003e\u003c/pre\u003e\n      \u003c/div\u003e\n      \u003cdiv class=\"md-sidebar-toc\"\u003e\n\u003cdiv class=\"md-toc\"\u003e\n\u003cdetails style=\"padding:0;;padding-left:0px;\" open=\"\"\u003e\n        \u003csummary class=\"md-toc-link-wrapper\"\u003e\n          \u003ca href=\"#连接\" class=\"md-toc-link\"\u003e\u003cp\u003e连接\u003c/p\u003e\n\u003c/a\u003e\n          \u003c/summary\u003e\n        \u003cdiv\u003e\n          \u003cdiv class=\"md-toc-link-wrapper\" style=\"padding:0;;display:list-item;list-style:square;margin-left:42px\"\u003e\n          \u003ca href=\"#autolinkinline\" class=\"md-toc-link\"\u003e\n            \u003cp\u003eAutolinkInline\u003c/p\u003e\n\n          \u003c/a\u003e\u003c/div\u003e\u003cdiv class=\"md-toc-link-wrapper\" style=\"padding:0;;display:list-item;list-style:square;margin-left:42px\"\u003e\n          \u003ca href=\"#codeinline\" class=\"md-toc-link\"\u003e\n            \u003cp\u003eCodeInline\u003c/p\u003e\n\n          \u003c/a\u003e\u003c/div\u003e\n        \u003c/div\u003e\n      \u003c/details\u003e\n    \n\u003c/div\u003e\n\u003c/div\u003e\n      \u003ca id=\"sidebar-toc-btn\"\u003e≡\u003c/a\u003e\n    \n    \n    \n    \n    \n    \n\u003cscript\u003e\n\nvar sidebarTOCBtn = document.getElementById('sidebar-toc-btn')\nsidebarTOCBtn.addEventListener('click', function(event) {\n  event.stopPropagation()\n  if (document.body.hasAttribute('html-show-sidebar-toc')) {\n    document.body.removeAttribute('html-show-sidebar-toc')\n  } else {\n    document.body.setAttribute('html-show-sidebar-toc', true)\n  }\n})\n\u003c/script\u003e\n      \n  \n    \u003cscript\u003e\n\u003c/script\u003e"},"revalidate":200,"title":"语法_行内"},"__N_SSG":true},"page":"/book/[bookId]/[chapterId]","query":{"bookId":"ab9927c8ea119ecab05b7424183499ea","chapterId":"8c5f1a8700513f8e26ab2873dd2f103d"},"buildId":"9T_JOYik5yRbROaOtA62o","isFallback":false,"gsp":true,"scriptLoader":[]}</script></body></html>
