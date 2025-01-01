@@ -11,9 +11,13 @@ import path from "path";
 export const rootDirectory: string = "F:/passerby";
 
 export function generalDepTree() {
+  fs.rmdirSync(path.join(process.cwd(), "public/assets"), {recursive: true})
+  if (!fs.existsSync(path.join(process.cwd(), "public/assets"))) {
+    fs.mkdirSync(path.join(process.cwd(), "public/assets"));
+  }
   const rootGroups: DepGroupItem[] = [];
   const bookIdLists: string[] = [];
-  const chapterLists: { bookId: string; chapterId: string }[] = [];
+  const chapterLists: string[] = [];
   const filePath: string = path.join(rootDirectory, "category.json");
   const data: ClassifyList[] = JSON.parse(fs.readFileSync(filePath).toString());
   data.forEach((classifyList: ClassifyList) => {
@@ -37,10 +41,6 @@ export function generalDepTree() {
         fs.readdirSync(classifyDir).forEach((bookName: string) => {
           const bookPath = path.join(classifyDir, bookName);
           const id: string = uuid(bookPath);
-          const chapterIdItem: { bookId: string; chapterId: string } = {
-            bookId: id,
-            chapterId: "",
-          };
           const bookInfo: DepBookItem = {
             id: id,
             name: bookName,
@@ -55,17 +55,20 @@ export function generalDepTree() {
           fs.readdirSync(bookPath).forEach((chapterName: string) => {
             const chapterPath = path.join(bookPath, chapterName);
             if (fs.statSync(chapterPath).isFile()) {
-              const chapterId = uuid(chapterPath);
-              const chapterInfo: DepChapterItem = {
-                id: chapterId,
-                type: "chapter",
-                name: path.basename(chapterName),
-                fullPath: chapterPath,
-                url: `/book/${id}/${chapterId}`,
-              };
-              chapterIdItem.chapterId = chapterId;
-              chapterLists.push(chapterIdItem);
-              bookInfo.chapterList.push(chapterInfo);
+              if(path.extname(chapterPath) === ".md"){
+                const chapterId = uuid(chapterPath);
+                const chapterInfo: DepChapterItem = {
+                  id: `${id}_${chapterId}`,
+                  type: "chapter",
+                  name: path.basename(chapterName),
+                  fullPath: chapterPath,
+                  url: `/chapter/${id}_${chapterId}`,
+                };
+                chapterLists.push(`${id}_${chapterId}`);
+                bookInfo.chapterList.push(chapterInfo);
+              } else {
+                fs.rmSync(chapterPath)
+              }
             }
           });
           depClassifyItem.books.push(bookInfo);

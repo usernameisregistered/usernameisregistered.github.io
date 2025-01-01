@@ -1,6 +1,6 @@
 const { Notebook } = require("crossnote");
 import fs from "fs";
-import path from "path"
+import path from "path";
 export default async function ParseMarked(
   filePath: string
 ): Promise<{ title: string; content: string }> {
@@ -20,8 +20,11 @@ export default async function ParseMarked(
   const replaceImages = {};
   let result;
   while ((result = imageReg.exec(html)) !== null) {
-    const fileFullPath = path.join(path.dirname(filePath), result[1]);
-    replaceImages[result[1]] = `data:image/${path.extname(fileFullPath)};base64,${fs.readFileSync(fileFullPath).toString("base64")}`
+    const fileFullPath = path.join(path.dirname(filePath), decodeURIComponent(result[1]));
+    const fileName = Date.now() + Math.random().toString().slice(4,8) + path.extname(fileFullPath);
+    const outputFile = path.join(process.cwd(), "public/assets", fileName);
+    fs.copyFileSync(fileFullPath, outputFile);
+    replaceImages[result[1]] = `/assets/${fileName}`;
   }
   const titleReg = /<title>([\s\S]*)<\/title>/gm;
   const contentReg = /<body [^>]*>([\s\S]*)<\/body>/gm;
@@ -33,14 +36,13 @@ export default async function ParseMarked(
   result = contentReg.exec(html);
   if (result) {
     content = result[1];
-    for(const relativePath in replaceImages){
-        content = content.replace(relativePath, replaceImages[relativePath] )
+    for (const relativePath in replaceImages) {
+      content = content.replace(relativePath, replaceImages[relativePath]);
     }
   }
   fs.rmSync(filePath.replace("md", "html"));
   return {
     title: title,
-    content: `${content}<script>
-</script>`,
+    content: `${content}`,
   };
 }

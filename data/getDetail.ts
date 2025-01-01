@@ -32,14 +32,14 @@ function getBookInfoById(id: string): DepBookItem | undefined {
 }
 
 export async function GetChapterDetail(
-  bookId: string,
-  chapterId: string
+  id: string
 ): Promise<DepBookItem>{
+  const bookId = id.split("_")[0];
   const result: DepBookItem | undefined = getBookInfoById(
     bookId
   ) as DepBookItem;
   const chapterItem: DepChapterItem = result.chapterList.find(
-    (chapter: DepChapterItem) => chapter.id === chapterId
+    (chapter: DepChapterItem) => chapter.id === id
   ) as DepChapterItem;
   const parseInfo = await ParseMarked(chapterItem.fullPath);
   result.content = parseInfo.content;
