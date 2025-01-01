@@ -1,0 +1,76 @@
+<!DOCTYPE html><html lang="zh-cn"><head><meta charSet="utf-8" data-next-head=""/><meta name="viewport" content="width=device-width" data-next-head=""/><title data-next-head=""></title><link data-next-font="size-adjust" rel="preconnect" href="/" crossorigin="anonymous"/><link rel="preload" href="/static/css/dd450422b6219466.css" as="style"/><link rel="stylesheet" href="/static/css/dd450422b6219466.css" data-n-g=""/><noscript data-n-css=""></noscript><script defer="" noModule="" src="/static/chunks/polyfills-42372ed130431b0a.js"></script><script src="/static/chunks/webpack-a9de24c27879d5d9.js" defer=""></script><script src="/static/chunks/framework-a4ddb9b21624b39b.js" defer=""></script><script src="/static/chunks/main-40e151073ba9b914.js" defer=""></script><script src="/static/chunks/pages/_app-c801a419d8851d78.js" defer=""></script><script src="/static/chunks/121-ea166289b6b9b64f.js" defer=""></script><script src="/static/chunks/278-09ee5e026e1c614e.js" defer=""></script><script src="/static/chunks/pages/chapter/%5BchapterId%5D-4967aca0e1207cbe.js" defer=""></script><script src="/static/U27q8dbaiH7EJEvBInsah/_buildManifest.js" defer=""></script><script src="/static/U27q8dbaiH7EJEvBInsah/_ssgManifest.js" defer=""></script></head><body data-for="html-export" class="antialiased"><div id="__next"><div class="w-screen flex flex-col h-screen"><header class="flex flex-grow-0 justify-between p-4 border-b border-neutral-200"><a class="flex items-center text-2xl text-neutral-700 cursor-pointer" href="/"><img alt="无事人" loading="lazy" width="40" height="40" decoding="async" data-nimg="1" style="color:transparent" src="/logo.svg"/><span class="text-4 ml-4">无事人</span></a><div class="right flex items-center cursor-pointer"><a class="mr-2  text-md " href="/classify">书架</a><a class="mr-2  text-md " href="/study">学习资料</a><a class="mr-2  text-md " href="/about">关于本人</a></div></header><div class="w-screen flex flex-1"><aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden"><div class="text-md font-bold text-gray-700 m-4">WebGIS(三)</div><div dir="ltr" class="relative overflow-hidden scroll--chapter-height" style="position:relative;--radix-scroll-area-corner-width:0px;--radix-scroll-area-corner-height:0px"><style>[data-radix-scroll-area-viewport]{scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;}[data-radix-scroll-area-viewport]::-webkit-scrollbar{display:none}</style><div data-radix-scroll-area-viewport="" class="h-full w-full rounded-[inherit]" style="overflow-x:hidden;overflow-y:hidden"><div style="min-width:100%;display:table"><a class="text-md text-sky-300 block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/chapter/dcad9aafa874b094fed615b40150f437_069c8811e94663eb9dc14ecc0f19204b">01杂谈.md</a><a class="text-md text-gray-600 block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/chapter/dcad9aafa874b094fed615b40150f437_f317561df3720aa636fff77726982320">02WebGIS前端地图比例尺换算原理.md</a><a class="text-md text-gray-600 block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/chapter/dcad9aafa874b094fed615b40150f437_12233a28c49b6a97e2bbcfe4ddf19ced">03前端根据地理范围换算出瓦片行列号的原理(核心).md</a><a class="text-md text-gray-600 block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/chapter/dcad9aafa874b094fed615b40150f437_a450b3da524bc6fc34458bce6f29be1f">04地图瓦片在Canvas上的拼接显示原理.md</a><a class="text-md text-gray-600 block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/chapter/dcad9aafa874b094fed615b40150f437_6e19a9b26a8818862dc7fa1ad127bbe4">05栅格、矢量图层的本质.md</a><a class="text-md text-gray-600 block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/chapter/dcad9aafa874b094fed615b40150f437_fa4fd9354469868242be736c50a04259">06地理坐标与屏幕坐标间的转换原理.md</a></div></div></div></aside><section class="basis-10/12 flex flex-col p-1"><div class="flex-1"><div dir="ltr" class="relative overflow-hidden scroll-content-height" style="position:relative;--radix-scroll-area-corner-width:0px;--radix-scroll-area-corner-height:0px"><style>[data-radix-scroll-area-viewport]{scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;}[data-radix-scroll-area-viewport]::-webkit-scrollbar{display:none}</style><div data-radix-scroll-area-viewport="" class="h-full w-full rounded-[inherit]" style="overflow-x:hidden;overflow-y:hidden"><div style="min-width:100%;display:table"><div id="markdown-container">
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="webgis杂谈">WebGIS杂谈 </h1>
+<h2 id="gis定义">GIS定义 </h2>
+<p>GIS的全名是Geographic Information System，中文全名是地理信息系统。它是在计算机硬、软件系统支持下，对整个或部分地球表层（包括大气层）空间中的有关地理分布数据进行采集、储存、管理、运算、分析、显示和描述的技术系统。</p>
+<h2 id="gis学科">GIS学科 </h2>
+<p>GIS是利用测绘生成纸制地图或者航拍以及卫星等生成影像后，将这些数据存储在计算机中，以地图或图片的形式表现出来，然后根据实际生产生活以及科研中的各种需求，进而提供具体的经过处理后的数据。</p>
+<h2 id="webgis简介">WebGIS简介 </h2>
+<p>WebGIS就是展现于网络上的GIS。在上世纪八十年开始，出现的大量GIS软件，基本上都是C/S架构的，也就是首先需要在本机上装有专业的GIS软件，然后用户根据需求使用这些GIS软件。当然这种桌面端的GIS软件有其天然的优势，比如开发相对简单，不需要Internet支持，以及可以做更多的复杂功能、响应相对迅速等优势。但是同时，其缺点更是不容忽视。首当其冲的便是不便于推广，而不便于推广的原因在于C/S系统其本身的天然的劣势：不便于更新，不便于跨平台，不便于用户在不安装指定客户端的情况下使用。</p>
+<p>WebGIS，就是将GIS这门学科所能提供的功能，以B/S技术展现给用户，使用户只需要在浏览器上便能使用这些GIS功能的一个应用方向。</p>
+<h2 id="国内webgis行业">国内WebGIS行业 </h2>
+<p>目前使用WebGIS技术的公司可以大致分为两个方向：一个是互联网方向，一个是行业应用方向</p>
+<p>国内的互联网方向里基本可以说已经被百度地图，腾讯地图，高德地图，三个巨头垄断。所以对于想从事互联网方向的WebGIS开发人员，其实可以选择的大公司并不多。</p>
+<h2 id="webgis框架">WebGIS框架 </h2>
+<p><img src="/assets/17357321137885142.png" alt="WebGIS框架"></p>
+
+      </div>
+      <div class="md-sidebar-toc">
+<div class="md-toc">
+<details style="padding:0;;padding-left:0px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#webgis杂谈" class="md-toc-link"><p>WebGIS杂谈</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#gis定义" class="md-toc-link">
+            <p>GIS定义</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#gis学科" class="md-toc-link">
+            <p>GIS学科</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#webgis简介" class="md-toc-link">
+            <p>WebGIS简介</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#国内webgis行业" class="md-toc-link">
+            <p>国内WebGIS行业</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#webgis框架" class="md-toc-link">
+            <p>WebGIS框架</p>
+
+          </a></div>
+        </div>
+      </details>
+    
+</div>
+</div>
+      <a id="sidebar-toc-btn">≡</a>
+    
+    
+    
+    
+    
+    
+<script>
+
+var sidebarTOCBtn = document.getElementById('sidebar-toc-btn')
+sidebarTOCBtn.addEventListener('click', function(event) {
+  event.stopPropagation()
+  if (document.body.hasAttribute('html-show-sidebar-toc')) {
+    document.body.removeAttribute('html-show-sidebar-toc')
+  } else {
+    document.body.setAttribute('html-show-sidebar-toc', true)
+  }
+})
+</script>
+      
+  
+    </div></div></div></div></div><div class="flex justify-between"><div class="invisible border min-w-60 h-10 px-4 leading-10 border-gray-300 text-center cursor-pointer rounded-md hover:text-sky-300"></div><div class="visible border min-w-60 px-4  h-10 leading-10 border-gray-300 text-center cursor-pointer rounded-md hover:text-sky-300">02WebGIS前端地图比例尺换算原理.md</div></div></section></div></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"bookInfo":{"id":"dcad9aafa874b094fed615b40150f437","name":"WebGIS(三)","fullPath":"F:\\passerby\\gis\\WebGIS(三)","chapterList":[{"id":"dcad9aafa874b094fed615b40150f437_069c8811e94663eb9dc14ecc0f19204b","type":"chapter","name":"01杂谈.md","fullPath":"F:\\passerby\\gis\\WebGIS(三)\\01杂谈.md","url":"/chapter/dcad9aafa874b094fed615b40150f437_069c8811e94663eb9dc14ecc0f19204b"},{"id":"dcad9aafa874b094fed615b40150f437_f317561df3720aa636fff77726982320","type":"chapter","name":"02WebGIS前端地图比例尺换算原理.md","fullPath":"F:\\passerby\\gis\\WebGIS(三)\\02WebGIS前端地图比例尺换算原理.md","url":"/chapter/dcad9aafa874b094fed615b40150f437_f317561df3720aa636fff77726982320"},{"id":"dcad9aafa874b094fed615b40150f437_12233a28c49b6a97e2bbcfe4ddf19ced","type":"chapter","name":"03前端根据地理范围换算出瓦片行列号的原理(核心).md","fullPath":"F:\\passerby\\gis\\WebGIS(三)\\03前端根据地理范围换算出瓦片行列号的原理(核心).md","url":"/chapter/dcad9aafa874b094fed615b40150f437_12233a28c49b6a97e2bbcfe4ddf19ced"},{"id":"dcad9aafa874b094fed615b40150f437_a450b3da524bc6fc34458bce6f29be1f","type":"chapter","name":"04地图瓦片在Canvas上的拼接显示原理.md","fullPath":"F:\\passerby\\gis\\WebGIS(三)\\04地图瓦片在Canvas上的拼接显示原理.md","url":"/chapter/dcad9aafa874b094fed615b40150f437_a450b3da524bc6fc34458bce6f29be1f"},{"id":"dcad9aafa874b094fed615b40150f437_6e19a9b26a8818862dc7fa1ad127bbe4","type":"chapter","name":"05栅格、矢量图层的本质.md","fullPath":"F:\\passerby\\gis\\WebGIS(三)\\05栅格、矢量图层的本质.md","url":"/chapter/dcad9aafa874b094fed615b40150f437_6e19a9b26a8818862dc7fa1ad127bbe4"},{"id":"dcad9aafa874b094fed615b40150f437_fa4fd9354469868242be736c50a04259","type":"chapter","name":"06地理坐标与屏幕坐标间的转换原理.md","fullPath":"F:\\passerby\\gis\\WebGIS(三)\\06地理坐标与屏幕坐标间的转换原理.md","url":"/chapter/dcad9aafa874b094fed615b40150f437_fa4fd9354469868242be736c50a04259"}],"title":"01杂谈","type":"book","url":"/book/dcad9aafa874b094fed615b40150f437","content":"\n    \n    \n      \u003cdiv class=\"crossnote markdown-preview  \"\u003e\n      \n\u003ch1 id=\"webgis杂谈\"\u003eWebGIS杂谈 \u003c/h1\u003e\n\u003ch2 id=\"gis定义\"\u003eGIS定义 \u003c/h2\u003e\n\u003cp\u003eGIS的全名是Geographic Information System，中文全名是地理信息系统。它是在计算机硬、软件系统支持下，对整个或部分地球表层（包括大气层）空间中的有关地理分布数据进行采集、储存、管理、运算、分析、显示和描述的技术系统。\u003c/p\u003e\n\u003ch2 id=\"gis学科\"\u003eGIS学科 \u003c/h2\u003e\n\u003cp\u003eGIS是利用测绘生成纸制地图或者航拍以及卫星等生成影像后，将这些数据存储在计算机中，以地图或图片的形式表现出来，然后根据实际生产生活以及科研中的各种需求，进而提供具体的经过处理后的数据。\u003c/p\u003e\n\u003ch2 id=\"webgis简介\"\u003eWebGIS简介 \u003c/h2\u003e\n\u003cp\u003eWebGIS就是展现于网络上的GIS。在上世纪八十年开始，出现的大量GIS软件，基本上都是C/S架构的，也就是首先需要在本机上装有专业的GIS软件，然后用户根据需求使用这些GIS软件。当然这种桌面端的GIS软件有其天然的优势，比如开发相对简单，不需要Internet支持，以及可以做更多的复杂功能、响应相对迅速等优势。但是同时，其缺点更是不容忽视。首当其冲的便是不便于推广，而不便于推广的原因在于C/S系统其本身的天然的劣势：不便于更新，不便于跨平台，不便于用户在不安装指定客户端的情况下使用。\u003c/p\u003e\n\u003cp\u003eWebGIS，就是将GIS这门学科所能提供的功能，以B/S技术展现给用户，使用户只需要在浏览器上便能使用这些GIS功能的一个应用方向。\u003c/p\u003e\n\u003ch2 id=\"国内webgis行业\"\u003e国内WebGIS行业 \u003c/h2\u003e\n\u003cp\u003e目前使用WebGIS技术的公司可以大致分为两个方向：一个是互联网方向，一个是行业应用方向\u003c/p\u003e\n\u003cp\u003e国内的互联网方向里基本可以说已经被百度地图，腾讯地图，高德地图，三个巨头垄断。所以对于想从事互联网方向的WebGIS开发人员，其实可以选择的大公司并不多。\u003c/p\u003e\n\u003ch2 id=\"webgis框架\"\u003eWebGIS框架 \u003c/h2\u003e\n\u003cp\u003e\u003cimg src=\"/assets/17357321137885142.png\" alt=\"WebGIS框架\"\u003e\u003c/p\u003e\n\n      \u003c/div\u003e\n      \u003cdiv class=\"md-sidebar-toc\"\u003e\n\u003cdiv class=\"md-toc\"\u003e\n\u003cdetails style=\"padding:0;;padding-left:0px;\" open=\"\"\u003e\n        \u003csummary class=\"md-toc-link-wrapper\"\u003e\n          \u003ca href=\"#webgis杂谈\" class=\"md-toc-link\"\u003e\u003cp\u003eWebGIS杂谈\u003c/p\u003e\n\u003c/a\u003e\n          \u003c/summary\u003e\n        \u003cdiv\u003e\n          \u003cdiv class=\"md-toc-link-wrapper\" style=\"padding:0;;display:list-item;list-style:square;margin-left:42px\"\u003e\n          \u003ca href=\"#gis定义\" class=\"md-toc-link\"\u003e\n            \u003cp\u003eGIS定义\u003c/p\u003e\n\n          \u003c/a\u003e\u003c/div\u003e\u003cdiv class=\"md-toc-link-wrapper\" style=\"padding:0;;display:list-item;list-style:square;margin-left:42px\"\u003e\n          \u003ca href=\"#gis学科\" class=\"md-toc-link\"\u003e\n            \u003cp\u003eGIS学科\u003c/p\u003e\n\n          \u003c/a\u003e\u003c/div\u003e\u003cdiv class=\"md-toc-link-wrapper\" style=\"padding:0;;display:list-item;list-style:square;margin-left:42px\"\u003e\n          \u003ca href=\"#webgis简介\" class=\"md-toc-link\"\u003e\n            \u003cp\u003eWebGIS简介\u003c/p\u003e\n\n          \u003c/a\u003e\u003c/div\u003e\u003cdiv class=\"md-toc-link-wrapper\" style=\"padding:0;;display:list-item;list-style:square;margin-left:42px\"\u003e\n          \u003ca href=\"#国内webgis行业\" class=\"md-toc-link\"\u003e\n            \u003cp\u003e国内WebGIS行业\u003c/p\u003e\n\n          \u003c/a\u003e\u003c/div\u003e\u003cdiv class=\"md-toc-link-wrapper\" style=\"padding:0;;display:list-item;list-style:square;margin-left:42px\"\u003e\n          \u003ca href=\"#webgis框架\" class=\"md-toc-link\"\u003e\n            \u003cp\u003eWebGIS框架\u003c/p\u003e\n\n          \u003c/a\u003e\u003c/div\u003e\n        \u003c/div\u003e\n      \u003c/details\u003e\n    \n\u003c/div\u003e\n\u003c/div\u003e\n      \u003ca id=\"sidebar-toc-btn\"\u003e≡\u003c/a\u003e\n    \n    \n    \n    \n    \n    \n\u003cscript\u003e\n\nvar sidebarTOCBtn = document.getElementById('sidebar-toc-btn')\nsidebarTOCBtn.addEventListener('click', function(event) {\n  event.stopPropagation()\n  if (document.body.hasAttribute('html-show-sidebar-toc')) {\n    document.body.removeAttribute('html-show-sidebar-toc')\n  } else {\n    document.body.setAttribute('html-show-sidebar-toc', true)\n  }\n})\n\u003c/script\u003e\n      \n  \n    "},"title":"01杂谈"},"__N_SSG":true},"page":"/chapter/[chapterId]","query":{"chapterId":"dcad9aafa874b094fed615b40150f437_069c8811e94663eb9dc14ecc0f19204b"},"buildId":"U27q8dbaiH7EJEvBInsah","isFallback":false,"gsp":true,"scriptLoader":[]}</script></body></html>

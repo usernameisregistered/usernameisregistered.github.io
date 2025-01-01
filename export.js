@@ -50,6 +50,7 @@ function exportFile(output, inputDir) {
   );
   copyDir(path.join(process.cwd(), "public"), path.join(output));
   emptyFolder(inputDir);
+  emptyFolder(path.join(process.cwd(), "public/assets"));
 }
 
 function changeContent(filePath) {

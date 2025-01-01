@@ -40,3 +40,5 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
 
 # react的useState在next中不能使用
+
+挺无语的nextjs的双动态路径页面只能生成最后一个页面，其他的页面不知道是被覆盖了还是

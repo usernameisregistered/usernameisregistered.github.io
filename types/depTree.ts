@@ -36,5 +36,5 @@ export type DepGroupItem = {
 export type DepFile = {
     rootGroups: DepGroupItem[],
     bookIdLists: string[],
-    chapterLists: { bookId: string; chapterId: string }[]
+    chapterLists: string[]
 }
