@@ -10,7 +10,7 @@ export default function Study({ studyList }: Props) {
   return (
     <div className="w-screen">
        <Head>
-        <title>无事人-学习资料</title>
+        <title>得鹿梦鱼-学习资料</title>
        </Head>
       <Header activeItem="学习资料"></Header>
       <ScrollArea className="scroll-classify-height">
@@ -35,5 +35,5 @@ export default function Study({ studyList }: Props) {
 }
 export const getStaticProps = () => {
   const studyList: StudyItem[] = getStudyList();
-  return { props: { title: "无事人", content: "", studyList } };
+  return { props: { title: "得鹿梦鱼", content: "", studyList } };
 };

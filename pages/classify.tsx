@@ -19,7 +19,7 @@ const Classify = ({ classifyGroup }: Props) => {
   return (
     <div className="w-screen">
       <Head>
-        <title>无事人-书架</title>
+        <title>得鹿梦鱼-书架</title>
       </Head>
       <Header activeItem="书架"></Header>
       <ScrollArea className="scroll-classify-height">

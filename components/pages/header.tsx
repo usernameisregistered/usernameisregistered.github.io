@@ -9,8 +9,8 @@ export default function Header({ activeItem }: CommonHeaderProps) {
         href="/"
         className="flex items-center text-2xl text-neutral-700 cursor-pointer"
       >
-        <Image src="/logo.svg" width={40} height={40} alt="无事人"></Image>
-        <span className="text-4 ml-4">无事人</span>
+        <Image src="/logo.svg" width={40} height={40} alt="得鹿梦鱼"></Image>
+        <span className="text-4 ml-4">得鹿梦鱼</span>
       </Link>
       <div className="right flex items-center cursor-pointer">
         {menuList.map((item: MenuItem) => {

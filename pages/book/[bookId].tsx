@@ -17,7 +17,7 @@ const Classify = ({ bookInfo }: Props) => {
   return (
     <div className="w-screen flex flex-col h-screen">
       <Head>
-        <title>无事人-{bookInfo.name}</title>
+        <title>得鹿梦鱼-{bookInfo.name}</title>
       </Head>
       <Header activeItem=""></Header>
       <div className="w-screen flex flex-1">

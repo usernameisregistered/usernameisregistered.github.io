@@ -4,7 +4,7 @@ export default function About() {
   return (
     <div className="w-screen">
       <Head>
-        <title>无事人-关于本人</title>
+        <title>得鹿梦鱼-关于本人</title>
       </Head>
       <Header activeItem="关于本人"></Header>
       <div className="container mx-auto mt-8">
