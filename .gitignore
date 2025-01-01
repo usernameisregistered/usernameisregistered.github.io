@@ -18,8 +18,15 @@
 /out/
 
 # production
-/build
-
+/build/static
+/build/diagnostics
+/build/cache
+/build/server/chunks
+/build/*.json
+/build/server/*.js
+/build/server/*.json
+/build/BUILD_ID
+/build/trace
 # misc
 .DS_Store
 *.pem
@@ -40,3 +47,4 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .next
+data.json

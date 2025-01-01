@@ -9,6 +9,7 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { rootGroups } from "@/data/getClassify";
 import { DepBookItem, DepClassifyItem, DepGroupItem } from "@/types/depTree";
+import Head from "next/head";
 import Link from "next/link";
 type Props = {
   classifyGroup: DepGroupItem[];
@@ -17,6 +18,9 @@ type Props = {
 const Classify = ({ classifyGroup }: Props) => {
   return (
     <div className="w-screen">
+      <Head>
+        <title>无事人-书架</title>
+      </Head>
       <Header activeItem="书架"></Header>
       <ScrollArea className="scroll-classify-height">
         {classifyGroup.map((classifyList: DepGroupItem) => {
@@ -34,14 +38,14 @@ const Classify = ({ classifyGroup }: Props) => {
                           {classifyInfo.name}
                         </CardTitle>
                         <CardDescription className="border-b max-h-16  pb-2">
-                          <ScrollArea className="border-neutral-300 h-14">
+                          <ScrollArea className="border-neutral-300 h-16">
                             {classifyInfo.description}
                           </ScrollArea>
                         </CardDescription>
                       </CardHeader>
                       <CardContent>
                         {classifyInfo.books && classifyInfo.books.length ? (
-                          <ScrollArea className="border-neutral-300 h-32">
+                          <ScrollArea className="border-neutral-300 h-48">
                             {classifyInfo.books.map((book: DepBookItem) => {
                               return (
                                 <Link

@@ -5,6 +5,7 @@ import { GetChapterDetail } from "@/data/getDetail";
 import { DepBookItem, DepChapterItem } from "@/types/depTree";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Head from "next/head";
 type Props = {
   bookInfo: DepBookItem;
 };
@@ -12,11 +13,11 @@ const Classify = ({ bookInfo }: Props) => {
   const router = useRouter();
   const query = router.query;
   const index = bookInfo.chapterList.findIndex(el => el.id === query.chapterId);
-  if (router.isFallback) {
-    return <div>Loading...</div>
-  }
   return (
     <div className="w-screen flex flex-col h-screen">
+         <Head>
+        <title>无事人-{bookInfo.title}-{bookInfo.name}</title>
+      </Head>
       <Header activeItem=""></Header>
       <div className="w-screen flex flex-1">
         <aside className="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
@@ -40,7 +41,7 @@ const Classify = ({ bookInfo }: Props) => {
         <section className="basis-10/12 flex flex-col p-1">
           <div className="flex-1">
             <ScrollArea className="scroll-content-height">
-              <div className="p-4 pb-0" dangerouslySetInnerHTML={{ __html: bookInfo.content }}></div>
+              <div dangerouslySetInnerHTML={{ __html: bookInfo.content }}></div>
             </ScrollArea>
           </div>
           <div className="flex justify-between">
@@ -62,11 +63,13 @@ type Params = {
     chapterId: string;
   };
 };
-export const getStaticProps = ({ params }: Params) => {
+export const  getStaticProps = async ({ params }: Params) => {
+  const result = await GetChapterDetail(params.bookId, params.chapterId)
   return {
     props: {
-      bookInfo: GetChapterDetail(params.bookId, params.chapterId),
+      bookInfo: result,
       revalidate: 200,
+      title: result.title
     },
   };
 };

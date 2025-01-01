@@ -3,6 +3,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { bookIdLists } from "@/data/getClassify";
 import GetBookDetail from "@/data/getDetail";
 import { DepBookItem, DepChapterItem } from "@/types/depTree";
+import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 type Props = {
@@ -12,9 +13,12 @@ const Classify = ({ bookInfo }: Props) => {
   const router = useRouter();
   setTimeout(()=>{
     router.replace(bookInfo.chapterList[0].url);
-  }, 1000)
+  }, 0)
   return (
     <div className="w-screen flex flex-col h-screen">
+      <Head>
+        <title>无事人-{bookInfo.name}</title>
+      </Head>
       <Header activeItem=""></Header>
       <div className="w-screen flex flex-1">
         <aside className="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
@@ -38,7 +42,7 @@ const Classify = ({ bookInfo }: Props) => {
         <section className="basis-10/12 flex flex-col p-1">
           <div className="flex-1">
             <ScrollArea className="scroll-content-height">
-              请手动跳转到章节页面
+              加载中...
             </ScrollArea>
           </div>
           <div className="flex justify-between">

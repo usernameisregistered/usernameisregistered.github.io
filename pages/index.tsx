@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Geist, Geist_Mono } from "next/font/google";
+import Head from "next/head";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -12,7 +13,12 @@ const geistMono = Geist_Mono({
 });
 export default function Home() {
   return (
-    <div className={`${geistSans.variable} ${geistMono.variable} grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}>
+    <div
+      className={`${geistSans.variable} ${geistMono.variable} grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
+    >
+      <Head>
+        <title>无事人-一个研发小伙伴的日常记录</title>
+      </Head>
       <main className="flex flex-col gap-8 row-start-2 items-center">
         <Image
           className="dark:invert"
@@ -22,6 +28,8 @@ export default function Home() {
           height={80}
           priority
         />
+        <div className="text-3xl text-blue-300">无事人<span className="relative top-2 left-3 text-base text-blue-200">一个研发小伙伴的日常记录</span></div>
+
         <div className="text-2xl">逢人不说人间事，便是人间无事人</div>
 
         <div className="flex gap-4 items-center flex-col sm:flex-row">

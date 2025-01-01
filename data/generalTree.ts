@@ -8,7 +8,7 @@ import {
 } from "@/types/depTree";
 import fs from "fs";
 import path from "path";
-const rootDirectory: string = "F:/passerby";
+export const rootDirectory: string = "F:/passerby";
 
 export function generalDepTree() {
   const rootGroups: DepGroupItem[] = [];
@@ -46,6 +46,7 @@ export function generalDepTree() {
             name: bookName,
             fullPath: bookPath,
             chapterList: [],
+            title: "",
             type: "book",
             url: `/book/${id}`,
             content: "",

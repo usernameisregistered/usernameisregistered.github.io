@@ -1,7 +1,11 @@
 import Header from "@/components/pages/header";
+import Head from "next/head";
 export default function About() {
   return (
     <div className="w-screen">
+      <Head>
+        <title>无事人-关于本人</title>
+      </Head>
       <Header activeItem="关于本人"></Header>
       <div className="container mx-auto mt-8">
         <div className="text-xl text-sky-900">关于本人</div>
@@ -16,28 +20,28 @@ export default function About() {
         </div>
         <div className="text-xl text-sky-900 mb-4 mt-8">联系本人</div>
         <div className="mx-2">
-            可发送邮件至
-            <a
-              className="text-blue-400 mx-1 underline underline-offset-4 cursor-pointer"
-              href="mailto:liming_longxi@163.com"
-            >
-              liming_longxi@163.com
-            </a>
-            或者在
-            <a
-              href="https://github.com/usernameisregistered/liming_longxi.github.io"
-              className="text-blue-400 underline underline-offset-4 mx-1 cursor-pointer"
-            >
-              github
-            </a>
-            <a
-              href="https://gitee.com/usernameisregistered/liming_longxi.gitlab.io"
-              className="text-blue-400 underline underline-offset-4 mr-1 cursor-pointer"
-            >
-              gitee
-            </a>
-            提问
-          </div>
+          可发送邮件至
+          <a
+            className="text-blue-400 mx-1 underline underline-offset-4 cursor-pointer"
+            href="mailto:liming_longxi@163.com"
+          >
+            liming_longxi@163.com
+          </a>
+          或者在
+          <a
+            href="https://github.com/usernameisregistered/liming_longxi.github.io"
+            className="text-blue-400 underline underline-offset-4 mx-1 cursor-pointer"
+          >
+            github
+          </a>
+          <a
+            href="https://gitee.com/usernameisregistered/liming_longxi.gitlab.io"
+            className="text-blue-400 underline underline-offset-4 mr-1 cursor-pointer"
+          >
+            gitee
+          </a>
+          提问
+        </div>
         <div className="text-xl text-sky-900 mb-4 mt-8">关于本站</div>
         <div className="mx-2 my-8 text-sky-700 text-xl">
           本站点共经历了3次大的版本迭代
@@ -46,8 +50,7 @@ export default function About() {
           1. 使用模版页面加marked生成对应的静态站点页面
         </div>
         <div className="mx-2 my-6 text-sky-600 text-md">
-          2.
-          使用vitepress技术栈生成所需的静态站点页面
+          2. 使用vitepress技术栈生成所需的静态站点页面
         </div>
         <div className="mx-2 my-6 text-sky-600 text-md">
           3. 使用nextjs技术栈生成所需的静态站点页面

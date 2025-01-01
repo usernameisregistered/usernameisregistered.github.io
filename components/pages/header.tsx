@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Header({ activeItem }: CommonHeaderProps) {
   const menuList: MenuItem[] = [{name: "书架", url: "/classify" }, {name: "学习资料", url: "/study"},  {name: "关于本人", url:  "/about"}];
   return (
-    <header className="w-screen flex flex-grow-0 justify-between p-4 border-b border-neutral-200">
+    <header className="flex flex-grow-0 justify-between p-4 border-b border-neutral-200">
       <Link
         href="/"
         className="flex items-center text-2xl text-neutral-700 cursor-pointer"

@@ -14,6 +14,7 @@ export type DepBookItem = {
     fullPath: string,
     url: string,
     content: string,
+    title: string,
     chapterList: DepChapterItem[]
 }
 
