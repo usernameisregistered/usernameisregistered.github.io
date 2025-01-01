@@ -8,7 +8,7 @@
                 {
                     "id": "math",
                     "name": "数学",
-                    "description": "这个本人在研发过程中遇到的一些关于数学相关的学习记录，包括概率论、现行代数和其他",
+                    "description": "一些关于数学相关的学习记录，包括概率论、现行代数和其他",
                     "type": "classify",
                     "fullPath": "F:\\passerby\\math",
                     "books": [
@@ -291,7 +291,7 @@
                 {
                     "id": "graph",
                     "name": "图形图像",
-                    "description": "这个本人在图形图像领域中学习的记录，包括计算机图形学、图像处理等",
+                    "description": "包括计算机图形学、图像处理等",
                     "type": "classify",
                     "fullPath": "F:\\passerby\\graph",
                     "books": [
@@ -488,7 +488,7 @@
                 {
                     "id": "gis",
                     "name": "GIS",
-                    "description": "地理信息系统（Geographic Information System或 Geo－Information system，GIS）,它是一种特定的十分重要的空间信息系统。它是在计算机硬、软件系统支持下，对整个或部分地球表层（包括大气层）空间中的有关地理分布数据进行采集、储存、管理、运算、分析、显示和描述的技术系统。",
+                    "description": "地理信息系统(Geographic Information System):是在计算机硬、软件系统支持下，对整个或部分地球表层(包括大气层)空间中的有关地理分布数据进行采集、储存、管理、运算、分析、显示和描述的技术系统",
                     "type": "classify",
                     "fullPath": "F:\\passerby\\gis",
                     "books": [
@@ -948,26 +948,26 @@
                 {
                     "id": "web",
                     "name": "web前端",
-                    "description": "此栏目包括web前端的所有内容，包括html,css, javascrpt,ts以及其他的web前端相关的",
+                    "description": "此栏目包括web前端的所有内容，包括html,css, javascrpt,ts以及其他的web前端基础相关的",
                     "type": "classify",
                     "fullPath": "F:\\passerby\\web",
                     "books": [
                         {
-                            "id": "4e966fa792cf52bfca87fd34f3213632",
-                            "name": "css教程(一)",
-                            "fullPath": "F:\\passerby\\web\\css教程(一)",
+                            "id": "616629be75a336c567c83877dca60589",
+                            "name": "css相关",
+                            "fullPath": "F:\\passerby\\web\\css相关",
                             "chapterList": [
                                 {
-                                    "id": "4e966fa792cf52bfca87fd34f3213632_08979a6ce418aed32487f06a27305cc0",
+                                    "id": "616629be75a336c567c83877dca60589_1ee17235ec32af3a00dedf449c119b82",
                                     "type": "chapter",
                                     "name": "css颜色.md",
-                                    "fullPath": "F:\\passerby\\web\\css教程(一)\\css颜色.md",
-                                    "url": "/chapter/4e966fa792cf52bfca87fd34f3213632_08979a6ce418aed32487f06a27305cc0"
+                                    "fullPath": "F:\\passerby\\web\\css相关\\css颜色.md",
+                                    "url": "/chapter/616629be75a336c567c83877dca60589_1ee17235ec32af3a00dedf449c119b82"
                                 }
                             ],
                             "title": "",
                             "type": "book",
-                            "url": "/book/4e966fa792cf52bfca87fd34f3213632",
+                            "url": "/book/616629be75a336c567c83877dca60589",
                             "content": ""
                         },
                         {
@@ -1146,45 +1146,6 @@
                             "type": "book",
                             "url": "/book/ad7350bcbc23725e3a1e5cd95b4e6d40",
                             "content": ""
-                        },
-                        {
-                            "id": "179059a67f73c82efbc38427d53604f6",
-                            "name": "前端工程化",
-                            "fullPath": "F:\\passerby\\web\\前端工程化",
-                            "chapterList": [
-                                {
-                                    "id": "179059a67f73c82efbc38427d53604f6_eadd643c7ba846de825bc34b3b43e80a",
-                                    "type": "chapter",
-                                    "name": "前端工程化说明.md",
-                                    "fullPath": "F:\\passerby\\web\\前端工程化\\前端工程化说明.md",
-                                    "url": "/chapter/179059a67f73c82efbc38427d53604f6_eadd643c7ba846de825bc34b3b43e80a"
-                                },
-                                {
-                                    "id": "179059a67f73c82efbc38427d53604f6_c864bbf34cb535b68e99a4820305c092",
-                                    "type": "chapter",
-                                    "name": "工程化专题系列.md",
-                                    "fullPath": "F:\\passerby\\web\\前端工程化\\工程化专题系列.md",
-                                    "url": "/chapter/179059a67f73c82efbc38427d53604f6_c864bbf34cb535b68e99a4820305c092"
-                                },
-                                {
-                                    "id": "179059a67f73c82efbc38427d53604f6_18f8511fa7cb8e0160db22d8488191b4",
-                                    "type": "chapter",
-                                    "name": "框架对比.md",
-                                    "fullPath": "F:\\passerby\\web\\前端工程化\\框架对比.md",
-                                    "url": "/chapter/179059a67f73c82efbc38427d53604f6_18f8511fa7cb8e0160db22d8488191b4"
-                                },
-                                {
-                                    "id": "179059a67f73c82efbc38427d53604f6_fe82fa5cd621fb346ee56338648482b8",
-                                    "type": "chapter",
-                                    "name": "美团技术架构.md",
-                                    "fullPath": "F:\\passerby\\web\\前端工程化\\美团技术架构.md",
-                                    "url": "/chapter/179059a67f73c82efbc38427d53604f6_fe82fa5cd621fb346ee56338648482b8"
-                                }
-                            ],
-                            "title": "",
-                            "type": "book",
-                            "url": "/book/179059a67f73c82efbc38427d53604f6",
-                            "content": ""
                         }
                     ]
                 },
@@ -1327,7 +1288,7 @@
                 {
                     "id": "database",
                     "name": "数据库",
-                    "description": "此栏目下是对数据库使用的一些记录和文档",
+                    "description": "在开发的过程中遇到的和数据库相关",
                     "type": "classify",
                     "fullPath": "F:\\passerby\\database",
                     "books": [
@@ -1527,6 +1488,54 @@
                             "content": ""
                         }
                     ]
+                },
+                {
+                    "id": "framework",
+                    "name": "架构相关",
+                    "description": "在开发的过程中遇到的和架构相关",
+                    "type": "classify",
+                    "fullPath": "F:\\passerby\\framework",
+                    "books": [
+                        {
+                            "id": "c211b687b0b1a770eac76507f424b002",
+                            "name": "前端工程化",
+                            "fullPath": "F:\\passerby\\framework\\前端工程化",
+                            "chapterList": [
+                                {
+                                    "id": "c211b687b0b1a770eac76507f424b002_bff2642d233b2c990ae73681a40952c6",
+                                    "type": "chapter",
+                                    "name": "前端工程化说明.md",
+                                    "fullPath": "F:\\passerby\\framework\\前端工程化\\前端工程化说明.md",
+                                    "url": "/chapter/c211b687b0b1a770eac76507f424b002_bff2642d233b2c990ae73681a40952c6"
+                                },
+                                {
+                                    "id": "c211b687b0b1a770eac76507f424b002_81c22631ce564dda458d42f446ad3ea5",
+                                    "type": "chapter",
+                                    "name": "工程化专题系列.md",
+                                    "fullPath": "F:\\passerby\\framework\\前端工程化\\工程化专题系列.md",
+                                    "url": "/chapter/c211b687b0b1a770eac76507f424b002_81c22631ce564dda458d42f446ad3ea5"
+                                },
+                                {
+                                    "id": "c211b687b0b1a770eac76507f424b002_0a9229f174c73b02b0d84b772a5d5f0a",
+                                    "type": "chapter",
+                                    "name": "框架对比.md",
+                                    "fullPath": "F:\\passerby\\framework\\前端工程化\\框架对比.md",
+                                    "url": "/chapter/c211b687b0b1a770eac76507f424b002_0a9229f174c73b02b0d84b772a5d5f0a"
+                                },
+                                {
+                                    "id": "c211b687b0b1a770eac76507f424b002_67c79e0a5846cb03a74da2c052e5bbd3",
+                                    "type": "chapter",
+                                    "name": "美团技术架构.md",
+                                    "fullPath": "F:\\passerby\\framework\\前端工程化\\美团技术架构.md",
+                                    "url": "/chapter/c211b687b0b1a770eac76507f424b002_67c79e0a5846cb03a74da2c052e5bbd3"
+                                }
+                            ],
+                            "title": "",
+                            "type": "book",
+                            "url": "/book/c211b687b0b1a770eac76507f424b002",
+                            "content": ""
+                        }
+                    ]
                 }
             ]
         },
@@ -1538,7 +1547,7 @@
                 {
                     "id": "develop",
                     "name": "开发工具",
-                    "description": "这是本人在开发过程中接触到的，开发相关的利器，包括markdown、git、svn等",
+                    "description": "这个是在开发过程中遇到的一下好的开发工具或者使用方法的记录",
                     "type": "classify",
                     "fullPath": "F:\\passerby\\develop",
                     "books": [
@@ -1559,13 +1568,31 @@
                             "type": "book",
                             "url": "/book/4f9e22b4cb3cff06a72d78d45f7a2867",
                             "content": ""
+                        },
+                        {
+                            "id": "fa88be45c7f670828d87b10f1496214e",
+                            "name": "静态站点工具",
+                            "fullPath": "F:\\passerby\\develop\\静态站点工具",
+                            "chapterList": [
+                                {
+                                    "id": "fa88be45c7f670828d87b10f1496214e_8a0291b2ed1432a09c7f2226ab44b901",
+                                    "type": "chapter",
+                                    "name": "nextjs.md",
+                                    "fullPath": "F:\\passerby\\develop\\静态站点工具\\nextjs.md",
+                                    "url": "/chapter/fa88be45c7f670828d87b10f1496214e_8a0291b2ed1432a09c7f2226ab44b901"
+                                }
+                            ],
+                            "title": "",
+                            "type": "book",
+                            "url": "/book/fa88be45c7f670828d87b10f1496214e",
+                            "content": ""
                         }
                     ]
                 },
                 {
                     "id": "source",
                     "name": "源码解读",
-                    "description": "这是本人在闲暇时间阅读当前流行框架的源码的观后感等",
+                    "description": "这个是在开发的过程中对遇到的一个比较知名的源代码的解析",
                     "type": "classify",
                     "fullPath": "F:\\passerby\\source",
                     "books": [
@@ -1645,6 +1672,65 @@
                             "content": ""
                         }
                     ]
+                },
+                {
+                    "id": "article",
+                    "name": "非研发类",
+                    "description": "这个是和研发没有关系的,其他书籍的好文摘抄或者阅读记录以及读后感",
+                    "type": "classify",
+                    "fullPath": "F:\\passerby\\article",
+                    "books": [
+                        {
+                            "id": "7a5bbaac80498eda3d0246c2716b9327",
+                            "name": "国学",
+                            "fullPath": "F:\\passerby\\article\\国学",
+                            "chapterList": [
+                                {
+                                    "id": "7a5bbaac80498eda3d0246c2716b9327_8b0ed0e8bf5bd7611a0505edf58e1faf",
+                                    "type": "chapter",
+                                    "name": "国学_史学.md",
+                                    "fullPath": "F:\\passerby\\article\\国学\\国学_史学.md",
+                                    "url": "/chapter/7a5bbaac80498eda3d0246c2716b9327_8b0ed0e8bf5bd7611a0505edf58e1faf"
+                                },
+                                {
+                                    "id": "7a5bbaac80498eda3d0246c2716b9327_045a1d1a3040785cc1a921931486bcab",
+                                    "type": "chapter",
+                                    "name": "国学_子学.md",
+                                    "fullPath": "F:\\passerby\\article\\国学\\国学_子学.md",
+                                    "url": "/chapter/7a5bbaac80498eda3d0246c2716b9327_045a1d1a3040785cc1a921931486bcab"
+                                },
+                                {
+                                    "id": "7a5bbaac80498eda3d0246c2716b9327_240707e96aeb5c4d761fcf1a42a58d79",
+                                    "type": "chapter",
+                                    "name": "国学_经学.md",
+                                    "fullPath": "F:\\passerby\\article\\国学\\国学_经学.md",
+                                    "url": "/chapter/7a5bbaac80498eda3d0246c2716b9327_240707e96aeb5c4d761fcf1a42a58d79"
+                                }
+                            ],
+                            "title": "",
+                            "type": "book",
+                            "url": "/book/7a5bbaac80498eda3d0246c2716b9327",
+                            "content": ""
+                        },
+                        {
+                            "id": "3a058326b6477c9e1439e78f3cf62294",
+                            "name": "摘抄",
+                            "fullPath": "F:\\passerby\\article\\摘抄",
+                            "chapterList": [
+                                {
+                                    "id": "3a058326b6477c9e1439e78f3cf62294_d4990ebf4295ce949fee86716b01960b",
+                                    "type": "chapter",
+                                    "name": "摘抄.md",
+                                    "fullPath": "F:\\passerby\\article\\摘抄\\摘抄.md",
+                                    "url": "/chapter/3a058326b6477c9e1439e78f3cf62294_d4990ebf4295ce949fee86716b01960b"
+                                }
+                            ],
+                            "title": "",
+                            "type": "book",
+                            "url": "/book/3a058326b6477c9e1439e78f3cf62294",
+                            "content": ""
+                        }
+                    ]
                 }
             ]
         }
@@ -1673,12 +1759,11 @@
         "c536b6e5a0f143f4743ce2c779f9f0a7",
         "821a38d0d1773b2572dbc59e0930a967",
         "c6ca3acecb9de01295f7e26e5589c73b",
-        "4e966fa792cf52bfca87fd34f3213632",
+        "616629be75a336c567c83877dca60589",
         "5c79ea11f83e51d5dcb2f394852369d7",
         "346506f929cfd606602185c1c448cd0d",
         "eb386219c511ce0550906acbf5df5a44",
         "ad7350bcbc23725e3a1e5cd95b4e6d40",
-        "179059a67f73c82efbc38427d53604f6",
         "c2b386cfad89df6c7fa7e540b1cf5192",
         "01ea09c644a32c0b932b43502dfcfbda",
         "01288e0e885cf75f8b4030462c73080c",
@@ -1686,10 +1771,14 @@
         "0990e3ce32ce04366fed6a2f14f1a4e5",
         "3362f8826e905d49f916d2db36741100",
         "24a708d3308af7484babaa7ac3c53622",
+        "c211b687b0b1a770eac76507f424b002",
         "4f9e22b4cb3cff06a72d78d45f7a2867",
+        "fa88be45c7f670828d87b10f1496214e",
         "ab9927c8ea119ecab05b7424183499ea",
         "58673eba8b130e7348558ee30564e0a8",
-        "2f2195cd86e6bcd47ac565b33ab16502"
+        "2f2195cd86e6bcd47ac565b33ab16502",
+        "7a5bbaac80498eda3d0246c2716b9327",
+        "3a058326b6477c9e1439e78f3cf62294"
     ],
     "chapterLists": [
         "595e9374140117c7ff8caf1a12e973a2_27e851a76ed0dadb8615b34836b1b10a",
@@ -1784,7 +1873,7 @@
         "c6ca3acecb9de01295f7e26e5589c73b_0ea7d49be12cff9bd440b0502e5d605a",
         "c6ca3acecb9de01295f7e26e5589c73b_09395e3f97c382b0112604355a1c52f7",
         "c6ca3acecb9de01295f7e26e5589c73b_617a70f07eca1cfa361e7e61eb3ad9c6",
-        "4e966fa792cf52bfca87fd34f3213632_08979a6ce418aed32487f06a27305cc0",
+        "616629be75a336c567c83877dca60589_1ee17235ec32af3a00dedf449c119b82",
         "5c79ea11f83e51d5dcb2f394852369d7_26c0d61a19e8d42c490de54ed59c8142",
         "5c79ea11f83e51d5dcb2f394852369d7_edf50d26bf2dda557d58683ac8b46243",
         "5c79ea11f83e51d5dcb2f394852369d7_a3427b449d86d632227d1dc4cfbf8cd5",
@@ -1804,10 +1893,6 @@
         "ad7350bcbc23725e3a1e5cd95b4e6d40_2ed26193cfaaa1b84eddceb8916dcfc6",
         "ad7350bcbc23725e3a1e5cd95b4e6d40_7cb11ebe066f3016752b653be24f8462",
         "ad7350bcbc23725e3a1e5cd95b4e6d40_3886481dc942fc073ec91a4da0553bca",
-        "179059a67f73c82efbc38427d53604f6_eadd643c7ba846de825bc34b3b43e80a",
-        "179059a67f73c82efbc38427d53604f6_c864bbf34cb535b68e99a4820305c092",
-        "179059a67f73c82efbc38427d53604f6_18f8511fa7cb8e0160db22d8488191b4",
-        "179059a67f73c82efbc38427d53604f6_fe82fa5cd621fb346ee56338648482b8",
         "c2b386cfad89df6c7fa7e540b1cf5192_ef577b720dacf53df3ae49bb90bac72a",
         "c2b386cfad89df6c7fa7e540b1cf5192_4d2ac4a7f3dd2c6c1b4caf16f11c972f",
         "c2b386cfad89df6c7fa7e540b1cf5192_dccdac507a316e4e80df39c473c9cd53",
@@ -1843,12 +1928,21 @@
         "24a708d3308af7484babaa7ac3c53622_24fa845e25adb12aa70795d5ab0e3058",
         "24a708d3308af7484babaa7ac3c53622_e7deb2976085904fdb60f28f10820220",
         "24a708d3308af7484babaa7ac3c53622_54ad46cd31428b8bcb1dce519c9a1a67",
+        "c211b687b0b1a770eac76507f424b002_bff2642d233b2c990ae73681a40952c6",
+        "c211b687b0b1a770eac76507f424b002_81c22631ce564dda458d42f446ad3ea5",
+        "c211b687b0b1a770eac76507f424b002_0a9229f174c73b02b0d84b772a5d5f0a",
+        "c211b687b0b1a770eac76507f424b002_67c79e0a5846cb03a74da2c052e5bbd3",
         "4f9e22b4cb3cff06a72d78d45f7a2867_d86da8fd528907107df896f3853bde54",
+        "fa88be45c7f670828d87b10f1496214e_8a0291b2ed1432a09c7f2226ab44b901",
         "ab9927c8ea119ecab05b7424183499ea_8c5f1a8700513f8e26ab2873dd2f103d",
         "58673eba8b130e7348558ee30564e0a8_b2cfb42149a8734e45edf457627a4b3e",
         "58673eba8b130e7348558ee30564e0a8_77673491a3513f502cad5f07eb7d7242",
         "58673eba8b130e7348558ee30564e0a8_8ac594c5dd0d1dcc922bf59f676eae48",
         "2f2195cd86e6bcd47ac565b33ab16502_413665ba55b43d9ffdfb672d544d697c",
-        "2f2195cd86e6bcd47ac565b33ab16502_76baecc1b53014985a338fddda47f52c"
+        "2f2195cd86e6bcd47ac565b33ab16502_76baecc1b53014985a338fddda47f52c",
+        "7a5bbaac80498eda3d0246c2716b9327_8b0ed0e8bf5bd7611a0505edf58e1faf",
+        "7a5bbaac80498eda3d0246c2716b9327_045a1d1a3040785cc1a921931486bcab",
+        "7a5bbaac80498eda3d0246c2716b9327_240707e96aeb5c4d761fcf1a42a58d79",
+        "3a058326b6477c9e1439e78f3cf62294_d4990ebf4295ce949fee86716b01960b"
     ]
 }
