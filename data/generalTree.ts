@@ -8,11 +8,12 @@ import {
 } from "@/types/depTree";
 import fs from "fs";
 import path from "path";
-export const rootDirectory: string = "F:/passerby";
+export const rootDirectory: string = "D:/personal/文档/passerby";
 
 export function generalDepTree() {
-  fs.rmdirSync(path.join(process.cwd(), "public/assets"), {recursive: true})
-  if (!fs.existsSync(path.join(process.cwd(), "public/assets"))) {
+  if (fs.existsSync(path.join(process.cwd(), "public/assets"))) {
+    fs.rmSync(path.join(process.cwd(), "public/assets"), {recursive: true})
+  }  else {
     fs.mkdirSync(path.join(process.cwd(), "public/assets"));
   }
   const rootGroups: DepGroupItem[] = [];

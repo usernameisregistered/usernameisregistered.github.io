@@ -2,7 +2,7 @@ import { CommonHeaderProps, MenuItem } from "@/types/common";
 import Image from "next/image";
 import Link from "next/link";
 export default function Header({ activeItem }: CommonHeaderProps) {
-  const menuList: MenuItem[] = [{name: "书架", url: "/classify" }, {name: "学习资料", url: "/study"},  {name: "关于本人", url:  "/about"}];
+  const menuList: MenuItem[] = [{name: "知识库", url: "/classify" },{name: "前端技能树", url: "/frontend" }, {name: "学习资料", url: "/study"},  {name: "关于本人", url:  "/about"}];
   return (
     <header className="flex flex-grow-0 justify-between p-4 border-b border-neutral-200">
       <Link
