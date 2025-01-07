@@ -1,15 +1,8 @@
 import Header from "@/components/pages/header";
-import previewImage from "preview-image-js";
 import Head from "next/head";
+import Image from "next/image";
+
 export default function Study() {
-  const priviewImage = () => {
-    previewImage({
-      images: ["/frontend.jpeg"],
-      toolbar: true,
-      delete: false,
-      download: false
-    })
-  };
   return (
     <div className="w-screen">
       <Head>
@@ -17,11 +10,12 @@ export default function Study() {
       </Head>
       <Header activeItem="前端技能树"></Header>
       <div className="w-full scroll-classify-height">
-        <img
+        <Image
           src="/frontend.jpeg"
-          className="h-full object-scale-down mx-auto cursor-pointer"
+          className="w-auto mx-auto cursor-pointer h-full object-fill"
           alt="前端技能树"
-          onClick={priviewImage}
+          width={1000}
+          height={1000}
         />
       </div>
     </div>

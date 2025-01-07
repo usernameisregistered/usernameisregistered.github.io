@@ -13,8 +13,6 @@ export const rootDirectory: string = "D:/personal/文档/passerby";
 export function generalDepTree() {
   if (fs.existsSync(path.join(process.cwd(), "public/assets"))) {
     fs.rmSync(path.join(process.cwd(), "public/assets"), {recursive: true})
-  }  else {
-    fs.mkdirSync(path.join(process.cwd(), "public/assets"));
   }
   const rootGroups: DepGroupItem[] = [];
   const bookIdLists: string[] = [];
