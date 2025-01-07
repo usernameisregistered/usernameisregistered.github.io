@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="zh-cn"><head><meta charSet="utf-8" data-next-head=""/><meta name="viewport" content="width=device-width" data-next-head=""/><title data-next-head=""></title><link data-next-font="size-adjust" rel="preconnect" href="/" crossorigin="anonymous"/><link rel="preload" href="/static/css/dfcb762f96d35f65.css" as="style"/><link rel="stylesheet" href="/static/css/dfcb762f96d35f65.css" data-n-g=""/><noscript data-n-css=""></noscript><script defer="" noModule="" src="/static/chunks/polyfills-42372ed130431b0a.js"></script><script src="/static/chunks/webpack-a9de24c27879d5d9.js" defer=""></script><script src="/static/chunks/framework-a4ddb9b21624b39b.js" defer=""></script><script src="/static/chunks/main-40e151073ba9b914.js" defer=""></script><script src="/static/chunks/pages/_app-c801a419d8851d78.js" defer=""></script><script src="/static/chunks/121-ea166289b6b9b64f.js" defer=""></script><script src="/static/chunks/278-09ee5e026e1c614e.js" defer=""></script><script src="/static/chunks/pages/chapter/%5BchapterId%5D-a26c039fdd7871a6.js" defer=""></script><script src="/static/EZg3DObteqLvto5h0cMHe/_buildManifest.js" defer=""></script><script src="/static/EZg3DObteqLvto5h0cMHe/_ssgManifest.js" defer=""></script></head><body data-for="html-export" class="antialiased"><div id="__next"><div class="w-screen flex flex-col h-screen"><header class="flex flex-grow-0 justify-between p-4 border-b border-neutral-200"><a class="flex items-center text-2xl text-neutral-700 cursor-pointer" href="/"><img alt="得鹿梦鱼" loading="lazy" width="40" height="40" decoding="async" data-nimg="1" style="color:transparent" src="/logo.svg"/><span class="text-4 ml-4">得鹿梦鱼</span></a><div class="right flex items-center cursor-pointer"><a class="mr-2  text-md " href="/classify">知识库</a><a class="mr-2  text-md " href="/frontend">前端技能树</a><a class="mr-2  text-md " href="/study">学习资料</a><a class="mr-2  text-md " href="/about">关于本人</a></div></header><div class="w-screen flex flex-1"><aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden"><div class="text-md font-bold text-gray-700 m-4">低代码引擎技术</div><div dir="ltr" class="relative overflow-hidden scroll--chapter-height" style="position:relative;--radix-scroll-area-corner-width:0px;--radix-scroll-area-corner-height:0px"><style>[data-radix-scroll-area-viewport]{scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;}[data-radix-scroll-area-viewport]::-webkit-scrollbar{display:none}</style><div data-radix-scroll-area-viewport="" class="h-full w-full rounded-[inherit]" style="overflow-x:hidden;overflow-y:hidden"><div style="min-width:100%;display:table"><a class="text-md text-gray-600 block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/chapter/2f2195cd86e6bcd47ac565b33ab16502_413665ba55b43d9ffdfb672d544d697c">01低代码基础.md</a><a class="text-md text-sky-300 block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/chapter/2f2195cd86e6bcd47ac565b33ab16502_76baecc1b53014985a338fddda47f52c">02低代码引擎介绍.md</a></div></div></div></aside><section class="basis-10/12 flex flex-col p-1"><div class="flex-1"><div dir="ltr" class="relative overflow-hidden scroll-content-height" style="position:relative;--radix-scroll-area-corner-width:0px;--radix-scroll-area-corner-height:0px"><style>[data-radix-scroll-area-viewport]{scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;}[data-radix-scroll-area-viewport]::-webkit-scrollbar{display:none}</style><div data-radix-scroll-area-viewport="" class="h-full w-full rounded-[inherit]" style="overflow-x:hidden;overflow-y:hidden"><div style="min-width:100%;display:table"><div id="markdown-container">
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="低代码引擎介绍">低代码引擎介绍 </h1>
+<blockquote>
+<p>低代码引擎是一款为低代码平台开发者提供的，具备强大定制扩展能力的低代码设计器研发框架</p>
+</blockquote>
+<blockquote>
+<p>低代码引擎的核心是设计器，通过扩展插件、周边生态等可以产出各式各样的设计器。它不是一套可以适合所有人的低代码平台，而是帮助低代码平台的开发者 快速 制作自定义 低代码平台的工具</p>
+</blockquote>
+<h2 id="面向用户">面向用户 </h2>
+<blockquote>
+<p>低代码引擎是前端SDK ，是一款面向前端研发人员的技术产品</p>
+</blockquote>
+<h2 id="设计器骨架">设计器骨架 </h2>
+<p><img src="/assets/17362532462841753.png" alt="设计器骨架图"></p>
+<ol>
+<li>画布 ( MainArea)：用户可视化设计和配置的主要区域，一般融合了产品的渲染、拖拽、选择等一系列可视化编辑的操作和功能</li>
+<li>顶部面板 ( TopArea)：位于顶部的面板，一般放置页面级的操作，如保存、预览</li>
+<li>功能面板 (LeftArea )：位于左侧的功能面板，用作为编辑器增加扩展功能模块的面板。这类面板通常会提供一个图标，并在点击图标之后在左侧唤出一个配置面板</li>
+<li>设置面板 ( RightArea)：位于右侧的设置面板，通常用作组件的属性配置面板</li>
+<li>工具栏 ( ToolBar)：位于画布的顶部，一般放置画布级的快捷操作，在关系图编排的场景较为常见</li>
+</ol>
+<p><strong>低代码设计器 = 低代码引擎 + (设计器插件  + 物料  + 设置器) * n</strong></p>
+<h2 id="插件定制">插件定制 </h2>
+<blockquote>
+<p>设计器定制的依赖之一就是设计器插件，我们可以直接使用生态中流通的插件，也可以根据 我们自己的需求进行插件的开发。通过编写不同的插件和引擎核心模块进行交互，不仅 满足多样化的功能的同时， 同时也与 低代码引擎解耦</p>
+</blockquote>
+<h2 id="物料定制">物料定制 </h2>
+<blockquote>
+<p>低代码引擎生态已经提供了几套官方物料，还有强大的物料定制功能，可以将现有的组件之间转化为低代码组件，并在低代码引擎中使用</p>
+</blockquote>
+<p><img src="/assets/17362532462864608.png" alt="低代码平台架构"></p>
+
+      </div>
+      <div class="md-sidebar-toc">
+<div class="md-toc">
+<details style="padding:0;;padding-left:0px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#低代码引擎介绍" class="md-toc-link"><p>低代码引擎介绍</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#面向用户" class="md-toc-link">
+            <p>面向用户</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#设计器骨架" class="md-toc-link">
+            <p>设计器骨架</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#插件定制" class="md-toc-link">
+            <p>插件定制</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#物料定制" class="md-toc-link">
+            <p>物料定制</p>
+
+          </a></div>
+        </div>
+      </details>
+    
+</div>
+</div>
+      <a id="sidebar-toc-btn">≡</a>
+    
+    
+    
+    
+    
+    
+<script>
+
+var sidebarTOCBtn = document.getElementById('sidebar-toc-btn')
+sidebarTOCBtn.addEventListener('click', function(event) {
+  event.stopPropagation()
+  if (document.body.hasAttribute('html-show-sidebar-toc')) {
+    document.body.removeAttribute('html-show-sidebar-toc')
+  } else {
+    document.body.setAttribute('html-show-sidebar-toc', true)
+  }
+})
+</script>
+      
+  
+    </div></div></div></div></div><div class="flex justify-between"><div class="visible border min-w-60 h-10 px-4 leading-10 border-gray-300 text-center cursor-pointer rounded-md hover:text-sky-300">01低代码基础.md</div><div class="invisible border min-w-60 px-4  h-10 leading-10 border-gray-300 text-center cursor-pointer rounded-md hover:text-sky-300"></div></div></section></div></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"bookInfo":{"id":"2f2195cd86e6bcd47ac565b33ab16502","name":"低代码引擎技术","fullPath":"F:\\passerby\\source\\低代码引擎技术","chapterList":[{"id":"2f2195cd86e6bcd47ac565b33ab16502_413665ba55b43d9ffdfb672d544d697c","type":"chapter","name":"01低代码基础.md","fullPath":"F:\\passerby\\source\\低代码引擎技术\\01低代码基础.md","url":"/chapter/2f2195cd86e6bcd47ac565b33ab16502_413665ba55b43d9ffdfb672d544d697c"},{"id":"2f2195cd86e6bcd47ac565b33ab16502_76baecc1b53014985a338fddda47f52c","type":"chapter","name":"02低代码引擎介绍.md","fullPath":"F:\\passerby\\source\\低代码引擎技术\\02低代码引擎介绍.md","url":"/chapter/2f2195cd86e6bcd47ac565b33ab16502_76baecc1b53014985a338fddda47f52c"}],"title":"02低代码引擎介绍","type":"book","url":"/book/2f2195cd86e6bcd47ac565b33ab16502","content":"\n    \n    \n      \u003cdiv class=\"crossnote markdown-preview  \"\u003e\n      \n\u003ch1 id=\"低代码引擎介绍\"\u003e低代码引擎介绍 \u003c/h1\u003e\n\u003cblockquote\u003e\n\u003cp\u003e低代码引擎是一款为低代码平台开发者提供的，具备强大定制扩展能力的低代码设计器研发框架\u003c/p\u003e\n\u003c/blockquote\u003e\n\u003cblockquote\u003e\n\u003cp\u003e低代码引擎的核心是设计器，通过扩展插件、周边生态等可以产出各式各样的设计器。它不是一套可以适合所有人的低代码平台，而是帮助低代码平台的开发者 快速 制作自定义 低代码平台的工具\u003c/p\u003e\n\u003c/blockquote\u003e\n\u003ch2 id=\"面向用户\"\u003e面向用户 \u003c/h2\u003e\n\u003cblockquote\u003e\n\u003cp\u003e低代码引擎是前端SDK ，是一款面向前端研发人员的技术产品\u003c/p\u003e\n\u003c/blockquote\u003e\n\u003ch2 id=\"设计器骨架\"\u003e设计器骨架 \u003c/h2\u003e\n\u003cp\u003e\u003cimg src=\"/assets/17362532462841753.png\" alt=\"设计器骨架图\"\u003e\u003c/p\u003e\n\u003col\u003e\n\u003cli\u003e画布 ( MainArea)：用户可视化设计和配置的主要区域，一般融合了产品的渲染、拖拽、选择等一系列可视化编辑的操作和功能\u003c/li\u003e\n\u003cli\u003e顶部面板 ( TopArea)：位于顶部的面板，一般放置页面级的操作，如保存、预览\u003c/li\u003e\n\u003cli\u003e功能面板 (LeftArea )：位于左侧的功能面板，用作为编辑器增加扩展功能模块的面板。这类面板通常会提供一个图标，并在点击图标之后在左侧唤出一个配置面板\u003c/li\u003e\n\u003cli\u003e设置面板 ( RightArea)：位于右侧的设置面板，通常用作组件的属性配置面板\u003c/li\u003e\n\u003cli\u003e工具栏 ( ToolBar)：位于画布的顶部，一般放置画布级的快捷操作，在关系图编排的场景较为常见\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003e\u003cstrong\u003e低代码设计器 = 低代码引擎 + (设计器插件  + 物料  + 设置器) * n\u003c/strong\u003e\u003c/p\u003e\n\u003ch2 id=\"插件定制\"\u003e插件定制 \u003c/h2\u003e\n\u003cblockquote\u003e\n\u003cp\u003e设计器定制的依赖之一就是设计器插件，我们可以直接使用生态中流通的插件，也可以根据 我们自己的需求进行插件的开发。通过编写不同的插件和引擎核心模块进行交互，不仅 满足多样化的功能的同时， 同时也与 低代码引擎解耦\u003c/p\u003e\n\u003c/blockquote\u003e\n\u003ch2 id=\"物料定制\"\u003e物料定制 \u003c/h2\u003e\n\u003cblockquote\u003e\n\u003cp\u003e低代码引擎生态已经提供了几套官方物料，还有强大的物料定制功能，可以将现有的组件之间转化为低代码组件，并在低代码引擎中使用\u003c/p\u003e\n\u003c/blockquote\u003e\n\u003cp\u003e\u003cimg src=\"/assets/17362532462864608.png\" alt=\"低代码平台架构\"\u003e\u003c/p\u003e\n\n      \u003c/div\u003e\n      \u003cdiv class=\"md-sidebar-toc\"\u003e\n\u003cdiv class=\"md-toc\"\u003e\n\u003cdetails style=\"padding:0;;padding-left:0px;\" open=\"\"\u003e\n        \u003csummary class=\"md-toc-link-wrapper\"\u003e\n          \u003ca href=\"#低代码引擎介绍\" class=\"md-toc-link\"\u003e\u003cp\u003e低代码引擎介绍\u003c/p\u003e\n\u003c/a\u003e\n          \u003c/summary\u003e\n        \u003cdiv\u003e\n          \u003cdiv class=\"md-toc-link-wrapper\" style=\"padding:0;;display:list-item;list-style:square;margin-left:42px\"\u003e\n          \u003ca href=\"#面向用户\" class=\"md-toc-link\"\u003e\n            \u003cp\u003e面向用户\u003c/p\u003e\n\n          \u003c/a\u003e\u003c/div\u003e\u003cdiv class=\"md-toc-link-wrapper\" style=\"padding:0;;display:list-item;list-style:square;margin-left:42px\"\u003e\n          \u003ca href=\"#设计器骨架\" class=\"md-toc-link\"\u003e\n            \u003cp\u003e设计器骨架\u003c/p\u003e\n\n          \u003c/a\u003e\u003c/div\u003e\u003cdiv class=\"md-toc-link-wrapper\" style=\"padding:0;;display:list-item;list-style:square;margin-left:42px\"\u003e\n          \u003ca href=\"#插件定制\" class=\"md-toc-link\"\u003e\n            \u003cp\u003e插件定制\u003c/p\u003e\n\n          \u003c/a\u003e\u003c/div\u003e\u003cdiv class=\"md-toc-link-wrapper\" style=\"padding:0;;display:list-item;list-style:square;margin-left:42px\"\u003e\n          \u003ca href=\"#物料定制\" class=\"md-toc-link\"\u003e\n            \u003cp\u003e物料定制\u003c/p\u003e\n\n          \u003c/a\u003e\u003c/div\u003e\n        \u003c/div\u003e\n      \u003c/details\u003e\n    \n\u003c/div\u003e\n\u003c/div\u003e\n      \u003ca id=\"sidebar-toc-btn\"\u003e≡\u003c/a\u003e\n    \n    \n    \n    \n    \n    \n\u003cscript\u003e\n\nvar sidebarTOCBtn = document.getElementById('sidebar-toc-btn')\nsidebarTOCBtn.addEventListener('click', function(event) {\n  event.stopPropagation()\n  if (document.body.hasAttribute('html-show-sidebar-toc')) {\n    document.body.removeAttribute('html-show-sidebar-toc')\n  } else {\n    document.body.setAttribute('html-show-sidebar-toc', true)\n  }\n})\n\u003c/script\u003e\n      \n  \n    "},"title":"02低代码引擎介绍"},"__N_SSG":true},"page":"/chapter/[chapterId]","query":{"chapterId":"2f2195cd86e6bcd47ac565b33ab16502_76baecc1b53014985a338fddda47f52c"},"buildId":"EZg3DObteqLvto5h0cMHe","isFallback":false,"gsp":true,"scriptLoader":[]}</script></body></html>
