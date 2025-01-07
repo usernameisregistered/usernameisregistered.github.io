@@ -16,7 +16,7 @@ export default function Study() {
           alt="前端技能树"
           width={1000}
           height={1000}
-        />
+        ></Image>
       </div>
     </div>
   );

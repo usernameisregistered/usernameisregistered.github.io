@@ -56,6 +56,7 @@ function exportFile(output, inputDir) {
 function changeContent(filePath) {
   let content = fs.readFileSync(filePath).toString();
   content = content.replace(/\/_next\/static/g, "/static");
+  content = content.replace(/"(\s*(?:\/_next\/image)[^"]*)"/ig, '"/frontend.jpeg"');
   fs.writeFileSync(filePath, content);
 }
 
