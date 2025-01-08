@@ -457,13 +457,6 @@
                                     "url": "/chapter/a6c416a7edf06ec3f03e57106c7ee848_66149d339c81c29c87e7d774b6b219de"
                                 },
                                 {
-                                    "id": "a6c416a7edf06ec3f03e57106c7ee848_b145e4c1088e4c28f1670a25edb08aea",
-                                    "type": "chapter",
-                                    "name": "01第一章_简介.md",
-                                    "fullPath": "F:\\passerby\\graph\\计算机图形学\\01第一章_简介.md",
-                                    "url": "/chapter/a6c416a7edf06ec3f03e57106c7ee848_b145e4c1088e4c28f1670a25edb08aea"
-                                },
-                                {
                                     "id": "a6c416a7edf06ec3f03e57106c7ee848_968fa025b376db5602e64ffadbe81650",
                                     "type": "chapter",
                                     "name": "02直线的扫描转换.md",
@@ -481,6 +474,31 @@
                             "title": "",
                             "type": "book",
                             "url": "/book/a6c416a7edf06ec3f03e57106c7ee848",
+                            "content": ""
+                        },
+                        {
+                            "id": "2510f2d7718ae1771c31f7e06a70feb8",
+                            "name": "计算机图形学及实用编程技术",
+                            "fullPath": "F:\\passerby\\graph\\计算机图形学及实用编程技术",
+                            "chapterList": [
+                                {
+                                    "id": "2510f2d7718ae1771c31f7e06a70feb8_d9620845c89352cfc02865057c3b5670",
+                                    "type": "chapter",
+                                    "name": "00计算机图形学基础知识.md",
+                                    "fullPath": "F:\\passerby\\graph\\计算机图形学及实用编程技术\\00计算机图形学基础知识.md",
+                                    "url": "/chapter/2510f2d7718ae1771c31f7e06a70feb8_d9620845c89352cfc02865057c3b5670"
+                                },
+                                {
+                                    "id": "2510f2d7718ae1771c31f7e06a70feb8_86dc5280ac6701545144441f08132139",
+                                    "type": "chapter",
+                                    "name": "01直线的生成算法_DDA.md",
+                                    "fullPath": "F:\\passerby\\graph\\计算机图形学及实用编程技术\\01直线的生成算法_DDA.md",
+                                    "url": "/chapter/2510f2d7718ae1771c31f7e06a70feb8_86dc5280ac6701545144441f08132139"
+                                }
+                            ],
+                            "title": "",
+                            "type": "book",
+                            "url": "/book/2510f2d7718ae1771c31f7e06a70feb8",
                             "content": ""
                         }
                     ]
@@ -517,6 +535,34 @@
                                     "name": "03空间数据管理.md",
                                     "fullPath": "F:\\passerby\\gis\\GIS原理(一)\\03空间数据管理.md",
                                     "url": "/chapter/d787908a2fbe743b8b4282d1b889b2bf_8c34075672fba4dc9fc2345ef93ca319"
+                                },
+                                {
+                                    "id": "d787908a2fbe743b8b4282d1b889b2bf_917c342e6bec1a4ca22856a2b5109183",
+                                    "type": "chapter",
+                                    "name": "03空间数据获取.md",
+                                    "fullPath": "F:\\passerby\\gis\\GIS原理(一)\\03空间数据获取.md",
+                                    "url": "/chapter/d787908a2fbe743b8b4282d1b889b2bf_917c342e6bec1a4ca22856a2b5109183"
+                                },
+                                {
+                                    "id": "d787908a2fbe743b8b4282d1b889b2bf_e8b631f4b1a37f089fe4674f986fdc38",
+                                    "type": "chapter",
+                                    "name": "04从现实世界到比特世界.md",
+                                    "fullPath": "F:\\passerby\\gis\\GIS原理(一)\\04从现实世界到比特世界.md",
+                                    "url": "/chapter/d787908a2fbe743b8b4282d1b889b2bf_e8b631f4b1a37f089fe4674f986fdc38"
+                                },
+                                {
+                                    "id": "d787908a2fbe743b8b4282d1b889b2bf_55b36895fd6fba108eb735b995c16d7b",
+                                    "type": "chapter",
+                                    "name": "05GIS中的数据.md",
+                                    "fullPath": "F:\\passerby\\gis\\GIS原理(一)\\05GIS中的数据.md",
+                                    "url": "/chapter/d787908a2fbe743b8b4282d1b889b2bf_55b36895fd6fba108eb735b995c16d7b"
+                                },
+                                {
+                                    "id": "d787908a2fbe743b8b4282d1b889b2bf_33c4339fa45847d9ab8a9c540b1fb4d9",
+                                    "type": "chapter",
+                                    "name": "06空间参照系统和地图投影.md",
+                                    "fullPath": "F:\\passerby\\gis\\GIS原理(一)\\06空间参照系统和地图投影.md",
+                                    "url": "/chapter/d787908a2fbe743b8b4282d1b889b2bf_33c4339fa45847d9ab8a9c540b1fb4d9"
                                 }
                             ],
                             "title": "",
@@ -1792,6 +1838,7 @@
         "9f4e23d46ab4a5537e9bab16806a57ff",
         "880d687332633c9a865882c17a8f085b",
         "a6c416a7edf06ec3f03e57106c7ee848",
+        "2510f2d7718ae1771c31f7e06a70feb8",
         "d787908a2fbe743b8b4282d1b889b2bf",
         "dcad9aafa874b094fed615b40150f437",
         "d4cb0992c2d83a930c47e704814b19a5",
@@ -1864,12 +1911,17 @@
         "880d687332633c9a865882c17a8f085b_64e584678f2c523d613c7819222df25b",
         "880d687332633c9a865882c17a8f085b_970240e89c783d4d1dcde17ca068dbe1",
         "a6c416a7edf06ec3f03e57106c7ee848_66149d339c81c29c87e7d774b6b219de",
-        "a6c416a7edf06ec3f03e57106c7ee848_b145e4c1088e4c28f1670a25edb08aea",
         "a6c416a7edf06ec3f03e57106c7ee848_968fa025b376db5602e64ffadbe81650",
         "a6c416a7edf06ec3f03e57106c7ee848_546c9d2d0277170477944b22535a480e",
+        "2510f2d7718ae1771c31f7e06a70feb8_d9620845c89352cfc02865057c3b5670",
+        "2510f2d7718ae1771c31f7e06a70feb8_86dc5280ac6701545144441f08132139",
         "d787908a2fbe743b8b4282d1b889b2bf_94a9f0c7d295334678e06b33f82c6ac9",
         "d787908a2fbe743b8b4282d1b889b2bf_1ad3ec94e04b992ddb4b4e47fe82ca57",
         "d787908a2fbe743b8b4282d1b889b2bf_8c34075672fba4dc9fc2345ef93ca319",
+        "d787908a2fbe743b8b4282d1b889b2bf_917c342e6bec1a4ca22856a2b5109183",
+        "d787908a2fbe743b8b4282d1b889b2bf_e8b631f4b1a37f089fe4674f986fdc38",
+        "d787908a2fbe743b8b4282d1b889b2bf_55b36895fd6fba108eb735b995c16d7b",
+        "d787908a2fbe743b8b4282d1b889b2bf_33c4339fa45847d9ab8a9c540b1fb4d9",
         "dcad9aafa874b094fed615b40150f437_069c8811e94663eb9dc14ecc0f19204b",
         "dcad9aafa874b094fed615b40150f437_f317561df3720aa636fff77726982320",
         "dcad9aafa874b094fed615b40150f437_12233a28c49b6a97e2bbcfe4ddf19ced",
