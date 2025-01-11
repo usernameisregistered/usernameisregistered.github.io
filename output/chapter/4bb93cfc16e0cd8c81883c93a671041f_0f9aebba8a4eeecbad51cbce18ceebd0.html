@@ -1,0 +1,118 @@
+<!DOCTYPE html><html lang="zh-cn"><head><meta charSet="utf-8" data-next-head=""/><meta name="viewport" content="width=device-width" data-next-head=""/><title data-next-head=""></title><link data-next-font="size-adjust" rel="preconnect" href="/" crossorigin="anonymous"/><link rel="preload" href="/static/css/dfcb762f96d35f65.css" as="style"/><link rel="stylesheet" href="/static/css/dfcb762f96d35f65.css" data-n-g=""/><noscript data-n-css=""></noscript><script defer="" noModule="" src="/static/chunks/polyfills-42372ed130431b0a.js"></script><script src="/static/chunks/webpack-a9de24c27879d5d9.js" defer=""></script><script src="/static/chunks/framework-a4ddb9b21624b39b.js" defer=""></script><script src="/static/chunks/main-40e151073ba9b914.js" defer=""></script><script src="/static/chunks/pages/_app-c801a419d8851d78.js" defer=""></script><script src="/static/chunks/121-ea166289b6b9b64f.js" defer=""></script><script src="/static/chunks/278-09ee5e026e1c614e.js" defer=""></script><script src="/static/chunks/pages/chapter/%5BchapterId%5D-a26c039fdd7871a6.js" defer=""></script><script src="/static/LSbrdZXXQkT8LE8Q7pH69/_buildManifest.js" defer=""></script><script src="/static/LSbrdZXXQkT8LE8Q7pH69/_ssgManifest.js" defer=""></script></head><body data-for="html-export" class="antialiased"><div id="__next"><div class="w-screen flex flex-col h-screen"><header class="flex flex-grow-0 justify-between p-4 border-b border-neutral-200"><a class="flex items-center text-2xl text-neutral-700 cursor-pointer" href="/"><img alt="得鹿梦鱼" loading="lazy" width="40" height="40" decoding="async" data-nimg="1" style="color:transparent" src="/logo.svg"/><span class="text-4 ml-4">得鹿梦鱼</span></a><div class="right flex items-center cursor-pointer"><a class="mr-2  text-md " href="/classify">知识库</a><a class="mr-2  text-md " href="/frontend">前端技能树</a><a class="mr-2  text-md " href="/study">学习资料</a><a class="mr-2  text-md " href="/about">关于本人</a></div></header><div class="w-screen flex flex-1"><aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden"><div class="text-md font-bold text-gray-700 m-4">GIS原理(二)</div><div dir="ltr" class="relative overflow-hidden scroll--chapter-height" style="position:relative;--radix-scroll-area-corner-width:0px;--radix-scroll-area-corner-height:0px"><style>[data-radix-scroll-area-viewport]{scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;}[data-radix-scroll-area-viewport]::-webkit-scrollbar{display:none}</style><div data-radix-scroll-area-viewport="" class="h-full w-full rounded-[inherit]" style="overflow-x:hidden;overflow-y:hidden"><div style="min-width:100%;display:table"><a class="text-md text-gray-600 block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/chapter/4bb93cfc16e0cd8c81883c93a671041f_e150fdebdd515c7cf885ad30ec743e66">01空间分析.md</a><a class="text-md text-gray-600 block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/chapter/4bb93cfc16e0cd8c81883c93a671041f_fa09bcb059f48e484a1783ace764d0a2">02空间数据表现与地图制图.md</a><a class="text-md text-sky-300 block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/chapter/4bb93cfc16e0cd8c81883c93a671041f_0f9aebba8a4eeecbad51cbce18ceebd0">03数字地形模型（DTM）与地形分析.md</a><a class="text-md text-gray-600 block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/chapter/4bb93cfc16e0cd8c81883c93a671041f_5bafdd794a7477fa7b743ec96e0ea083">04网络地理信息系统.md</a></div></div></div></aside><section class="basis-10/12 flex flex-col p-1"><div class="flex-1"><div dir="ltr" class="relative overflow-hidden scroll-content-height" style="position:relative;--radix-scroll-area-corner-width:0px;--radix-scroll-area-corner-height:0px"><style>[data-radix-scroll-area-viewport]{scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;}[data-radix-scroll-area-viewport]::-webkit-scrollbar{display:none}</style><div data-radix-scroll-area-viewport="" class="h-full w-full rounded-[inherit]" style="overflow-x:hidden;overflow-y:hidden"><div style="min-width:100%;display:table"><div id="markdown-container">
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="数字地形模型dtm与地形分析">数字地形模型（DTM）与地形分析 </h1>
+<p>数字地形模型是地形表面形态属性信息的数字表达，是带有空间位置特征和地形属性特征的数字描述</p>
+<p>数字地形模型中地形属性为高程时称为数字高程模型（DEM）</p>
+<h2 id="高程模型表示法">高程模型表示法 </h2>
+<p><img src="/assets/17365982326510893.png" alt="DEM的表示方法"></p>
+<h2 id="主要表示模型">主要表示模型 </h2>
+<ol>
+<li>规则格网模型</li>
+<li>等高线模型</li>
+<li>不规则三角网（TIN）模型</li>
+<li>层次模型</li>
+</ol>
+<h2 id="dem的建立">DEM的建立 </h2>
+<p>为了建立DEM，必需量测一些点的三维坐标，这就是DEM数据采集</p>
+<ol>
+<li>地面测量</li>
+<li>现有地图数字化</li>
+<li>空间传感器</li>
+<li>数字摄影测量方法</li>
+</ol>
+<h2 id="分析和应用">分析和应用 </h2>
+<h3 id="地形曲面拟合">地形曲面拟合 </h3>
+<p>DEM最基础的应用是求DEM范围内任意点的高程，在此基础上进行地形属性分析。由于已知有限个格网点的高程，可以利用这些格网点高程拟合一个地形曲面，推求区域内任意点的高程。曲面拟合方法可以看作是一个已知规则格网点数据进行空间插值的特例，距离倒数加权平均方法，克里金插值方法，样条函数等插值方法均可采用</p>
+<h3 id="立体透视图">立体透视图 </h3>
+<p>从数字高程模型绘制透视立体图是DEM的一个极其重要的应用。透视立体图能更好地反映地形的立体形态，非常直观。与采用等高线表示地形形态相比有其自身独特的优点，更接近人们的直观视觉。特别是随着计算机图形处理工作的增强以及屏幕显示系统的发展，使立体图形的制作具有更大的灵活性，人们可以根据不同的需要，对于同一个地形形态作各种不同的立体显示</p>
+<h3 id="通视分析">通视分析 </h3>
+<p>通视分析有着广泛的应用背景。典型的例子是观察哨所的设定，显然观察哨的位置应该设在能监视某一感兴趣的区域，视线不能被地形挡住。这就是通视分析中典型的点对区域的通视问题。与此类似的问题还有森林中火灾监测点的设定，无线发射塔的设定等</p>
+<ol>
+<li>点对点通视</li>
+<li>点对线通视</li>
+<li>点对区域通视</li>
+</ol>
+<h3 id="流域特征地貌提取与地形自动分割">流域特征地貌提取与地形自动分割 </h3>
+<p>地形因素是影响流域地貌、水文、生物等过程的重要因子，地形属性的空间分布特征一直是人们用于描述这些空间过程变化的重要指标。高精度DEM数据和高分辨率、高光谱、多周期的遥感影像，为人们定量描述流域空间变化过程提供了日益丰富的数据源，而且人们对流域地貌、水文和生物等过程空间变化机理理解的不断加深，可以说人类已经进入了一个“空间模拟”的时代。基于DEM数据自动提取流域地貌特征和进行流域地形自动分割是进行流域空间模拟的基础技术</p>
+<ol>
+<li>流域地貌形态结构定义，定义能反映流域结构的特征地貌，建立格网DEM对应的微地貌特征</li>
+<li>特征地貌自动提取和地形自动分割算法。格网DEM数据是一些离散的高程点数据，每个数据本身不能反映实际地表的复杂性。为了从格网DEM数据中得到流域地貌形态结构，必须采用一个清晰的流域地貌结构模型，然后针对该结构模型设计自动提取算法</li>
+</ol>
+
+      </div>
+      <div class="md-sidebar-toc">
+<div class="md-toc">
+<details style="padding:0;;padding-left:0px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#数字地形模型dtm与地形分析" class="md-toc-link"><p>数字地形模型（DTM）与地形分析</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#高程模型表示法" class="md-toc-link">
+            <p>高程模型表示法</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#主要表示模型" class="md-toc-link">
+            <p>主要表示模型</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#dem的建立" class="md-toc-link">
+            <p>DEM的建立</p>
+
+          </a></div><details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#分析和应用" class="md-toc-link"><p>分析和应用</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#地形曲面拟合" class="md-toc-link">
+            <p>地形曲面拟合</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#立体透视图" class="md-toc-link">
+            <p>立体透视图</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#通视分析" class="md-toc-link">
+            <p>通视分析</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#流域特征地貌提取与地形自动分割" class="md-toc-link">
+            <p>流域特征地貌提取与地形自动分割</p>
+
+          </a></div>
+        </div>
+      </details>
+    
+        </div>
+      </details>
+    
+</div>
+</div>
+      <a id="sidebar-toc-btn">≡</a>
+    
+    
+    
+    
+    
+    
+<script>
+
+var sidebarTOCBtn = document.getElementById('sidebar-toc-btn')
+sidebarTOCBtn.addEventListener('click', function(event) {
+  event.stopPropagation()
+  if (document.body.hasAttribute('html-show-sidebar-toc')) {
+    document.body.removeAttribute('html-show-sidebar-toc')
+  } else {
+    document.body.setAttribute('html-show-sidebar-toc', true)
+  }
+})
+</script>
+      
+  
+    </div></div></div></div></div><div class="flex justify-between"><div class="visible border min-w-60 h-10 px-4 leading-10 border-gray-300 text-center cursor-pointer rounded-md hover:text-sky-300">02空间数据表现与地图制图.md</div><div class="visible border min-w-60 px-4  h-10 leading-10 border-gray-300 text-center cursor-pointer rounded-md hover:text-sky-300">04网络地理信息系统.md</div></div></section></div></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"bookInfo":{"id":"4bb93cfc16e0cd8c81883c93a671041f","name":"GIS原理(二)","fullPath":"F:\\passerby\\gis\\GIS原理(二)","chapterList":[{"id":"4bb93cfc16e0cd8c81883c93a671041f_e150fdebdd515c7cf885ad30ec743e66","type":"chapter","name":"01空间分析.md","fullPath":"F:\\passerby\\gis\\GIS原理(二)\\01空间分析.md","url":"/chapter/4bb93cfc16e0cd8c81883c93a671041f_e150fdebdd515c7cf885ad30ec743e66"},{"id":"4bb93cfc16e0cd8c81883c93a671041f_fa09bcb059f48e484a1783ace764d0a2","type":"chapter","name":"02空间数据表现与地图制图.md","fullPath":"F:\\passerby\\gis\\GIS原理(二)\\02空间数据表现与地图制图.md","url":"/chapter/4bb93cfc16e0cd8c81883c93a671041f_fa09bcb059f48e484a1783ace764d0a2"},{"id":"4bb93cfc16e0cd8c81883c93a671041f_0f9aebba8a4eeecbad51cbce18ceebd0","type":"chapter","name":"03数字地形模型（DTM）与地形分析.md","fullPath":"F:\\passerby\\gis\\GIS原理(二)\\03数字地形模型（DTM）与地形分析.md","url":"/chapter/4bb93cfc16e0cd8c81883c93a671041f_0f9aebba8a4eeecbad51cbce18ceebd0"},{"id":"4bb93cfc16e0cd8c81883c93a671041f_5bafdd794a7477fa7b743ec96e0ea083","type":"chapter","name":"04网络地理信息系统.md","fullPath":"F:\\passerby\\gis\\GIS原理(二)\\04网络地理信息系统.md","url":"/chapter/4bb93cfc16e0cd8c81883c93a671041f_5bafdd794a7477fa7b743ec96e0ea083"}],"title":"03数字地形模型（DTM）与地形分析","type":"book","url":"/book/4bb93cfc16e0cd8c81883c93a671041f","content":"\n    \n    \n      \u003cdiv class=\"crossnote markdown-preview  \"\u003e\n      \n\u003ch1 id=\"数字地形模型dtm与地形分析\"\u003e数字地形模型（DTM）与地形分析 \u003c/h1\u003e\n\u003cp\u003e数字地形模型是地形表面形态属性信息的数字表达，是带有空间位置特征和地形属性特征的数字描述\u003c/p\u003e\n\u003cp\u003e数字地形模型中地形属性为高程时称为数字高程模型（DEM）\u003c/p\u003e\n\u003ch2 id=\"高程模型表示法\"\u003e高程模型表示法 \u003c/h2\u003e\n\u003cp\u003e\u003cimg src=\"/assets/17365982326510893.png\" alt=\"DEM的表示方法\"\u003e\u003c/p\u003e\n\u003ch2 id=\"主要表示模型\"\u003e主要表示模型 \u003c/h2\u003e\n\u003col\u003e\n\u003cli\u003e规则格网模型\u003c/li\u003e\n\u003cli\u003e等高线模型\u003c/li\u003e\n\u003cli\u003e不规则三角网（TIN）模型\u003c/li\u003e\n\u003cli\u003e层次模型\u003c/li\u003e\n\u003c/ol\u003e\n\u003ch2 id=\"dem的建立\"\u003eDEM的建立 \u003c/h2\u003e\n\u003cp\u003e为了建立DEM，必需量测一些点的三维坐标，这就是DEM数据采集\u003c/p\u003e\n\u003col\u003e\n\u003cli\u003e地面测量\u003c/li\u003e\n\u003cli\u003e现有地图数字化\u003c/li\u003e\n\u003cli\u003e空间传感器\u003c/li\u003e\n\u003cli\u003e数字摄影测量方法\u003c/li\u003e\n\u003c/ol\u003e\n\u003ch2 id=\"分析和应用\"\u003e分析和应用 \u003c/h2\u003e\n\u003ch3 id=\"地形曲面拟合\"\u003e地形曲面拟合 \u003c/h3\u003e\n\u003cp\u003eDEM最基础的应用是求DEM范围内任意点的高程，在此基础上进行地形属性分析。由于已知有限个格网点的高程，可以利用这些格网点高程拟合一个地形曲面，推求区域内任意点的高程。曲面拟合方法可以看作是一个已知规则格网点数据进行空间插值的特例，距离倒数加权平均方法，克里金插值方法，样条函数等插值方法均可采用\u003c/p\u003e\n\u003ch3 id=\"立体透视图\"\u003e立体透视图 \u003c/h3\u003e\n\u003cp\u003e从数字高程模型绘制透视立体图是DEM的一个极其重要的应用。透视立体图能更好地反映地形的立体形态，非常直观。与采用等高线表示地形形态相比有其自身独特的优点，更接近人们的直观视觉。特别是随着计算机图形处理工作的增强以及屏幕显示系统的发展，使立体图形的制作具有更大的灵活性，人们可以根据不同的需要，对于同一个地形形态作各种不同的立体显示\u003c/p\u003e\n\u003ch3 id=\"通视分析\"\u003e通视分析 \u003c/h3\u003e\n\u003cp\u003e通视分析有着广泛的应用背景。典型的例子是观察哨所的设定，显然观察哨的位置应该设在能监视某一感兴趣的区域，视线不能被地形挡住。这就是通视分析中典型的点对区域的通视问题。与此类似的问题还有森林中火灾监测点的设定，无线发射塔的设定等\u003c/p\u003e\n\u003col\u003e\n\u003cli\u003e点对点通视\u003c/li\u003e\n\u003cli\u003e点对线通视\u003c/li\u003e\n\u003cli\u003e点对区域通视\u003c/li\u003e\n\u003c/ol\u003e\n\u003ch3 id=\"流域特征地貌提取与地形自动分割\"\u003e流域特征地貌提取与地形自动分割 \u003c/h3\u003e\n\u003cp\u003e地形因素是影响流域地貌、水文、生物等过程的重要因子，地形属性的空间分布特征一直是人们用于描述这些空间过程变化的重要指标。高精度DEM数据和高分辨率、高光谱、多周期的遥感影像，为人们定量描述流域空间变化过程提供了日益丰富的数据源，而且人们对流域地貌、水文和生物等过程空间变化机理理解的不断加深，可以说人类已经进入了一个“空间模拟”的时代。基于DEM数据自动提取流域地貌特征和进行流域地形自动分割是进行流域空间模拟的基础技术\u003c/p\u003e\n\u003col\u003e\n\u003cli\u003e流域地貌形态结构定义，定义能反映流域结构的特征地貌，建立格网DEM对应的微地貌特征\u003c/li\u003e\n\u003cli\u003e特征地貌自动提取和地形自动分割算法。格网DEM数据是一些离散的高程点数据，每个数据本身不能反映实际地表的复杂性。为了从格网DEM数据中得到流域地貌形态结构，必须采用一个清晰的流域地貌结构模型，然后针对该结构模型设计自动提取算法\u003c/li\u003e\n\u003c/ol\u003e\n\n      \u003c/div\u003e\n      \u003cdiv class=\"md-sidebar-toc\"\u003e\n\u003cdiv class=\"md-toc\"\u003e\n\u003cdetails style=\"padding:0;;padding-left:0px;\" open=\"\"\u003e\n        \u003csummary class=\"md-toc-link-wrapper\"\u003e\n          \u003ca href=\"#数字地形模型dtm与地形分析\" class=\"md-toc-link\"\u003e\u003cp\u003e数字地形模型（DTM）与地形分析\u003c/p\u003e\n\u003c/a\u003e\n          \u003c/summary\u003e\n        \u003cdiv\u003e\n          \u003cdiv class=\"md-toc-link-wrapper\" style=\"padding:0;;display:list-item;list-style:square;margin-left:42px\"\u003e\n          \u003ca href=\"#高程模型表示法\" class=\"md-toc-link\"\u003e\n            \u003cp\u003e高程模型表示法\u003c/p\u003e\n\n          \u003c/a\u003e\u003c/div\u003e\u003cdiv class=\"md-toc-link-wrapper\" style=\"padding:0;;display:list-item;list-style:square;margin-left:42px\"\u003e\n          \u003ca href=\"#主要表示模型\" class=\"md-toc-link\"\u003e\n            \u003cp\u003e主要表示模型\u003c/p\u003e\n\n          \u003c/a\u003e\u003c/div\u003e\u003cdiv class=\"md-toc-link-wrapper\" style=\"padding:0;;display:list-item;list-style:square;margin-left:42px\"\u003e\n          \u003ca href=\"#dem的建立\" class=\"md-toc-link\"\u003e\n            \u003cp\u003eDEM的建立\u003c/p\u003e\n\n          \u003c/a\u003e\u003c/div\u003e\u003cdetails style=\"padding:0;;padding-left:24px;\" open=\"\"\u003e\n        \u003csummary class=\"md-toc-link-wrapper\"\u003e\n          \u003ca href=\"#分析和应用\" class=\"md-toc-link\"\u003e\u003cp\u003e分析和应用\u003c/p\u003e\n\u003c/a\u003e\n          \u003c/summary\u003e\n        \u003cdiv\u003e\n          \u003cdiv class=\"md-toc-link-wrapper\" style=\"padding:0;;display:list-item;list-style:square;margin-left:42px\"\u003e\n          \u003ca href=\"#地形曲面拟合\" class=\"md-toc-link\"\u003e\n            \u003cp\u003e地形曲面拟合\u003c/p\u003e\n\n          \u003c/a\u003e\u003c/div\u003e\u003cdiv class=\"md-toc-link-wrapper\" style=\"padding:0;;display:list-item;list-style:square;margin-left:42px\"\u003e\n          \u003ca href=\"#立体透视图\" class=\"md-toc-link\"\u003e\n            \u003cp\u003e立体透视图\u003c/p\u003e\n\n          \u003c/a\u003e\u003c/div\u003e\u003cdiv class=\"md-toc-link-wrapper\" style=\"padding:0;;display:list-item;list-style:square;margin-left:42px\"\u003e\n          \u003ca href=\"#通视分析\" class=\"md-toc-link\"\u003e\n            \u003cp\u003e通视分析\u003c/p\u003e\n\n          \u003c/a\u003e\u003c/div\u003e\u003cdiv class=\"md-toc-link-wrapper\" style=\"padding:0;;display:list-item;list-style:square;margin-left:42px\"\u003e\n          \u003ca href=\"#流域特征地貌提取与地形自动分割\" class=\"md-toc-link\"\u003e\n            \u003cp\u003e流域特征地貌提取与地形自动分割\u003c/p\u003e\n\n          \u003c/a\u003e\u003c/div\u003e\n        \u003c/div\u003e\n      \u003c/details\u003e\n    \n        \u003c/div\u003e\n      \u003c/details\u003e\n    \n\u003c/div\u003e\n\u003c/div\u003e\n      \u003ca id=\"sidebar-toc-btn\"\u003e≡\u003c/a\u003e\n    \n    \n    \n    \n    \n    \n\u003cscript\u003e\n\nvar sidebarTOCBtn = document.getElementById('sidebar-toc-btn')\nsidebarTOCBtn.addEventListener('click', function(event) {\n  event.stopPropagation()\n  if (document.body.hasAttribute('html-show-sidebar-toc')) {\n    document.body.removeAttribute('html-show-sidebar-toc')\n  } else {\n    document.body.setAttribute('html-show-sidebar-toc', true)\n  }\n})\n\u003c/script\u003e\n      \n  \n    "},"title":"03数字地形模型（DTM）与地形分析"},"__N_SSG":true},"page":"/chapter/[chapterId]","query":{"chapterId":"4bb93cfc16e0cd8c81883c93a671041f_0f9aebba8a4eeecbad51cbce18ceebd0"},"buildId":"LSbrdZXXQkT8LE8Q7pH69","isFallback":false,"gsp":true,"scriptLoader":[]}</script></body></html>

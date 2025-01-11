@@ -51,6 +51,8 @@ function exportFile(output, inputDir) {
   copyDir(path.join(process.cwd(), "public"), path.join(output));
   emptyFolder(inputDir);
   emptyFolder(path.join(process.cwd(), "public/assets"));
+  console.log("删除临时的数据文件data.json")
+  fs.rmSync(path.join(process.cwd(), "data.json"))
 }
 
 function changeContent(filePath) {
