@@ -26,7 +26,7 @@ const Classify = ({ classifyGroup }: Props) => {
         {classifyGroup.map((classifyList: DepGroupItem) => {
           return (
             <div className="w-full  my-2" key={classifyList.id}>
-              <div className="p-1  border-b text-md border-neutral-200 mx-4">
+              <div className="p-1  border-b text-md border-neutral-200 mx-4 font-semibold text-lg">
                 {classifyList.name}
               </div>
               <div className="grid grid-cols-4 gap-4 m-4">

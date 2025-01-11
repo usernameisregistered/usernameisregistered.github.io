@@ -56,7 +56,7 @@ export default function About() {
           3. 使用nextjs技术栈生成所需的静态站点页面
         </div>
 
-        <div className="text-red-600 p-4 border border-red-200">
+        <div className="text-red-600 p-4 border border-red-200 rounded-md">
           声明：本站点中的内容有部分来自于网络，如有侵权，请联系本人清除，本站点的资源仅学习交流使用，如果你不认可，烦请离开
         </div>
       </div>

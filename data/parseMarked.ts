@@ -1,6 +1,8 @@
 const { Notebook } = require("crossnote");
+import md5 from "md5";
 import fs from "fs";
 import path from "path";
+import { rootDirectory } from "./generalTree";
 export default async function ParseMarked(
   filePath: string
 ): Promise<{ title: string; content: string }> {
@@ -21,7 +23,7 @@ export default async function ParseMarked(
   let result;
   while ((result = imageReg.exec(html)) !== null) {
     const fileFullPath = path.join(path.dirname(filePath), decodeURIComponent(result[1]));
-    const fileName = Date.now() + Math.random().toString().slice(4,8) + path.extname(fileFullPath);
+    const fileName = md5(fileFullPath.slice(rootDirectory.length));
     const outputFile = path.join(process.cwd(), "public/assets", fileName);
     fs.copyFileSync(fileFullPath, outputFile);
     replaceImages[result[1]] = `/assets/${fileName}`;
