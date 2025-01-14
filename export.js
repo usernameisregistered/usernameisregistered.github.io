@@ -10,7 +10,7 @@ function findKey(fullPath) {
   const item = routerList.find(
     (el) => path.normalize(el.path) === path.normalize(fullPath)
   );
-  return item ? item.key : ""
+  return item ? item.key : "";
 }
 
 function findPath(chapterId) {
@@ -33,12 +33,15 @@ function copyDir(src, dest) {
       }
       copyDir(srcPath, destPath);
     } else {
-      if(path.extname(destPath) === ".json"){
-        destPath = destPath.replace(outputDir, path.join(outputDir, "data/delumengma"))
-        try{
-          fs.mkdirSync(path.dirname(destPath), {recursive: true})
-        } catch(err){
-          console.log("目录已存在")
+      if (path.extname(destPath) === ".json") {
+        destPath = destPath.replace(
+          outputDir,
+          path.join(outputDir, "data/delumengma")
+        );
+        try {
+          fs.mkdirSync(path.dirname(destPath), { recursive: true });
+        } catch (err) {
+          console.log("目录已存在");
         }
         fs.copyFileSync(srcPath, destPath);
       } else {
@@ -82,9 +85,10 @@ function exportFile(output, inputDir) {
 function changeContent(filePath) {
   let content = fs.readFileSync(filePath).toString();
   content = content.replace(/\/_next/g, "");
-  content = content.replaceAll("/?url=%2Ffrontend.jpeg&amp;w=1080&amp;q=75", "/frontend.jpeg")
+  content = content.replace(/\/image\?url=[^"]*/g, "/frontend.jpeg");
   content = content.replace(/\/_next\//g, "/");
-  content = content.replace(".replace(/^\\\\/data\\\//,\"\")", "");
+  content = content.replace('.replace(/^\\\\/data\\//,"")', "");
+  content = content.replace(/<script id="__NEXT_DATA__" type="application\/json">[\s\S]*<\/script>/gm, "")
   let hrefReg = /<a[^href]*href=\"([^\"]*)\"/g;
   let result;
   while ((result = hrefReg.exec(content)) !== null) {
@@ -102,7 +106,4 @@ function changeContent(filePath) {
   fs.writeFileSync(filePath, content);
 }
 
-exportFile(
-  outputDir,
-  path.join(process.cwd(), "build")
-);
+exportFile(outputDir, path.join(process.cwd(), "build"));

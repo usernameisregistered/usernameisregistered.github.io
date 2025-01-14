@@ -1,7 +1,7 @@
 import Header from "@/components/pages/header";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { chapterLists } from "@/data/getClassify";
-import GetBookDetail, { GetChapterDetail } from "@/data/getDetail";
+import { GetChapterDetail } from "@/data/getDetail";
 import { DepBookItem, DepChapterItem } from "@/types/depTree";
 import Link from "next/link";
 import { useRouter } from "next/router";

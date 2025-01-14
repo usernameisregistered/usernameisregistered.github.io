@@ -6,6 +6,7 @@ const parseMarked = require("./parseMarked");
  * @param {String} docDirectory 文档所在位置
  */
 let bookId = 10000;
+let chapterInitId = 100000;
 const bookIdLists= [];
 const chapterLists = [];
 const chapterInfos = [];
@@ -84,7 +85,7 @@ async function getClassifyBooks(classifyPath) {
         fullPath: bookPath,
         chapterList: await getBookChapters(bookPath),
         type: "book",
-        url: `/book/${id}`,
+        url: `/chapter/${id}_${chapterInitId}`,
       };
       bookIdLists.push(id)
       result.push(bookInfo);
@@ -103,7 +104,7 @@ async function getClassifyBooks(classifyPath) {
 async function getBookChapters(bookPath) {
   const result = [];
   if (fs.existsSync(bookPath) && fs.statSync(bookPath).isDirectory()) {
-    let charpterId = 100000;
+    let charpterId = chapterInitId;
     const list = fs.readdirSync(bookPath);
     let chapter = list.shift();
     while (chapter) {
