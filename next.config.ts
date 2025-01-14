@@ -1,7 +1,5 @@
 import type { NextConfig } from "next";
-import { generalDepTree } from "./data/generalTree";
 
-generalDepTree();
 const nextConfig: NextConfig = {
   /* config options here */
   reactStrictMode: true,

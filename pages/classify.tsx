@@ -77,6 +77,6 @@ const Classify = ({ classifyGroup }: Props) => {
 };
 export const getStaticProps = () => {
   const classifyGroup: DepGroupItem[] = rootGroups;
-  return { props: { title: "无事人", content: "", classifyGroup } };
+  return { props: { classifyGroup } };
 };
 export default Classify;
