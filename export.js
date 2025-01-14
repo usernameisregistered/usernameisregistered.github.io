@@ -7,9 +7,14 @@ function emptyFolder(folderPath) {
 }
 
 function findKey(fullPath) {
-  return routerList.find(
+  const item = routerList.find(
     (el) => path.normalize(el.path) === path.normalize(fullPath)
-  )[0].key;
+  );
+  return item ? item.key : ""
+}
+
+function findPath(chapterId) {
+  return routerList.find((el) => chapterId === el.key).path;
 }
 
 function copyDir(src, dest) {
@@ -29,7 +34,7 @@ function copyDir(src, dest) {
       copyDir(srcPath, destPath);
     } else {
       fs.copyFileSync(srcPath, destPath);
-      if ([".css", ".html"].includes(path.extname(destPath))) {
+      if ([".css", ".html", ".js"].includes(path.extname(destPath))) {
         console.log(`需要修改文件[${destPath}]的内容`);
         changeContent(destPath);
       }
@@ -67,24 +72,22 @@ function exportFile(output, inputDir) {
 function changeContent(filePath) {
   let content = fs.readFileSync(filePath).toString();
   content = content.replace(/\/_next\/static/g, "/static");
-  content = content.replace(
-    /"(\s*(?:\/_next\/image)[^"]*)"/gi,
-    '"/frontend.jpeg"'
-  );
-  // let hrefReg = /<a[^href]*href="([^\"])"/;
-  // let result;
-  // while ((result = hrefReg.exec(content)) !== null) {
-  //   if (result[1][0] === ".") {
-  //     console.log("filePath" + filePath);
-  //     const fileFullPath = path.join(
-  //       path.dirname(filePath),
-  //       decodeURIComponent(result[1])
-  //     );
-  //     const url = `/chapter/${findKey(fileFullPath)}`;
-  //     console.log(url);
-  //     content = content.replace(result[1], url);
-  //   }
-  // }
+  content = content.replace(/\/_next/g, "/");
+  content = content.replace(/\/_next\/image/g, "/");
+  let hrefReg = /<a[^href]*href=\"([^\"]*)\"/g;
+  let result;
+  while ((result = hrefReg.exec(content)) !== null) {
+    if (result[1][0] === ".") {
+      const chapterId = path.basename(filePath).slice(0, -5);
+      const fullPath = findPath(chapterId);
+      const fileFullPath = path.join(
+        path.dirname(fullPath),
+        decodeURIComponent(result[1])
+      );
+      const url = `/chapter/${findKey(fileFullPath)}`;
+      content = content.replace(result[1], url);
+    }
+  }
   fs.writeFileSync(filePath, content);
 }
 
