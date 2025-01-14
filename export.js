@@ -1,9 +1,15 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 const fs = require("fs");
 const path = require("path");
-
+const routerList = require("./router.json");
 function emptyFolder(folderPath) {
-    fs.rmdirSync(folderPath, {recursive: true})
+  fs.rmdirSync(folderPath, { recursive: true });
+}
+
+function findKey(fullPath) {
+  return routerList.find(
+    (el) => path.normalize(el.path) === path.normalize(fullPath)
+  )[0].key;
 }
 
 function copyDir(src, dest) {
@@ -34,7 +40,7 @@ function exportFile(output, inputDir) {
   if (fs.existsSync(output)) {
     console.log(`开始清空文件夹[${output}]`);
     emptyFolder(output);
-  } 
+  }
   console.log(`开始创建文件夹[${output}]`);
   fs.mkdirSync(output);
   console.log(`开始创建文件夹[${path.join(output, "static")}]`);
@@ -51,14 +57,34 @@ function exportFile(output, inputDir) {
   copyDir(path.join(process.cwd(), "public"), path.join(output));
   emptyFolder(inputDir);
   emptyFolder(path.join(process.cwd(), "public/assets"));
-  console.log("删除临时的数据文件data.json")
-  fs.rmSync(path.join(process.cwd(), "data.json"))
+  console.log("删除临时的数据文件");
+  fs.rmSync(path.join(process.cwd(), "data.json"));
+  fs.rmSync(path.join(process.cwd(), "book.json"));
+  fs.rmSync(path.join(process.cwd(), "router.json"));
+  fs.rmSync(path.join(process.cwd(), "chapter.json"));
 }
 
 function changeContent(filePath) {
   let content = fs.readFileSync(filePath).toString();
   content = content.replace(/\/_next\/static/g, "/static");
-  content = content.replace(/"(\s*(?:\/_next\/image)[^"]*)"/ig, '"/frontend.jpeg"');
+  content = content.replace(
+    /"(\s*(?:\/_next\/image)[^"]*)"/gi,
+    '"/frontend.jpeg"'
+  );
+  // let hrefReg = /<a[^href]*href="([^\"])"/;
+  // let result;
+  // while ((result = hrefReg.exec(content)) !== null) {
+  //   if (result[1][0] === ".") {
+  //     console.log("filePath" + filePath);
+  //     const fileFullPath = path.join(
+  //       path.dirname(filePath),
+  //       decodeURIComponent(result[1])
+  //     );
+  //     const url = `/chapter/${findKey(fileFullPath)}`;
+  //     console.log(url);
+  //     content = content.replace(result[1], url);
+  //   }
+  // }
   fs.writeFileSync(filePath, content);
 }
 

@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
-    "start": "next start",
+    "dev": "node before.js && next dev --turbopack",
+    "build": "node before.js && next build ",
+    "start": "node before.js && next start",
     "lint": "next lint",
-    "export": "next build && node export.js"
+    "export": "node before.js && next build && node export.js"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.4",

@@ -1,8 +1,8 @@
 import { readFileSync } from 'fs';
-
-import { DepFile, DepGroupItem } from "@/types/depTree";
+import { DepGroupItem } from "@/types/depTree";
 import path from "path";
-const data: DepFile =JSON.parse(readFileSync(path.join(process.cwd(), "data.json")).toString());
-export const rootGroups: DepGroupItem[] = data.rootGroups;
-export const bookIdLists: string[] = data.bookIdLists;
-export const chapterLists: string[] = data.chapterLists;
+const data: DepGroupItem[] =JSON.parse(readFileSync(path.join(process.cwd(), "data.json")).toString());
+export const rootGroups: DepGroupItem[] = data;
+export const bookIdLists: string[] = JSON.parse(readFileSync(path.join(process.cwd(), "book.json")).toString());
+export const chapterLists: string[] =JSON.parse(readFileSync(path.join(process.cwd(), "chapter.json")).toString());
+

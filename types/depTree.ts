@@ -13,8 +13,6 @@ export type DepBookItem = {
     type: string,
     fullPath: string,
     url: string,
-    content: string,
-    title: string,
     chapterList: DepChapterItem[]
 }
 
@@ -24,6 +22,7 @@ export type DepChapterItem = {
     type: string,
     fullPath: string,
     url: string,
+    content: string,
 }
 
 export type DepGroupItem = {
@@ -31,10 +30,4 @@ export type DepGroupItem = {
     id: string,
     type: string,
     classifys: DepClassifyItem[];
-}
-
-export type DepFile = {
-    rootGroups: DepGroupItem[],
-    bookIdLists: string[],
-    chapterLists: string[]
 }

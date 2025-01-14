@@ -1,22 +1,23 @@
 import Header from "@/components/pages/header";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { chapterLists } from "@/data/getClassify";
-import { GetChapterDetail } from "@/data/getDetail";
+import GetBookDetail, { GetChapterDetail } from "@/data/getDetail";
 import { DepBookItem, DepChapterItem } from "@/types/depTree";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Head from "next/head";
 type Props = {
   bookInfo: DepBookItem;
+  chapterInfo: DepChapterItem
 };
-const Classify = ({ bookInfo }: Props) => {
+const Classify = ({ bookInfo, chapterInfo }: Props) => {
   const router = useRouter();
   const query = router.query;
   const index = bookInfo.chapterList.findIndex(el => el.id === query.chapterId);
   return (
     <div className="w-screen flex flex-col h-screen">
          <Head>
-        <title>得鹿梦鱼-{bookInfo.title}-{bookInfo.name}</title>
+        <title>得鹿梦鱼-{chapterInfo.name}-{bookInfo.name}</title>
       </Head>
       <Header activeItem=""></Header>
       <div className="w-screen flex flex-1">
@@ -41,7 +42,7 @@ const Classify = ({ bookInfo }: Props) => {
         <section className="basis-10/12 flex flex-col p-1">
           <div className="flex-1">
             <ScrollArea className="scroll-content-height">
-              <div id="markdown-container" dangerouslySetInnerHTML={{ __html: bookInfo.content }}></div>
+              <div id="markdown-container" dangerouslySetInnerHTML={{ __html: chapterInfo.content }}></div>
             </ScrollArea>
           </div>
           <div className="flex justify-between">
@@ -62,12 +63,10 @@ type Params = {
     chapterId: string;
   };
 };
-export const  getStaticProps = async ({ params }: Params) => {
-  const result = await GetChapterDetail(params.chapterId)
+export const  getStaticProps = ({ params }: Params) => {
   return {
     props: {
-      bookInfo: result,
-      title: result.title
+      ...GetChapterDetail(params.chapterId),
     },
   };
 };
