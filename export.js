@@ -74,7 +74,7 @@ function changeContent(filePath) {
   content = content.replace(/\/_next\/static/g, "/static");
   content = content.replace(/\/_next\/image/g, "/");
   content = content.replace(/\/_next/g, "");
-
+  content = content.replaceAll("/?url=%2Ffrontend.jpeg&amp;w=1080&amp;q=75", "/frontend.jpeg")
   let hrefReg = /<a[^href]*href=\"([^\"]*)\"/g;
   let result;
   while ((result = hrefReg.exec(content)) !== null) {
