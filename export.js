@@ -72,8 +72,9 @@ function exportFile(output, inputDir) {
 function changeContent(filePath) {
   let content = fs.readFileSync(filePath).toString();
   content = content.replace(/\/_next\/static/g, "/static");
-  content = content.replace(/\/_next/g, "/");
   content = content.replace(/\/_next\/image/g, "/");
+  content = content.replace(/\/_next/g, "");
+
   let hrefReg = /<a[^href]*href=\"([^\"]*)\"/g;
   let result;
   while ((result = hrefReg.exec(content)) !== null) {
