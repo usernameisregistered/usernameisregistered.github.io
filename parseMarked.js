@@ -26,7 +26,7 @@ module.exports = async function ParseMarked(filePath) {
     const fileName = uid++;
     const outputFile = path.join(process.cwd(), "public/assets", fileName + path.extname(result[1]));
     fs.copyFileSync(fileFullPath, outputFile);
-    replaceImages[result[1]] = `/assets/${fileName}`;
+    replaceImages[result[1]] = `/assets/${fileName + path.extname(result[1])}`;
   }
   const contentReg = /<body [^>]*>([\s\S]*)<\/body>/gm;
   let content;

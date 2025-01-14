@@ -88,7 +88,7 @@ function changeContent(filePath) {
   content = content.replace(/\/image\?url=[^"]*/g, "/frontend.jpeg");
   content = content.replace(/\/_next\//g, "/");
   content = content.replace('.replace(/^\\\\/data\\//,"")', "");
-  content = content.replace(/<script id="__NEXT_DATA__" type="application\/json">[\s\S]*<\/script>/gm, "")
+  content = content.replace(/<script id="__NEXT_DATA__" type="application\/json">[\s\S]*<\/script>/gm, "<script id=\"__NEXT_DATA__\" type=\"application/json\">{}</script>")
   let hrefReg = /<a[^href]*href=\"([^\"]*)\"/g;
   let result;
   while ((result = hrefReg.exec(content)) !== null) {

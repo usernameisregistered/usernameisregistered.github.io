@@ -21,7 +21,7 @@ const Classify = ({ classifyGroup }: Props) => {
       <Head>
         <title>得鹿梦鱼-知识库</title>
       </Head>
-      <Header activeItem="书架"></Header>
+      <Header activeItem="知识库"></Header>
       <ScrollArea className="scroll-classify-height">
         {classifyGroup.map((classifyList: DepGroupItem) => {
           return (

@@ -12,7 +12,7 @@
 <p>JavaScript引擎在对JavaScript代码进行即时编译时，主要工作包括了对JavaScript的编译和对生成的对应平台的机器码的链接，这些都是在编译缓存区中进行的，JavaScript引擎在即时编译时需要将编译生成的对应平台的机器码按照地址顺序连续的存储到编译缓存中，以确保生成的对应平台的机器码在执行时在物理地址上是连续的</p>
 </blockquote>
 <p>由于JavaScript引擎对JavaScript代码即时编译生成的机器码无法事先预测大小，因此无法准确的确定编译缓存区的大小，如果编译缓存区的大小在初始化时设置的过大虽然会保证生成的机器码能够完全存入编译器缓存中，但是对于嵌入式设备有限的内存空间则会造成存储空间的资源紧张。而如果编译缓存区的大小设置的过小又会无法保证编译生成的机器码能够完整的存入缓存区中，因此JavaScript引擎现有的编译缓存区的管理策略是：首先，JavaScript引擎将编译缓存区的初始大小设置为一个M的阈值，随着JavaScript引擎对JavaScript代码即时编译生成的机器码存入编译缓存中，编译缓存区的空间减少，当机器码在存入编译缓存区之间空闲缓冲区的空间小于待存入的机器码的大小时，JavaScript引擎会重新开辟一个1.5倍大小与一个M的编译缓冲区，将新阈值设置为原先阈值的1.5倍。接着javas引擎会把原先编译缓存区中存储的机器码完整的拷贝到新开辟的编译缓存区中，同时释放原有的编译缓存区空间，随着即时编译过程的进行，如果新开辟的存储空间无法再次存入生成的机器码的时候，则需要再次使用该方式开辟新的编译缓存区空间，如下图</p>
-<p><img src="/assets/100000142" alt="现有编译缓存区管理策略"></p>
+<p><img src="/assets/100000142.png" alt="现有编译缓存区管理策略"></p>
 <p>上述的管理策略虽然能够解决编译缓存区初始化设定大小和编译缓存区存储空间不够导致无法存入生成的机器码的问题，但是也存在一下问题：该管理策略中含有JavaScript引擎对新的存储空间的申请和开辟工作，大量机器码的拷贝工作以及原有存储空间的释放工作，这些执行操作会造成大量执行开销，导致嵌入式设备内存紧张，如果降低阈值的大小，开辟空间、拷贝数据和释放原空间的次数将会增加，浏览器在加载网页时的CPU占用率也将大大的增加，甚至出现“卡死”现象，编译缓存区是JavaScript引擎在即时编译模式下生成机器码和执行机器码的重要组成部分，该管理策略会严重降低JavaScript引擎在即时编译模式的执行效率，成为JavaScript引擎执行性能的瓶颈。因此需要对现有的JavaScript引擎的编译缓存器的管理策略进行改进，提高JavaScript引擎的执行效率</p>
 <h2 id="编译缓存区的管理策略改进和实现">编译缓存区的管理策略改进和实现 </h2>
 <p>为了解决上述问题，在改进的编译缓存区中，JavaScript引擎对编译缓存区空间离散的管理方式，将编译缓存区初始化大小设置为一个基本单元缓存块的大小，其管理模式为：</p>
@@ -27,7 +27,7 @@
 <p>因此对于编译缓存区的存储空间采用的是多个离散的基本单元缓存块的方式，可以采取哈希表的数据结构对不同的基本单元缓存块进行管理，而对于哈希表而言，哈希表在输入的数据集随机时容易出现大规模的冲突，虽然有很多有效的哈希函数，但是对于随机输入的数据集时，大规模的冲突还是不可避免的，出现最差的情况</p>
 <p>在JavaScript引擎中，由于编译缓存区是一整块连续的物理地址空间，而基本单元缓存块的数量并不会是很多，因此基本单元缓存块的地址可以呈现均匀分布的状态，哈希表就不会出现大规模的冲突状况，而基本单元缓存块之间则用双链表进行链接，保证JavaScript引擎在执行JavaScript代码时能够寻找查找到对应的机器码</p>
 <p>由于编译缓存区的基本单元 缓存块是链表结构，因此JavaScript引擎对需要执行的 JavaScript代码所对应的机器码的查找时间复杂度是O(n)。为了提高查找效率，因此可以通过哈希表对编译缓存区的基本单元缓存块进行管理。每次新分配的存入了机器码基本单元缓存块的地址都会更新到哈希表中，而清空一个或多个基本编译缓存块时则会从哈希表中移除。这样JavaScript引擎在查找需要执行的JavaScript代码所对应的机器码时直接通过哈希表进行查找，获取对应的机器码在编译缓存区中的位置，而查找的时间复杂度为O(1)大大降低了查找开销</p>
-<p><img src="/assets/100000143" alt="基本单元缓存块的管理方式"></p>
+<p><img src="/assets/100000143.png" alt="基本单元缓存块的管理方式"></p>
 <p>CacheHandler结构作为这些独立的基本单元缓存块的管理者，是编译缓存区和的机器码执行的接口。CacheHandler结构使得编译缓存区的管理机制透明，同时与JavaScript引擎现有的编译缓存区的接口一致。JavaScript引擎通过CacheHandler结构提供的接口，就可以实现对即时编译生成的机器码的存储、链接以及将机器码拷贝代码执行池中</p>
 <pre data-role="codeBlock" data-info="c++" class="language-cpp c++"><code><span class="token keyword keyword-class">class</span> <span class="token class-name">CacheHandler</span>
 <span class="token punctuation">{</span>
@@ -129,4 +129,4 @@ sidebarTOCBtn.addEventListener('click', function(event) {
 </script>
       
   
-    </div></div></div></div></div><div class="flex justify-between"><div class="visible border min-w-60 h-10 px-4 leading-10 border-gray-300 text-center cursor-pointer rounded-md hover:text-sky-300">引擎优化技术</div><div class="visible border min-w-60 px-4  h-10 leading-10 border-gray-300 text-center cursor-pointer rounded-md hover:text-sky-300">引擎并行处理架构的设计与实现</div></div></section></div></div></div></body></html>
+    </div></div></div></div></div><div class="flex justify-between"><div class="visible border min-w-60 h-10 px-4 leading-10 border-gray-300 text-center cursor-pointer rounded-md hover:text-sky-300">引擎优化技术</div><div class="visible border min-w-60 px-4  h-10 leading-10 border-gray-300 text-center cursor-pointer rounded-md hover:text-sky-300">引擎并行处理架构的设计与实现</div></div></section></div></div></div><script id="__NEXT_DATA__" type="application/json">{}</script></body></html>
