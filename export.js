@@ -71,10 +71,10 @@ function exportFile(output, inputDir) {
 
 function changeContent(filePath) {
   let content = fs.readFileSync(filePath).toString();
-  content = content.replace(`c.pathname.replace(/^\/_next\/data\//,"").replace(/\.json$/,"").split("/")`, `c.pathname.replace(/\.json$/,"").split("/")`)
   content = content.replace(/\/_next/g, "");
   content = content.replaceAll("/?url=%2Ffrontend.jpeg&amp;w=1080&amp;q=75", "/frontend.jpeg")
   content = content.replace(/\/_next\//g, "/");
+  content = content.replace(".replace(/^\\\\/data\\\//,\"\")", "");
   let hrefReg = /<a[^href]*href=\"([^\"]*)\"/g;
   let result;
   while ((result = hrefReg.exec(content)) !== null) {
