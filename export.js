@@ -34,7 +34,7 @@ function copyDir(src, dest) {
       copyDir(srcPath, destPath);
     } else {
       fs.copyFileSync(srcPath, destPath);
-      if ([".css", ".html"].includes(path.extname(destPath))) {
+      if ([".css", ".html", ".js"].includes(path.extname(destPath))) {
         console.log(`需要修改文件[${destPath}]的内容`);
         changeContent(destPath);
       }
@@ -72,10 +72,7 @@ function exportFile(output, inputDir) {
 function changeContent(filePath) {
   let content = fs.readFileSync(filePath).toString();
   content = content.replace(/\/_next\/static/g, "/static");
-  content = content.replace(
-    /"(\s*(?:\/_next\/image)[^"]*)"/gi,
-    '"/frontend.jpeg"'
-  );
+  content = content.replace(/\/_next\/image/g, "/");
   let hrefReg = /<a[^href]*href=\"([^\"]*)\"/g;
   let result;
   while ((result = hrefReg.exec(content)) !== null) {
