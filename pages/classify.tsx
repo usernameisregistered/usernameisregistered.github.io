@@ -19,14 +19,14 @@ const Classify = ({ classifyGroup }: Props) => {
   return (
     <div className="w-screen">
       <Head>
-        <title>得鹿梦鱼-书架</title>
+        <title>得鹿梦鱼-知识库</title>
       </Head>
       <Header activeItem="书架"></Header>
       <ScrollArea className="scroll-classify-height">
         {classifyGroup.map((classifyList: DepGroupItem) => {
           return (
             <div className="w-full  my-2" key={classifyList.id}>
-              <div className="p-1  border-b text-md border-neutral-200 mx-4">
+              <div className="p-1  border-b text-md border-neutral-200 mx-4 font-semibold text-lg">
                 {classifyList.name}
               </div>
               <div className="grid grid-cols-4 gap-4 m-4">
