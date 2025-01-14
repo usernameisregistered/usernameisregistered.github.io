@@ -13,6 +13,9 @@ const nextConfig: NextConfig = {
     // number of pages that should be kept simultaneously without being disposed
     pagesBufferLength: 200,
   },
+  generateBuildId: async () => {
+    return 'delumengma'
+  }
 };
 
 export default nextConfig;

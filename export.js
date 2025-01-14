@@ -5,7 +5,7 @@ const routerList = require("./router.json");
 function emptyFolder(folderPath) {
   fs.rmdirSync(folderPath, { recursive: true });
 }
-
+let outputDir = path.join(process.cwd(), "output");
 function findKey(fullPath) {
   const item = routerList.find(
     (el) => path.normalize(el.path) === path.normalize(fullPath)
@@ -24,7 +24,7 @@ function copyDir(src, dest) {
 
   for (let entry of entries) {
     const srcPath = path.join(src, entry.name);
-    const destPath = path.join(dest, entry.name);
+    let destPath = path.join(dest, entry.name);
 
     if (entry.isDirectory()) {
       if (!fs.existsSync(destPath)) {
@@ -33,10 +33,20 @@ function copyDir(src, dest) {
       }
       copyDir(srcPath, destPath);
     } else {
-      fs.copyFileSync(srcPath, destPath);
-      if ([".css", ".html", ".js"].includes(path.extname(destPath))) {
-        console.log(`需要修改文件[${destPath}]的内容`);
-        changeContent(destPath);
+      if(path.extname(destPath) === ".json"){
+        destPath = destPath.replace(outputDir, path.join(outputDir, "data/delumengma"))
+        try{
+          fs.mkdirSync(path.dirname(destPath), {recursive: true})
+        } catch(err){
+          console.log("目录已存在")
+        }
+        fs.copyFileSync(srcPath, destPath);
+      } else {
+        fs.copyFileSync(srcPath, destPath);
+        if ([".css", ".html", ".js"].includes(path.extname(destPath))) {
+          console.log(`需要修改文件[${destPath}]的内容`);
+          changeContent(destPath);
+        }
       }
     }
   }
@@ -93,6 +103,6 @@ function changeContent(filePath) {
 }
 
 exportFile(
-  path.join(process.cwd(), "output"),
+  outputDir,
   path.join(process.cwd(), "build")
 );
