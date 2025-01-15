@@ -89,6 +89,7 @@ function changeContent(filePath) {
   content = content.replace(/\/_next\//g, "/");
   content = content.replace('.replace(/^\\\\/data\\//,"")', "");
   let hrefReg = /<a[^href]*href=\"([^\"]*)\"/g;
+  let replacelinks = {}
   content = content.replace(hrefReg, (match, $1) => {
     if ($1[0] === ".") {
       const chapterId = path.basename(filePath).slice(0, -5);
@@ -97,10 +98,14 @@ function changeContent(filePath) {
         path.dirname(fullPath),
         decodeURIComponent($1)
       );
-      return match.replace($1, `/chapter/${findKey(fileFullPath)}.html`);
+      replacelinks[$1] = `/chapter/${findKey(fileFullPath)}`
+      return match.replace($1, `/chapter/${findKey(fileFullPath)}`);
     }
     return match
   });
+  for(let key in replacelinks){
+    content = content.replaceAll(key, replacelinks[key])
+  }
   fs.writeFileSync(filePath, content);
 }
 
