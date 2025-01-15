@@ -9,7 +9,7 @@
 </blockquote>
 <p>Next.js 是一个灵活的 React 框架，为开发者提供了构建高性能、可扩展 Web 应用的全套工具</p>
 <p>Next.js <strong>使用基于文件系统的路由</strong></p>
-<p>nextjs的实例可以参考undefined>usernameisregistered.github.io</a></p>
+<p>nextjs的实例可以参考<a href="https://github.com/usernameisregistered/usernameisregistered.github.io/tree/nextjs_devlop">usernameisregistered.github.io</a></p>
 <h2 id="开发注意事项">开发注意事项 </h2>
 <h3 id="打包过程中的过程报错文件大小超128kb">打包过程中的过程报错文件大小超128kB </h3>
 <p>修改配置文件<code>next.config.ts</code>，在配置文件修改属性largePageDataBytes</p>
@@ -28,7 +28,7 @@
 <li>SSG生成的静态页面的资源引用地址<code>/.next/static/xxx</code></li>
 </ul>
 <p>为了使得在git page上直接发布需要对静态资源进行整理和引用内容地址进行更改然后重写<br>
-可以参考undefined>export.js</a></p>
+可以参考<a href="https://github.com/usernameisregistered/usernameisregistered.github.io/blob/master/export.js">export.js</a></p>
 <h3 id="使用pididtsx的动态路由ssg生成的页面不全面">使用[pid]/[id].tsx的动态路由SSG生成的页面不全面 </h3>
 <p>当使用上述的动态路由模式时,当<code>pid</code>和<code>id</code>同时进行变化时，而且<code>id</code>存在多个内容时，虽然在开发环境中会不管有多少个<code>id</code>页面时能够正常预览的。但是在build是生成的页面会只有最后一个页面被渲染，其他的页面不只是被覆盖还是未生成；针对这种情况可以考虑将<code>pid</code>和<code>id</code>进行合并,使用单动态路由去渲染页面<em>暂时没有找到好的解决方案</em>，使用<code>name/[allId].tsx</code>去生成界面，以避免上述问题</p>
 <h3 id="针对不同的页面如何生成不同的title">针对不同的页面如何生成不同的title </h3>
@@ -44,30 +44,30 @@
 <div class="md-toc">
 <details style="padding:0;;padding-left:0px;" open="">
         <summary class="md-toc-link-wrapper">
-          undefined class="md-toc-link"><p>介绍</p>
+          <a href="#介绍" class="md-toc-link"><p>介绍</p>
 </a>
           </summary>
         <div>
           <details style="padding:0;;padding-left:24px;" open="">
         <summary class="md-toc-link-wrapper">
-          undefined class="md-toc-link"><p>开发注意事项</p>
+          <a href="#开发注意事项" class="md-toc-link"><p>开发注意事项</p>
 </a>
           </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          undefined class="md-toc-link">
+          <a href="#打包过程中的过程报错文件大小超128kb" class="md-toc-link">
             <p>打包过程中的过程报错文件大小超128kB</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          undefined class="md-toc-link">
+          <a href="#ssg生成后的文件无法直接发布在git-page上" class="md-toc-link">
             <p>SSG生成后的文件无法直接发布在<code>git page</code>上</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          undefined class="md-toc-link">
+          <a href="#使用pididtsx的动态路由ssg生成的页面不全面" class="md-toc-link">
             <p>使用[pid]/[id].tsx的动态路由SSG生成的页面不全面</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          undefined class="md-toc-link">
+          <a href="#针对不同的页面如何生成不同的title" class="md-toc-link">
             <p>针对不同的页面如何生成不同的title</p>
 
           </a></div>

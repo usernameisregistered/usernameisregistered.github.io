@@ -8,7 +8,7 @@
 <h2 id="一导航">一：导航 </h2>
 <p>导航是加载 web 页面的第一步。它发生在以下情形：用户通过在地址栏输入一个 URL、点击一个链接、提交表单或者是其他的行为。</p>
 <h2 id="二dns-查询">二：DNS 查询 </h2>
-<p>对于一个 web 页面来说导航的第一步是要去寻找页面资源的位置。如果导航到 undefined>https://example.com</a>，HTML 页面被定位到 IP 地址为 93.184.216.34 的服务器。如果以前没有访问过这个网站，就需要进行 DNS 查询<br>
+<p>对于一个 web 页面来说导航的第一步是要去寻找页面资源的位置。如果导航到 <a href="https://example.com">https://example.com</a>，HTML 页面被定位到 IP 地址为 93.184.216.34 的服务器。如果以前没有访问过这个网站，就需要进行 DNS 查询<br>
 浏览器向域名服务器发起 DNS 查询请求，最终得到一个 IP 地址。第一次请求之后，这个 IP 地址可能会被缓存一段时间，这样可以通过从缓存里面检索 IP 地址而不是再通过域名服务器进行查询来加速后续的请求。<br>
 每个主机名 (hostname) 在页面加载时通常只需要进行一次 DNS 查询。但是，对于页面指向的不同的主机名，则需要多次 DNS 查询。如果字体（font）、图像（image）、脚本（script）、广告（ads）和网站统计（metric）都有不同的主机名，则需要对每一个主机名进行 DNS 查询<br>
 但是对于移动网络，DNS 查询可能存在性能问题。当一个用户使用移动网络时，所有 DNS 查询必须从手机发送到基站，然后到达一个权威 DNS 服务器。手机、信号塔、域名服务器之间的距离会显著增加延迟。</p>
@@ -72,58 +72,58 @@
 <div class="md-toc">
 <details style="padding:0;;padding-left:0px;" open="">
         <summary class="md-toc-link-wrapper">
-          undefined class="md-toc-link"><p>渲染页面：浏览器的工作原理</p>
+          <a href="#渲染页面浏览器的工作原理" class="md-toc-link"><p>渲染页面：浏览器的工作原理</p>
 </a>
           </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          undefined class="md-toc-link">
+          <a href="#一导航" class="md-toc-link">
             <p>一：导航</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          undefined class="md-toc-link">
+          <a href="#二dns-查询" class="md-toc-link">
             <p>二：DNS 查询</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          undefined class="md-toc-link">
+          <a href="#三tcp握手" class="md-toc-link">
             <p>三：TCP握手</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          undefined class="md-toc-link">
+          <a href="#四tls协商" class="md-toc-link">
             <p>四：TLS协商</p>
 
           </a></div><details style="padding:0;;padding-left:24px;" open="">
         <summary class="md-toc-link-wrapper">
-          undefined class="md-toc-link"><p>五：响应</p>
+          <a href="#五响应" class="md-toc-link"><p>五：响应</p>
 </a>
           </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          undefined class="md-toc-link">
+          <a href="#五一拥塞控制--tcp-慢启动" class="md-toc-link">
             <p>五（一）：拥塞控制 / TCP 慢启动</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          undefined class="md-toc-link">
+          <a href="#五二-解析" class="md-toc-link">
             <p>五（二）： 解析</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          undefined class="md-toc-link">
+          <a href="#五三构建-dom-树" class="md-toc-link">
             <p>五（三）：构建 DOM 树</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          undefined class="md-toc-link">
+          <a href="#五四预加载扫描器" class="md-toc-link">
             <p>五（四）：预加载扫描器</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          undefined class="md-toc-link">
+          <a href="#五五构建-cssom-树" class="md-toc-link">
             <p>五（五）：构建 CSSOM 树</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          undefined class="md-toc-link">
+          <a href="#五六-javascript-编译" class="md-toc-link">
             <p>五（六）： JavaScript 编译</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          undefined class="md-toc-link">
+          <a href="#五七-构建无障碍树" class="md-toc-link">
             <p>五（七）： 构建无障碍树</p>
 
           </a></div>
@@ -131,16 +131,16 @@
       </details>
     <details style="padding:0;;padding-left:24px;" open="">
         <summary class="md-toc-link-wrapper">
-          undefined class="md-toc-link"><p>六：渲染</p>
+          <a href="#六渲染" class="md-toc-link"><p>六：渲染</p>
 </a>
           </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          undefined class="md-toc-link">
+          <a href="#六一样式" class="md-toc-link">
             <p>六（一）：样式</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          undefined class="md-toc-link">
+          <a href="#六二布局" class="md-toc-link">
             <p>六（二）：布局</p>
 
           </a></div>
@@ -148,19 +148,19 @@
       </details>
     <details style="padding:0;;padding-left:24px;" open="">
         <summary class="md-toc-link-wrapper">
-          undefined class="md-toc-link"><p>七： 绘制</p>
+          <a href="#七-绘制" class="md-toc-link"><p>七： 绘制</p>
 </a>
           </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          undefined class="md-toc-link">
+          <a href="#七一-合成" class="md-toc-link">
             <p>七（一）: 合成</p>
 
           </a></div>
         </div>
       </details>
     <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          undefined class="md-toc-link">
+          <a href="#八-交互" class="md-toc-link">
             <p>八： 交互</p>
 
           </a></div>

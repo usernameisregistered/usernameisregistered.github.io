@@ -99,6 +99,7 @@ function changeContent(filePath) {
       );
       return match.replace($1, `/chapter/${findKey(fileFullPath)}.html`);
     }
+    return match
   });
   fs.writeFileSync(filePath, content);
 }
