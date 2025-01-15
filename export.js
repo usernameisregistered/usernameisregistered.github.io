@@ -14,7 +14,8 @@ function findKey(fullPath) {
 }
 
 function findPath(chapterId) {
-  return routerList.find((el) => chapterId === el.key).path;
+  const item = routerList.find((el) => chapterId === el.key);
+  return item ? item.path : "";
 }
 
 function copyDir(src, dest) {
@@ -44,6 +45,7 @@ function copyDir(src, dest) {
           console.log("目录已存在");
         }
         fs.copyFileSync(srcPath, destPath);
+        changeContentJSON(destPath);
       } else {
         fs.copyFileSync(srcPath, destPath);
         if ([".css", ".html", ".js"].includes(path.extname(destPath))) {
@@ -82,31 +84,33 @@ function exportFile(output, inputDir) {
   fs.rmSync(path.join(process.cwd(), "chapter.json"));
 }
 
+function changeContentJSON(filePath) {
+  let content = fs.readFileSync(filePath).toString();
+  let hrefReg = /<a[^href]*href=\\"([^\\"]*)\\"/g;
+  content = content.replace(hrefReg, (match, $1) => {
+    if ($1[0] === ".") {
+      const chapterId = path.basename(filePath).slice(0, -5);
+      const fullPath = findPath(chapterId);
+      if (fullPath) {
+        const fileFullPath = path.join(
+          path.dirname(fullPath),
+          decodeURIComponent($1)
+        );
+        return match.replace($1, `/chapter/${findKey(fileFullPath)}`);
+      }
+      return match;
+    }
+    return match;
+  });
+  fs.writeFileSync(filePath, content);
+}
+
 function changeContent(filePath) {
   let content = fs.readFileSync(filePath).toString();
   content = content.replace(/\/_next/g, "");
   content = content.replace(/\/image\?url=[^"]*/g, "/frontend.jpeg");
   content = content.replace(/\/_next\//g, "/");
   content = content.replace('.replace(/^\\\\/data\\//,"")', "");
-  let hrefReg = /<a[^href]*href=\"([^\"]*)\"/g;
-  let replacelinks = {}
-  content = content.replace(hrefReg, (match, $1) => {
-    if ($1[0] === ".") {
-      const chapterId = path.basename(filePath).slice(0, -5);
-      const fullPath = findPath(chapterId);
-      const fileFullPath = path.join(
-        path.dirname(fullPath),
-        decodeURIComponent($1)
-      );
-      replacelinks[$1] = `/chapter/${findKey(fileFullPath)}`
-      return match.replace($1, `/chapter/${findKey(fileFullPath)}`);
-    }
-    return match
-  });
-  for(let key in replacelinks){
-    content = content.replaceAll(key, replacelinks[key])
-  }
   fs.writeFileSync(filePath, content);
 }
-
 exportFile(outputDir, path.join(process.cwd(), "build"));
