@@ -85,7 +85,7 @@ async function getClassifyBooks(classifyPath) {
         fullPath: bookPath,
         chapterList: await getBookChapters(bookPath),
         type: "book",
-        url: `/chapter/${id}_${chapterInitId}`,
+        url: `/chapter/${id}_${chapterInitId}.html`,
       };
       bookIdLists.push(id)
       result.push(bookInfo);
@@ -118,7 +118,7 @@ async function getBookChapters(bookPath) {
           type: "chapter",
           name: path.basename(chapter).slice(0, -3).replace(/^\d*/, ""),
           fullPath: chapterPath,
-          url: `/chapter/${bookId}_${charpterId}`,
+          url: `/chapter/${bookId}_${charpterId}.html`,
           content: await parseMarked(chapterPath),
         };
         chapterInfos.push({key: `${bookId}_${charpterId}`, path: chapterPath})

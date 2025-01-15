@@ -88,21 +88,18 @@ function changeContent(filePath) {
   content = content.replace(/\/image\?url=[^"]*/g, "/frontend.jpeg");
   content = content.replace(/\/_next\//g, "/");
   content = content.replace('.replace(/^\\\\/data\\//,"")', "");
-  content = content.replace(/<script id="__NEXT_DATA__" type="application\/json">[\s\S]*<\/script>/gm, "<script id=\"__NEXT_DATA__\" type=\"application/json\">{}</script>")
   let hrefReg = /<a[^href]*href=\"([^\"]*)\"/g;
-  let result;
-  while ((result = hrefReg.exec(content)) !== null) {
-    if (result[1][0] === ".") {
+  content = content.replace(hrefReg, (match, $1) => {
+    if ($1[0] === ".") {
       const chapterId = path.basename(filePath).slice(0, -5);
       const fullPath = findPath(chapterId);
       const fileFullPath = path.join(
         path.dirname(fullPath),
-        decodeURIComponent(result[1])
+        decodeURIComponent($1)
       );
-      const url = `/chapter/${findKey(fileFullPath)}`;
-      content = content.replace(result[1], url);
+      return match.replace($1, `/chapter/${findKey(fileFullPath)}.html`);
     }
-  }
+  });
   fs.writeFileSync(filePath, content);
 }
 
