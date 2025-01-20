@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{title}}-{{subhead}}</title>
+    <link rel="preload" href="/assets/images/logo.svg" as="image" />
+    <link rel="stylesheet" href="/assets/styles/main.css" />
+  </head>
+  <body>
+    <div
+      class="w-screen h-screen overflow-hidden flex items-center"
+    >
+      <main class="flex w-screen flex-col gap-8 items-center">
+        <img
+          src="/assets/images/logo.svg"
+          alt="{{title}}"
+          class="mr-2 w-[80px] h-[80px]"
+        />
+        <div class="text-3xl text-sky-300">
+          {{title}}<span class="relative top-2 left-3 text-base text-sky-200"
+            >{{subhead}}</span
+          >
+        </div>
+
+        <div class="text-2xl">{{description}}</div>
+
+        <div class="flex gap-4 items-center flex-col sm:flex-row">
+          <a
+            class="rounded-full border border-solid border-neutral-300 bg-neutral-200 transition-colors flex items-center justify-center text-background gap-2 text-md h-12 px-4 w-40 hover:border-transparent hover:bg-sky-400"
+            href="/classify.html"
+          >
+            <img
+              class="mr-2 w-[20px] h-[20px]"
+              src="/assets/images/begin.svg"
+              alt="开始"
+            />
+            开始
+          </a>
+          <a
+            class="rounded-full border border-solid border-black/[.08] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] hover:border-transparent text-md h-12 px-4 w-40"
+            href="mailto:{{author}}"
+            title="{{author}}"
+          >
+            <img class="mr-4 w-[20px] h-[20px]" src="/assets/images/connect.svg" alt="开始" />
+            联系
+          </a>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
