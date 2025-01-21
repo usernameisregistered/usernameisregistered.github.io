@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>_导论-数字图像处理导论-得鹿梦鱼</title>
+  <title>计算机图形学基础知识-计算机图形学及实用编程技术-得鹿梦鱼</title>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
   <link rel="stylesheet" href="/assets/styles/main.css" />
   <link rel="stylesheet" href="/assets/styles/katex/common.css" />
@@ -30,11 +30,25 @@
     <main class="flex-grow-1 overflow-hidden scrollHeight">
       <div class="w-screen flex flex-1">
         <aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
-          <div class="text-md font-bold text-gray-700 m-4">数字图像处理导论</div>
+          <div class="text-md font-bold text-gray-700 m-4">计算机图形学及实用编程技术</div>
           <div class="overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar flex flex-col">
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10012_100000.html">_导论
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10012_100000.html">计算机图形学基础知识
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10012_100001.html">_人类视觉和色度学的基本知识
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10012_100001.html">直线的生成算法BresenHam
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10012_100002.html">直线的生成算法_DDA
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10012_100003.html">圆的生成算法_中点画圆算法
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10012_100004.html">椭圆的生成算法_中点椭圆算法
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10012_100005.html">一个加权剖分简单多边形为凸多边形的算法
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10012_100006.html">一种凹多边形凸分解的全局剖分算法
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10012_100007.html">改进的加权剖分简单多边形为凸多边形的算法
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10012_100008.html">边界填充算法
             </a>
           </div>
         </aside>
@@ -45,43 +59,33 @@
     
       <div class="crossnote markdown-preview  ">
       
-<h1 id="数字图像处理的研究对象">数字图像处理的研究对象 </h1>
-<p>图像： 对客观存在的物体的一种相似性的生动模仿或者描述</p>
-<p>数字图像处理： 用数字计算机以及其他有关数字技术，对图像施加某种运算和处理，从而达到某种预想的目的</p>
-<p>研究内容：<br>
-图像的数字化：研究如何把一幅光学图像表示成一组数字，既不失真也便于计算机分析处理<br>
-图像的增强： 增强图像中的有用信息，削弱干扰和噪声，以便于观察识别和进一步的分析和处理。增强后的图像未必和原图一致<br>
-图像恢复： 把退化、模糊了的图像复原<br>
-图像编码： 在满足一定的保真度要求下，简化图像的表示，从而大大压缩表示图像的数据，以便存储和传输<br>
-图像重建： 有图像投影数据重建该图像<br>
-图像分析：对图像中的不同对象进行分割、分裂、识别和描述、解释</p>
-<h2 id="数字图像处理系统的组成">数字图像处理系统的组成 </h2>
-<p><img src="/assets/1000015.png" alt="数字图像处理系统的一般组成"></p>
-<p>数字化器是吧连续明暗(或彩色)图像转变为计算机可以接受的数字图像的设备；最常用的数字化器有摄像机、飞点扫描器和显微密度仪等</p>
-<h2 id="数字图像处理的若干重要应用">数字图像处理的若干重要应用 </h2>
-<p>通讯技术：图像传真、电视电话、卫星通讯、数字电视<br>
-宇宙探索：其他星体图片处理<br>
-遥感技术：农林资源调查、作物长势监视、自然灾害监视等<br>
-生物医学：x射线、超声、显微图片分析、核磁共振分析<br>
-工业生产：石油勘察、生产过程的自动化、工业机器人视觉<br>
-计算机科学：文字、图像输入的研究；计算机辅助设计、人工智能研究</p>
+<h1 id="00计算机图形学基础知识">00计算机图形学基础知识 </h1>
+<h2 id="研究内容">研究内容 </h2>
+<ol>
+<li>基于图形设备的基本图形元素的生成生成算法</li>
+<li>图形元素的几何变换</li>
+<li>自由曲线和曲面的插值、拟合、拼接、分解、过渡等</li>
+<li>三维几何造型技术</li>
+<li>三维形体的实时显示</li>
+<li>真实感图形的生成算法</li>
+<li>科学计算可视化或者三维、高维数据场的可视化</li>
+</ol>
+<blockquote>
+<p>更多的内容请参考计算机图形学章中的<a href="/10011_100000.html">概要</a></p>
+</blockquote>
 
       </div>
       <div class="md-sidebar-toc">
 <div class="md-toc">
 <details style="padding:0;;padding-left:0px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#数字图像处理的研究对象" class="md-toc-link"><p>数字图像处理的研究对象</p>
+          <a href="#00计算机图形学基础知识" class="md-toc-link"><p>00计算机图形学基础知识</p>
 </a>
           </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#数字图像处理系统的组成" class="md-toc-link">
-            <p>数字图像处理系统的组成</p>
-
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#数字图像处理的若干重要应用" class="md-toc-link">
-            <p>数字图像处理的若干重要应用</p>
+          <a href="#研究内容" class="md-toc-link">
+            <p>研究内容</p>
 
           </a></div>
         </div>

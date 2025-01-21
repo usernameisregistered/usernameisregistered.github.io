@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>_三维物体的建模和表示(1)-3D计算机图形学-得鹿梦鱼</title>
+  <title>_人类视觉和色度学的基本知识-数字图像处理导论-得鹿梦鱼</title>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
   <link rel="stylesheet" href="/assets/styles/main.css" />
   <link rel="stylesheet" href="/assets/styles/katex/common.css" />
@@ -30,19 +30,11 @@
     <main class="flex-grow-1 overflow-hidden scrollHeight">
       <div class="w-screen flex flex-1">
         <aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
-          <div class="text-md font-bold text-gray-700 m-4">3D计算机图形学</div>
+          <div class="text-md font-bold text-gray-700 m-4">数字图像处理导论</div>
           <div class="overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar flex flex-col">
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10010_100000.html">_ 计算机图形学的数学基础
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10010_100000.html">_导论
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10010_100001.html">_三维物体的建模和表示(1)
-            </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10010_100002.html">_三维物体的表示和建模(2)
-            </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10010_100003.html">_表示和绘制
-            </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10010_100004.html">第一章 计算机图形学的数学基础
-            </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10010_100005.html">第二章 三维物体的表示和建模
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10010_100001.html">_人类视觉和色度学的基本知识
             </a>
           </div>
         </aside>
@@ -53,159 +45,122 @@
     
       <div class="crossnote markdown-preview  ">
       
-<h1 id="引言">引言 </h1>
-<p>三维计算机图形学的主要目的就是从物体的描述或模型产生物体或者场景的二维图像。物体可以是一个实际的物体也可以只是计算机上的一种计算机描述，</p>
-<p>按照使用频率的大概顺序列出计算机图形学中使用的主流模型</p>
-<ol>
-<li>多边形</li>
-</ol>
-<p>物体使用多边形小平面组成的网或者网格来近似表示，用这种形式我们可以按照所选的精确度来表示任何形状的物体，然而，在这里精确度却有些随意，</p>
-<ol start="2">
-<li>
-<p>双三次参数曲面片<br>
-这些曲面片是“弯曲的四面体”，一把来讲，可以说这种表示方法和多边形网格类似，只是这是各个多边形的表面变成了弯曲的，每一个曲面片都用一个数学公式来定义，该公式给出曲面片在三维空间中的位置以及形状，这个公式是我们能够产生改曲面片表面上的每一个点，我们可以通过改变数学定义来改变曲面片的形状曲率。这导致了很强的交互能力，然而问题也是明显的，要绘制或可视化曲面片是非常昂贵的，当改变曲面片网中的一个曲面片的形状时，出现了如何保持曲面片之间的光滑性的问题，双三次参数曲面片可以是精确的表示也可以是近似的表示，他们只能是其自身的精确表示，这个令人烦恼的说明是必要的，因为当将表示用于真实的或现存的物体时，模拟出的形状不必与物体的表面相对应。</p>
-</li>
-<li>
-<p>构造几何实体（CSG）<br>
-在一定的刚性形状限制的范围内这是一种精确的表示，通过将基元形状与几何基元结合，可以表示很多构造出来的物体，例如，一块带有孔的金属可以定义为一个矩形实体和一个圆柱体之间的相减而产生的结果。</p>
-</li>
-<li>
-<p>空间细分技术<br>
-这种技术只是意味着吧物体空间细分为基本的立方体，称为体素。在吧每一个体素标记为空或者含有物体的某部分，吧二维物体表示为一些像素的集合，这些像素是物体的投影点，三维表示与之类似，用这种方式标记所有的三维物体空间肯定是昂贵的，但是这种方式确实在计算机中得到了应用，特别是光线跟踪中，如果物体被以这种方式表示，则会产生高效的算法。</p>
-</li>
-<li>
-<p>隐式表示<br>
-一种表示物体的隐函数，例如一个隐函数为<br>
-<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>+</mo><msup><mi>z</mi><mn>2</mn></msup><mo>=</mo><msup><mi>r</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">x^2 + y^2 + z^2 = r^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9474em;vertical-align:-0.0833em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0585em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8641em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8641em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span><br>
-这是一个球的定义，就自身而言，这种隐函数在计算机图形学中的用途有限，因为只有有限数量的物体可以使用这种方式来定义，而且从绘制的角度考虑这是一种不方便的表示方法。然后我们必须注意到。，这种表示方法确实在三维计算机图形学中出现，尤其是在光线跟踪中，光线跟踪方法中经常用到球，它或者是作为物体本身出现，或者是用于其他多边形网格表示的限定物体</p>
-</li>
-</ol>
-<h1 id="三维物体的多边形表示">三维物体的多边形表示 </h1>
-<p>这是一种三维计算图形学中经典的表示形式，这这种表示法中。物体用多边形小平面组成的网格来表示，在一般情况下，物体具有曲面，而这些小平面是对这样的平面的近似。多边形可以包含一个顶点计数，该计数来自创建模型所采用的技术，或许我们可以将所有多的多边形都限制为三角形，</p>
-<h3 id="多边形的属性">多边形的属性 </h3>
-<ul>
-<li>是不是三角形</li>
-<li>面积</li>
-<li>包含多边形平面的法向</li>
-<li>包含多边形的平面的系数（A,B,C,D）其中Ax + By + Cz = D</li>
-<li>是否为凸多边形</li>
-<li>平面是否有洞</li>
-</ul>
-<h3 id="边属性">边属性 </h3>
-<ul>
-<li>长度</li>
-<li>边是位于2个多边形之间还是位于2个平面之间</li>
-<li>该边的每一侧的多边形</li>
-</ul>
-<h3 id="顶点属性">顶点属性 </h3>
-<ul>
-<li>包含该顶点的多边形</li>
-<li>明暗处理或者顶点法向 包含该顶点的多边形法矢量的平均值</li>
-<li>指定映射到二维纹理图像的纹理坐标</li>
-</ul>
-<h2 id="创建多边形物体">创建多边形物体 </h2>
-<p>四个常用的多边形建模方法</p>
-<ul>
-<li>使用三维数字化仪或者采用等价的手工策略</li>
-<li>使用像激光测距仪这样的自动化设备</li>
-<li>是数学描述产生一个物体</li>
-<li>通过扫描产生一个物体</li>
-</ul>
-<h1 id="物体的构造实体几何表示">物体的构造实体几何表示 </h1>
-<p>我们把前面论述的方法（多边形网格法）归类为机器表示法，它也经常被用作为用户表示法，CSG方法在很大程度也是一种用户表示法，它需要特殊的绘制技术，或者需要在表示之前转换为多边形网格模型，这是一种高层次的表示方法，它既可以作为一种形状表示，也可以作为物体如何构造的一种记录，在这种表示中，形状的逻辑是最终的形状如何以基元形状的某种结合来表示。</p>
-<h1 id="物体表示得空间细分技术">物体表示得空间细分技术 </h1>
-<h2 id="八叉树和多边形">八叉树和多边形 </h2>
-<p>在计算机图形学中八叉树的最广发用途是将一个含有很多物体（其中每一个物体都是由很多多边形组成的）的场景组成的一种空间占用结构，</p>
-<p>场景分解八叉树控制因素</p>
-<ol>
-<li>每个结点的候选多边形的最小数目</li>
-<li>八叉树的最大深度 深度越深，分解越多，叶结点上的候选多边形越少</li>
-</ol>
-<h2 id="bsp树二叉空间分割树">BSP树【二叉空间分割树】 </h2>
-<p>它是为了特定的目的进行空间分解的一种方法，最常用的情况是隐藏面的消除。</p>
-<h2 id="创建体素实体">创建体素实体 </h2>
-<h1 id="用隐函数表示物体">用隐函数表示物体 </h1>
-<p>用隐含方法所建立的表示是通过隐含地吧物体定义部件的思想来表示物体的</p>
-<h1 id="场景管理和物体表示">场景管理和物体表示 </h1>
-<h2 id="多边形网格优化">多边形网格优化 </h2>
-<ul>
-<li>
-<p>网格简化 将多边形减少到满足所要求的质量的适当水平</p>
-</li>
-<li>
-<p>细节近似水平 适合于观察距离所用的水平，</p>
-</li>
-<li>
-<p>渐进式的变换</p>
-</li>
-<li>
-<p>网格压缩</p>
-</li>
-<li>
-<p>选择性改进</p>
-</li>
-</ul>
+<h1 id="人眼的构造">人眼的构造 </h1>
+<p>人眼是一个平均半径为20mm的球状器官，它有三层薄膜包围着，<br>
+最外层是坚硬的蛋白质膜，其中。位于前方大约1/6部分为有弹性的透明组织，称为角膜，光线从这里进入，其他为不透明组织，称为功能巩膜，它的作用是巩固和保护整个眼球</p>
+<p>中间一层是由虹膜和脉络膜组成，虹膜的中间有一个圆孔，称为瞳孔，它的大小可以由连接虹膜的环状肌肉组织来调节，以控制进入眼睛内部的光通量大小，其作用和照相机中的光圈一样。随着种族的不同，虹膜也具有不同的颜色</p>
+<p>最后一层为视网膜，它的表面有大量光敏细胞。按照形状，这些光敏细胞可以分为锥状和杆状2类。每只眼睛大约有600完到700万个锥状细胞，并集中分布在视轴和视网膜相交点附近的黄斑区，每个锥状细胞都连接一个神经末梢，因此，黄斑区对光有较高的分辨力，能充分识别图形的细节，锥状细胞既可以分辨光的强弱，也可以辨别颜色，白天的视觉过程主要是靠锥状细胞完成，所有锥状视觉又称白昼视觉，杆状细胞数目更多，每只眼睛大约有7600万到15000万个，然而，偶遇它广泛分布在整个视网膜表面上，并且，由于有若干个杆状细胞同时连接在一根神经上，因此这条神经只能感受多个杆状细胞的平均光刺激，使得在这些区域的视觉分辨力明显下降。因此无法辨别图像中的细微差别。而只能感知视野中景物的总的形象。杆状细胞不能感觉彩色，但它对底照明度额景物往往比较敏感。所以，夜晚所观察到的景物只有黑白、浓淡之分，而看不清他的颜色区别。由于夜晚的视觉主要过程是由杆状细胞完成的，所以。杆状视觉有被称为夜视觉。</p>
+<p>除了三层薄膜外，在瞳孔后面还有一个扁球形的透明体，被称为水晶体；它有许多同心的纤维细胞层组成，有叫做睫状小带的肌肉支撑着，水晶体的作用如果可变焦距的一个透镜，它的曲率可以有睫状肌的收缩进行调节。而睫状肌则根据锥状细胞感受到的景物的聚焦情况改变其张力，从而使景象始终能刚好的聚集与黄斑区</p>
+<p>角膜和水晶体包围的空间称为前室。前室内是对可见光透明的水状液体，它能吸收一部分紫外光。水晶体以后称为后室，后室内充满的胶质透明体称为玻璃体。它起着保护眼睛的滤光作用</p>
+<p>人眼在观察景物时，光线通过角膜、前室水状液、水晶体、后室玻璃体，成像在视网膜的黄斑区周围。视网膜上的光敏细胞感受到不同的光刺激，产生不同的电脉冲。并经神经纤维传送到视神经中枢，由于不同位置的光敏细胞产生了和该处光强弱成比例的电脉冲，所以，大脑中便形成了一幅景象的感觉。</p>
+<h2 id="光度学的基本知识">光度学的基本知识 </h2>
+<h3 id="电磁辐射和可见光谱">电磁辐射和可见光谱 </h3>
+<p><img src="/assets/images/1000015.png" alt="点此辐射波普"></p>
+<h3 id="相对视敏函数">相对视敏函数 </h3>
+<p>在辐射功率相同的情况下，不同波长的光不仅给人以不同的彩色感觉，而且也给人不同的亮度感觉</p>
+<p>在获得相同的亮度感觉前提下。测出各种波长的辐射功率<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>λ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(\lambda)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathnormal">λ</span><span class="mclose">)</span></span></span></span>，那么其倒数<br>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mtable width="100%"><mtr><mtd width="50%"></mtd><mtd><mrow><mi>K</mi><mo stretchy="false">(</mo><mi>λ</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mn>1</mn><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>λ</mi><mo stretchy="false">)</mo></mrow></mfrac></mrow></mtd><mtd width="50%"></mtd><mtd><mtext>(1)</mtext></mtd></mtr></mtable><annotation encoding="application/x-tex">K(\lambda) = \frac{1}{P(\lambda)} \tag{1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span><span class="mopen">(</span><span class="mord mathnormal">λ</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.2574em;vertical-align:-0.936em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathnormal">λ</span><span class="mclose">)</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span><span class="tag"><span class="strut" style="height:2.2574em;vertical-align:-0.936em;"></span><span class="mord text"><span class="mord">(</span><span class="mord"><span class="mord">1</span></span><span class="mord">)</span></span></span></span></span></span><br>
+便称为波长为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi></mrow><annotation encoding="application/x-tex">\lambda</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">λ</span></span></span></span>的光的视敏度，显然，它越大，获得相同亮度感觉，波长为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi></mrow><annotation encoding="application/x-tex">\lambda</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">λ</span></span></span></span>的光需要辐射的功率越少，说明人眼对这种波长的光有较高的灵敏度。<br>
+实践表明；人眼对波长为555nm的光有最大的光敏度</p>
+<h3 id="光通量">光通量 </h3>
+<p>对于任意可见光源来说，<br>
+在其波长范围为380~780nm内，人眼接受的总通量定义为<br>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>F</mi><mo>=</mo><msubsup><mi>f</mi><mn>380</mn><mn>780</mn></msubsup><mi>P</mi><mo stretchy="false">(</mo><mi>λ</mi><mo stretchy="false">)</mo><mi>V</mi><mo stretchy="false">(</mo><mi>λ</mi><mo stretchy="false">)</mo><mi>d</mi><mi>λ</mi></mrow><annotation encoding="application/x-tex">F = f^{780}_{380}P(\lambda)V(\lambda)d\lambda</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1141em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-2.453em;margin-left:-0.1076em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">380</span></span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">780</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathnormal">λ</span><span class="mclose">)</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mopen">(</span><span class="mord mathnormal">λ</span><span class="mclose">)</span><span class="mord mathnormal">d</span><span class="mord mathnormal">λ</span></span></span></span></span></p>
+<p>国际通用的光通量的单位是流明(lm),国际照明委员会规定：<strong>绝对黑体在铂的凝固温度下（2045K）从5.305 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>×</mo><msup><mn>10</mn><mrow><mo>−</mo><mn>3</mn></mrow></msup><mi>c</mi><msup><mi>m</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\times 10^{-3}cm^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord">×</span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">3</span></span></span></span></span></span></span></span></span><span class="mord mathnormal">c</span><span class="mord"><span class="mord mathnormal">m</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>面积上辐射的光通量为1lm</strong>。1Wf辐射功率的555nm的单色光所产生的光通量为680lm。于是得到<br>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mn>1</mn><mi>W</mi><mo>=</mo><mn>680</mn><mi>l</mi><mi>m</mi></mrow><annotation encoding="application/x-tex">1W=680lm</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">1</span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord">680</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">m</span></span></span></span></span></p>
+<h3 id="发光强度">发光强度 </h3>
+<p>光源在单位立体角内发出的光通量称为发光强度，简称光强。用I表示。<br>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>I</mi><mo>=</mo><mfrac><mrow><mi>d</mi><mi>F</mi></mrow><mrow><mi>d</mi><mi>ω</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">I = \frac{dF}{d\omega}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0574em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p>发光强度在国际单位制中。其单位是坎德拉<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>c</mi><mi>d</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(cd)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">c</span><span class="mord mathnormal">d</span><span class="mclose">)</span></span></span></span>发出540<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>×</mo><msup><mn>10</mn><mn>12</mn></msup><mi>H</mi><mi>z</mi></mrow><annotation encoding="application/x-tex">\times 10^{12}Hz</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord">×</span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">12</span></span></span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.04398em;">Hz</span></span></span></span>频率的单色光源在给定方向上的发光强度为1cd</p>
+<h3 id="亮度">亮度 </h3>
+<p>亮度是用来描述发光表面的明亮程度。它可以定义为光源单位面积在法线方向的发光强度。记为光源亮度<br>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>B</mi><mo>=</mo><mfrac><mi>I</mi><mrow><mi>d</mi><mi>s</mi><mi>cos</mi><mo>⁡</mo><mi>α</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>d</mi><mi>F</mi></mrow><mrow><mi>d</mi><mi>s</mi><mi>d</mi><mi>ω</mi><mi>cos</mi><mo>⁡</mo><mi>α</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">B =  \frac{I}{ds\cos\alpha} = \frac{dF}{dsd\omega\cos\alpha}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0463em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3603em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">cos</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">I</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0574em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="mord mathnormal">s</span><span class="mord mathnormal">d</span><span class="mord mathnormal" style="margin-right:0.03588em;">ω</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">cos</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">d</span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<h3 id="照度">照度 </h3>
+<p>受照面上某点的照度E是通过包含该点单位面积的光通量</p>
+<h2 id="人眼的的视觉特性">人眼的的视觉特性 </h2>
+<h3 id="明暗和彩色视觉">明暗和彩色视觉 </h3>
+<p>彩色视觉是一种明视觉，它可以用亮度、色调和饱和度三个量来描述，称为彩色三要素</p>
+<p>亮度：指彩色光引起的人眼对明暗程度的感觉，显然亮度和照射光的强度有关<br>
+色调：指光的颜色。红橙黄绿青蓝紫等都表示光的不同色调。<br>
+饱和度：指颜色的深浅程度<br>
+色调和饱和度又合称为色度。它即表示色光颜色的类别也表示颜色的深浅程度</p>
+<h3 id="视觉范围和分辨力">视觉范围和分辨力 </h3>
+<p>视觉范围是指人眼所能感受的亮度范围。<br>
+人眼的分辨力是指人眼在一定距离上能分开相近两点的能力。</p>
+<h3 id="视觉适应性">视觉适应性 </h3>
+<p>人眼适应暗环境的能力称为暗适应性。通常这种适应过程约需30min</p>
+<p>视觉惰性：人眼对亮度的突变并不是马上适应的，而是需要一定的过渡过程时间，人眼对这种亮度改变进行跟踪的滞后性称为视觉惰性</p>
+<h3 id="三基色原理">三基色原理 </h3>
+<p>亮度公式Y = 0.299R + 0.587G + 0.114B</p>
 
       </div>
       <div class="md-sidebar-toc">
 <div class="md-toc">
-<div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
-          <a href="#引言" class="md-toc-link">
-            <p>引言</p>
-
-          </a></div><details style="padding:0;;padding-left:0px;" open="">
+<details style="padding:0;;padding-left:0px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#三维物体的多边形表示" class="md-toc-link"><p>三维物体的多边形表示</p>
+          <a href="#人眼的构造" class="md-toc-link"><p>人眼的构造</p>
+</a>
+          </summary>
+        <div>
+          <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#光度学的基本知识" class="md-toc-link"><p>光度学的基本知识</p>
 </a>
           </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#创建多边形物体" class="md-toc-link">
-            <p>创建多边形物体</p>
+          <a href="#电磁辐射和可见光谱" class="md-toc-link">
+            <p>电磁辐射和可见光谱</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#相对视敏函数" class="md-toc-link">
+            <p>相对视敏函数</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#光通量" class="md-toc-link">
+            <p>光通量</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#发光强度" class="md-toc-link">
+            <p>发光强度</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#亮度" class="md-toc-link">
+            <p>亮度</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#照度" class="md-toc-link">
+            <p>照度</p>
 
           </a></div>
         </div>
       </details>
-    <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
-          <a href="#物体的构造实体几何表示" class="md-toc-link">
-            <p>物体的构造实体几何表示</p>
-
-          </a></div><details style="padding:0;;padding-left:0px;" open="">
+    <details style="padding:0;;padding-left:24px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#物体表示得空间细分技术" class="md-toc-link"><p>物体表示得空间细分技术</p>
+          <a href="#人眼的的视觉特性" class="md-toc-link"><p>人眼的的视觉特性</p>
 </a>
           </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#八叉树和多边形" class="md-toc-link">
-            <p>八叉树和多边形</p>
+          <a href="#明暗和彩色视觉" class="md-toc-link">
+            <p>明暗和彩色视觉</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#bsp树二叉空间分割树" class="md-toc-link">
-            <p>BSP树【二叉空间分割树】</p>
+          <a href="#视觉范围和分辨力" class="md-toc-link">
+            <p>视觉范围和分辨力</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#创建体素实体" class="md-toc-link">
-            <p>创建体素实体</p>
+          <a href="#视觉适应性" class="md-toc-link">
+            <p>视觉适应性</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#三基色原理" class="md-toc-link">
+            <p>三基色原理</p>
 
           </a></div>
         </div>
       </details>
-    <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
-          <a href="#用隐函数表示物体" class="md-toc-link">
-            <p>用隐函数表示物体</p>
-
-          </a></div><details style="padding:0;;padding-left:0px;" open="">
-        <summary class="md-toc-link-wrapper">
-          <a href="#场景管理和物体表示" class="md-toc-link"><p>场景管理和物体表示</p>
-</a>
-          </summary>
-        <div>
-          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#多边形网格优化" class="md-toc-link">
-            <p>多边形网格优化</p>
-
-          </a></div>
+    
         </div>
       </details>
     

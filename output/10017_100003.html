@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>地球信息科学和数字地球-GIS原理(三)-得鹿梦鱼</title>
+  <title>地图瓦片在Canvas上的拼接显示原理-WebGIS(三)-得鹿梦鱼</title>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
   <link rel="stylesheet" href="/assets/styles/main.css" />
   <link rel="stylesheet" href="/assets/styles/katex/common.css" />
@@ -30,19 +30,19 @@
     <main class="flex-grow-1 overflow-hidden scrollHeight">
       <div class="w-screen flex flex-1">
         <aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
-          <div class="text-md font-bold text-gray-700 m-4">GIS原理(三)</div>
+          <div class="text-md font-bold text-gray-700 m-4">WebGIS(三)</div>
           <div class="overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar flex flex-col">
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100000.html">MapServer应用范围
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100000.html">杂谈
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100001.html">地理信息系统和社会
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100001.html">WebGIS前端地图比例尺换算原理
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100002.html">地理信息系统标准
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100002.html">前端根据地理范围换算出瓦片行列号的原理(核心)
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100003.html">地球信息科学和数字地球
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100003.html">地图瓦片在Canvas上的拼接显示原理
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100004.html">地理信息系统软件工程技术
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100004.html">栅格、矢量图层的本质
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100005.html">地理信息系统应用项目组织和管理
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100005.html">地理坐标与屏幕坐标间的转换原理
             </a>
           </div>
         </aside>
@@ -53,57 +53,36 @@
     
       <div class="crossnote markdown-preview  ">
       
-<h1 id="地球信息科学和数字地球">地球信息科学和数字地球 </h1>
-<h2 id="地球信息科学">地球信息科学 </h2>
-<p>地理信息科学是1992年Goodchild提出的，与地理信息系统相比，它更加侧重于将地理信息视作为一门科学，而不仅仅是一个技术实现，主要研究在应用计算机技术对地理信息进行处理、存储、提取以及管理和分析过程中提出的一系列基本问题,包括：分布式计算、地理信息的认知、地理信息的互操作、比例尺、空间信息基础设施的未来、地理数据的不确定性和基于GIS的分析、GIS和社会、地理信息系统在环境中的空间分析、空间数据的获取和集成等等</p>
-<h2 id="数字地球的产生背景以及其概念">数字地球的产生背景以及其概念 </h2>
-<p>数字地球的科学背景，包括地理信息科学，地球信息科学等一系列学科，这些学科的发展，为数字地球的产生打下了理论基础；对地观测系统以及计算机网络的发展为数字地球提供了技术支持；全球变化和可持续发展的研究对数字地球的出现起到了推动作用</p>
-<p><img src="/assets/1000053.png" alt="数字地球和其它理论以及技术的关系"></p>
-<p>数字地球是指数字化的三维显示的虚拟地球，或指信息化的地球，包括数字化、网络化、智能化和可视化的地球技术系统<br>
-实施数字地球计划，需要有政府、企业和学术界的共同协力参加。实施数字地球计划是社会的行为，需要全社会的关心和支持<br>
-数字地球是一次新的技术革命，将改变人类的生产和生活方式，进一步促进科学技术的发展和推动社会经济的进步</p>
-<h2 id="数字地球核心技术综述">数字地球核心技术综述 </h2>
-<ol>
-<li>高分辨率卫星遥感数据的快速获取技术</li>
-<li>地球空间数据的存储和处理</li>
-<li>超媒体空间信息系统</li>
-<li>地理信息的分布式计算</li>
-<li>无比例尺数据库</li>
-<li>空间数据仓库</li>
-<li>空间数据融合</li>
-<li>虚拟现实技术</li>
-<li>元数据</li>
-</ol>
-<h2 id="国家信息基础设施和国家空间数据基础设施">国家信息基础设施和国家空间数据基础设施 </h2>
-<p>国家信息基础设施是一个能够给用户随时提供大容量信息的，由通信网络、计算机、数据库以及日用电子产品组成的完备的网络系统</p>
-<p>国家空间数据基础设施(NSDI)是国家信息基础设施之后的又一个国家级信息基础设施，其目的是为了协调基础地理空间数据集的收集、管理、分发和共享的基础设施。<br>
-空间数据基础设施主要由四个部分组成：数据交互网络体系、基础数据集、法规与标准、机构体系。<br>
-从技术的角度来看，其内容主要有：空间数据标准，基础空间框架数据，空间数据交换网络以及元数据等等。</p>
-
+<h1 id="地图瓦片在canvas上的拼接显示原理">地图瓦片在Canvas上的拼接显示原理 </h1>
+<h2 id="任意瓦片屏幕坐标的计算">任意瓦片屏幕坐标的计算 </h2>
+<p>offSetX、offSetY：最左上角瓦片的屏幕坐标</p>
+<p>clipX、clipY：目前瓦片的行列号</p>
+<p>fixedTileLeftTopNumY、fixedTileLeftTopNumY：最左上角瓦片的行列号</p>
+<p>tileSize：瓦片大小（一张瓦片的像素）</p>
+<p>coord:目前瓦片的屏幕坐标</p>
+<p>coord.x = offSetX + ( clipX - fixedTileLeftTopNumX)* tileSize;</p>
+<p>coord.y = offSetY + ( clipY - fixedTileLeftTopNumY)* tileSize;</p>
+<h2 id="瓦片拼接流程">瓦片拼接流程 </h2>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>遍历x轴上瓦片
+    遍历y轴上的瓦片
+      获得当前遍历到的瓦片的屏幕坐标，通过瓦片URL下载后，添加到canvas对应的坐标  
+</code></pre>
       </div>
       <div class="md-sidebar-toc">
 <div class="md-toc">
 <details style="padding:0;;padding-left:0px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#地球信息科学和数字地球" class="md-toc-link"><p>地球信息科学和数字地球</p>
+          <a href="#地图瓦片在canvas上的拼接显示原理" class="md-toc-link"><p>地图瓦片在Canvas上的拼接显示原理</p>
 </a>
           </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#地球信息科学" class="md-toc-link">
-            <p>地球信息科学</p>
+          <a href="#任意瓦片屏幕坐标的计算" class="md-toc-link">
+            <p>任意瓦片屏幕坐标的计算</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#数字地球的产生背景以及其概念" class="md-toc-link">
-            <p>数字地球的产生背景以及其概念</p>
-
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#数字地球核心技术综述" class="md-toc-link">
-            <p>数字地球核心技术综述</p>
-
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#国家信息基础设施和国家空间数据基础设施" class="md-toc-link">
-            <p>国家信息基础设施和国家空间数据基础设施</p>
+          <a href="#瓦片拼接流程" class="md-toc-link">
+            <p>瓦片拼接流程</p>
 
           </a></div>
         </div>

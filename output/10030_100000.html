@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>.WebGL_基础概念-webGL-得鹿梦鱼</title>
+  <title>WPF体系结构-WPF教程-得鹿梦鱼</title>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
   <link rel="stylesheet" href="/assets/styles/main.css" />
   <link rel="stylesheet" href="/assets/styles/katex/common.css" />
@@ -30,15 +30,35 @@
     <main class="flex-grow-1 overflow-hidden scrollHeight">
       <div class="w-screen flex flex-1">
         <aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
-          <div class="text-md font-bold text-gray-700 m-4">webGL</div>
+          <div class="text-md font-bold text-gray-700 m-4">WPF教程</div>
           <div class="overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar flex flex-col">
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10030_100000.html">.WebGL_基础概念
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10030_100000.html">WPF体系结构
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10030_100001.html">.webGL_工作原理
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10030_100001.html">WPF应用程序管理
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10030_100002.html">.WebGL_着色器和GLSL
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10030_100002.html">WPF窗体
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10030_100003.html">.WebGL_图像处理
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10030_100003.html">WPF布局
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10030_100004.html">WPF控件模型
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10030_100005.html">WPF依赖项属性和路由事件
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10030_100006.html">WPF键盘输入、鼠标输入、焦点处理
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10030_100007.html">WPF命令
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10030_100008.html">WPF资源
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10030_100009.html">WPF样式与模板
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10030_100010.html">WPF更换主题
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10030_100011.html">WPF数据绑定
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10030_100012.html">WPF基本图形
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10030_100013.html">WPFBrush
             </a>
           </div>
         </aside>
@@ -49,51 +69,24 @@
     
       <div class="crossnote markdown-preview  ">
       
-<h1 id="基础概念">基础概念 </h1>
-<p>WebGL仅仅是一个光栅化引擎，它可以根据你的代码绘制出点，线和三角形。 想要利用WebGL完成更复杂任务，取决于你能否提供合适的代码，组合使用点，线和三角形代替实现</p>
-<p>webGL在电脑的GPU中运行，因此你需要使用能够在GPU上运行的代码。 这样的代码需要提供成对的方法。每对方法中一个叫顶点着色器， 另一个叫片段着色器，并且使用一种和C或C++类似的强类型的语言 GLSL。 (GL着色语言)。 每一对组合起来称作一个 program（着色程序）。</p>
-<p>顶点着色器的作用是计算顶点的位置。根据计算出的一系列顶点位置，WebGL可以对点， 线和三角形在内的一些图元进行光栅化处理。当对这些图元进行光栅化处理时需要使用片段着色器方法。 片段着色器的作用是计算出当前绘制图元中每个像素的颜色值。</p>
-<p>几乎整个WebGL API都是关于如何设置这些成对方法的状态值以及运行它们。 对于想要绘制的每一个对象，都需要先设置一系列状态值，然后通过调用 gl.drawArrays 或 gl.drawElements 运行一个着色方法对，使得你的着色器对能够在GPU上运行</p>
-<h2 id="着色器获取数据的4种方法">着色器获取数据的4种方法 </h2>
-<ul>
-<li>属性(attributes)和缓冲</li>
-</ul>
-<p>缓冲是发送到GPU的一些二进制数据序列，通常情况下缓冲数据包括位置，法向量，纹理坐标，顶点颜色值等。 你可以存储任何数据<br>
-属性用来指明怎么从缓冲中获取所需数据并将它提供给顶点着色器。 例如你可能在缓冲中用三个32位的浮点型数据存储一个位置值。 对于一个确切的属性你需要告诉它从哪个缓冲中获取数据，获取什么类型的数据（三个32位的浮点数据）， 起始偏移值是多少，到下一个位置的字节数是多少<br>
-缓冲不是随意读取的。事实上顶点着色器运行的次数是一个指定的确切数字， 每一次运行属性会从指定的缓冲中按照指定规则依次获取下一个值</p>
-<ul>
-<li>全局变量(Unifroms)</li>
-</ul>
-<p>全局变量在着色程序运行前赋值，在运行过程中全局有效。</p>
-<ul>
-<li>纹理(textures)</li>
-</ul>
-<p>纹理是一个数据序列，可以在着色程序运行中随意读取其中的数据，大多数情况存放的是图像数据，但是纹理仅仅是数据序列，你也可以随意存放除了颜色数据以外的其他的数据。</p>
-<ul>
-<li>可变量(varyings)</li>
-</ul>
-<p>可变量是一种顶点着色器给片段着色器传值的方式，依照渲染的图元是点、线、还是三角形，顶点着色器中设置的可变量会在片段着色器运行中获取不同的插值</p>
-<h2 id="webgl-hello-world">webgl hello world </h2>
-<p>webgl只关心两件事，裁剪空间的坐标值和颜色值，使用webgl只需要给它提供这2个东西，你需要提供2个着色器来做这2件事，</p>
-<p>一个顶点着色器提供裁剪空间坐标值，一个片段着色器提供颜色值</p>
-<p>无论你的画布有多大，裁剪空间的坐标范围永远是 -1 到 1 。</p>
+<h1 id="wpf体系结构">WPF体系结构 </h1>
+<p><img src="/assets/images/1000143.png" alt="WPF体系结构"></p>
+<p>图中PresentationFramework、PresentationCore和milcore是WPF的主要代码部分，在这些组件中，只有一个是非托管组件 – milcore。milcore 是以非托管代码编写的，目的是实现与 DirectX 的紧密集成。WPF 中的所有显示是通过 DirectX 引擎完成的，可实现高效的硬件和软件呈现。WPF 还要求对内存和执行进行精确控制。milcore 中的组合引擎受性能影响关系大，需要放弃 CLR 的许多优点来提高性能。</p>
+<h2 id="常用控件类继承结构图">常用控件类继承结构图 </h2>
+<p><img src="/assets/images/1000144.png" alt="控件类继承结构图"></p>
 
       </div>
       <div class="md-sidebar-toc">
 <div class="md-toc">
 <details style="padding:0;;padding-left:0px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#基础概念" class="md-toc-link"><p>基础概念</p>
+          <a href="#wpf体系结构" class="md-toc-link"><p>WPF体系结构</p>
 </a>
           </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#着色器获取数据的4种方法" class="md-toc-link">
-            <p>着色器获取数据的4种方法</p>
-
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#webgl-hello-world" class="md-toc-link">
-            <p>webgl hello world</p>
+          <a href="#常用控件类继承结构图" class="md-toc-link">
+            <p>常用控件类继承结构图</p>
 
           </a></div>
         </div>

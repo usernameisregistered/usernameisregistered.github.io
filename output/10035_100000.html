@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>介绍-memcached-得鹿梦鱼</title>
+  <title>介绍-redis-得鹿梦鱼</title>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
   <link rel="stylesheet" href="/assets/styles/main.css" />
   <link rel="stylesheet" href="/assets/styles/katex/common.css" />
@@ -30,11 +30,19 @@
     <main class="flex-grow-1 overflow-hidden scrollHeight">
       <div class="w-screen flex flex-1">
         <aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
-          <div class="text-md font-bold text-gray-700 m-4">memcached</div>
+          <div class="text-md font-bold text-gray-700 m-4">redis</div>
           <div class="overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar flex flex-col">
             <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10035_100000.html">介绍
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10035_100001.html">命令
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10035_100001.html">安装
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10035_100002.html">配置
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10035_100003.html">数据类型
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10035_100004.html">命令
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10035_100005.html">高级
             </a>
           </div>
         </aside>
@@ -45,33 +53,40 @@
     
       <div class="crossnote markdown-preview  ">
       
-<h1 id="介绍">介绍 </h1>
-<p>Memcached是一种基于内存的key-value存储，用来存储小块的任意数据（字符串、对象）</p>
-<h2 id="安装">安装 </h2>
-<p>[linux]<br>
-yum install libevent libevent-devel<br>
-yum install memcached</p>
-<p>启动 /usr/local/memcached/bin/memcached -p 11211 -m 64m -d</p>
-<p>[windows]</p>
-<h2 id="连接">连接 </h2>
-<p>telnet HOST PORT</p>
+<h1 id="redis-简介">Redis 简介 </h1>
+<blockquote>
+<p>Redis 是完全开源免费的，遵守BSD协议，是一个高性能的key-value数据库</p>
+</blockquote>
+<h2 id="特点">特点： </h2>
+<ol>
+<li>Redis支持数据的持久化，可以将内存中的数据保存在磁盘中，重启的时候可以再次加载进行使用</li>
+<li>Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储</li>
+<li>Redis支持数据的备份，即master-slave模式的数据备份</li>
+</ol>
+<h2 id="优势">优势： </h2>
+<ol>
+<li>性能极高 – Redis能读的速度是110000次/s,写的速度是81000次/s</li>
+<li>丰富的数据类型 – Redis支持二进制案例的 Strings, Lists, Hashes, Sets 及 Ordered Sets 数据类型操作</li>
+<li>原子 – Redis的所有操作都是原子性的，意思就是要么成功执行要么失败完全不执行。单个操作是原子性的。多个操作也支持事务，即原子性，通过MULTI和EXEC指令包起来</li>
+<li>丰富的特性 – Redis还支持 publish/subscribe, 通知, key 过期等等特性</li>
+</ol>
 
       </div>
       <div class="md-sidebar-toc">
 <div class="md-toc">
 <details style="padding:0;;padding-left:0px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#介绍" class="md-toc-link"><p>介绍</p>
+          <a href="#redis-简介" class="md-toc-link"><p>Redis 简介</p>
 </a>
           </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#安装" class="md-toc-link">
-            <p>安装</p>
+          <a href="#特点" class="md-toc-link">
+            <p>特点：</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#连接" class="md-toc-link">
-            <p>连接</p>
+          <a href="#优势" class="md-toc-link">
+            <p>优势：</p>
 
           </a></div>
         </div>

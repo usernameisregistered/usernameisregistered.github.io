@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WPF应用程序管理-WPF教程-得鹿梦鱼</title>
+  <title>浏览器存储限制和清理标准-IndexedDB-得鹿梦鱼</title>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
   <link rel="stylesheet" href="/assets/styles/main.css" />
   <link rel="stylesheet" href="/assets/styles/katex/common.css" />
@@ -30,35 +30,13 @@
     <main class="flex-grow-1 overflow-hidden scrollHeight">
       <div class="w-screen flex flex-1">
         <aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
-          <div class="text-md font-bold text-gray-700 m-4">WPF教程</div>
+          <div class="text-md font-bold text-gray-700 m-4">IndexedDB</div>
           <div class="overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar flex flex-col">
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10032_100000.html">WPF体系结构
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10032_100000.html">基础
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10032_100001.html">WPF应用程序管理
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10032_100001.html">浏览器存储限制和清理标准
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10032_100002.html">WPF窗体
-            </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10032_100003.html">WPF布局
-            </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10032_100004.html">WPF控件模型
-            </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10032_100005.html">WPF依赖项属性和路由事件
-            </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10032_100006.html">WPF键盘输入、鼠标输入、焦点处理
-            </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10032_100007.html">WPF命令
-            </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10032_100008.html">WPF资源
-            </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10032_100009.html">WPF样式与模板
-            </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10032_100010.html">WPF更换主题
-            </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10032_100011.html">WPF数据绑定
-            </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10032_100012.html">WPF基本图形
-            </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10032_100013.html">WPFBrush
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10032_100002.html">接口
             </a>
           </div>
         </aside>
@@ -69,202 +47,48 @@
     
       <div class="crossnote markdown-preview  ">
       
-<h1 id="wpf应用程序管理">WPF应用程序管理 </h1>
-<blockquote>
-<p>WPF应用程序由System.Windows.Application类进行管理</p>
-</blockquote>
-<h2 id="创建wpf应用程序">创建WPF应用程序 </h2>
+<h1 id="浏览器存储限制和清理标准">浏览器存储限制和清理标准 </h1>
+<p>一般来说，数据存储的类型主要有以下两种</p>
+<ol>
+<li>持久化存储：这种数据是希望长久保留的，只有的当用户选择清除才会被删除掉</li>
+<li>临时存储：这种数据不用保存很久，当最近一次使用时储存限制达到限制大小就会被自动清理掉</li>
+</ol>
+<h2 id="数据存储在哪里">数据存储在哪里？ </h2>
+<p>每种存储类型代表一个单独的存储库。这是用户 Firefox 配置文件下目录的实际映射</p>
 <ul>
-<li>使用APP.xmal文件定期启动引用程序</li>
+<li><strong>profile</strong>/storage——配额管理器维护的主要顶级目录</li>
+<li><strong>profile</strong>/storage/permanent——持久数据存储库</li>
+<li><strong>profile</strong>/storage/temporary——临时数据存储库</li>
+<li><strong>profile</strong>/storage/default——默认数据存储库</li>
 </ul>
-<pre data-role="codeBlock" data-info="xml" class="language-xml xml"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Application</span> <span class="token attr-name"><span class="token namespace">x:</span>Class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>WpfApplicationLifeCycle.App<span class="token punctuation">"</span></span>
-    <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://schemas.microsoft.com/winfx/2006/xaml/presentation<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">xmlns:</span>x</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://schemas.microsoft.com/winfx/2006/xaml<span class="token punctuation">"</span></span>
-    <span class="token attr-name">StartupUri</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Window1.xaml<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Application.Resources</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Application.Resources</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Application</span><span class="token punctuation">&gt;</span></span>
-</code></pre><p>其中<strong>StartupUri</strong>表示指定启动的WPF窗体</p>
-<ul>
-<li>自定义类中指定WPF应用程序的启动</li>
-</ul>
-<pre data-role="codeBlock" data-info="c#" class="language-c# c#"><code>using System;
-using System.Windows;
-
-namespace WpfApplicationHelloWorld 
-{
-    public class HelloWorld 
-    {
-        static void Main(){
-            Application app = new Application();
-            // 方法一
-            // Window2 win = new Window2();
-            // app.Run(win);
-            
-            // 方法二
-            // Window2 win = new Window2();
-            // app.MainWindow = win;
-            // win.Show();
-            // app.Run();
-
-            // 方法三
-            app.StartupUri = new Uri("window2.xmal", UriKind.Relative);
-            app.Run();
-        } 
-    }
-}
-</code></pre><h2 id="应用程序关闭">应用程序关闭 </h2>
-<p>应用程序关闭时的策略由ShutdownMode属性指定，其类型为System.Windows.ShutdownMode枚举类型，其枚举成员有：</p>
-<ul>
-<li>OnLastWindowClose（默认值）：当应用程序中的最后一个窗体关闭时或调用Application对象的Shutdown()方法时，应用程序关闭。</li>
-<li>OnMainWindowClose：当主窗体（即启动窗体）关闭时或调用Application对象的Shutdown()方法时，应用程序关闭。（类似于C#的Windows应用程序的关闭模式）</li>
-<li>OnExplicitShutdown：只有在调用Application对象的Shutdown()方法时，应用程序才会关闭。</li>
-</ul>
-<h3 id="代码修改">代码修改 </h3>
-<pre data-role="codeBlock" data-info="xml" class="language-xml xml"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Application</span> <span class="token attr-name"><span class="token namespace">x:</span>Class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>WpfApplicationLifeCycle.App<span class="token punctuation">"</span></span>
-    <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://schemas.microsoft.com/winfx/2006/xaml/presentation<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">xmlns:</span>x</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://schemas.microsoft.com/winfx/2006/xaml<span class="token punctuation">"</span></span>
-    <span class="token attr-name">StartupUri</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Window1.xaml<span class="token punctuation">"</span></span>
-    <span class="token attr-name">ShutdownMode</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>OnExplicitShutdown<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Application.Resources</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Application.Resources</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Application</span><span class="token punctuation">&gt;</span></span>
-</code></pre><pre data-role="codeBlock" data-info="c#" class="language-c# c#"><code>// 在执行app.run方法执行即可
-app.ShutdownMode = ShutdownMode.OnExplicitShutdown;
-</code></pre><h2 id="application对象的事件">Application对象的事件 </h2>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">名称</th>
-<th style="text-align:left">描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Activated</td>
-<td style="text-align:left">当应用程序成为前台应用程序时发生</td>
-</tr>
-<tr>
-<td style="text-align:left">Deactivated</td>
-<td style="text-align:left">当应用程序停止作为前台应用程序时发生</td>
-</tr>
-<tr>
-<td style="text-align:left">DispatcherUnhandledException</td>
-<td style="text-align:left">在异常由应用程序引发但未进行处理时发生</td>
-</tr>
-<tr>
-<td style="text-align:left">Exit</td>
-<td style="text-align:left">恰好在应用程序关闭之前发生，且无法取消</td>
-</tr>
-<tr>
-<td style="text-align:left">FragmentNavigation</td>
-<td style="text-align:left">当应用程序中的导航器开始导航至某个内容片断时发生，如果所需片段位于当前内容中，则导航会立即发生；或者，如果所需片段位于不同内容中，则导航会在加载了源 XAML 内容之后发生</td>
-</tr>
-<tr>
-<td style="text-align:left">LoadCompleted</td>
-<td style="text-align:left">在已经加载、分析并开始呈现应用程序中的导航器导航到的内容时发生</td>
-</tr>
-<tr>
-<td style="text-align:left">Navigated</td>
-<td style="text-align:left">在已经找到应用程序中的导航器要导航到的内容时发生，尽管此时该内容可能尚未完成加载</td>
-</tr>
-<tr>
-<td style="text-align:left">Navigating</td>
-<td style="text-align:left">在应用程序中的导航器请求新导航时发生</td>
-</tr>
-<tr>
-<td style="text-align:left">NavigationFailed</td>
-<td style="text-align:left">在应用程序中的导航器在导航到所请求内容时出现错误的情况下发生</td>
-</tr>
-<tr>
-<td style="text-align:left">NavigationProgress</td>
-<td style="text-align:left">在由应用程序中的导航器管理的下载过程中定期发生，以提供导航进度信息</td>
-</tr>
-<tr>
-<td style="text-align:left">NavigationStopped</td>
-<td style="text-align:left">在调用应用程序中的导航器的StopLoading方法时发生，或者当导航器在当前导航正在进行期间请求了一个新导航时发生</td>
-</tr>
-<tr>
-<td style="text-align:left">SessionEnding</td>
-<td style="text-align:left">在用户通过注销或关闭操作系统而结束Windows会话时发生</td>
-</tr>
-<tr>
-<td style="text-align:left">Startup</td>
-<td style="text-align:left">在调用Application对象的Run方法时发生</td>
-</tr>
-</tbody>
-</table>
-<h3 id="应用事件的处理">应用事件的处理 </h3>
-<ul>
-<li>可以在App.xmal中做事件的绑定</li>
-</ul>
-<pre data-role="codeBlock" data-info="xml" class="language-xml xml"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Application</span> <span class="token attr-name"><span class="token namespace">x:</span>Class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>WpfApplicationLifeCycle.App<span class="token punctuation">"</span></span>
-    <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://schemas.microsoft.com/winfx/2006/xaml/presentation<span class="token punctuation">"</span></span>
-    <span class="token attr-name"><span class="token namespace">xmlns:</span>x</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://schemas.microsoft.com/winfx/2006/xaml<span class="token punctuation">"</span></span>
-    <span class="token attr-name">Startup</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Application_Startup<span class="token punctuation">"</span></span>
-    <span class="token attr-name">StartupUri</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Window1.xaml<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Application.Resources</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Application.Resources</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Application</span><span class="token punctuation">&gt;</span></span>
-</code></pre><pre data-role="codeBlock" data-info="c#" class="language-c# c#"><code>// App.xmal.cs文件中
-using System;
-using System.Windows;
-
-namespace WpfApplicationHelloWorld 
-{
-    public partial class HelloWorld: Application
-    {
-        private void Application_Startup(object sender, StartupEventArgs e) 
-        {
-            // 定义程序启动时要处理的内容
-        }
-    }
-}
-</code></pre><h2 id="应用程序生存周期">应用程序生存周期 </h2>
-<p><img src="/assets/1000145.png" alt="WPF应用程序生存周期"></p>
+<h2 id="数据储存限制">数据储存限制 </h2>
+<p>浏览器的最大存储空间是动态的——它取决于你的硬盘大小。全局限制为可用磁盘空间的50％。在Firefox中，一个名为Quota Manager的内部浏览器工具会跟踪每个源用尽的磁盘空间，并在必要时删除数据。</p>
+<p>因此，如果你的硬盘驱动器是500GB，那么浏览器的总存储容量为 250GB。如果超过此范围，则会发起称为源回收的过程，删除整个源的数据，直到存储量再次低于限制。删除源数据没有只删一部分的说法——因为这样可能会导致不一致的问题。</p>
+<p>还有另一个限制称为组限制——这被定义为全局限制的20％，但它至少有10MB，最大为 2GB。每个源都是一组（源组）的一部分。</p>
+<h2 id="lru-策略">LRU 策略 </h2>
+<p>当可用磁盘空间已满时，配额管理器将根据 LRU 策略开始清除数据——最近最少使用的源将首先被删除，然后是下一个，直到浏览器不再超过限制。</p>
+<p>我们使用临时存储跟踪每个源的“上次访问时间”。一旦达到临时存储的全局限制（之后会有更多限制），我们将尝试查找所有当前未使用的源（即没有打开选项卡/应用程序的那些来保持打开的数据存储）。然后根据“上次访问时间”对它们进行排序。然后删除最近最少使用的源，直到有足够的空间来满足触发此源回收的请求</p>
 
       </div>
       <div class="md-sidebar-toc">
 <div class="md-toc">
 <details style="padding:0;;padding-left:0px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#wpf应用程序管理" class="md-toc-link"><p>WPF应用程序管理</p>
+          <a href="#浏览器存储限制和清理标准" class="md-toc-link"><p>浏览器存储限制和清理标准</p>
 </a>
           </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#创建wpf应用程序" class="md-toc-link">
-            <p>创建WPF应用程序</p>
+          <a href="#数据存储在哪里" class="md-toc-link">
+            <p>数据存储在哪里？</p>
 
-          </a></div><details style="padding:0;;padding-left:24px;" open="">
-        <summary class="md-toc-link-wrapper">
-          <a href="#应用程序关闭" class="md-toc-link"><p>应用程序关闭</p>
-</a>
-          </summary>
-        <div>
-          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#代码修改" class="md-toc-link">
-            <p>代码修改</p>
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#数据储存限制" class="md-toc-link">
+            <p>数据储存限制</p>
 
-          </a></div>
-        </div>
-      </details>
-    <details style="padding:0;;padding-left:24px;" open="">
-        <summary class="md-toc-link-wrapper">
-          <a href="#application对象的事件" class="md-toc-link"><p>Application对象的事件</p>
-</a>
-          </summary>
-        <div>
-          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#应用事件的处理" class="md-toc-link">
-            <p>应用事件的处理</p>
-
-          </a></div>
-        </div>
-      </details>
-    <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#应用程序生存周期" class="md-toc-link">
-            <p>应用程序生存周期</p>
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#lru-策略" class="md-toc-link">
+            <p>LRU 策略</p>
 
           </a></div>
         </div>

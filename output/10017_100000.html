@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MapServer应用范围-GIS原理(三)-得鹿梦鱼</title>
+  <title>杂谈-WebGIS(三)-得鹿梦鱼</title>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
   <link rel="stylesheet" href="/assets/styles/main.css" />
   <link rel="stylesheet" href="/assets/styles/katex/common.css" />
@@ -30,19 +30,19 @@
     <main class="flex-grow-1 overflow-hidden scrollHeight">
       <div class="w-screen flex flex-1">
         <aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
-          <div class="text-md font-bold text-gray-700 m-4">GIS原理(三)</div>
+          <div class="text-md font-bold text-gray-700 m-4">WebGIS(三)</div>
           <div class="overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar flex flex-col">
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100000.html">MapServer应用范围
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100000.html">杂谈
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100001.html">地理信息系统和社会
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100001.html">WebGIS前端地图比例尺换算原理
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100002.html">地理信息系统标准
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100002.html">前端根据地理范围换算出瓦片行列号的原理(核心)
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100003.html">地球信息科学和数字地球
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100003.html">地图瓦片在Canvas上的拼接显示原理
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100004.html">地理信息系统软件工程技术
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100004.html">栅格、矢量图层的本质
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100005.html">地理信息系统应用项目组织和管理
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100005.html">地理坐标与屏幕坐标间的转换原理
             </a>
           </div>
         </aside>
@@ -53,79 +53,48 @@
     
       <div class="crossnote markdown-preview  ">
       
-<h1 id="mapserver应用范围">MapServer应用范围 </h1>
-<h2 id="城市规划-建设管理">城市规划、建设管理 </h2>
-<p>在城市管理中，可以应用GIS的方面非常多，如土地、道路、管网、环境、人口等等诸多要素都可以通过地理信息系统进行管理</p>
-<p>城市建设规划涉及的因素非常多，开发新城要征用土地，改建旧城要拆迁安置，同时需要基础设施、公共服务设施的配套。在开发建设活动中，如果不注意各工程项目之间的协调，就可能造成混乱，而采用GIS对各种信息进行管理，并基于此进行分析和辅助决策，可以有效地防止这种混乱局面的出现。由于城市在不断地建设发展，所以需要随时更新城市基础数据库，这就要求应用GIS管理日常城市建设活动，以保证信息的时效性</p>
-<h2 id="农业气候区划">农业气候区划 </h2>
-<p>农业气候区划信息系统（ACDIS）是基于GIS工具平台，建立起面对专业技术人员的专用工具，适用于农业气候资源监测评价、气候资源管理与分析，小网格气候资源推算与空间查询、省地县三级区划产品制作等。具体实现了以下功能：</p>
-<ol>
-<li>地理基础信息管理：管理工作区的基础地理数据，如行政区划，水系，交通数据等；</li>
-<li>小网格资源信息管理：管理栅格格式的、与农业气候区划有关的信息，包括各种DEM数据；</li>
-<li>小网格资源推算与区划产品制作；</li>
-<li>农业气候资源监测与评价；</li>
-<li>农业气候区划成果演示。</li>
-</ol>
-<p><img src="/assets/1000048.png" alt="农业气候区划工作基本流程图"></p>
-<h2 id="大气污染监测管理">大气污染监测管理 </h2>
-<p>城市大气污染的来源主要包括点状污染源和线状污染源，前者主要包括烟囱，后者则指汽车尾气排放。而污染的扩散的影响因子，除了排放量、排放物之外，还受到气象条件、下垫面等因素的影响。通过大气动力学的研究，研究者给出了用来描述污染物在大气中扩散规律的各种解析方程。这些大气扩散公式为空气污染预报提供了一定的基础，可以为现有污染源条件在不利的气象条件下减少有害污染物的排放、在城市规划中合理进行区域规划以及环境影响评价提供了切实有效的信息</p>
-<h2 id="道路交通管理">道路交通管理 </h2>
-<ol>
-<li>路廓设计</li>
-<li>道路管理</li>
-<li>动态分段</li>
-</ol>
-<h2 id="地震灾害和损失估计">地震灾害和损失估计 </h2>
-<p><img src="/assets/1000049.png" alt="地震损失评估过程"></p>
-<h2 id="地貌">地貌 </h2>
-<h2 id="医疗卫生">医疗卫生 </h2>
-<ol>
-<li>流行病模型</li>
-<li>医疗设施规划</li>
-<li>可达性，可用性及结果</li>
-</ol>
-<h2 id="军事">军事 </h2>
+<h1 id="webgis杂谈">WebGIS杂谈 </h1>
+<h2 id="gis定义">GIS定义 </h2>
+<p>GIS的全名是Geographic Information System，中文全名是地理信息系统。它是在计算机硬、软件系统支持下，对整个或部分地球表层（包括大气层）空间中的有关地理分布数据进行采集、储存、管理、运算、分析、显示和描述的技术系统。</p>
+<h2 id="gis学科">GIS学科 </h2>
+<p>GIS是利用测绘生成纸制地图或者航拍以及卫星等生成影像后，将这些数据存储在计算机中，以地图或图片的形式表现出来，然后根据实际生产生活以及科研中的各种需求，进而提供具体的经过处理后的数据。</p>
+<h2 id="webgis简介">WebGIS简介 </h2>
+<p>WebGIS就是展现于网络上的GIS。在上世纪八十年开始，出现的大量GIS软件，基本上都是C/S架构的，也就是首先需要在本机上装有专业的GIS软件，然后用户根据需求使用这些GIS软件。当然这种桌面端的GIS软件有其天然的优势，比如开发相对简单，不需要Internet支持，以及可以做更多的复杂功能、响应相对迅速等优势。但是同时，其缺点更是不容忽视。首当其冲的便是不便于推广，而不便于推广的原因在于C/S系统其本身的天然的劣势：不便于更新，不便于跨平台，不便于用户在不安装指定客户端的情况下使用。</p>
+<p>WebGIS，就是将GIS这门学科所能提供的功能，以B/S技术展现给用户，使用户只需要在浏览器上便能使用这些GIS功能的一个应用方向。</p>
+<h2 id="国内webgis行业">国内WebGIS行业 </h2>
+<p>目前使用WebGIS技术的公司可以大致分为两个方向：一个是互联网方向，一个是行业应用方向</p>
+<p>国内的互联网方向里基本可以说已经被百度地图，腾讯地图，高德地图，三个巨头垄断。所以对于想从事互联网方向的WebGIS开发人员，其实可以选择的大公司并不多。</p>
+<h2 id="webgis框架">WebGIS框架 </h2>
+<p><img src="/assets/images/1000066.png" alt="WebGIS框架"></p>
 
       </div>
       <div class="md-sidebar-toc">
 <div class="md-toc">
 <details style="padding:0;;padding-left:0px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#mapserver应用范围" class="md-toc-link"><p>MapServer应用范围</p>
+          <a href="#webgis杂谈" class="md-toc-link"><p>WebGIS杂谈</p>
 </a>
           </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#城市规划-建设管理" class="md-toc-link">
-            <p>城市规划、建设管理</p>
+          <a href="#gis定义" class="md-toc-link">
+            <p>GIS定义</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#农业气候区划" class="md-toc-link">
-            <p>农业气候区划</p>
+          <a href="#gis学科" class="md-toc-link">
+            <p>GIS学科</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#大气污染监测管理" class="md-toc-link">
-            <p>大气污染监测管理</p>
+          <a href="#webgis简介" class="md-toc-link">
+            <p>WebGIS简介</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#道路交通管理" class="md-toc-link">
-            <p>道路交通管理</p>
+          <a href="#国内webgis行业" class="md-toc-link">
+            <p>国内WebGIS行业</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#地震灾害和损失估计" class="md-toc-link">
-            <p>地震灾害和损失估计</p>
-
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#地貌" class="md-toc-link">
-            <p>地貌</p>
-
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#医疗卫生" class="md-toc-link">
-            <p>医疗卫生</p>
-
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#军事" class="md-toc-link">
-            <p>军事</p>
+          <a href="#webgis框架" class="md-toc-link">
+            <p>WebGIS框架</p>
 
           </a></div>
         </div>

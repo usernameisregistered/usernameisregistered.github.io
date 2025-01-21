@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>命令-memcached-得鹿梦鱼</title>
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+  <link rel="stylesheet" href="/assets/styles/main.css" />
+  <link rel="stylesheet" href="/assets/styles/katex/common.css" />
+  <link rel="stylesheet" href="/assets/styles/katex/katex.min.css" />
+  <script src="/assets/script/highlight.js"></script>
+</head>
+
+<body data-for="html-export">
+  <div class="w-screen h-screen flex flex-col overflow-hidden">
+    <header class="flex flex-grow-0 justify-between p-4 border-b border-neutral-200">
+      <a href="/" class="flex items-center text-2xl text-neutral-700 cursor-pointer">
+        <img src="/assets/images/logo.svg" class="w-[40px] h-[40px]" alt="得鹿梦鱼"></Image>
+        <span class="text-4 ml-4">得鹿梦鱼</span>
+      </a>
+      <div class="right flex items-center cursor-pointer">
+        <a href="/classify.html" class="mr-2 text-md hover:text-sky-500">知识库</a>
+        <a href="/frontend.html" class="mr-2 text-md hover:text-sky-500">前端技能树</a>
+        <a href="/question.html" class="mr-2 text-md hover:text-sky-500">面试题</a>
+        <a href="/study.html" class="mr-2 text-md hover:text-sky-500">学习资料</a>
+        <a href="/about.html" class="mr-2 text-md hover:text-sky-500">关于本人</a>
+      </div>
+    </header>
+    <main class="flex-grow-1 overflow-hidden scrollHeight">
+      <div class="w-screen flex flex-1">
+        <aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
+          <div class="text-md font-bold text-gray-700 m-4">memcached</div>
+          <div class="overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar flex flex-col">
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10033_100000.html">介绍
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10033_100001.html">命令
+            </a>
+          </div>
+        </aside>
+        <section class="basis-10/12 overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar">
+          <div id="markdown-container" class="px-4 relative">
+            
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<p>将 value(数据值) 存储在指定的 key(键) 中</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>set key flags exptime bytes [noreply] 
+value 
+
+add key flags exptime bytes [noreply]
+value
+</code></pre><p>替换已存在的 key(键) 的 value(数据值)</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>replace key flags exptime bytes [noreply]
+value
+</code></pre><p>向已存在 key(键) 的 value(数据值) 后面追加数据</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>append key flags exptime bytes [noreply]
+value
+</code></pre><p>向已存在 key(键) 的 value(数据值) 前面追加数据</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>prepend key flags exptime bytes [noreply]
+value
+</code></pre><p>用于执行一个"检查并设置"的操作</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>cas key flags exptime bytes unique_cas_token [noreply]
+value
+</code></pre><p>获取存储在 key(键) 中的 value(数据值)</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>get key
+get key1 key2 key3
+</code></pre><p>获取带有 CAS 令牌存 的 value(数据值)</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>gets key
+gets key1 key2 key3
+</code></pre><p>删除已存在的 key(键)</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>delete key [noreply]
+</code></pre><p>对已存在的 key(键) 的数字值进行自增或自减操作</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>incr key increment_value
+decr key decrement_value
+</code></pre><p>返回统计信息例如 PID(进程号)、版本号、连接数  stats<br>
+显示各个 slab 中 item 的数目和存储时长 stats items<br>
+显示各个slab的信息，包括chunk的大小、数目、使用情况  stats slabs<br>
+显示所有item的大小和个数 stats sizes<br>
+清理缓存中的所有 key=&gt;value(键=&gt;值) 对 flush_all [time] [noreply]</p>
+
+      </div>
+      <div class="md-sidebar-toc"></div>
+      <a id="sidebar-toc-btn">≡</a>
+    
+    
+    
+    
+    
+    
+<script>
+
+var sidebarTOCBtn = document.getElementById('sidebar-toc-btn')
+sidebarTOCBtn.addEventListener('click', function(event) {
+  event.stopPropagation()
+  if (document.body.hasAttribute('html-show-sidebar-toc')) {
+    document.body.removeAttribute('html-show-sidebar-toc')
+  } else {
+    document.body.setAttribute('html-show-sidebar-toc', true)
+  }
+})
+</script>
+      
+  
+    
+          </div>
+        </section>
+      </div>
+    </main>
+</body>
+
+</html>

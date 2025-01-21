@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WPF键盘输入、鼠标输入、焦点处理-WPF教程-得鹿梦鱼</title>
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+  <link rel="stylesheet" href="/assets/styles/main.css" />
+  <link rel="stylesheet" href="/assets/styles/katex/common.css" />
+  <link rel="stylesheet" href="/assets/styles/katex/katex.min.css" />
+  <script src="/assets/script/highlight.js"></script>
+</head>
+
+<body data-for="html-export">
+  <div class="w-screen h-screen flex flex-col overflow-hidden">
+    <header class="flex flex-grow-0 justify-between p-4 border-b border-neutral-200">
+      <a href="/" class="flex items-center text-2xl text-neutral-700 cursor-pointer">
+        <img src="/assets/images/logo.svg" class="w-[40px] h-[40px]" alt="得鹿梦鱼"></Image>
+        <span class="text-4 ml-4">得鹿梦鱼</span>
+      </a>
+      <div class="right flex items-center cursor-pointer">
+        <a href="/classify.html" class="mr-2 text-md hover:text-sky-500">知识库</a>
+        <a href="/frontend.html" class="mr-2 text-md hover:text-sky-500">前端技能树</a>
+        <a href="/question.html" class="mr-2 text-md hover:text-sky-500">面试题</a>
+        <a href="/study.html" class="mr-2 text-md hover:text-sky-500">学习资料</a>
+        <a href="/about.html" class="mr-2 text-md hover:text-sky-500">关于本人</a>
+      </div>
+    </header>
+    <main class="flex-grow-1 overflow-hidden scrollHeight">
+      <div class="w-screen flex flex-1">
+        <aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
+          <div class="text-md font-bold text-gray-700 m-4">WPF教程</div>
+          <div class="overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar flex flex-col">
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10030_100000.html">WPF体系结构
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10030_100001.html">WPF应用程序管理
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10030_100002.html">WPF窗体
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10030_100003.html">WPF布局
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10030_100004.html">WPF控件模型
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10030_100005.html">WPF依赖项属性和路由事件
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10030_100006.html">WPF键盘输入、鼠标输入、焦点处理
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10030_100007.html">WPF命令
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10030_100008.html">WPF资源
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10030_100009.html">WPF样式与模板
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10030_100010.html">WPF更换主题
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10030_100011.html">WPF数据绑定
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10030_100012.html">WPF基本图形
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10030_100013.html">WPFBrush
+            </a>
+          </div>
+        </aside>
+        <section class="basis-10/12 overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar">
+          <div id="markdown-container" class="px-4 relative">
+            
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="wpf键盘输入-鼠标输入-焦点处理">WPF键盘输入、鼠标输入、焦点处理 </h1>
+<h2 id="键盘类和键盘事件">键盘类和键盘事件 </h2>
+<blockquote>
+<p>WPF提供了基础的键盘类（System.Input.Keyboard类），该类提供与键盘相关的事件、方法和属性，这些事件、方法和属性提供有关键盘状态的信息。Keyboard的事件也通过UIElement等XAML基元素类的事件向外提供</p>
+</blockquote>
+<h3 id="常用的事件">常用的事件 </h3>
+<ul>
+<li>KeyDown事件和PreviewKeyDown事件：处理键盘键按下 <strong>冒泡路由事件</strong></li>
+<li>KeyUp事件和PreviewKeyUp事件：处理键盘键抬起 <strong>隧道路由事件</strong></li>
+</ul>
+<blockquote>
+<p>为了使元素能够接收键盘输入，该元素必须可获得焦点。默认情况下，大多数 UIElement 派生对象都可获得焦点。如果不是这样，则要使元素可获得焦点，请将基元素上的 Focusable 属性设置为 true。像 StackPanel 和 Canvas 这样的 Panel 类将 Focusable 的默认值设置为 false。因此，对要获取键盘焦点的这些对象而言，必须将 Focusable 设置为 true</p>
+</blockquote>
+<h2 id="鼠标类和鼠标事件">鼠标类和鼠标事件 </h2>
+<blockquote>
+<p>WPF提供的System.Input.Mouse类提供与鼠标相关的事件、方法和属性，这些事件、方法和属性提供有关鼠标状态的信息。与Keyboard类类似，其事件也通过UIElement等基元素向外提供。</p>
+</blockquote>
+<h3 id="常用的事件-1">常用的事件 </h3>
+<ul>
+<li>MouseDown、MouseUp事件：处理鼠标键的按下与抬起</li>
+<li>MouseEnter、MouseLeave、MouseMove：处理鼠标进入、离开控件及在控件上移动</li>
+<li>MouseWheel：处理鼠标滚轮滚动</li>
+</ul>
+<blockquote>
+<p>对于鼠标位置的捕获，使用Mouse类的GetPosition方法，其参数是一个UIElement，表示其鼠标位置基于哪一个控件的坐标系</p>
+</blockquote>
+<h2 id="焦点处理">焦点处理 </h2>
+<blockquote>
+<p>在 WPF 中，有两个与焦点有关的主要概念：键盘焦点和逻辑焦点。 键盘焦点指接收键盘输入的元素，而逻辑焦点指焦点范围中具有焦点的元素</p>
+</blockquote>
+<h3 id="键盘焦点">键盘焦点 </h3>
+<blockquote>
+<p>键盘焦点指当前正在接收键盘输入的元素。 在整个桌面上，只能有一个具有键盘焦点的元素。 在 WPF 中，具有键盘焦点的元素会将 IsKeyboardFocused 设置为 true。 Keyboard 类的静态属性 FocusedElement 获取当前具有键盘焦点的元素。<br>
+为了使元素能够获取键盘焦点，基元素的 Focusable 和 IsVisible 属性必须设置为 true。 有些类（如 Panel 基类）默认情况下将 Focusable 设置为 false；因此，如果您希望此类元素能够获取键盘焦点，必须将 Focusable 设置为 true。<br>
+可以通过用户与 UI 交互（例如，按 Tab 键定位到某个元素或者在某些元素上单击鼠标）来获取键盘焦点。 还可以通过使用 Keyboard 类的 Focus 方法，以编程方式获取键盘焦点。 Focus 方法尝试将键盘焦点给予指定的元素。 返回的元素是具有键盘焦点的元素，如果有旧的或新的焦点对象阻止请求，则具有键盘焦点的元素可能不是所请求的元素。</p>
+</blockquote>
+<h3 id="逻辑焦点">逻辑焦点 </h3>
+<blockquote>
+<p>逻辑焦点指焦点范围中的 FocusManager..::.FocusedElement。 焦点范围是一个跟踪其范围内的 FocusedElement 的元素。 当键盘焦点离开焦点范围时，焦点元素会失去键盘焦点，但保留逻辑焦点。 当键盘焦点返回到焦点范围时，焦点元素会再次获得键盘焦点。 这使得键盘焦点可以在多个焦点范围之间切换，但确保了在焦点返回到焦点范围时，焦点范围中的焦点元素再次获得键盘焦点。<br>
+一个应用程序中可以有多个具有逻辑焦点的元素，但在一个特定的焦点范围中只能有一个具有逻辑焦点的元素<br>
+GetFocusScope 返回指定元素的焦点范围</p>
+</blockquote>
+<h3 id="键盘导航">键盘导航 </h3>
+<blockquote>
+<p>当按下导航键之一时，KeyboardNavigation 类将负责实现默认键盘焦点导航。 导航键有：Tab、Shift+Tab、Ctrl+Tab、Ctrl+Shift+Tab、向上键、向下键、向左键和向右键。<br>
+可以通过设置附加的 KeyboardNavigation 属性 TabNavigation、ControlTabNavigation 和 DirectionalNavigation 来更改导航容器的导航行为。 这些属性是 KeyboardNavigationMode 类型，可能值有 Continue、Local、Contained、Cycle、Once 以及 None。 默认值是 Continue，这意味着元素不是导航容器。</p>
+</blockquote>
+
+      </div>
+      <div class="md-sidebar-toc">
+<div class="md-toc">
+<details style="padding:0;;padding-left:0px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#wpf键盘输入-鼠标输入-焦点处理" class="md-toc-link"><p>WPF键盘输入、鼠标输入、焦点处理</p>
+</a>
+          </summary>
+        <div>
+          <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#键盘类和键盘事件" class="md-toc-link"><p>键盘类和键盘事件</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#常用的事件" class="md-toc-link">
+            <p>常用的事件</p>
+
+          </a></div>
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#鼠标类和鼠标事件" class="md-toc-link"><p>鼠标类和鼠标事件</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#常用的事件-1" class="md-toc-link">
+            <p>常用的事件</p>
+
+          </a></div>
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#焦点处理" class="md-toc-link"><p>焦点处理</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#键盘焦点" class="md-toc-link">
+            <p>键盘焦点</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#逻辑焦点" class="md-toc-link">
+            <p>逻辑焦点</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#键盘导航" class="md-toc-link">
+            <p>键盘导航</p>
+
+          </a></div>
+        </div>
+      </details>
+    
+        </div>
+      </details>
+    
+</div>
+</div>
+      <a id="sidebar-toc-btn">≡</a>
+    
+    
+    
+    
+    
+    
+<script>
+
+var sidebarTOCBtn = document.getElementById('sidebar-toc-btn')
+sidebarTOCBtn.addEventListener('click', function(event) {
+  event.stopPropagation()
+  if (document.body.hasAttribute('html-show-sidebar-toc')) {
+    document.body.removeAttribute('html-show-sidebar-toc')
+  } else {
+    document.body.setAttribute('html-show-sidebar-toc', true)
+  }
+})
+</script>
+      
+  
+    
+          </div>
+        </section>
+      </div>
+    </main>
+</body>
+
+</html>

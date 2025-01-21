@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>验证码识别系统实现-代码实现-得鹿梦鱼</title>
+  <title>介绍-memcached-得鹿梦鱼</title>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
   <link rel="stylesheet" href="/assets/styles/main.css" />
   <link rel="stylesheet" href="/assets/styles/katex/common.css" />
@@ -30,9 +30,11 @@
     <main class="flex-grow-1 overflow-hidden scrollHeight">
       <div class="w-screen flex flex-1">
         <aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
-          <div class="text-md font-bold text-gray-700 m-4">代码实现</div>
+          <div class="text-md font-bold text-gray-700 m-4">memcached</div>
           <div class="overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar flex flex-col">
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10033_100000.html">验证码识别系统实现
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10033_100000.html">介绍
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10033_100001.html">命令
             </a>
           </div>
         </aside>
@@ -43,47 +45,33 @@
     
       <div class="crossnote markdown-preview  ">
       
-<h1 id="概述">概述 </h1>
-<p>本文主要介绍的是利用c#从零开始构建一个验证码识别系统。</p>
-<h2 id="理论基础">理论基础 </h2>
-<p>本文的理论基础来自于</p>
-<ol>
-<li><a href="https://usernameisregistered.github.io/algorithm/%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/01%E6%A6%82%E8%AE%BA.html">验证码识别</a></li>
-<li><a href="https://usernameisregistered.github.io/graph/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/01%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%9F%BA%E7%A1%80%E7%9F%A5.html">数字图像处理</a></li>
-<li><a href="https://usernameisregistered.github.io/algorithm/%E5%9B%BE%E5%83%8F%E5%8E%BB%E5%99%AA/00%E6%A6%82%E8%AE%BA.html">图像去噪</a></li>
-</ol>
-<p>如果以上网站不能访问移步到gitlab的对应<a href="https://liming_longxi.gitlab.io/">pages</a>页面查看</p>
-<ol>
-<li><a href="https://liming_longxi.gitlab.io/algorithm/%E9%AA%8C%E8%AF%81%E7%A0%81%E8%AF%86%E5%88%AB/01%E6%A6%82%E8%AE%BA.html">验证码识别</a></li>
-<li><a href="https://liming_longxi.gitlab.io/graph/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/01%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%E5%9F%BA%E7%A1%80%E7%9F%A5.html">数字图像处理</a></li>
-<li><a href="https://liming_longxi.gitlab.io/algorithm/%E5%9B%BE%E5%83%8F%E5%8E%BB%E5%99%AA/00%E6%A6%82%E8%AE%BA.html">图像去噪</a></li>
-</ol>
-<h2 id="前提条件">前提条件 </h2>
-<p><strong>软件</strong> visual studio 2022社区版本，可以自行安装自己使用的版本</p>
-<p><strong>ui框架</strong> AduSkin + Net Framework 4.8</p>
-<h2 id="仓库地址">仓库地址 </h2>
-<p><a href="https://gitee.com/usernameisregistered/captchaidentify2.git">captchaidentify2</a></p>
+<h1 id="介绍">介绍 </h1>
+<p>Memcached是一种基于内存的key-value存储，用来存储小块的任意数据（字符串、对象）</p>
+<h2 id="安装">安装 </h2>
+<p>[linux]<br>
+yum install libevent libevent-devel<br>
+yum install memcached</p>
+<p>启动 /usr/local/memcached/bin/memcached -p 11211 -m 64m -d</p>
+<p>[windows]</p>
+<h2 id="连接">连接 </h2>
+<p>telnet HOST PORT</p>
 
       </div>
       <div class="md-sidebar-toc">
 <div class="md-toc">
 <details style="padding:0;;padding-left:0px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#概述" class="md-toc-link"><p>概述</p>
+          <a href="#介绍" class="md-toc-link"><p>介绍</p>
 </a>
           </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#理论基础" class="md-toc-link">
-            <p>理论基础</p>
+          <a href="#安装" class="md-toc-link">
+            <p>安装</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#前提条件" class="md-toc-link">
-            <p>前提条件</p>
-
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#仓库地址" class="md-toc-link">
-            <p>仓库地址</p>
+          <a href="#连接" class="md-toc-link">
+            <p>连接</p>
 
           </a></div>
         </div>

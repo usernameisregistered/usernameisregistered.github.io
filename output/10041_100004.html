@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>规则rules-marked源码解析-得鹿梦鱼</title>
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+  <link rel="stylesheet" href="/assets/styles/main.css" />
+  <link rel="stylesheet" href="/assets/styles/katex/common.css" />
+  <link rel="stylesheet" href="/assets/styles/katex/katex.min.css" />
+  <script src="/assets/script/highlight.js"></script>
+</head>
+
+<body data-for="html-export">
+  <div class="w-screen h-screen flex flex-col overflow-hidden">
+    <header class="flex flex-grow-0 justify-between p-4 border-b border-neutral-200">
+      <a href="/" class="flex items-center text-2xl text-neutral-700 cursor-pointer">
+        <img src="/assets/images/logo.svg" class="w-[40px] h-[40px]" alt="得鹿梦鱼"></Image>
+        <span class="text-4 ml-4">得鹿梦鱼</span>
+      </a>
+      <div class="right flex items-center cursor-pointer">
+        <a href="/classify.html" class="mr-2 text-md hover:text-sky-500">知识库</a>
+        <a href="/frontend.html" class="mr-2 text-md hover:text-sky-500">前端技能树</a>
+        <a href="/question.html" class="mr-2 text-md hover:text-sky-500">面试题</a>
+        <a href="/study.html" class="mr-2 text-md hover:text-sky-500">学习资料</a>
+        <a href="/about.html" class="mr-2 text-md hover:text-sky-500">关于本人</a>
+      </div>
+    </header>
+    <main class="flex-grow-1 overflow-hidden scrollHeight">
+      <div class="w-screen flex flex-1">
+        <aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
+          <div class="text-md font-bold text-gray-700 m-4">marked源码解析</div>
+          <div class="overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar flex flex-col">
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10041_100000.html">前置
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10041_100001.html">单例Marked
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10041_100002.html">词法分析latex
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10041_100003.html">分词器Tokenizer
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10041_100004.html">规则rules
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10041_100005.html">Token
+            </a>
+          </div>
+        </aside>
+        <section class="basis-10/12 overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar">
+          <div id="markdown-container" class="px-4 relative">
+            
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="解析规则-rules">解析规则 rules </h1>
+<h2 id="正则编辑器">正则编辑器 </h2>
+<pre data-role="codeBlock" data-info="typescript" class="language-typescript typescript"><code><span class="token keyword keyword-function">function</span> <span class="token function">edit</span><span class="token punctuation">(</span>regex<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">|</span> RegExp<span class="token punctuation">,</span> opt <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword keyword-let">let</span> source <span class="token operator">=</span> <span class="token keyword keyword-typeof">typeof</span> regex <span class="token operator">===</span> <span class="token string">'string'</span> <span class="token operator">?</span> regex <span class="token operator">:</span> regex<span class="token punctuation">.</span>source<span class="token punctuation">;</span>
+  <span class="token keyword keyword-const">const</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token function-variable function">replace</span><span class="token operator">:</span> <span class="token punctuation">(</span>name<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">|</span> RegExp<span class="token punctuation">,</span> val<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">|</span> RegExp<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token keyword keyword-let">let</span> valSource <span class="token operator">=</span> <span class="token keyword keyword-typeof">typeof</span> val <span class="token operator">===</span> <span class="token string">'string'</span> <span class="token operator">?</span> val <span class="token operator">:</span> val<span class="token punctuation">.</span>source<span class="token punctuation">;</span>
+      valSource <span class="token operator">=</span> valSource<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span>other<span class="token punctuation">.</span>caret<span class="token punctuation">,</span> <span class="token string">'$1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      source <span class="token operator">=</span> source<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> valSource<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword keyword-return">return</span> obj<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function-variable function">getRegex</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token keyword keyword-return">return</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">RegExp</span><span class="token punctuation">(</span>source<span class="token punctuation">,</span> opt<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token keyword keyword-return">return</span> obj<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><h2 id="其他类型">其他类型 </h2>
+<p>匹配代码行的缩进 codeRemoveIndent <code>/^(?: {1,4}| {0,3}\t)/gm</code><br>
+outputLinkReplace <code>/\\([\[\]])/g</code><br>
+匹配围栏代码是不是有缩进 indentCodeCompensation <code>/^(\s+)(?:```)/</code><br>
+beginningSpace <code>/^\s+/</code><br>
+标题内容的# endingHash: <code>/#$/</code><br>
+startingSpaceChar <code>/^ /</code><br>
+标题内容的空白 endingSpaceChar <code>/ $/</code><br>
+nonSpaceChar: <code>/[^ ]/</code><br>
+newLineCharGlobal <code>/\n/g</code><br>
+|制表符 | tabCharGlobal | <code>/\t/g</code> |<br>
+multipleSpaceGlobal <code>/\s+/g</code><br>
+blankLine <code>/^[ \t]*$/</code><br>
+doubleBlankLine <code>/\n[ \t]*\n[ \t]*$/</code><br>
+块引用的开始符 blockquoteStart <code>/^ {0,3}&gt;/</code><br>
+块引用中嵌套列表 blockquoteSetextReplace <code>/\n {0,3}((?:=+|-+) *)(?=\n|$)/g</code><br>
+块引用中的空白 blockquoteSetextReplace2 <code>/^ {0,3}&gt;[ \t]?/gm</code><br>
+listReplaceTabs <code>/^\t+/</code><br>
+listReplaceNesting <code>/^ {1,4}(?=( {4})*[^ ])/g</code><br>
+listIsTask <code>/^\[[ xX]\] /</code><br>
+listReplaceTask <code>/^\[[ xX]\] +/</code><br>
+anyLine <code>/\n.*\n/</code><br>
+hrefBrackets <code>/^&lt;(.*)&gt;$/</code><br>
+tableDelimiter <code>/[:|]/</code><br>
+tableAlignChars <code>/^\||\| *$/g</code><br>
+tableRowBlankLine <code>/\n[ \t]*$/</code><br>
+tableAlignRight <code>/^ *-+: *$/</code><br>
+tableAlignCenter <code>/^ *:-+: *$/</code><br>
+tableAlignLeft <code>/^ *:-+ *$/</code><br>
+startATag <code>/^&lt;a /i</code><br>
+endATag <code>/^&lt;\/a&gt;/i</code><br>
+startPreScriptTag <code>/^&lt;(pre|code|kbd|script)(\s|&gt;)/i</code><br>
+endPreScriptTag <code>/^&lt;\/(pre|code|kbd|script)(\s|&gt;)/i</code><br>
+startAngleBracket <code>/^&lt;/</code><br>
+endAngleBracket <code>/&gt;$/</code><br>
+pedanticHrefTitle <code>/^([^'"]*[^\s])\s+(['"])(.*)\2/</code><br>
+unicodeAlphaNumeric <code>/[\p{L}\p{N}]/u</code><br>
+escapeTest <code>/[&amp;&lt;&gt;"']/</code><br>
+escapeReplace <code>/[&amp;&lt;&gt;"']/g</code><br>
+escapeTestNoEncode <code>/[&lt;&gt;"']|&amp;(?!(#\d{1,7}|#[Xx][a-fA-F0-9]{1,6}|\w+);)/</code><br>
+escapeReplaceNoEncode <code>/[&lt;&gt;"']|&amp;(?!(#\d{1,7}|#[Xx][a-fA-F0-9]{1,6}|\w+);)/g</code><br>
+unescapeTest <code>/&amp;(#(?:\d+)|(?:#x[0-9A-Fa-f]+)|(?:\w+));?/ig</code><br>
+caret <code>/(^|[^\[])\^/g</code><br>
+percentDecode <code>/%25/g</code><br>
+findPipe <code>/\|/g</code><br>
+splitPipe <code>/ \|/</code><br>
+slashPipe <code>/\\\|/g</code><br>
+回车换行 carriageReturn<code>/\r\n|\r/g</code><br>
+空行 spaceLine  <code>/^ +$/gm</code><br>
+notSpaceStart <code>/^\S*/</code><br>
+endingNewline <code>/\n$/</code><br>
+listItemRegex <code>(bull: string) =&gt; new RegExp(`^( {0,3}${bull})((?:[\t ][^\\n]*)?(?:\\n|$))`)</code><br>
+nextBulletRegex <code>(indent: number) =&gt; new RegExp(`^ {0,${Math.min(3, indent - 1)}}(?:[*+-]|\\d{1,9}[.)])((?:[ \t][^\\n]*)?(?:\\n|$))`)</code><br>
+hrRegex <code>(indent: number) =&gt; new RegExp(`^ {0,${Math.min(3, indent - 1)}}((?:- *){3,}|(?:_ *){3,}|(?:\\* *){3,})(?:\\n+|$)`)</code><br>
+fencesBeginRegex <code>(indent: number) =&gt; new RegExp(`^ {0,${Math.min(3, indent - 1)}}(?:\`\`\`|~~~)`)</code><br>
+headingBeginRegex <code>(indent: number) =&gt; new RegExp(`^ {0,${Math.min(3, indent - 1)}}#`)</code><br>
+htmlBeginRegex <code>(indent: number) =&gt; new RegExp(`^ {0,${Math.min(3, indent - 1)}}&lt;(?:[a-z].*&gt;|!--)`, 'i')</code></p>
+<h2 id="块级类型">块级类型 </h2>
+<p>空白行  newline  <code>/^(?:[ \t]*(?:\n|$))+/</code><br>
+代码块（缩进）blockCode <code>/^((?: {4}| {0,3}\t)[^\n]+(?:\n(?:[ \t]*(?:\n|$))*)?)+/;</code><br>
+围栏代码块 fences   <code>/^ {0,3}(`{3,}(?=[^`\n]*(?:\n|$))|~{3,})([^\n]*)(?:\n|$)(?:|([\s\S]*?)(?:\n|$))(?: {0,3}\1[~`]* *(?=\n|$)|$)/</code><br>
+水平线 hr <code>/^ {0,3}((?:-[\t ]*){3,}|(?:_[ \t]*){3,}|(?:\*[ \t]*){3,})(?:\n+|$)/</code><br>
+标题匹配 heading <code>/^ {0,3}(#{1,6})(?=\s|$)(.*)(?:\n+|$)/</code><br>
+bullet <code>/(?:[*+-]|\d{1,9}[.)])/</code><br>
+lheading</p>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token function">edit</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^(?!bull |blockCode|fences|blockquote|heading|html)((?:.|\n(?!\s*?\n|bull |blockCode|fences|blockquote|heading|html))+?)\n {0,3}(=+|-+) *(?:\n+|$)</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token method function property-access">replace</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">bull</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">,</span> bullet<span class="token punctuation">)</span> <span class="token comment">// lists can interrupt</span>
+  <span class="token punctuation">.</span><span class="token method function property-access">replace</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">blockCode</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">,</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">(?: {4}| {0,3}\t)</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">)</span> <span class="token comment">// indented code blocks can interrupt</span>
+  <span class="token punctuation">.</span><span class="token method function property-access">replace</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">fences</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">,</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex"> {0,3}(?:`{3,}|~{3,})</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">)</span> <span class="token comment">// fenced code blocks can interrupt</span>
+  <span class="token punctuation">.</span><span class="token method function property-access">replace</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">blockquote</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">,</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex"> {0,3}&gt;</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">)</span> <span class="token comment">// blockquote can interrupt</span>
+  <span class="token punctuation">.</span><span class="token method function property-access">replace</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">heading</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">,</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex"> {0,3}#{1,6}</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">)</span> <span class="token comment">// ATX heading can interrupt</span>
+  <span class="token punctuation">.</span><span class="token method function property-access">replace</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">html</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">,</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex"> {0,3}&lt;[^\n&gt;]+&gt;\n</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">)</span> <span class="token comment">// block html can interrupt</span>
+  <span class="token punctuation">.</span><span class="token method function property-access">getRegex</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre><p>_paragraph <code>/^([^\n]+(?:\n(?!hr|heading|lheading|blockquote|fences|list|html|table| +\n)[^\n]+)*)/</code><br>
+blockText <code>/^[^\n]+/</code><br>
+_blockLabel  <code>/(?!\s*\])(?:\\.|[^\[\]\\])+/</code><br>
+def</p>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token function">edit</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^ {0,3}\[(label)\]: *(?:\n[ \t]*)?([^&lt;\s][^\s]*|&lt;.*?&gt;)(?:(?: +(?:\n[ \t]*)?| *\n[ \t]*)(title))? *(?:\n+|$)</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token method function property-access">replace</span><span class="token punctuation">(</span><span class="token string">'label'</span><span class="token punctuation">,</span> _blockLabel<span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token method function property-access">replace</span><span class="token punctuation">(</span><span class="token string">'title'</span><span class="token punctuation">,</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">(?:"(?:\\"?|[^"\\])*"|'[^'\n]*(?:\n[^'\n]+)*\n?'|\([^()]*\))</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token method function property-access">getRegex</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre><p>list</p>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token function">edit</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^( {0,3}bull)([ \t][^\n]+?)?(?:\n|$)</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token method function property-access">replace</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">bull</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">,</span> bullet<span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token method function property-access">getRegex</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre><p>_tag</p>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token string">'address|article|aside|base|basefont|blockquote|body|caption'</span>
+  <span class="token operator">+</span> <span class="token string">'|center|col|colgroup|dd|details|dialog|dir|div|dl|dt|fieldset|figcaption'</span>
+  <span class="token operator">+</span> <span class="token string">'|figure|footer|form|frame|frameset|h[1-6]|head|header|hr|html|iframe'</span>
+  <span class="token operator">+</span> <span class="token string">'|legend|li|link|main|menu|menuitem|meta|nav|noframes|ol|optgroup|option'</span>
+  <span class="token operator">+</span> <span class="token string">'|p|param|search|section|summary|table|tbody|td|tfoot|th|thead|title'</span>
+  <span class="token operator">+</span> <span class="token string">'|tr|track|ul'</span>
+</code></pre><p>_comment <code>/&lt;!--(?:-?&gt;|[\s\S]*?(?:--&gt;|$))/</code><br>
+html</p>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token function">edit</span><span class="token punctuation">(</span>
+  <span class="token string">'^ {0,3}(?:'</span> <span class="token comment">// optional indentation</span>
+<span class="token operator">+</span> <span class="token string">'&lt;(script|pre|style|textarea)[\\s&gt;][\\s\\S]*?(?:&lt;/\\1&gt;[^\\n]*\\n+|$)'</span> <span class="token comment">// (1)</span>
+<span class="token operator">+</span> <span class="token string">'|comment[^\\n]*(\\n+|$)'</span> <span class="token comment">// (2)</span>
+<span class="token operator">+</span> <span class="token string">'|&lt;\\?[\\s\\S]*?(?:\\?&gt;\\n*|$)'</span> <span class="token comment">// (3)</span>
+<span class="token operator">+</span> <span class="token string">'|&lt;![A-Z][\\s\\S]*?(?:&gt;\\n*|$)'</span> <span class="token comment">// (4)</span>
+<span class="token operator">+</span> <span class="token string">'|&lt;!\\[CDATA\\[[\\s\\S]*?(?:\\]\\]&gt;\\n*|$)'</span> <span class="token comment">// (5)</span>
+<span class="token operator">+</span> <span class="token string">'|&lt;/?(tag)(?: +|\\n|/?&gt;)[\\s\\S]*?(?:(?:\\n[ \t]*)+\\n|$)'</span> <span class="token comment">// (6)</span>
+<span class="token operator">+</span> <span class="token string">'|&lt;(?!script|pre|style|textarea)([a-z][\\w-]*)(?:attribute)*? */?&gt;(?=[ \\t]*(?:\\n|$))[\\s\\S]*?(?:(?:\\n[ \t]*)+\\n|$)'</span> <span class="token comment">// (7) open tag</span>
+<span class="token operator">+</span> <span class="token string">'|&lt;/(?!script|pre|style|textarea)[a-z][\\w-]*\\s*&gt;(?=[ \\t]*(?:\\n|$))[\\s\\S]*?(?:(?:\\n[ \t]*)+\\n|$)'</span> <span class="token comment">// (7) closing tag</span>
+<span class="token operator">+</span> <span class="token string">')'</span><span class="token punctuation">,</span> <span class="token string">'i'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token method function property-access">replace</span><span class="token punctuation">(</span><span class="token string">'comment'</span><span class="token punctuation">,</span> _comment<span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token method function property-access">replace</span><span class="token punctuation">(</span><span class="token string">'tag'</span><span class="token punctuation">,</span> _tag<span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token method function property-access">replace</span><span class="token punctuation">(</span><span class="token string">'attribute'</span><span class="token punctuation">,</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex"> +[a-zA-Z:_][\w.:-]*(?: *= *"[^"\n]*"| *= *'[^'\n]*'| *= *[^\s"'=&lt;&gt;`]+)?</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token method function property-access">getRegex</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre><p>paragraph</p>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code> <span class="token function">edit</span><span class="token punctuation">(</span>_paragraph<span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token method function property-access">replace</span><span class="token punctuation">(</span><span class="token string">'hr'</span><span class="token punctuation">,</span> hr<span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token method function property-access">replace</span><span class="token punctuation">(</span><span class="token string">'heading'</span><span class="token punctuation">,</span> <span class="token string">' {0,3}#{1,6}(?:\\s|$)'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token method function property-access">replace</span><span class="token punctuation">(</span><span class="token string">'|lheading'</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span> <span class="token comment">// setext headings don't interrupt commonmark paragraphs</span>
+  <span class="token punctuation">.</span><span class="token method function property-access">replace</span><span class="token punctuation">(</span><span class="token string">'|table'</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token method function property-access">replace</span><span class="token punctuation">(</span><span class="token string">'blockquote'</span><span class="token punctuation">,</span> <span class="token string">' {0,3}&gt;'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token method function property-access">replace</span><span class="token punctuation">(</span><span class="token string">'fences'</span><span class="token punctuation">,</span> <span class="token string">' {0,3}(?:`{3,}(?=[^`\\n]*\\n)|~{3,})[^\\n]*\\n'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token method function property-access">replace</span><span class="token punctuation">(</span><span class="token string">'list'</span><span class="token punctuation">,</span> <span class="token string">' {0,3}(?:[*+-]|1[.)]) '</span><span class="token punctuation">)</span> <span class="token comment">// only lists starting from 1 can interrupt</span>
+  <span class="token punctuation">.</span><span class="token method function property-access">replace</span><span class="token punctuation">(</span><span class="token string">'html'</span><span class="token punctuation">,</span> <span class="token string">'&lt;/?(?:tag)(?: +|\\n|/?&gt;)|&lt;(?:script|pre|style|textarea|!--)'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token method function property-access">replace</span><span class="token punctuation">(</span><span class="token string">'tag'</span><span class="token punctuation">,</span> _tag<span class="token punctuation">)</span> <span class="token comment">// pars can be interrupted by type (6) html blocks</span>
+  <span class="token punctuation">.</span><span class="token method function property-access">getRegex</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><p>块引用 blockquote</p>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token function">edit</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^( {0,3}&gt; ?(paragraph|[^\n]*)(?:\n|$))+</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token method function property-access">replace</span><span class="token punctuation">(</span><span class="token string">'paragraph'</span><span class="token punctuation">,</span> paragraph<span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token method function property-access">getRegex</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre><p>gfmTable</p>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token function">edit</span><span class="token punctuation">(</span>
+  <span class="token string">'^ *([^\\n ].*)\\n'</span> <span class="token comment">// Header</span>
+<span class="token operator">+</span> <span class="token string">' {0,3}((?:\\| *)?:?-+:? *(?:\\| *:?-+:? *)*(?:\\| *)?)'</span> <span class="token comment">// Align</span>
+<span class="token operator">+</span> <span class="token string">'(?:\\n((?:(?! *\\n|hr|heading|blockquote|code|fences|list|html).*(?:\\n|$))*)\\n*|$)'</span><span class="token punctuation">)</span> <span class="token comment">// Cells</span>
+  <span class="token punctuation">.</span><span class="token method function property-access">replace</span><span class="token punctuation">(</span><span class="token string">'hr'</span><span class="token punctuation">,</span> hr<span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token method function property-access">replace</span><span class="token punctuation">(</span><span class="token string">'heading'</span><span class="token punctuation">,</span> <span class="token string">' {0,3}#{1,6}(?:\\s|$)'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token method function property-access">replace</span><span class="token punctuation">(</span><span class="token string">'blockquote'</span><span class="token punctuation">,</span> <span class="token string">' {0,3}&gt;'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token method function property-access">replace</span><span class="token punctuation">(</span><span class="token string">'code'</span><span class="token punctuation">,</span> <span class="token string">'(?: {4}| {0,3}\t)[^\\n]'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token method function property-access">replace</span><span class="token punctuation">(</span><span class="token string">'fences'</span><span class="token punctuation">,</span> <span class="token string">' {0,3}(?:`{3,}(?=[^`\\n]*\\n)|~{3,})[^\\n]*\\n'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token method function property-access">replace</span><span class="token punctuation">(</span><span class="token string">'list'</span><span class="token punctuation">,</span> <span class="token string">' {0,3}(?:[*+-]|1[.)]) '</span><span class="token punctuation">)</span> <span class="token comment">// only lists starting from 1 can interrupt</span>
+  <span class="token punctuation">.</span><span class="token method function property-access">replace</span><span class="token punctuation">(</span><span class="token string">'html'</span><span class="token punctuation">,</span> <span class="token string">'&lt;/?(?:tag)(?: +|\\n|/?&gt;)|&lt;(?:script|pre|style|textarea|!--)'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token method function property-access">replace</span><span class="token punctuation">(</span><span class="token string">'tag'</span><span class="token punctuation">,</span> _tag<span class="token punctuation">)</span> <span class="token comment">// tables can be interrupted by type (6) html blocks</span>
+  <span class="token punctuation">.</span><span class="token method function property-access">getRegex</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre><h2 id="行内类型">行内类型 </h2>
+
+      </div>
+      <div class="md-sidebar-toc">
+<div class="md-toc">
+<details style="padding:0;;padding-left:0px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#解析规则-rules" class="md-toc-link"><p>解析规则 rules</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#正则编辑器" class="md-toc-link">
+            <p>正则编辑器</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#其他类型" class="md-toc-link">
+            <p>其他类型</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#块级类型" class="md-toc-link">
+            <p>块级类型</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#行内类型" class="md-toc-link">
+            <p>行内类型</p>
+
+          </a></div>
+        </div>
+      </details>
+    
+</div>
+</div>
+      <a id="sidebar-toc-btn">≡</a>
+    
+    
+    
+    
+    
+    
+<script>
+
+var sidebarTOCBtn = document.getElementById('sidebar-toc-btn')
+sidebarTOCBtn.addEventListener('click', function(event) {
+  event.stopPropagation()
+  if (document.body.hasAttribute('html-show-sidebar-toc')) {
+    document.body.removeAttribute('html-show-sidebar-toc')
+  } else {
+    document.body.setAttribute('html-show-sidebar-toc', true)
+  }
+})
+</script>
+      
+  
+    
+          </div>
+        </section>
+      </div>
+    </main>
+</body>
+
+</html>

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>计算机视觉面临的挑战-计算机视觉-得鹿梦鱼</title>
+  <title>MapServer应用范围-GIS原理(三)-得鹿梦鱼</title>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
   <link rel="stylesheet" href="/assets/styles/main.css" />
   <link rel="stylesheet" href="/assets/styles/katex/common.css" />
@@ -30,13 +30,19 @@
     <main class="flex-grow-1 overflow-hidden scrollHeight">
       <div class="w-screen flex flex-1">
         <aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
-          <div class="text-md font-bold text-gray-700 m-4">计算机视觉</div>
+          <div class="text-md font-bold text-gray-700 m-4">GIS原理(三)</div>
           <div class="overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar flex flex-col">
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100000.html">计算机视觉面临的挑战
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100000.html">MapServer应用范围
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100001.html">图像和图像处理处理
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100001.html">地理信息系统和社会
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100002.html">图像滤波和形态学
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100002.html">地理信息系统标准
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100003.html">地球信息科学和数字地球
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100004.html">地理信息系统软件工程技术
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100005.html">地理信息系统应用项目组织和管理
             </a>
           </div>
         </aside>
@@ -47,61 +53,81 @@
     
       <div class="crossnote markdown-preview  ">
       
-<h1 id="计算机视觉面临的挑战">计算机视觉面临的挑战 </h1>
-<h2 id="导言人类及其感官">导言——人类及其感官 </h2>
-<p>错觉： 反映了大脑在于大量复杂视觉数据的斗争中做出的隐藏假设</p>
-<p>与机器相比，人类视觉系统的一个优势是大脑拥有超过100亿个细胞（或者神经元），其中一些细胞与其他神经元接触远远超过1万个，如果每个神经元充当一种微处理元，那么我们将有一个巨大的计算机，并且其中的所有处理元件都可以同时工作，以最大的单台人造计算机来说，它只有数亿个性能有限的处理元，大部分眼-脑系统的视觉和心理处理任务在瞬间就可以完成，目前的人造系统是不能完成的。除了规模的问题之外，如何组织这么大的处理系统、如何编写程序也是很大的难题，而且很明显的是，眼-脑系统在一定程度上时由进化决定的，更有趣的是，人类可以通过积极的使用和训练这个系统进行动态的编程</p>
-<h2 id="视觉的本质">视觉的本质 </h2>
-<h3 id="识别过程">识别过程 </h3>
-<p>想象一台计算机通过死记硬背来学习模式和对应的类，那么就可以通过将任何新模式与这个先前学习的“训练集”进行比较，并将其分配给训练集中最接近模式的类别来进行分类或者识别，例如26个字符的识别</p>
-<h3 id="解决识别问题">解决识别问题 </h3>
-<p>解决识别问题的一个明显方法是以某种方式对图像进行标准化。</p>
-<h3 id="物体定位">物体定位 </h3>
-<p>在许多实际应用中，有必要在图片中搜索各种类型的物体，而不仅仅是解释图片的一小部分区域。</p>
-<h3 id="视觉是逆向图形学">视觉是逆向图形学 </h3>
-<p>计算机图形学是由计算机生成图像，从对场景的抽象描述和对图像形成规律的了解开始。<br>
-视觉是从图像集和图像新形成规律的知识开始来获得物体集描述的过程。</p>
-<p>本文的内容主要来自于计算机视觉原理、算法、应用及学习（原书第5版）袁春 刘靖 译</p>
+<h1 id="mapserver应用范围">MapServer应用范围 </h1>
+<h2 id="城市规划-建设管理">城市规划、建设管理 </h2>
+<p>在城市管理中，可以应用GIS的方面非常多，如土地、道路、管网、环境、人口等等诸多要素都可以通过地理信息系统进行管理</p>
+<p>城市建设规划涉及的因素非常多，开发新城要征用土地，改建旧城要拆迁安置，同时需要基础设施、公共服务设施的配套。在开发建设活动中，如果不注意各工程项目之间的协调，就可能造成混乱，而采用GIS对各种信息进行管理，并基于此进行分析和辅助决策，可以有效地防止这种混乱局面的出现。由于城市在不断地建设发展，所以需要随时更新城市基础数据库，这就要求应用GIS管理日常城市建设活动，以保证信息的时效性</p>
+<h2 id="农业气候区划">农业气候区划 </h2>
+<p>农业气候区划信息系统（ACDIS）是基于GIS工具平台，建立起面对专业技术人员的专用工具，适用于农业气候资源监测评价、气候资源管理与分析，小网格气候资源推算与空间查询、省地县三级区划产品制作等。具体实现了以下功能：</p>
+<ol>
+<li>地理基础信息管理：管理工作区的基础地理数据，如行政区划，水系，交通数据等；</li>
+<li>小网格资源信息管理：管理栅格格式的、与农业气候区划有关的信息，包括各种DEM数据；</li>
+<li>小网格资源推算与区划产品制作；</li>
+<li>农业气候资源监测与评价；</li>
+<li>农业气候区划成果演示。</li>
+</ol>
+<p><img src="/assets/images/1000048.png" alt="农业气候区划工作基本流程图"></p>
+<h2 id="大气污染监测管理">大气污染监测管理 </h2>
+<p>城市大气污染的来源主要包括点状污染源和线状污染源，前者主要包括烟囱，后者则指汽车尾气排放。而污染的扩散的影响因子，除了排放量、排放物之外，还受到气象条件、下垫面等因素的影响。通过大气动力学的研究，研究者给出了用来描述污染物在大气中扩散规律的各种解析方程。这些大气扩散公式为空气污染预报提供了一定的基础，可以为现有污染源条件在不利的气象条件下减少有害污染物的排放、在城市规划中合理进行区域规划以及环境影响评价提供了切实有效的信息</p>
+<h2 id="道路交通管理">道路交通管理 </h2>
+<ol>
+<li>路廓设计</li>
+<li>道路管理</li>
+<li>动态分段</li>
+</ol>
+<h2 id="地震灾害和损失估计">地震灾害和损失估计 </h2>
+<p><img src="/assets/images/1000049.png" alt="地震损失评估过程"></p>
+<h2 id="地貌">地貌 </h2>
+<h2 id="医疗卫生">医疗卫生 </h2>
+<ol>
+<li>流行病模型</li>
+<li>医疗设施规划</li>
+<li>可达性，可用性及结果</li>
+</ol>
+<h2 id="军事">军事 </h2>
 
       </div>
       <div class="md-sidebar-toc">
 <div class="md-toc">
 <details style="padding:0;;padding-left:0px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#计算机视觉面临的挑战" class="md-toc-link"><p>计算机视觉面临的挑战</p>
+          <a href="#mapserver应用范围" class="md-toc-link"><p>MapServer应用范围</p>
 </a>
           </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#导言人类及其感官" class="md-toc-link">
-            <p>导言——人类及其感官</p>
-
-          </a></div><details style="padding:0;;padding-left:24px;" open="">
-        <summary class="md-toc-link-wrapper">
-          <a href="#视觉的本质" class="md-toc-link"><p>视觉的本质</p>
-</a>
-          </summary>
-        <div>
-          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#识别过程" class="md-toc-link">
-            <p>识别过程</p>
+          <a href="#城市规划-建设管理" class="md-toc-link">
+            <p>城市规划、建设管理</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#解决识别问题" class="md-toc-link">
-            <p>解决识别问题</p>
+          <a href="#农业气候区划" class="md-toc-link">
+            <p>农业气候区划</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#物体定位" class="md-toc-link">
-            <p>物体定位</p>
+          <a href="#大气污染监测管理" class="md-toc-link">
+            <p>大气污染监测管理</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#视觉是逆向图形学" class="md-toc-link">
-            <p>视觉是逆向图形学</p>
+          <a href="#道路交通管理" class="md-toc-link">
+            <p>道路交通管理</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#地震灾害和损失估计" class="md-toc-link">
+            <p>地震灾害和损失估计</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#地貌" class="md-toc-link">
+            <p>地貌</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#医疗卫生" class="md-toc-link">
+            <p>医疗卫生</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#军事" class="md-toc-link">
+            <p>军事</p>
 
           </a></div>
-        </div>
-      </details>
-    
         </div>
       </details>
     

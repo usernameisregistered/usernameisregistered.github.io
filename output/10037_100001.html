@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>安装-redis-得鹿梦鱼</title>
+  <title>工程化专题系列-前端工程化-得鹿梦鱼</title>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
   <link rel="stylesheet" href="/assets/styles/main.css" />
   <link rel="stylesheet" href="/assets/styles/katex/common.css" />
@@ -30,19 +30,15 @@
     <main class="flex-grow-1 overflow-hidden scrollHeight">
       <div class="w-screen flex flex-1">
         <aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
-          <div class="text-md font-bold text-gray-700 m-4">redis</div>
+          <div class="text-md font-bold text-gray-700 m-4">前端工程化</div>
           <div class="overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar flex flex-col">
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10037_100000.html">介绍
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10037_100000.html">前端工程化说明
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10037_100001.html">安装
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10037_100001.html">工程化专题系列
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10037_100002.html">配置
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10037_100002.html">框架对比
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10037_100003.html">数据类型
-            </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10037_100004.html">命令
-            </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10037_100005.html">高级
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10037_100003.html">美团技术架构
             </a>
           </div>
         </aside>
@@ -53,48 +49,27 @@
     
       <div class="crossnote markdown-preview  ">
       
-<h1 id="redis-安装">Redis 安装 </h1>
-<h2 id="window">window </h2>
-<ol>
-<li>下载<a href="https://github.com/MSOpenTech/redis/releases">下载地址</a></li>
-<li>解压重名为redis</li>
-<li>可选 将其移动到指定的安装目录</li>
-<li>启动 cmd 中切换到指定目录 执行 redis-server.exe redis.windows.conf</li>
-<li>连接 cmd redis-cli.exe -h 127.0.0.1 -p 6379</li>
-</ol>
-<h2 id="linux">linux </h2>
-<ol>
-<li>wget <a href="http://download.redis.io/releases/redis-2.8.17.tar.gz">http://download.redis.io/releases/redis-2.8.17.tar.gz</a></li>
-<li>tar -zxvf redis-2.8.17.tar.gz</li>
-<li>mv ./redis-2.8.17 /usr/local</li>
-<li>mv /usr/local/redis-2.8.17 /usr/local/redis</li>
-<li>cd /usr/local/redis</li>
-<li>make</li>
-<li>./src/redis-server ./redis.conf 启动</li>
-<li>./src/redis-cii 连接</li>
-</ol>
+<h2 id="问题1-项目在开发的时候用大量的时间去造了轮子在轮子的使用上有点过于死板不够灵活总是在高频率的修改组件尤其是根据业务场景不断的调整基础组件而基础组件的部分大部分团队成员不清晰其使用其存在的问题">问题1: 项目在开发的时候用大量的时间去造了轮子，在轮子的使用上有点过于死板不够灵活，总是在高频率的修改组件，尤其是根据业务场景不断的调整基础组件。而基础组件的部分，大部分团队成员不清晰其使用，其存在的问题 </h2>
+<h2 id="建议1">建议1: </h2>
+<blockquote>
+<p>抽离可用度高的公共组件库，脱离出项目，优化约定其使用以及迭代方式<br>
+针对业务中特殊修改的组件，开发为业务组件，如果需要或者希望完善公共组件，应该前置一个项目周期完成开发上线ui组件，或者后置一个周期，从业务组件中提炼公共组件<br>
+简化公共组件的使用方式与依赖方式，对于其具体的使用提供完整的api<br>
+与设计、产品达成从开发到审美到产品交互的积累的同认知</p>
+</blockquote>
 
       </div>
       <div class="md-sidebar-toc">
 <div class="md-toc">
-<details style="padding:0;;padding-left:0px;" open="">
-        <summary class="md-toc-link-wrapper">
-          <a href="#redis-安装" class="md-toc-link"><p>Redis 安装</p>
-</a>
-          </summary>
-        <div>
-          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#window" class="md-toc-link">
-            <p>window</p>
+<div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#问题1-项目在开发的时候用大量的时间去造了轮子在轮子的使用上有点过于死板不够灵活总是在高频率的修改组件尤其是根据业务场景不断的调整基础组件而基础组件的部分大部分团队成员不清晰其使用其存在的问题" class="md-toc-link">
+            <p>问题1: 项目在开发的时候用大量的时间去造了轮子，在轮子的使用上有点过于死板不够灵活，总是在高频率的修改组件，尤其是根据业务场景不断的调整基础组件。而基础组件的部分，大部分团队成员不清晰其使用，其存在的问题</p>
 
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#linux" class="md-toc-link">
-            <p>linux</p>
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#建议1" class="md-toc-link">
+            <p>建议1:</p>
 
           </a></div>
-        </div>
-      </details>
-    
 </div>
 </div>
       <a id="sidebar-toc-btn">≡</a>

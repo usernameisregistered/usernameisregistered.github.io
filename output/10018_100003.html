@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>网络地理信息系统-GIS原理(二)-得鹿梦鱼</title>
+  <title>_栅格数据结构-地理信息系统原理-得鹿梦鱼</title>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
   <link rel="stylesheet" href="/assets/styles/main.css" />
   <link rel="stylesheet" href="/assets/styles/katex/common.css" />
@@ -30,19 +30,21 @@
     <main class="flex-grow-1 overflow-hidden scrollHeight">
       <div class="w-screen flex flex-1">
         <aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
-          <div class="text-md font-bold text-gray-700 m-4">GIS原理(二)</div>
+          <div class="text-md font-bold text-gray-700 m-4">地理信息系统原理</div>
           <div class="overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar flex flex-col">
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10018_100000.html">空间分析
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10018_100000.html">_地球椭球体与大地控制
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10018_100001.html">空间数据表现与地图制图
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10018_100001.html">_地图投影概述
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10018_100002.html">数字地形模型（DTM）与地形分析
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10018_100002.html">_地图投影的应用
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10018_100003.html">网络地理信息系统
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10018_100003.html">_栅格数据结构
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10018_100004.html"> 空间建模与空间决策支持
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10018_100004.html">_矢量数据结构
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10018_100005.html">S集成技术
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10018_100005.html">_空间认知模型
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10018_100006.html">_空间实体模型
             </a>
           </div>
         </aside>
@@ -53,160 +55,124 @@
     
       <div class="crossnote markdown-preview  ">
       
-<h1 id="网络地理信息系统">网络地理信息系统 </h1>
-<h2 id="计算机网络技术">计算机网络技术 </h2>
-<p>计算机网络（Computer Network）是指实现计算机之间通讯的软件和硬件系统的统称，更加具体的定义是“以共享资源为目的，通过数据通讯线路将多台计算机互联而组成的系统”</p>
-<h3 id="网络拓扑结构和分类">网络拓扑结构和分类 </h3>
-<ul>
-<li>星形拓扑结构；</li>
-<li>总线拓扑结构；</li>
-<li>环形拓扑结构；</li>
-<li>树形拓扑；</li>
-<li>完全连接结构；</li>
-<li>相交环形；</li>
-<li>不规则拓扑结构</li>
-</ul>
-<p>根据其空间分布范围的大小，区分为局域网(LAN-Local Area Network)、城域网(MAN-Metropolitan Area Network)和广域网(WAN-Wide Area Network)</p>
+<h2 id="基本概念">基本概念 </h2>
+<p>将工作区域的平面表象按一定分解力作行和列的规划划分，形成许多格网，每个网格单元称为像素；栅格数据实际上就是像元阵列；即像元按矩阵形式的集合，栅格中的每个像素元是栅格数据中最基本的信息存储单元，其坐标位置可以用行和列确定。</p>
+<p>用栅格数据表示的地表示不连续的，是量化和近似离散的数据，这意味着地表一定面积内（像素地面分辨率范围内）地理数据的近似性；栅格数据的比例尺就是栅格大小与地表相应单元大小之比。像元大小相对于所表示的面积较大时，对长度、面积等的度量有较大影响。这种影响除对像元的取舍外，还与计算长度面积的方法有关</p>
+<h2 id="栅格数据层的概念">栅格数据层的概念 </h2>
+<p>咋栅格数据结构中，物体的空间位置就用其在笛卡尔平面网格张工的行号和列号坐标表示，物体的属性用像元的取值表示，每个像元在一个网格中只能取值一次，同一像元要表示多属性的事物就要用多个笛卡尔平面网格。每个笛卡尔平面网格表示一种属性或同一属性的不同特征，这种平面称为层。<br>
+地理数据在栅格数据结构中必须分层组织存储，每一层构成单一的属性数据层或专题信息层</p>
+<h2 id="栅格数据结构的表示">栅格数据结构的表示 </h2>
+<h3 id="一维数组">一维数组 </h3>
+<p>如果给栅格数据内的全体像素赋予按照某一顺序的一维的连续号码，则能够把栅格数据存储到一维数组中</p>
+<h3 id="二维数组">二维数组 </h3>
+<p>把栅格数据中各像素的值对应于二维数组相应的各元素加以存储的方式适合于灰度级大的浓淡图像的存储以及在通用计算机中的处理，所以是最常采用的一种方式，在采用二维数组的方式中，还有组合方式和比特面方式。<br>
+组合方式是在计算机的一个字长中存储多个像素的方式。从节约存储量的观点来考虑，经常在保存数据时采用；例如：16比特/字的计算机中，按每个像素8比特的数据对待的时候<br>
+比特面方式，就是把数据存储到能按比特进行存取的二维数组（可以理解为1比特/1字）即比特面中的方式。对于n个比特的浓淡图像，存储的是以二维形式排列着的各个像素值的第k比特（0或者1）的数据。另一方面，也有对于n比特/字的二维数组，把它作为n个比特面考虑，从而把二维图像存储到各比特面中的用法。以比特面作为单位进行处理时，其优点是能够在各面间进行高效率的逻辑运算，存储设备利用率高等，但也存在对浓淡图像的处理上耗费时间的问题。</p>
+<h2 id="栅格数据的组织方法">栅格数据的组织方法 </h2>
 <ol>
-<li>局域网： 是指在比较小的区域——如一座办公大楼，一个校园，一个公司等内建立的计算机网络，其通讯距离较短，传输速率较快，误码率低。对于局域网而言，主要采用的拓扑结构是总线结构和环形结构</li>
-<li>域域网：基本上是一个大的局域网，采用类似的拓扑结构，它可以覆盖一个城市，实现信息共享。</li>
-<li>广域网： 广域网最根本的特点是其机器分布范围广，可以实现大范围的信息共享，笼统地讲，因特网(Internet)就属于广域网范畴。广域网可以采用多种拓扑结构，如星形，环形，树型，完全连接，相交环形，甚至是不规则的拓扑结构</li>
+<li>
+<p>以像元为记录的序列。不同层上同一像元位置上的各属性值表示为一个列数组</p>
+</li>
+<li>
+<p>以层为基础。每一层又以像元为序记录它的坐标和属性值，一层记录完后再记录第二层</p>
+</li>
+<li>
+<p>以层为基础，但每一层内则以多边形（也称制图单元）为序记录多边形的属性值和充满多边形的各像元的坐标</p>
+</li>
 </ol>
-<h3 id="分布式地理信息系统">分布式地理信息系统 </h3>
-<p>随着计算机网络的发展，基于客户机/服务器体系结构，并在网络支持下的分布式系统结构已经成为地理信息系统的发展趋势。由于GIS的固有的特点，使得运行于网络上的分布式系统特别适合于构造较大规模的GIS应用，其应用表现在以下几个方面</p>
-<ol>
-<li>数据的分布：在地理信息系统中，主要数据是空间数据，由于数据生产和更新的要求，常常需要存放在空间上分离的计算机上。</li>
-<li>应用功能的分布：GIS的功能组成了由空间数据录入到输出的一个工作流程，不同的人员由于其关注的信息不同，需要不同的GIS功能服务对数据进行处理，将应用分布在网络上就可以解决该问题</li>
-<li>外设共享：外设的分布是服务分布的一种，由于许多GIS外设较为昂贵，如高精度平板扫描仪，喷墨绘图仪，大幅面数字化仪等，而通过分布式系统，可以实现这些设备的共享</li>
-<li>并行计算：在地理信息系统中，许多模型具有较高的时间复杂性，利用分布系统可以实现并行计算，缩短计算时间</li>
-</ol>
-<p>分布式系统： 一组独立计算机的集合</p>
-<h3 id="网络地理信息系统的组合方式">网络地理信息系统的组合方式 </h3>
-<table>
-<thead>
-<tr>
-<th>组合方式</th>
-<th>数据</th>
-<th>应用功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>全集中式</td>
-<td>中央服务器</td>
-<td>中央服务器</td>
-</tr>
-<tr>
-<td>数据集中式</td>
-<td>中央服务器</td>
-<td>客户端</td>
-</tr>
-<tr>
-<td>功能集中式</td>
-<td>客户端</td>
-<td>中央服务器</td>
-</tr>
-<tr>
-<td>全分布式</td>
-<td>客户端</td>
-<td>客户端</td>
-</tr>
-<tr>
-<td>函数库分布式</td>
-<td>客户端或者服务器</td>
-<td>中央服务器存储，客户端动态连接执行</td>
-</tr>
-</tbody>
-</table>
-<h3 id="网络互连设备简介">网络互连设备简介 </h3>
-<ol>
-<li>中继器(Repeater)：是最简单的网间连接器，提供对信号的放大和转发，它只能连接具有相同物理协议的LAN。中继器主要用于扩充LAN电缆段的距离，在同一个LAN中，也可以采用LAN延长介质长度</li>
-<li>网桥(Bridge)：网桥是在数据链路层实现LAN互连的存储转发设备，它独立于高层协议，可以实现异构型局域网的互连</li>
-<li>路由器(Router)：路由器工作在OSI模型的网络层，能够获得更多的网络信息，为来到的信息找到“最佳路由”。路由器结构比网桥复杂，速度也慢，但是具有更大的灵活性和更强的异种网络互连能力。</li>
-<li>网关(Gateway)：又称为协议转换器，工作在OSI模型的传输层及以上层，用于互连不同体系结构的网络或者媒体。它不仅要连接分离的网络，还必须确保从一个网络传输的数据与另一个兼容。</li>
-</ol>
-<h2 id="万维网地理信息系统-webgis">万维网地理信息系统 webGIS </h2>
-<h3 id="应用层面">应用层面 </h3>
-<ol>
-<li>空间数据发布</li>
-<li>空间查询检索</li>
-<li>空间模型服务</li>
-<li>Web资源的组织</li>
-</ol>
-<h3 id="实现技术">实现技术 </h3>
-<h4 id="cgicommon-gateway-interface通用网关接口方法">CGI(Common Gateway Interface,通用网关接口)方法 </h4>
-<p>CGI是一个用于Web服务器和客户端浏览器之间的特定标准，它允许网页用户通过网页的命令来启动一个存在于网页服务器主机的程序（称为CGI程序），并且接收到这个程序的输出结果。CGI是最早实现动态网页的技术，它使用户可以通过浏览器进行交互操作，并得到相应的操作结果</p>
-<h4 id="服务器应用程序接口server-api方法">服务器应用程序接口(Server API)方法 </h4>
-<p>类似于CGI，不同之处在于CGI程序是单独可以运行的程序，而Server API往往依附于特定的Web服务器</p>
-<h4 id="插件plug-ins法">插件(Plug-ins)法 </h4>
-<p>浏览器插件是指能够同浏览器交换信息的软件，第三方软件开发商可以开发插件以使浏览器支持其特定格式的数据文件。利用浏览器插件，可以将一部分服务器的功能转移到客户端，此外对于WebGIS而言，插件处理和传输的是矢量格式空间数据，其数据量较小，这样就加快了用户操作的反应速度，减少了网络流量和服务器负载。插件的不足之处在于，象传统应用软件一样，它需要先安装，然后才能使用，给使用造成了不方便</p>
+<p><img src="/assets/images/1000073.png" alt="栅格数据组织方式"></p>
+<h2 id="栅格数据取值方式">栅格数据取值方式 </h2>
+<p>单的方法是在专题地图上均匀地划分网格，或者将一张透明方格网叠置于地图上，每一网格覆盖部分的属性数据，即为该网格栅格数据的取值</p>
+<p>中心归属法：每个栅格单元的值以网格中心点对应的面域属性值来确定</p>
+<p>长度占优法：每个栅格单元的值以网格中线（水平或垂直）的大部分长度所对应的面域的属性值来确定</p>
+<p>面积占优法：每个栅格单元的值以在该网格单元中占据最大面积的属性值来确定</p>
+<p>重要性法：根据栅格内不同地物的重要性程度，选取特别重要的空间实体决定对应的栅格单元值</p>
+<h2 id="栅格数据存储的压缩编码">栅格数据存储的压缩编码 </h2>
+<p>直接编码就是将栅格数据看作一个数据矩阵，逐行（或逐列）逐个记录代码，可以每行都从左到右逐像元记录，也可奇数据行从左到右，而偶数行由右向左记录，为了特定目的还可采用其它特殊的顺序。栅格结构不论采用何种压缩方法，其逻辑原型都是直接编码的网格文件</p>
+<h3 id="链式编码">链式编码 </h3>
+<p>链式编码又称为弗里曼链码或边界链码；由某一原点开始并按某些基本方向确定的单位矢量链。基本方向可定义为：东＝0，南＝3，西＝2，北＝1等。</p>
+<h3 id="行程编码">行程编码 </h3>
+<p>只在各行（或列）数据的代码发生变化时依次记录该代码以及相同代码重复的个数，即按（属性值，重复个数）编码<br>
+逐个记录各行（或列）代码发生变化的位置和相应的代码，即按（位置，属性值）编码<br>
+按行（或列）记录相同代码的始末像元的列号（或行号）和相应的代码，即按（起位，止位，属性值）编码</p>
+<h3 id="块式编码">块式编码 </h3>
+<p>块式编码是将行程编码扩大到二维的情况，把多边形范围划分成由像元组成的正方形，然后对各个正方形进行编码。块式编码数据结构中包括3个数字：块的原点坐标（可以是块的中心或块的左下角像元的行、列号）和块的大小（块包括的像元数），再加上记录单元的代码组成</p>
+<h3 id="四叉树编码">四叉树编码 </h3>
+<p>将图像区域按四个大小相同的象限四等分，每个象限又可根据一定规则判断是否继续等分为次一层的四个象限，无论分割到哪一层象限，只要子象限上仅含一种属性代码或符合既定要求的少数几种属性时，则停止继续分割。否则就一直分割到单个像元为止。</p>
+<h4 id="指针四叉树">指针四叉树 </h4>
+<p>指针四叉树编码是通过在子结点与父结点之间设立指针的方式建立起整个结构。按这种方式，四叉树的每个结点通常存储6个量，即四个子结点指针、一个父结点指针和该结点的属性代码。这种方法除了要记录叶结点外，还要记录中间结点，一般要占用较大存储空间。</p>
+<h4 id="线性四叉树">线性四叉树 </h4>
+<p>不需记录中间结点和使用指针，仅记录叶结点，并用地址码（如Morton码等）表示叶结点的位置。因此，其编码包括叶结点的地址码和本结点的属性或灰度值，并且地址码隐含了叶结点的位置和深度信息</p>
 
       </div>
       <div class="md-sidebar-toc">
 <div class="md-toc">
-<details style="padding:0;;padding-left:0px;" open="">
+<div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#基本概念" class="md-toc-link">
+            <p>基本概念</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#栅格数据层的概念" class="md-toc-link">
+            <p>栅格数据层的概念</p>
+
+          </a></div><details style="padding:0;;padding-left:0px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#网络地理信息系统" class="md-toc-link"><p>网络地理信息系统</p>
-</a>
-          </summary>
-        <div>
-          <details style="padding:0;;padding-left:24px;" open="">
-        <summary class="md-toc-link-wrapper">
-          <a href="#计算机网络技术" class="md-toc-link"><p>计算机网络技术</p>
+          <a href="#栅格数据结构的表示" class="md-toc-link"><p>栅格数据结构的表示</p>
 </a>
           </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#网络拓扑结构和分类" class="md-toc-link">
-            <p>网络拓扑结构和分类</p>
+          <a href="#一维数组" class="md-toc-link">
+            <p>一维数组</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#分布式地理信息系统" class="md-toc-link">
-            <p>分布式地理信息系统</p>
-
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#网络地理信息系统的组合方式" class="md-toc-link">
-            <p>网络地理信息系统的组合方式</p>
-
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#网络互连设备简介" class="md-toc-link">
-            <p>网络互连设备简介</p>
+          <a href="#二维数组" class="md-toc-link">
+            <p>二维数组</p>
 
           </a></div>
         </div>
       </details>
-    <details style="padding:0;;padding-left:24px;" open="">
+    <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#栅格数据的组织方法" class="md-toc-link">
+            <p>栅格数据的组织方法</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#栅格数据取值方式" class="md-toc-link">
+            <p>栅格数据取值方式</p>
+
+          </a></div><details style="padding:0;;padding-left:0px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#万维网地理信息系统-webgis" class="md-toc-link"><p>万维网地理信息系统 webGIS</p>
+          <a href="#栅格数据存储的压缩编码" class="md-toc-link"><p>栅格数据存储的压缩编码</p>
 </a>
           </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#应用层面" class="md-toc-link">
-            <p>应用层面</p>
+          <a href="#链式编码" class="md-toc-link">
+            <p>链式编码</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#行程编码" class="md-toc-link">
+            <p>行程编码</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#块式编码" class="md-toc-link">
+            <p>块式编码</p>
 
           </a></div><details style="padding:0;;padding-left:24px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#实现技术" class="md-toc-link"><p>实现技术</p>
+          <a href="#四叉树编码" class="md-toc-link"><p>四叉树编码</p>
 </a>
           </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#cgicommon-gateway-interface通用网关接口方法" class="md-toc-link">
-            <p>CGI(Common Gateway Interface,通用网关接口)方法</p>
+          <a href="#指针四叉树" class="md-toc-link">
+            <p>指针四叉树</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#服务器应用程序接口server-api方法" class="md-toc-link">
-            <p>服务器应用程序接口(Server API)方法</p>
-
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#插件plug-ins法" class="md-toc-link">
-            <p>插件(Plug-ins)法</p>
+          <a href="#线性四叉树" class="md-toc-link">
+            <p>线性四叉树</p>
 
           </a></div>
-        </div>
-      </details>
-    
         </div>
       </details>
     

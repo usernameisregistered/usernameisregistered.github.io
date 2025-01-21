@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>地理信息系统应用项目组织和管理-GIS原理(三)-得鹿梦鱼</title>
+  <title>地理坐标与屏幕坐标间的转换原理-WebGIS(三)-得鹿梦鱼</title>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
   <link rel="stylesheet" href="/assets/styles/main.css" />
   <link rel="stylesheet" href="/assets/styles/katex/common.css" />
@@ -30,19 +30,19 @@
     <main class="flex-grow-1 overflow-hidden scrollHeight">
       <div class="w-screen flex flex-1">
         <aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
-          <div class="text-md font-bold text-gray-700 m-4">GIS原理(三)</div>
+          <div class="text-md font-bold text-gray-700 m-4">WebGIS(三)</div>
           <div class="overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar flex flex-col">
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100000.html">MapServer应用范围
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100000.html">杂谈
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100001.html">地理信息系统和社会
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100001.html">WebGIS前端地图比例尺换算原理
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100002.html">地理信息系统标准
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100002.html">前端根据地理范围换算出瓦片行列号的原理(核心)
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100003.html">地球信息科学和数字地球
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100003.html">地图瓦片在Canvas上的拼接显示原理
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100004.html">地理信息系统软件工程技术
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100004.html">栅格、矢量图层的本质
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100005.html">地理信息系统应用项目组织和管理
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100005.html">地理坐标与屏幕坐标间的转换原理
             </a>
           </div>
         </aside>
@@ -53,29 +53,61 @@
     
       <div class="crossnote markdown-preview  ">
       
-<h1 id="地理信息系统应用项目组织和管理">地理信息系统应用项目组织和管理 </h1>
+<h1 id="地理坐标与屏幕坐标间的转换原理">地理坐标与屏幕坐标间的转换原理 </h1>
+<p>地图本身是拥有坐标的，一般可以大致分为平面坐标和经纬度坐标，在这里我们统称为地理坐标</p>
+<h2 id="转换前提">转换前提 </h2>
 <ol>
-<li>GIS应用项目简介<br>
-<img src="/assets/1000054.png" alt="根据场模型和要素模型对GIS应用领域进行划分"></li>
-<li>软件研制和开发的质量管理——对于GIS软件开发组织的指导</li>
-<li>应用项目策略性规划</li>
-<li>应用项目合同</li>
-<li>应用项目实施性规划——软硬件配置</li>
-<li>子项目划分和进度安排</li>
-<li>项目预算</li>
-<li>人员管理</li>
-<li>开发和数据管理</li>
-<li>项目控制与评估</li>
+<li>知道屏幕的最左上角所对应的真实的地理坐标（screenGeoBounds.left, screenGeoBounds.top）。</li>
+<li>知道此时的地图所在级别上每个瓦片所对应的实际地理长度(sliceLevelLength)。</li>
+<li>知道瓦片的大小，即一个瓦片所拥有的屏幕像素(tileSize)。</li>
 </ol>
+<h2 id="转换公式">转换公式 </h2>
+<h3 id="屏幕坐标转换为地理坐标">屏幕坐标转换为地理坐标 </h3>
+<p>geoXY.x = screenGeoBounds.left + screenX * sliceLevelLength / tileSize;</p>
+<p>geoXY.y = screenGeoBounds.top - screenY * sliceLevelLength / tileSize;</p>
+<h4 id="地理坐标转换为屏幕坐标">地理坐标转换为屏幕坐标 </h4>
+<p>screenXY.x = (geoX - screenGeoBounds.left)/(sliceLevelLength/ tileSize);</p>
+<p>screenXY.y = (screenGeoBounds.top - geoY)/(sliceLevelLength/ tileSize);</p>
 
       </div>
       <div class="md-sidebar-toc">
 <div class="md-toc">
-<div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
-          <a href="#地理信息系统应用项目组织和管理" class="md-toc-link">
-            <p>地理信息系统应用项目组织和管理</p>
+<details style="padding:0;;padding-left:0px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#地理坐标与屏幕坐标间的转换原理" class="md-toc-link"><p>地理坐标与屏幕坐标间的转换原理</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#转换前提" class="md-toc-link">
+            <p>转换前提</p>
+
+          </a></div><details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#转换公式" class="md-toc-link"><p>转换公式</p>
+</a>
+          </summary>
+        <div>
+          <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#屏幕坐标转换为地理坐标" class="md-toc-link"><p>屏幕坐标转换为地理坐标</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#地理坐标转换为屏幕坐标" class="md-toc-link">
+            <p>地理坐标转换为屏幕坐标</p>
 
           </a></div>
+        </div>
+      </details>
+    
+        </div>
+      </details>
+    
+        </div>
+      </details>
+    
 </div>
 </div>
       <a id="sidebar-toc-btn">≡</a>

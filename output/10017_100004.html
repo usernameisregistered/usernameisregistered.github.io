@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>地理信息系统软件工程技术-GIS原理(三)-得鹿梦鱼</title>
+  <title>栅格、矢量图层的本质-WebGIS(三)-得鹿梦鱼</title>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
   <link rel="stylesheet" href="/assets/styles/main.css" />
   <link rel="stylesheet" href="/assets/styles/katex/common.css" />
@@ -30,19 +30,19 @@
     <main class="flex-grow-1 overflow-hidden scrollHeight">
       <div class="w-screen flex flex-1">
         <aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
-          <div class="text-md font-bold text-gray-700 m-4">GIS原理(三)</div>
+          <div class="text-md font-bold text-gray-700 m-4">WebGIS(三)</div>
           <div class="overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar flex flex-col">
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100000.html">MapServer应用范围
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100000.html">杂谈
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100001.html">地理信息系统和社会
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100001.html">WebGIS前端地图比例尺换算原理
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100002.html">地理信息系统标准
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100002.html">前端根据地理范围换算出瓦片行列号的原理(核心)
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100003.html">地球信息科学和数字地球
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100003.html">地图瓦片在Canvas上的拼接显示原理
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100004.html">地理信息系统软件工程技术
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100004.html">栅格、矢量图层的本质
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100005.html">地理信息系统应用项目组织和管理
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10017_100005.html">地理坐标与屏幕坐标间的转换原理
             </a>
           </div>
         </aside>
@@ -53,90 +53,37 @@
     
       <div class="crossnote markdown-preview  ">
       
-<h1 id="地理信息系统软件工程技术">地理信息系统软件工程技术 </h1>
-<h2 id="软件工程简介">软件工程简介 </h2>
-<p>计算机软件工程是一类求解的工程。它应用计算机科学、数学及管理科学等原理，借鉴传统工程的原则、方法，创建软件以达到提高质量，降低成本的目的。其中，计算机科学、数学应用于构造模型与算法，工程科学用于制定规范、设计范型，评估成本及确定权衡，管理科学用于计划、资源、质量、成本等管理</p>
-<p>软件工程活动包括需求、设计、实现、确认及支持等，它们对应于软件开发活动的不同阶段，一般来说，软件开发都要经历从分析设计到实现确认的过程。在每个阶段按照相应的规范进行工作，并得到该阶段的成果，是保证整个开发活动成功的关键</p>
-<h2 id="gis领域的体系结构和构件">GIS领域的体系结构和构件 </h2>
-<p>按照应用目的，地理信息系统可以分为区域地理信息系统、专题地理信息系统以及地理信息系统工具，它们共同组成了GIS领域<br>
-所谓领域，是指共享某种功能性(Functionality)的系统或应用程序的集合，换言之，领域表现了一组应用系统共性的方面<br>
-对于地理信息系统而言，其共享的功能就是对空间数据输入、管理、分析和表现，而这恰好是地理信息系统工具所提供的功能</p>
-<h2 id="gis需求分析">GIS需求分析 </h2>
-<p>需求获取是软件开发活动的第一步，获得正确的需求描述是成功软件的前提。<br>
-一般而言，用户需求分为两类，功能性需求和非功能性需求，前者定义了系统做什么，包括输入、输出以及其间的转换；<br>
-后者定义了系统工作时的特性，如效率、可靠性、安全性、可维护性、可移植性等等要求。</p>
-<p>具体的需求获取内容包括</p>
-<ul>
-<li>物理环境，物理设备的位置以及其分布的集中程度；</li>
-<li>接口，与其它软件系统的接口以及对数据格式的要求；</li>
-<li>用户或人的因素，包括系统用户熟练程度，使用系统需要接受的训练；</li>
-<li>功能，系统要完成什么，性能如何；</li>
-<li>文档，需要哪些文档以及其针对的读者；</li>
-<li>数据，数据格式、数据精度、数据量、接收和发送数据的频率；</li>
-<li>资源，使用系统需要的设备，开发需要的人力资源、计算机资源、时间表；</li>
-<li>安全性，对访问信息的控制程度，数据的备份等</li>
-<li>质量保证，对系统的可靠性要求，平均系统出错时间，可移植性，可维护性等。</li>
-</ul>
-<h2 id="数据管理设计">数据管理设计 </h2>
-<p>数据管理部分设计的目的是确定在数据管理系统中存储和检索数据的基本结构，其原则是要隔离数据管理方案的影响，不管该方案是普通文件、关系数据库、面向对象数据库或者是其它方式的</p>
-<p>目前，主要有三种主要的数据管理方法，即文件、关系和面向对象</p>
-<p><strong>普通文件管理</strong>：普通文件管理提供基本的文件处理和分类能力；<br>
-<strong>关系型数据库管理系统（RDBMS）</strong>：关系型数据库管理系统建立在关系理论的基础上，采用多个表来管理数据，每个表的结构遵循一系列“范式”进行规范化，以减少数据冗余。<br>
-<strong>面向对象的数据库管理系统</strong>：面向对象的数据库是一种正在成熟的技术，它通过增加抽象数据类型和继承特性以及一些用来创建和操作类和对象服务，实现对象的持续存储。</p>
-<h2 id="界面设计">界面设计 </h2>
-<p>在设计阶段，除了设计算法，数据结构等内容外，一个很重要的部分就是系统界面的设计，系统界面是人机交互的接口，包括人如何命令系统以及系统如何向用户提交信息。一个设计良好的用户界面使得用户更容易掌握系统，从而增加用户对系统的接受程度。此外，系统用户界面直接影响了用户在使用系统时的情绪</p>
-<h2 id="gis中的设计模式">GIS中的设计模式 </h2>
-<p>在研究软件复用的过程中，设计模式(Design Pattern)的概念被提了出来。所谓设计模式，简单地理解，是一些设计面向对象的软件的经验总结</p>
-<p>一般包括以下四个基本部分</p>
+<h1 id="栅格-矢量图层的本质">栅格、矢量图层的本质 </h1>
+<h2 id="何为栅格数据何为矢量数据">何为栅格数据，何为矢量数据？ </h2>
+<p>在GIS中，对于数据格式的分类，我们一般会将其分为栅格数据和矢量数据两种类型。栅格数据是将空间看做离散的像元，由二维数组或者其他数据组织方式来进行表达。矢量数据恰恰相反，它将空间看成是连续的，用要素（点、线、面）来进行表达。</p>
+<p>我们把栅格数据和矢量数据的特点归纳如下：</p>
 <ol>
-<li>模式名称：描述一个设计问题、它的解法和后果</li>
-<li>问题：告诉什么时候要使用该设计模式，解释问题及其背景</li>
-<li>解决方案：描述设计的基本要素、它们的关系、各自的任务以及相互之间的合作</li>
-<li>后果：描述应用设计模式之后的结果和权衡</li>
+<li>栅格数据是离散的，矢量数据是连续的。所以栅格数据多用二维数组（行、列）的方式组织。而矢量数据可以理解为一种向量，它用平面坐标（X、Y）的有序几何来组织。</li>
+<li>栅格数据的最小单位是像素，矢量数据的最小单位是要素。</li>
+<li>栅格数据的属性由像素的像素值来表示，矢量数据的属性由要素的属性来表示。</li>
+<li>拓扑关系是基于矢量数据的。</li>
 </ol>
-<p>E.Gamma提出了23个面向对象的设计模式，这些模式抽象层次较高，可以应用于所有软件的开发过程。在地理信息系统开发中，经常会遇到本领域的特定的一些问题，并且已经形成了有效的解决方案，对其进行归纳总结，形成相应的设计模式，对于GIS软件开发，有着重要的意义</p>
-<h2 id="常用软件">常用软件 </h2>
-<ol>
-<li><a href="https://hcn4t3r3b7w9.feishu.cn/wiki/GqpwwPN0RiaN4NkQrhDcZtSNnuh?fromScene=spaceOverview">QGIS</a></li>
-<li><a href="https://hcn4t3r3b7w9.feishu.cn/wiki/O34gwh56wiR2H7kz9nrcQqFcnab?fromScene=spaceOverview">Leaflet</a></li>
-</ol>
+<dl>
+<dt>WebGIS中，地形图本身是栅格数据还是矢量数据</dt>
+<dd>地形图也就是由PNG或其他格式组成的一张图片而已。图片本身是由离散的像素在二维方向上组成的，而这正是栅格数据的组织方式，所以WebGIS中，我们得到的地形图可以理解为一种栅格图层。</dd>
+<dt>用户需要与图层交互时，比如需要图层响应点击事件，返回点击处的属性，此时图层是用栅格的数据方式显示，还是矢量数据方式显示？</dt>
+<dd>鼠标点击到图层上的某处，需要返回此时点击处的属性。栅格数据是由像素值来表示属性的，所以它是不能满足用户需求的。这里，我们只能用矢量图层来完成这个需求。那么怎么完成呢？一般来说，有两种方式，分别是前台实现需求和后台实现需求</dd>
+<dt>需要判断两个图层的拓扑关系，比如判断房屋图层中哪些房屋落在了绿地图层中的绿地里，此时是用栅格图层还是矢量图层？</dt>
+<dd>只能选择矢量图层来完成需求。拓扑关系的判断是只有矢量图层可以进行的</dd>
+</dl>
 
       </div>
       <div class="md-sidebar-toc">
 <div class="md-toc">
 <details style="padding:0;;padding-left:0px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#地理信息系统软件工程技术" class="md-toc-link"><p>地理信息系统软件工程技术</p>
+          <a href="#栅格-矢量图层的本质" class="md-toc-link"><p>栅格、矢量图层的本质</p>
 </a>
           </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#软件工程简介" class="md-toc-link">
-            <p>软件工程简介</p>
-
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#gis领域的体系结构和构件" class="md-toc-link">
-            <p>GIS领域的体系结构和构件</p>
-
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#gis需求分析" class="md-toc-link">
-            <p>GIS需求分析</p>
-
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#数据管理设计" class="md-toc-link">
-            <p>数据管理设计</p>
-
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#界面设计" class="md-toc-link">
-            <p>界面设计</p>
-
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#gis中的设计模式" class="md-toc-link">
-            <p>GIS中的设计模式</p>
-
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#常用软件" class="md-toc-link">
-            <p>常用软件</p>
+          <a href="#何为栅格数据何为矢量数据" class="md-toc-link">
+            <p>何为栅格数据，何为矢量数据？</p>
 
           </a></div>
         </div>

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>数据类型-redis-得鹿梦鱼</title>
+  <title>美团技术架构-前端工程化-得鹿梦鱼</title>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
   <link rel="stylesheet" href="/assets/styles/main.css" />
   <link rel="stylesheet" href="/assets/styles/katex/common.css" />
@@ -30,19 +30,15 @@
     <main class="flex-grow-1 overflow-hidden scrollHeight">
       <div class="w-screen flex flex-1">
         <aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
-          <div class="text-md font-bold text-gray-700 m-4">redis</div>
+          <div class="text-md font-bold text-gray-700 m-4">前端工程化</div>
           <div class="overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar flex flex-col">
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10037_100000.html">介绍
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10037_100000.html">前端工程化说明
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10037_100001.html">安装
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10037_100001.html">工程化专题系列
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10037_100002.html">配置
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10037_100002.html">框架对比
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10037_100003.html">数据类型
-            </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10037_100004.html">命令
-            </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10037_100005.html">高级
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10037_100003.html">美团技术架构
             </a>
           </div>
         </aside>
@@ -53,65 +49,41 @@
     
       <div class="crossnote markdown-preview  ">
       
-<h1 id="redis-数据类型">Redis 数据类型 </h1>
-<h2 id="string-字符串">string 字符串 </h2>
-<p>最大能存储 512MB</p>
-<pre data-role="codeBlock" data-info="" class="language-text"><code>set var "name"
-get var 
-del var
-</code></pre><h2 id="hash-哈希">hash 哈希 </h2>
-<p>每个 hash 可以存储 2^32 -1 键值对（40多亿）</p>
-<pre data-role="codeBlock" data-info="" class="language-text"><code>hset var name "lisi" age 20 
-hget var name 
-hget var age
-del var
-</code></pre><h2 id="list-列表">list 列表 </h2>
-<p>列表最多可存储 232 - 1 元素</p>
-<pre data-role="codeBlock" data-info="" class="language-text"><code>lpush test "redis" "mongodb"
-lrange test 0 2
-del test
-</code></pre><h2 id="set-集合">set 集合 </h2>
-<p>Set 是 string 类型的无序集合</p>
-<pre data-role="codeBlock" data-info="" class="language-text"><code>sadd test redis
-sadd test mysql
-smembers test 
-</code></pre><h2 id="zset-有序集合">zset 有序集合 </h2>
-<p>edis zset 和 set 一样也是string类型元素的集合,且不允许重复的成员<br>
-不同的是每个元素都会关联一个double类型的分数。redis正是通过分数来为集合中的成员进行从小到大的排序<br>
-zset的成员是唯一的,但分数(score)却可以重复</p>
-<pre data-role="codeBlock" data-info="" class="language-text"><code>zadd test 20 redis
-zadd test 30 mysql
-zadd test 10 mongodb
-zrangbyscore test 0 1000
-</code></pre>
+<h2 id="什么是技术架构">什么是技术架构 </h2>
+<blockquote>
+<p>技术架构是指社会中各种技术之间相互作用、相互联系、按一定目的、一定结构方式组成的技术整体<br>
+最终目的是在确保线上的质量和稳定性的前提下，提升团队整体的研发效率</p>
+</blockquote>
+<h2 id="前端工程师如何成长">前端工程师如何成长 </h2>
+<blockquote>
+<p><strong>做规划</strong> 向前看，它是对未来整体性、长期性、基本性问题的思考和考量，设计未来整套行动的方案<br>
+<strong>做复盘</strong> 向后看，它指的是我们从过去的经验和实际工作中进行学习，帮助大家有效地总结经验，提升能力的方式<br>
+<strong>保持视野</strong> 我们的思想或者知识的领域。但是视野并不是一成不变的，因为世界在不断地变化，我们不能闭门造车，要拥抱变化，要以此来调整自己发展的方向</p>
+</blockquote>
+<h3 id="如何保持视野">如何保持视野 </h3>
+<ol>
+<li>核心关注圈，就是我们在团队的业务当中可能会每天都用到的，或者说自己感兴趣的，又或者说在业界非常火的东西，我们要保持高度的关注</li>
+<li>一般关注圈，就是我们在团队的业务当中可能不常用到，但以后很有可能会用到的，或者说自己有点感兴趣的，又或者说我们能预判业界之后有可能会火的东西，我们要保持一定的关注度</li>
+<li>扫盲关注圈，就是我们可能业务中不会用到，自己也不太感兴趣，业界可能也不太火的，我们不需要放太多的精力去关注它，只需要知道它大概是做什么的，解决了什么问题，就足够了</li>
+</ol>
+<p><a href="https://mp.weixin.qq.com/s/9hvpc71YNMW6bbJZTyoSXw">文章引用</a></p>
+
       </div>
       <div class="md-sidebar-toc">
 <div class="md-toc">
-<details style="padding:0;;padding-left:0px;" open="">
+<div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
+          <a href="#什么是技术架构" class="md-toc-link">
+            <p>什么是技术架构</p>
+
+          </a></div><details style="padding:0;;padding-left:0px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#redis-数据类型" class="md-toc-link"><p>Redis 数据类型</p>
+          <a href="#前端工程师如何成长" class="md-toc-link"><p>前端工程师如何成长</p>
 </a>
           </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#string-字符串" class="md-toc-link">
-            <p>string 字符串</p>
-
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#hash-哈希" class="md-toc-link">
-            <p>hash 哈希</p>
-
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#list-列表" class="md-toc-link">
-            <p>list 列表</p>
-
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#set-集合" class="md-toc-link">
-            <p>set 集合</p>
-
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#zset-有序集合" class="md-toc-link">
-            <p>zset 有序集合</p>
+          <a href="#如何保持视野" class="md-toc-link">
+            <p>如何保持视野</p>
 
           </a></div>
         </div>

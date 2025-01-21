@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JavaScript性能优化-Web性能-得鹿梦鱼</title>
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+  <link rel="stylesheet" href="/assets/styles/main.css" />
+  <link rel="stylesheet" href="/assets/styles/katex/common.css" />
+  <link rel="stylesheet" href="/assets/styles/katex/katex.min.css" />
+  <script src="/assets/script/highlight.js"></script>
+</head>
+
+<body data-for="html-export">
+  <div class="w-screen h-screen flex flex-col overflow-hidden">
+    <header class="flex flex-grow-0 justify-between p-4 border-b border-neutral-200">
+      <a href="/" class="flex items-center text-2xl text-neutral-700 cursor-pointer">
+        <img src="/assets/images/logo.svg" class="w-[40px] h-[40px]" alt="得鹿梦鱼"></Image>
+        <span class="text-4 ml-4">得鹿梦鱼</span>
+      </a>
+      <div class="right flex items-center cursor-pointer">
+        <a href="/classify.html" class="mr-2 text-md hover:text-sky-500">知识库</a>
+        <a href="/frontend.html" class="mr-2 text-md hover:text-sky-500">前端技能树</a>
+        <a href="/question.html" class="mr-2 text-md hover:text-sky-500">面试题</a>
+        <a href="/study.html" class="mr-2 text-md hover:text-sky-500">学习资料</a>
+        <a href="/about.html" class="mr-2 text-md hover:text-sky-500">关于本人</a>
+      </div>
+    </header>
+    <main class="flex-grow-1 overflow-hidden scrollHeight">
+      <div class="w-screen flex flex-1">
+        <aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
+          <div class="text-md font-bold text-gray-700 m-4">Web性能</div>
+          <div class="overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar flex flex-col">
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10029_100000.html">概述
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10029_100001.html">渲染页面：浏览器的工作原理
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10029_100002.html">关键渲染路径
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10029_100003.html">CSS动画与JavaScript动画的性能
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10029_100004.html">优化启动性能
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10029_100005.html">使用dns-prefetch
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10029_100006.html">懒加载
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10029_100007.html">感知性能
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10029_100008.html">JavaScript性能优化
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10029_100009.html">css性能优化
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10029_100010.html">HTML性能优化
+            </a>
+          </div>
+        </aside>
+        <section class="basis-10/12 overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar">
+          <div id="markdown-container" class="px-4 relative">
+            
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="javascript性能优化">JavaScript性能优化 </h1>
+<h2 id="优化-javascript-的下载">优化 JavaScript 的下载 </h2>
+<p>最高效、最不阻塞的JavaScript是根本不使用JavaScript。你应该尽量少使用JavaScript</p>
+<p><strong>并非总是需要框架</strong>：你可能熟悉使用某个 JavaScript 框架。如果你对使用该框架有经验和信心，并且喜欢它提供的所有工具，那么它可能是你构建大多数项目的首选。然而，框架会增加 JavaScript 的负担。如果你创建的是一个相对静态的体验，对 JavaScript 的要求很少，那么你可能不需要那个框架。也许你可以使用几行标准 JavaScript 来实现你需要的功能。<br>
+<strong>考虑更简单的解决方案</strong>：你可能有一个华丽、有趣的解决方案要实现，但请考虑用户是否会喜欢它。他们是否更喜欢简单的东西？<br>
+<strong>删除未使用的代码</strong>：这听起来很明显，但令人惊讶的是很多开发者忘记清除在开发过程中添加的不会被用到的功能。你需要谨慎并有意识地添加和删除代码。所有脚本都会被解析，无论它是否被使用；因此，加快下载速度的一个快速方法是摆脱任何不会被使用的功能。此外，要考虑通常只会使用框架中的一小部分功能。是否有可能创建一个仅包含你所需部分的框架的自定义构建版本？<br>
+<strong>考虑使用浏览器内置特性</strong>：也许你可以使用浏览器已经具备的特性，而不是通过 JavaScript 自己创建</p>
+<h2 id="处理解析和执行">处理解析和执行 </h2>
+<ol>
+<li>通常首先解析 HTML，按照页面上出现的顺序进行解析。</li>
+<li>遇到 CSS 时，解析 CSS 以了解需要应用于页面的样式。在此期间，开始获取链接的资源，如图像和网络字体。</li>
+<li>遇到 JavaScript 时，浏览器解析、评估并执行它。</li>
+<li>稍后，浏览器根据应用于每个 HTML 元素的 CSS 来确定每个元素的样式。</li>
+<li>然后将经过样式处理的结果绘制到屏幕上。</li>
+</ol>
+<p>这里关键的步骤是第 3 步。默认情况下，JavaScript 的解析和执行会阻塞渲染。这意味着浏览器在遇到 JavaScript 之后，会阻塞解析任何出现在其后的 HTML 代码，直到脚本处理完成。因此，样式和绘制也会被阻塞。因此，你不仅需要仔细考虑你要下载的内容，还要考虑代码何时以及以何种方式执行</p>
+<ul>
+<li>尽早加载关键资源</li>
+<li>推迟非关键 JavaScript 的执行</li>
+<li>分解长任务</li>
+<li>处理 JavaScript 动画</li>
+<li>优化事件性能</li>
+<li>编写更高效代码的技巧
+<ul>
+<li>减少 DOM 操作</li>
+<li>批量进行 DOM 更改</li>
+<li>简化 HTML 代码</li>
+<li>减少循环代码的数量</li>
+<li>将计算任务移到主线程之外</li>
+</ul>
+</li>
+</ul>
+
+      </div>
+      <div class="md-sidebar-toc">
+<div class="md-toc">
+<details style="padding:0;;padding-left:0px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#javascript性能优化" class="md-toc-link"><p>JavaScript性能优化</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#优化-javascript-的下载" class="md-toc-link">
+            <p>优化 JavaScript 的下载</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#处理解析和执行" class="md-toc-link">
+            <p>处理解析和执行</p>
+
+          </a></div>
+        </div>
+      </details>
+    
+</div>
+</div>
+      <a id="sidebar-toc-btn">≡</a>
+    
+    
+    
+    
+    
+    
+<script>
+
+var sidebarTOCBtn = document.getElementById('sidebar-toc-btn')
+sidebarTOCBtn.addEventListener('click', function(event) {
+  event.stopPropagation()
+  if (document.body.hasAttribute('html-show-sidebar-toc')) {
+    document.body.removeAttribute('html-show-sidebar-toc')
+  } else {
+    document.body.setAttribute('html-show-sidebar-toc', true)
+  }
+})
+</script>
+      
+  
+    
+          </div>
+        </section>
+      </div>
+    </main>
+</body>
+
+</html>

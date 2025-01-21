@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>介绍-redis-得鹿梦鱼</title>
+  <title>前端工程化说明-前端工程化-得鹿梦鱼</title>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
   <link rel="stylesheet" href="/assets/styles/main.css" />
   <link rel="stylesheet" href="/assets/styles/katex/common.css" />
@@ -30,19 +30,15 @@
     <main class="flex-grow-1 overflow-hidden scrollHeight">
       <div class="w-screen flex flex-1">
         <aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
-          <div class="text-md font-bold text-gray-700 m-4">redis</div>
+          <div class="text-md font-bold text-gray-700 m-4">前端工程化</div>
           <div class="overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar flex flex-col">
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10037_100000.html">介绍
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10037_100000.html">前端工程化说明
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10037_100001.html">安装
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10037_100001.html">工程化专题系列
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10037_100002.html">配置
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10037_100002.html">框架对比
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10037_100003.html">数据类型
-            </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10037_100004.html">命令
-            </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10037_100005.html">高级
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10037_100003.html">美团技术架构
             </a>
           </div>
         </aside>
@@ -53,22 +49,75 @@
     
       <div class="crossnote markdown-preview  ">
       
-<h1 id="redis-简介">Redis 简介 </h1>
+<h2 id="前端从无到有从简单到复杂从手动到配置从融合到后端到主导用户应用不断的对前端的工程化提出了新的概念和挑战而在这一系列的工具或者方法中简单分出以下几个阶段">前端从无到有，从简单到复杂，从手动到配置，从融合到后端到主导用户应用，不断的对前端的工程化提出了新的概念和挑战，而在这一系列的工具或者方法中，简单分出以下几个阶段 </h2>
+<h3 id="库-框架的选型">库、框架的选型 </h3>
 <blockquote>
-<p>Redis 是完全开源免费的，遵守BSD协议，是一个高性能的key-value数据库</p>
+<p>前端工程建设的第一项任务就是根据项目特征进行技术选型</p>
 </blockquote>
-<h2 id="特点">特点： </h2>
+<h3 id="简单构建">简单构建 </h3>
+<blockquote>
+<p>完成项目之后，一般我们都需要对项目中引用的文件进行简单的优化，包括校验、压缩、合并等<br>
+而目前市场上提供的构建工具有grunt,gulp,fis以及webpack等</p>
+</blockquote>
+<h3 id="jscss模块化开发">JS/CSS模块化开发 </h3>
+<blockquote>
+<p>模块化开发的最大价值应该是分治,只有根据自己的业务需要不断的整合并且开出新的分之，并且分别维护才可以让业务或者技术更加纯熟</p>
+</blockquote>
+<h3 id="工程化问题的爆发">工程化问题的爆发 </h3>
 <ol>
-<li>Redis支持数据的持久化，可以将内存中的数据保存在磁盘中，重启的时候可以再次加载进行使用</li>
-<li>Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储</li>
-<li>Redis支持数据的备份，即master-slave模式的数据备份</li>
+<li>大体量：多功能、多页面、多状态、多系统</li>
+<li>大规模：多人甚至多团队合作开发</li>
+<li>高性能：CDN部署、缓存控制、文件指纹、缓存复用、请求合并、按需加载、同步/异步加载、移动端首屏CSS内嵌、HTTP 2.0服务端资源推送</li>
 </ol>
-<h2 id="优势">优势： </h2>
+<h2 id="解决方案">解决方案 </h2>
+<h3 id="整体规范">整体规范 </h3>
 <ol>
-<li>性能极高 – Redis能读的速度是110000次/s,写的速度是81000次/s</li>
-<li>丰富的数据类型 – Redis支持二进制案例的 Strings, Lists, Hashes, Sets 及 Ordered Sets 数据类型操作</li>
-<li>原子 – Redis的所有操作都是原子性的，意思就是要么成功执行要么失败完全不执行。单个操作是原子性的。多个操作也支持事务，即原子性，通过MULTI和EXEC指令包起来</li>
-<li>丰富的特性 – Redis还支持 publish/subscribe, 通知, key 过期等等特性</li>
+<li>设计规范 一个前端工程界面部分规范不可或缺的部分</li>
+<li>前端代码规范 从源头开始制定代码规范，所有的代码符合这一规范，目前制定了包括html\css\js\less在内的代码规范。针对前端项目中遇到的问题，也将统一制定解决方案。比如web视频解决方案，时间控件解决方案，二维码解决方案等</li>
+<li>构建规范</li>
+</ol>
+<h3 id="组件化开发">组件化开发 </h3>
+<h3 id="不同维度">不同维度 </h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+<th>举例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>js模块</td>
+<td>独立的算法和数据单元</td>
+<td>浏览器环境监测 网络请求 应用配置 DOM操作 工具函数 组件中的js单元</td>
+</tr>
+<tr>
+<td>css模块</td>
+<td>独立的功能性样式单元</td>
+<td>栅格系统 字体图表 动画样式 组件中的css单元</td>
+</tr>
+<tr>
+<td>UI组件</td>
+<td>独立的可视/ 可交互式功能单元</td>
+<td>页头 页尾 导航栏 搜索栏</td>
+</tr>
+<tr>
+<td>页面</td>
+<td>ui组件的容器</td>
+<td>首页 列表页 用户管理</td>
+</tr>
+<tr>
+<td>应用</td>
+<td>整个项目 整个站点</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="静态资源管理">静态资源管理 </h3>
+<ol>
+<li>有加载相关的按需加载、延迟加载、预加载、请求合并等策略；</li>
+<li>有缓存相关的浏览器缓存利用，缓存更新、缓存共享、非覆盖式发布等方案；</li>
 </ol>
 
       </div>
@@ -76,17 +125,50 @@
 <div class="md-toc">
 <details style="padding:0;;padding-left:0px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#redis-简介" class="md-toc-link"><p>Redis 简介</p>
+          <a href="#前端从无到有从简单到复杂从手动到配置从融合到后端到主导用户应用不断的对前端的工程化提出了新的概念和挑战而在这一系列的工具或者方法中简单分出以下几个阶段" class="md-toc-link"><p>前端从无到有，从简单到复杂，从手动到配置，从融合到后端到主导用户应用，不断的对前端的工程化提出了新的概念和挑战，而在这一系列的工具或者方法中，简单分出以下几个阶段</p>
 </a>
           </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#特点" class="md-toc-link">
-            <p>特点：</p>
+          <a href="#库-框架的选型" class="md-toc-link">
+            <p>库、框架的选型</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#优势" class="md-toc-link">
-            <p>优势：</p>
+          <a href="#简单构建" class="md-toc-link">
+            <p>简单构建</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#jscss模块化开发" class="md-toc-link">
+            <p>JS/CSS模块化开发</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#工程化问题的爆发" class="md-toc-link">
+            <p>工程化问题的爆发</p>
+
+          </a></div>
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:0px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#解决方案" class="md-toc-link"><p>解决方案</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#整体规范" class="md-toc-link">
+            <p>整体规范</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#组件化开发" class="md-toc-link">
+            <p>组件化开发</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#不同维度" class="md-toc-link">
+            <p>不同维度</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#静态资源管理" class="md-toc-link">
+            <p>静态资源管理</p>
 
           </a></div>
         </div>

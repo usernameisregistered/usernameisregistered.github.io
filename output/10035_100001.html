@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>命令-memcached-得鹿梦鱼</title>
+  <title>安装-redis-得鹿梦鱼</title>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
   <link rel="stylesheet" href="/assets/styles/main.css" />
   <link rel="stylesheet" href="/assets/styles/katex/common.css" />
@@ -30,11 +30,19 @@
     <main class="flex-grow-1 overflow-hidden scrollHeight">
       <div class="w-screen flex flex-1">
         <aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
-          <div class="text-md font-bold text-gray-700 m-4">memcached</div>
+          <div class="text-md font-bold text-gray-700 m-4">redis</div>
           <div class="overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar flex flex-col">
             <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10035_100000.html">介绍
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10035_100001.html">命令
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10035_100001.html">安装
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10035_100002.html">配置
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10035_100003.html">数据类型
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10035_100004.html">命令
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10035_100005.html">高级
             </a>
           </div>
         </aside>
@@ -45,43 +53,50 @@
     
       <div class="crossnote markdown-preview  ">
       
-<p>将 value(数据值) 存储在指定的 key(键) 中</p>
-<pre data-role="codeBlock" data-info="" class="language-text"><code>set key flags exptime bytes [noreply] 
-value 
-
-add key flags exptime bytes [noreply]
-value
-</code></pre><p>替换已存在的 key(键) 的 value(数据值)</p>
-<pre data-role="codeBlock" data-info="" class="language-text"><code>replace key flags exptime bytes [noreply]
-value
-</code></pre><p>向已存在 key(键) 的 value(数据值) 后面追加数据</p>
-<pre data-role="codeBlock" data-info="" class="language-text"><code>append key flags exptime bytes [noreply]
-value
-</code></pre><p>向已存在 key(键) 的 value(数据值) 前面追加数据</p>
-<pre data-role="codeBlock" data-info="" class="language-text"><code>prepend key flags exptime bytes [noreply]
-value
-</code></pre><p>用于执行一个"检查并设置"的操作</p>
-<pre data-role="codeBlock" data-info="" class="language-text"><code>cas key flags exptime bytes unique_cas_token [noreply]
-value
-</code></pre><p>获取存储在 key(键) 中的 value(数据值)</p>
-<pre data-role="codeBlock" data-info="" class="language-text"><code>get key
-get key1 key2 key3
-</code></pre><p>获取带有 CAS 令牌存 的 value(数据值)</p>
-<pre data-role="codeBlock" data-info="" class="language-text"><code>gets key
-gets key1 key2 key3
-</code></pre><p>删除已存在的 key(键)</p>
-<pre data-role="codeBlock" data-info="" class="language-text"><code>delete key [noreply]
-</code></pre><p>对已存在的 key(键) 的数字值进行自增或自减操作</p>
-<pre data-role="codeBlock" data-info="" class="language-text"><code>incr key increment_value
-decr key decrement_value
-</code></pre><p>返回统计信息例如 PID(进程号)、版本号、连接数  stats<br>
-显示各个 slab 中 item 的数目和存储时长 stats items<br>
-显示各个slab的信息，包括chunk的大小、数目、使用情况  stats slabs<br>
-显示所有item的大小和个数 stats sizes<br>
-清理缓存中的所有 key=&gt;value(键=&gt;值) 对 flush_all [time] [noreply]</p>
+<h1 id="redis-安装">Redis 安装 </h1>
+<h2 id="window">window </h2>
+<ol>
+<li>下载<a href="https://github.com/MSOpenTech/redis/releases">下载地址</a></li>
+<li>解压重名为redis</li>
+<li>可选 将其移动到指定的安装目录</li>
+<li>启动 cmd 中切换到指定目录 执行 redis-server.exe redis.windows.conf</li>
+<li>连接 cmd redis-cli.exe -h 127.0.0.1 -p 6379</li>
+</ol>
+<h2 id="linux">linux </h2>
+<ol>
+<li>wget <a href="http://download.redis.io/releases/redis-2.8.17.tar.gz">http://download.redis.io/releases/redis-2.8.17.tar.gz</a></li>
+<li>tar -zxvf redis-2.8.17.tar.gz</li>
+<li>mv ./redis-2.8.17 /usr/local</li>
+<li>mv /usr/local/redis-2.8.17 /usr/local/redis</li>
+<li>cd /usr/local/redis</li>
+<li>make</li>
+<li>./src/redis-server ./redis.conf 启动</li>
+<li>./src/redis-cii 连接</li>
+</ol>
 
       </div>
-      <div class="md-sidebar-toc"></div>
+      <div class="md-sidebar-toc">
+<div class="md-toc">
+<details style="padding:0;;padding-left:0px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#redis-安装" class="md-toc-link"><p>Redis 安装</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#window" class="md-toc-link">
+            <p>window</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#linux" class="md-toc-link">
+            <p>linux</p>
+
+          </a></div>
+        </div>
+      </details>
+    
+</div>
+</div>
       <a id="sidebar-toc-btn">≡</a>
     
     

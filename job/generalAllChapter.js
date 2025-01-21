@@ -7,20 +7,22 @@ let uid = 1000000;
 module.exports = async function generalAllChapter() {
   log("任务名称：《构建章节内容》");
   const data = getData("chapters.json");
+  const total = data.length;
+  let i = 1;
   let item = data.shift();
   while (item) {
-    let result = await generalChapter(item);
+    let result = await generalChapter(item, total, i );
     generalPage(result);
     item = data.shift();
-    writeData("test.json", result)
+    i++
   }
   log("=========================================");
 };
 
-async function generalChapter(chapterInfo) {
+async function generalChapter(chapterInfo, total, current) {
   const filePath = chapterInfo.path;
   const subhead = path.basename(filePath).slice(0, -3).replace(/^\d*/, "");
-  log(`开始转化章节：${subhead}`);
+  log(`[${current}/${total}] 开始转化章节：${subhead}`);
   const html = await parseMarked(filePath);
   const result = mergeData("base.json", "common.json")
   const chapterdata = getChapterList(chapterInfo.key.split("_")[0]);
@@ -50,13 +52,13 @@ async function parseMarked(filePath) {
     const fileName = uid++;
     const outputFile = path.join(
       getOutputDirectory(),
-      "assets",
+      "assets/images",
       fileName + path.extname(result[1])
     );
     fs.copyFileSync(fileFullPath, outputFile);
     html = html.replace(
       result[1],
-      `/assets/${fileName + path.extname(result[1])}`
+      `/assets/images/${fileName + path.extname(result[1])}`
     );
   }
   fs.rmSync(filePath.replace("md", "html"));

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>_空间实体模型-地理信息系统原理-得鹿梦鱼</title>
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+  <link rel="stylesheet" href="/assets/styles/main.css" />
+  <link rel="stylesheet" href="/assets/styles/katex/common.css" />
+  <link rel="stylesheet" href="/assets/styles/katex/katex.min.css" />
+  <script src="/assets/script/highlight.js"></script>
+</head>
+
+<body data-for="html-export">
+  <div class="w-screen h-screen flex flex-col overflow-hidden">
+    <header class="flex flex-grow-0 justify-between p-4 border-b border-neutral-200">
+      <a href="/" class="flex items-center text-2xl text-neutral-700 cursor-pointer">
+        <img src="/assets/images/logo.svg" class="w-[40px] h-[40px]" alt="得鹿梦鱼"></Image>
+        <span class="text-4 ml-4">得鹿梦鱼</span>
+      </a>
+      <div class="right flex items-center cursor-pointer">
+        <a href="/classify.html" class="mr-2 text-md hover:text-sky-500">知识库</a>
+        <a href="/frontend.html" class="mr-2 text-md hover:text-sky-500">前端技能树</a>
+        <a href="/question.html" class="mr-2 text-md hover:text-sky-500">面试题</a>
+        <a href="/study.html" class="mr-2 text-md hover:text-sky-500">学习资料</a>
+        <a href="/about.html" class="mr-2 text-md hover:text-sky-500">关于本人</a>
+      </div>
+    </header>
+    <main class="flex-grow-1 overflow-hidden scrollHeight">
+      <div class="w-screen flex flex-1">
+        <aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
+          <div class="text-md font-bold text-gray-700 m-4">地理信息系统原理</div>
+          <div class="overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar flex flex-col">
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10018_100000.html">_地球椭球体与大地控制
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10018_100001.html">_地图投影概述
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10018_100002.html">_地图投影的应用
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10018_100003.html">_栅格数据结构
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10018_100004.html">_矢量数据结构
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10018_100005.html">_空间认知模型
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10018_100006.html">_空间实体模型
+            </a>
+          </div>
+        </aside>
+        <section class="basis-10/12 overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar">
+          <div id="markdown-container" class="px-4 relative">
+            
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h2 id="面向对象实体模型">面向对象实体模型 </h2>
+<p>空间实体是存在于自然世界中地理实体，与地理空间位置或特征相关联，在空间数据中不可再分为最小的单元称为空间实体</p>
+<p>基本的空间实体有点、线、面、体四种类型。</p>
+<p>空间数据适用于描述所有呈二维、三维甚至多维分布的关于区域的现象。空间数据不仅能够表示实体本身的空间位置以及形态信息，而且还有实体数据和空间关系的信息。</p>
+<h3 id="点实体">点实体 </h3>
+<p>表示0维空间实体。在空间数据库中表示对点状实体的抽象，可以具体指单独一个点位，如独立的地物，也可以表示小比例图层中逻辑意义上不能再分的集中连片和分散状态</p>
+<h3 id="线实体">线实体 </h3>
+<p>表示1维空间实体，有一定范围的点元素集合，表示相同专题点的连续轨迹。例如，可以把一条道路抽象为一条线，该线可以包含这条道路的长度、宽度、起点、终点以及道路等级等相关信息。道路、河流、地形线、区域边界等均属于线状实体</p>
+<h3 id="面实体">面实体 </h3>
+<p>表示2维空间实体，表示平面区域大范围连续分布的特征，例如，土地利用中不同的地块、土壤不同的类型，大比例尺中的城市、农村等都可以认为是面状实体。有些面状目标有确切的边界，如建筑物、水塘等，有些面状目标在实地上没有明显的边界，如土壤</p>
+<h3 id="体实体">体实体 </h3>
+<p>表示3维空间实体，体是3D空间中有界面的基本几何元素。在现实世界中，只有体才是真正的空间三维对象，现在对三维体空间的研究还处于初始阶段，以地质、大气、海洋污染等环境应用居多</p>
+<p>对空间实体描述方式</p>
+<h4 id="基于对象的描述">基于对象的描述 </h4>
+<p>将研究的整个地理空间看成一个空域，地理实体和现象作为独立的对象分布在改空域中，强调个体现象，该现象以独立的方式或者与其他现象之间的关系的方式来研究，主要描述不连续的地理现象。</p>
+<h4 id="基于场的描述">基于场的描述 </h4>
+<p>吧地理空间的事物和现象作为连续的变量来看待。对于描述具有一定空间内联系分布特点的现象来说。基于场的观点是正确的</p>
+<h2 id="mapgis空间实体模型">MAPGIS空间实体模型 </h2>
+<p>MAPGIS7的空间数据模型将现实世界中的各种现象抽象为对象、关系和规则，各种行为（操作）基于对象、关系和规则，模型更接近人类面向实体的思维方式。 该模型还综合了面向图形的空间数据模型的特点，使得模型表达能力强，广泛适应GIS的各种应用</p>
+<h3 id="空间参照系">空间参照系 </h3>
+<p>空间参照系（SpatiaI Reference System）是平面坐标系和高程系的统称，用于确定地理目标的平面位置和高程。这包含两方面的内容：一是在把大地水准面上的测量成果换算到椭球体面上的计算工作中，所采用的椭球的大小；二是椭球体与大地水准面的相关位置不同，对同一点的地理坐标所计算的结果将有不同的值。因此，选定了一个一定大小的椭球体，并确定了它与大地水准面的相关位置，就确定了一个坐标系。</p>
+<p>一个要素要进行定位，必须嵌入到一个空间参照系中。地面上任一点的位置，通常用经度和纬度来决定。经线和纬线是地球表面上两组正交（相交为90度）的曲线，这两组正交的曲线构成的坐标，称为地理坐标系。因为GIS所描述是位于地球表面的信息，所以根据地球椭球体建立的地理坐标（经纬网）可以作为所有要素的参照系统。</p>
+<p>地球表面是不可展开的曲面，地理坐标是一种球面坐标，也就是说曲面上的各点不能直接表示在平面上。为了能够将其表面的内容显示在平面的显示器或纸面上，因此必须运用地图投影的方法，建立地球表面和平面上点的函数关系，使地球表面上任一个由地理坐标确定的点，在平面上必有一个与它相对应的点，即建立地球表面上的点与投影平面上点之间的一一对应关系。地图投影的使用保证了空间信息在地域上的联系和完整性，在各类地理信息系统的建立过程中，选择适当的地图投影系统是首先要考虑的问题</p>
+<h3 id="实体表达及分类">实体表达及分类 </h3>
+<h4 id="对象">对象 </h4>
+<p>对象是现实世界中实体的表示。诸如房子、湖泊或顾客之类的实体，均可用对象表示。对象有属性、行为和一定的规则，以记录的形式存储对象。对象是各种实体一般性的抽象，特殊性对象包括要素、关系、注记、修饰符、轨迹、连接边、连接点等</p>
+<h4 id="对象类型-子类型">对象类型、子类型 </h4>
+<p>根据对象的行为和属性可以将对象划分成不同的类型，具有相同行为和属性的对象构成对象类，特殊的对象类包括要素类、关系类、注记类、修饰类、动态类、几何网络。不特别声明的情况下，对象类指没有空间特征的同类对象集。</p>
+<p>子类型是对象类的轻量级分类，以表达相似对象，如供水管网中区分钢管、塑料管、水泥管等。不同类或子类型的对象可以有不同的属性缺省值和属性域</p>
+<h4 id="对象类">对象类 </h4>
+<p>对象类是具有相同行为和属性的对象的集合。在空间数据模型中，一般情况下，对象类是指没有几何特征的对象（如房屋所有者、表格记录等）的集合；在忽略对象特殊性的情况下，对象类可以指任意一种类型的对象集。</p>
+<h4 id="要素类">要素类 </h4>
+<p>要素是具有几何特征的对象，要素包括属性、几何元素和图示化信息，几何元素是点、线、多边形等几何实体的组合。要素类是具有相同属性的要素的集合，是一种特殊的对象类，往往用于表达某种类型的地理实体，如道路、学校等。</p>
+<h4 id="关系类">关系类 </h4>
+<p>现实世界中的各种现象是普遍联系的，而联系本身也是一种特殊现象，具有多种表现形式。在面向实体的空间数据模型中，对象之间的联系被称作关系，是一种特殊的对象。</p>
+<p>房屋所有者和房屋之间的产权关系，具有公共边界的行政区之间的相邻关系，甲乙双方之间的合同关系，都是对象之间关系的实例。</p>
+<p>在该模型中，关系被分为空间关系和非空间关系。其中：</p>
+<p>①空间关系与对象的位置和形态等空间特性有关，包括距离关系和拓扑关系。拓扑关系如水管和阀门的连接关系、两条道路的相交关系；</p>
+<p>②非空间关系是对象属性之间存在的关系，如甲乙方之间的合同关系。</p>
+<p>关系类是关系的集合，一般在对象类、要素类、注记类、修饰类的任意两者之间建立关系类。</p>
+<h4 id="注记类">注记类 </h4>
+<p>注记是一种标识要素的描述性文本，分为静态注记、属性注记和维注记。其中：</p>
+<p>①静态注记是一种内容和位置固定的注记，包括注记和版面。</p>
+<p>②属性注记的内容来自要素的属性值，显示属性注记时，动态地将属性值填入注记模板。因此也称为动态注记，属性注记直接和它要标注的要素相关联，移动要素时，注记跟随移动，注记的生命期受该要素的生命期控制。</p>
+<p>③维注记是一种特殊类型的地图注记，仅用来表示特定的长度和距离。维分为平行维和线性维，平行维与基线平行，表示真实距离；线性维可以是垂直、水平或旋转的，并不表示真实距离。</p>
+<h4 id="修饰类">修饰类 </h4>
+<p>修饰类用于存储修饰地图或者辅助制图的要素，包括几何图形、接图表、图例、指北针、图框、比例尺、贴片和块。其中：</p>
+<p>①几何图形包括点、线、多边形。线和多边形边界可以是下列类型之一：折线、弧线、圆、椭圆、弧、矩形、样条、bezier曲线。几何图形主要考虑图面的要求、对平面拓扑和形态没有严格要求，如多边形的端点不要求严格重合，线可以自相交。</p>
+<p>②图框分为内图框和外图框。</p>
+<p>③贴片是一种带图示化信息的矩形框，用于遮盖不需要显示的图形。</p>
+<p>④块是修饰类要素的组合，可以自由组合或拆散。</p>
+<h4 id="动态类">动态类 </h4>
+<p>动态类是一种特殊的对象类，是空间位置随时间变化的动态对象的集合。动态对象的位置随时间变化形成轨迹，动态类中记录轨迹的信息，包括x、y、z、t和属性</p>
+<h4 id="几何网格">几何网格 </h4>
+<p>几何网络是边要素和点要素组成的集合，边要素和点要素相互联系，一条边连接两个点，一个点可以连接大量的边。边要素可以在二维空间交叉而不相交，如立交桥。几何网络中的要素表示网络地理实体，如道路、车站、航线等。</p>
+<p>每一个几何网络都有一个逻辑网络与之对应，逻辑网络依附于几何网络，由边元素、结点元素、转角元素以及连通性元素组成。</p>
+<p>逻辑网络中的元素没有空间特性，即没有坐标值。逻辑网络存储网络的连通信息，是网络分析的基础。</p>
+
+      </div>
+      <div class="md-sidebar-toc">
+<div class="md-toc">
+<details style="padding:0;;padding-left:0px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#面向对象实体模型" class="md-toc-link"><p>面向对象实体模型</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#点实体" class="md-toc-link">
+            <p>点实体</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#线实体" class="md-toc-link">
+            <p>线实体</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#面实体" class="md-toc-link">
+            <p>面实体</p>
+
+          </a></div><details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#体实体" class="md-toc-link"><p>体实体</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#基于对象的描述" class="md-toc-link">
+            <p>基于对象的描述</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#基于场的描述" class="md-toc-link">
+            <p>基于场的描述</p>
+
+          </a></div>
+        </div>
+      </details>
+    
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:0px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#mapgis空间实体模型" class="md-toc-link"><p>MAPGIS空间实体模型</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#空间参照系" class="md-toc-link">
+            <p>空间参照系</p>
+
+          </a></div><details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#实体表达及分类" class="md-toc-link"><p>实体表达及分类</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#对象" class="md-toc-link">
+            <p>对象</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#对象类型-子类型" class="md-toc-link">
+            <p>对象类型、子类型</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#对象类" class="md-toc-link">
+            <p>对象类</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#要素类" class="md-toc-link">
+            <p>要素类</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#关系类" class="md-toc-link">
+            <p>关系类</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#注记类" class="md-toc-link">
+            <p>注记类</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#修饰类" class="md-toc-link">
+            <p>修饰类</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#动态类" class="md-toc-link">
+            <p>动态类</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#几何网格" class="md-toc-link">
+            <p>几何网格</p>
+
+          </a></div>
+        </div>
+      </details>
+    
+        </div>
+      </details>
+    
+</div>
+</div>
+      <a id="sidebar-toc-btn">≡</a>
+    
+    
+    
+    
+    
+    
+<script>
+
+var sidebarTOCBtn = document.getElementById('sidebar-toc-btn')
+sidebarTOCBtn.addEventListener('click', function(event) {
+  event.stopPropagation()
+  if (document.body.hasAttribute('html-show-sidebar-toc')) {
+    document.body.removeAttribute('html-show-sidebar-toc')
+  } else {
+    document.body.setAttribute('html-show-sidebar-toc', true)
+  }
+})
+</script>
+      
+  
+    
+          </div>
+        </section>
+      </div>
+    </main>
+</body>
+
+</html>

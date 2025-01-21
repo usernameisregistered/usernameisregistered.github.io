@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>mysql 逻辑架构-高性能的mysql-得鹿梦鱼</title>
+  <title>简介-微前端-得鹿梦鱼</title>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
   <link rel="stylesheet" href="/assets/styles/main.css" />
   <link rel="stylesheet" href="/assets/styles/katex/common.css" />
@@ -30,13 +30,9 @@
     <main class="flex-grow-1 overflow-hidden scrollHeight">
       <div class="w-screen flex flex-1">
         <aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
-          <div class="text-md font-bold text-gray-700 m-4">高性能的mysql</div>
+          <div class="text-md font-bold text-gray-700 m-4">微前端</div>
           <div class="overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar flex flex-col">
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10038_100000.html">mysql 逻辑架构
-            </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10038_100001.html">mysql 基准测试
-            </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10038_100002.html">服务器性能剖析
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10038_100000.html">简介
             </a>
           </div>
         </aside>
@@ -47,136 +43,99 @@
     
       <div class="crossnote markdown-preview  ">
       
-<h1 id="mysql逻辑架构">mysql逻辑架构 </h1>
-<pre data-role="codeBlock" data-info="" class="language-text"><code>        ----------------------------------------
-        |                客户端                 |
-        ----------------------------------------
-        |              连接\/线程处理            |
-        ----------------------------------------
-        |     查询缓存       |       解析器      |
-        ----------------------------------------
-        |                 优化器                |
-        ----------------------------------------
-        |                 存储引擎              |
-        ----------------------------------------
-
-</code></pre><h1 id="并发控制">并发控制 </h1>
-<h2 id="读写锁">读写锁 </h2>
-<h2 id="锁粒度">锁粒度 </h2>
+<h1 id="微前端">微前端 </h1>
+<p>微前端是一种多个团队通过独立发布功能的方式来共同构建现代化web应用的技术手段及方法策略</p>
+<h2 id="定义">定义 </h2>
+<p>现代的前端应用的发展趋势正在变得越来越富功能化，富交互化，也就是传说中的SPA(单页面应用)；这样越来越复杂的单体前端应用，背后的后端应用则是数量庞大的微服务集群。被一个团队维护的前端项目，随着时间推进，会变得越来越庞大，越来越难以维护。所以我们给这种应用起名为<em>巨石单体应用</em><br>
+微前端背后的思想是认为：现代复杂的web app或者网站，通常由很多相对独立的功能模块组合而成，而对这些模块负责的应该是相互独立的多个团队。这些独立的团队由于专业分工不同，会负责着特定的业务领域，以及完成特定的开发任务。这样的团队，通常在人员组成方面囊括了从前端开发到服务端开发，从UI实现到数据库设计这样端到端的跨职能人员构成</p>
+<h2 id="核心思维">核心思维 </h2>
+<h3 id="技术不可知主义">技术不可知主义 </h3>
+<p>每个团队应该选择自己的技术栈以及技术进化路线，而不是与其他团队步调一致。在项目中可以通过引入自定义元素来提供技术栈无关的接口，同时还隐藏了复杂的内部实现。也许在微前端的语境之下，框架将不是未来架构师主要考虑的问题，如何高效的提供可复用的WebComponent会成为核心问题</p>
+<h3 id="隔离团队之间的代码">隔离团队之间的代码 </h3>
+<p>即便所有团队都使用同样的框架，也不要共享同一个运行时环境。构建自包含的Apps。不要依赖共享的状态或者全局变量</p>
+<h3 id="建立团队自己的前缀">建立团队自己的前缀 </h3>
+<p>在还不能做到完全隔离的环境下，通过命名规约进行隔离。对于CSS， 事件，Local Storage 以及 Cookies之类的环境之下，通过命名空间进行的隔离可以避免冲突，以及所有权</p>
+<h3 id="原生浏览器标准优先于框架封装的api">原生浏览器标准优先于框架封装的API </h3>
+<p>使用<strong>用于通信的原生浏览器事件机制</strong>，而不是自己构建一个PubSub系统。如果确实需要设计一个跨团队的通信API，那么也尽量让设计简单为好</p>
+<h3 id="构建高可用的网络应用">构建高可用的网络应用 </h3>
+<p>即便在Javascript执行失败的情况下，站点的功能也应保证可用。使用同构渲染以及渐进增强来提升体验和性能</p>
+<h2 id="页面组成">页面组成 </h2>
+<p>抛开前后端如何集成来自于<strong>不同开发框架</strong>的代码这个问题本身，还有很多其他值得讨论的话题：用来<strong>隔离js作用域的机制</strong>，避免<strong>css样式冲突</strong>，<strong>按需加载资源</strong>，团队之间<strong>共用资源的共享</strong>，<strong>处理获取数据的流程</strong>以及因此产生的如何通过<strong>更好的加载状态管理</strong>来为用户带来更好的体验</p>
+<h3 id="同构渲染">同构渲染 </h3>
+<p>同构渲染（Isomorphic Rendering）是一种现代web开发技术，结合了服务器端渲染（SSR）和客户端渲染（CSR）的优点<br>
+同构渲染是指在前后端共享代码的情况下，首次页面加载时的HTML是在服务器上生成的，然后在客户端上通过JavaScript增强，提供动态的交互性</p>
+<h2 id="问题">问题 </h2>
+<ol>
+<li>为什么更多的微前端框架不采用iframe实现</li>
+</ol>
 <blockquote>
-<p>锁策略 就是在锁的开销和数据的安全性之间寻求平衡</p>
+<p>iframe 最大的特性就是提供了浏览器原生的硬隔离方案，不论是样式隔离、js 隔离这类问题统统都能被完美解决。但是同样也带来了最大的问题隔离性无法被突破，从而应用间无法共享上下文，由此带来的开发、产品体验问题随之而来</p>
 </blockquote>
-<h3 id="表锁">表锁 </h3>
-<blockquote>
-<p>最基本的锁策略，并且是开销最小的策略<br>
-会锁定整个表</p>
-</blockquote>
-<h3 id="行级锁">行级锁 </h3>
-<blockquote>
-<p>最大程度的支持并发处理，同时也会带来最大的锁开销</p>
-</blockquote>
-<h1 id="事务">事务 </h1>
-<h2 id="a-atomicity-原子性-不可分割的最小工作单元">A atomicity 原子性 不可分割的最小工作单元 </h2>
-<h2 id="c-comnsistency-一致性">C comnsistency 一致性 </h2>
-<h2 id="i-isolation-隔离性">I isolation 隔离性 </h2>
-<h2 id="d-durability-持久性">D durability 持久性 </h2>
-<h2 id="隔离级别">隔离级别 </h2>
-<h3 id="未提交读-read-uncomitted">未提交读 read uncomitted </h3>
-<h3 id="提交读-read-committed">提交读 read committed </h3>
-<h3 id="可重复读-repeatable-read">可重复读 repeatable read </h3>
-<h3 id="可串行化-serializable">可串行化 serializable </h3>
-<h2 id="死锁">死锁 </h2>
-<blockquote>
-<p>2个事务或者多个在同一个资源上相互占用，请求锁定对方占用的资源，从而导致恶性循环的现象</p>
-</blockquote>
+<ul>
+<li>url 不同步。浏览器刷新<strong>iframe url</strong>状态丢失、后退前进按钮无法使用</li>
+<li>UI 不同步，DOM结构不共享 例如：右下角的iframe中出带出一个弹窗，要求弹窗的位置在浏览器居中</li>
+<li>全局上下文完全隔离，内存变量不共享，主应用的cookie要透传到根域名都不同的子应用中实现免登效果</li>
+<li>每次子应用进入都是一次浏览器上下文重建、资源重新加载的过程导致<strong>慢</strong></li>
+</ul>
 
       </div>
       <div class="md-sidebar-toc">
 <div class="md-toc">
-<div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
-          <a href="#mysql逻辑架构" class="md-toc-link">
-            <p>mysql逻辑架构</p>
-
-          </a></div><details style="padding:0;;padding-left:0px;" open="">
+<details style="padding:0;;padding-left:0px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#并发控制" class="md-toc-link"><p>并发控制</p>
+          <a href="#微前端" class="md-toc-link"><p>微前端</p>
 </a>
           </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#读写锁" class="md-toc-link">
-            <p>读写锁</p>
+          <a href="#定义" class="md-toc-link">
+            <p>定义</p>
 
           </a></div><details style="padding:0;;padding-left:24px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#锁粒度" class="md-toc-link"><p>锁粒度</p>
+          <a href="#核心思维" class="md-toc-link"><p>核心思维</p>
 </a>
           </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#表锁" class="md-toc-link">
-            <p>表锁</p>
+          <a href="#技术不可知主义" class="md-toc-link">
+            <p>技术不可知主义</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#行级锁" class="md-toc-link">
-            <p>行级锁</p>
+          <a href="#隔离团队之间的代码" class="md-toc-link">
+            <p>隔离团队之间的代码</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#建立团队自己的前缀" class="md-toc-link">
+            <p>建立团队自己的前缀</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#原生浏览器标准优先于框架封装的api" class="md-toc-link">
+            <p>原生浏览器标准优先于框架封装的API</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#构建高可用的网络应用" class="md-toc-link">
+            <p>构建高可用的网络应用</p>
 
           </a></div>
         </div>
       </details>
-    
-        </div>
-      </details>
-    <details style="padding:0;;padding-left:0px;" open="">
+    <details style="padding:0;;padding-left:24px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#事务" class="md-toc-link"><p>事务</p>
+          <a href="#页面组成" class="md-toc-link"><p>页面组成</p>
 </a>
           </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#a-atomicity-原子性-不可分割的最小工作单元" class="md-toc-link">
-            <p>A atomicity 原子性 不可分割的最小工作单元</p>
-
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#c-comnsistency-一致性" class="md-toc-link">
-            <p>C comnsistency 一致性</p>
-
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#i-isolation-隔离性" class="md-toc-link">
-            <p>I isolation 隔离性</p>
-
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#d-durability-持久性" class="md-toc-link">
-            <p>D durability 持久性</p>
-
-          </a></div><details style="padding:0;;padding-left:24px;" open="">
-        <summary class="md-toc-link-wrapper">
-          <a href="#隔离级别" class="md-toc-link"><p>隔离级别</p>
-</a>
-          </summary>
-        <div>
-          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#未提交读-read-uncomitted" class="md-toc-link">
-            <p>未提交读 read uncomitted</p>
-
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#提交读-read-committed" class="md-toc-link">
-            <p>提交读 read committed</p>
-
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#可重复读-repeatable-read" class="md-toc-link">
-            <p>可重复读 repeatable read</p>
-
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#可串行化-serializable" class="md-toc-link">
-            <p>可串行化 serializable</p>
+          <a href="#同构渲染" class="md-toc-link">
+            <p>同构渲染</p>
 
           </a></div>
         </div>
       </details>
     <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#死锁" class="md-toc-link">
-            <p>死锁</p>
+          <a href="#问题" class="md-toc-link">
+            <p>问题</p>
 
           </a></div>
         </div>

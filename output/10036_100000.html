@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>介绍-MongoDB-得鹿梦鱼</title>
+  <title>mysql 逻辑架构-高性能的mysql-得鹿梦鱼</title>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
   <link rel="stylesheet" href="/assets/styles/main.css" />
   <link rel="stylesheet" href="/assets/styles/katex/common.css" />
@@ -30,19 +30,13 @@
     <main class="flex-grow-1 overflow-hidden scrollHeight">
       <div class="w-screen flex flex-1">
         <aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
-          <div class="text-md font-bold text-gray-700 m-4">MongoDB</div>
+          <div class="text-md font-bold text-gray-700 m-4">高性能的mysql</div>
           <div class="overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar flex flex-col">
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10036_100000.html">介绍
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10036_100000.html">mysql 逻辑架构
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10036_100001.html">安装
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10036_100001.html">mysql 基准测试
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10036_100002.html">概念
-            </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10036_100003.html">连接
-            </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10036_100004.html">命令.
-            </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10036_100005.html">高级
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10036_100002.html">服务器性能剖析
             </a>
           </div>
         </aside>
@@ -53,21 +47,141 @@
     
       <div class="crossnote markdown-preview  ">
       
-<h1 id="mongodb简介">MongoDB简介 </h1>
+<h1 id="mysql逻辑架构">mysql逻辑架构 </h1>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>        ----------------------------------------
+        |                客户端                 |
+        ----------------------------------------
+        |              连接\/线程处理            |
+        ----------------------------------------
+        |     查询缓存       |       解析器      |
+        ----------------------------------------
+        |                 优化器                |
+        ----------------------------------------
+        |                 存储引擎              |
+        ----------------------------------------
+
+</code></pre><h1 id="并发控制">并发控制 </h1>
+<h2 id="读写锁">读写锁 </h2>
+<h2 id="锁粒度">锁粒度 </h2>
 <blockquote>
-<p>是一个基于分布式文件存储的开源数据库系统<br>
-MongoDB 旨在为WEB应用提供可扩展的高性能数据存储解决方案<br>
-将数据存储为一个文档，数据结构由键值(key=&gt;value)对组成。MongoDB 文档类似于 JSON 对象。字段值可以包含其他文档，数组及文档数组</p>
+<p>锁策略 就是在锁的开销和数据的安全性之间寻求平衡</p>
+</blockquote>
+<h3 id="表锁">表锁 </h3>
+<blockquote>
+<p>最基本的锁策略，并且是开销最小的策略<br>
+会锁定整个表</p>
+</blockquote>
+<h3 id="行级锁">行级锁 </h3>
+<blockquote>
+<p>最大程度的支持并发处理，同时也会带来最大的锁开销</p>
+</blockquote>
+<h1 id="事务">事务 </h1>
+<h2 id="a-atomicity-原子性-不可分割的最小工作单元">A atomicity 原子性 不可分割的最小工作单元 </h2>
+<h2 id="c-comnsistency-一致性">C comnsistency 一致性 </h2>
+<h2 id="i-isolation-隔离性">I isolation 隔离性 </h2>
+<h2 id="d-durability-持久性">D durability 持久性 </h2>
+<h2 id="隔离级别">隔离级别 </h2>
+<h3 id="未提交读-read-uncomitted">未提交读 read uncomitted </h3>
+<h3 id="提交读-read-committed">提交读 read committed </h3>
+<h3 id="可重复读-repeatable-read">可重复读 repeatable read </h3>
+<h3 id="可串行化-serializable">可串行化 serializable </h3>
+<h2 id="死锁">死锁 </h2>
+<blockquote>
+<p>2个事务或者多个在同一个资源上相互占用，请求锁定对方占用的资源，从而导致恶性循环的现象</p>
 </blockquote>
 
       </div>
       <div class="md-sidebar-toc">
 <div class="md-toc">
 <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
-          <a href="#mongodb简介" class="md-toc-link">
-            <p>MongoDB简介</p>
+          <a href="#mysql逻辑架构" class="md-toc-link">
+            <p>mysql逻辑架构</p>
+
+          </a></div><details style="padding:0;;padding-left:0px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#并发控制" class="md-toc-link"><p>并发控制</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#读写锁" class="md-toc-link">
+            <p>读写锁</p>
+
+          </a></div><details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#锁粒度" class="md-toc-link"><p>锁粒度</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#表锁" class="md-toc-link">
+            <p>表锁</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#行级锁" class="md-toc-link">
+            <p>行级锁</p>
 
           </a></div>
+        </div>
+      </details>
+    
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:0px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#事务" class="md-toc-link"><p>事务</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#a-atomicity-原子性-不可分割的最小工作单元" class="md-toc-link">
+            <p>A atomicity 原子性 不可分割的最小工作单元</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#c-comnsistency-一致性" class="md-toc-link">
+            <p>C comnsistency 一致性</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#i-isolation-隔离性" class="md-toc-link">
+            <p>I isolation 隔离性</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#d-durability-持久性" class="md-toc-link">
+            <p>D durability 持久性</p>
+
+          </a></div><details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#隔离级别" class="md-toc-link"><p>隔离级别</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#未提交读-read-uncomitted" class="md-toc-link">
+            <p>未提交读 read uncomitted</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#提交读-read-committed" class="md-toc-link">
+            <p>提交读 read committed</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#可重复读-repeatable-read" class="md-toc-link">
+            <p>可重复读 repeatable read</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#可串行化-serializable" class="md-toc-link">
+            <p>可串行化 serializable</p>
+
+          </a></div>
+        </div>
+      </details>
+    <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#死锁" class="md-toc-link">
+            <p>死锁</p>
+
+          </a></div>
+        </div>
+      </details>
+    
 </div>
 </div>
       <a id="sidebar-toc-btn">≡</a>

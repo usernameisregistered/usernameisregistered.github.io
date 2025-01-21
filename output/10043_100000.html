@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>前置-marked源码解析-得鹿梦鱼</title>
+  <title>国学_史学-国学-得鹿梦鱼</title>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
   <link rel="stylesheet" href="/assets/styles/main.css" />
   <link rel="stylesheet" href="/assets/styles/katex/common.css" />
@@ -30,19 +30,15 @@
     <main class="flex-grow-1 overflow-hidden scrollHeight">
       <div class="w-screen flex flex-1">
         <aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
-          <div class="text-md font-bold text-gray-700 m-4">marked源码解析</div>
+          <div class="text-md font-bold text-gray-700 m-4">国学</div>
           <div class="overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar flex flex-col">
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10043_100000.html">前置
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10043_100000.html">国学_史学
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10043_100001.html">单例Marked
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10043_100001.html">国学_子学
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10043_100002.html">词法分析latex
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10043_100002.html">国学_经学
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10043_100003.html">分词器Tokenizer
-            </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10043_100004.html">规则rules
-            </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10043_100005.html">Token
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10043_100003.html">紫薇斗数
             </a>
           </div>
         </aside>
@@ -53,126 +49,76 @@
     
       <div class="crossnote markdown-preview  ">
       
-<h1 id="前置需要">前置需要 </h1>
-<h2 id="语法介绍">语法介绍 </h2>
-<p>markdown 的语法请参考<a href="http://markdown.p2hp.com/">markdown 中文网</a></p>
-<ol>
-<li>允许您通过将行缩进四个空格或一个制表符来创建代码块</li>
-<li>要创建水平线***，请单独在一行上使用三个或更多的星号（），破折号（---）或下划线（___）</li>
-</ol>
-<h2 id="cst-树">CST 树 </h2>
-<p>具象语法树（Concret Syntax Tree） 简称 CST 树，是包含代码所有语法信息的树型结构，它是代码的直接翻译，有时也被成为<strong>解析树</strong></p>
-<h2 id="ast-树">AST 树 </h2>
-<p>抽象语法树 (Abstract Syntax Tree)简称 AST 树, 是源代码语法结构的一种抽象表示。它以树状的形式表现编程语言的语法结构，树上的每个节点都表示源代码中的一种结构<br>
-忽略了一些具象语法树包含的一些语法信息，剥离掉一些不重要的细节</p>
-<h3 id="如何生成">如何生成 </h3>
-<ol>
-<li><strong>词法分析</strong>：从左到右扫描文本，把文本拆成一些单词。然后，这些单词传入分词器，经过一系列的识别器，确定这些单词的词性，这一过程的产物是<strong>token 序列</strong></li>
-<li><strong>语法分析</strong>：token 序列会经过我们的解析器，由解析器识别出代码中的各类短语，会根据语言的文法规则输出解析树，同时，验证语法，语法如果有错的话，抛出语法错误</li>
-<li><strong>构建抽象语法树</strong>：在语法分析的过程中，递归下降分析器的每个函数都会返回一个 AST 子树。通过在这些函数中构造和连接这些子树，最终形成整个源代码的 AST</li>
-<li><strong>语义分析</strong>：也就是生成可执行的代码</li>
-</ol>
-<h2 id="marked-配置">marked 配置 </h2>
-<table>
-<thead>
-<tr>
-<th>选项</th>
-<th>类型</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>pedantic</td>
-<td>boolean</td>
-<td>是否将 tab 制表符更换为 4 个空格以及删除多个空行</td>
-</tr>
-</tbody>
-</table>
-<h2 id="特殊正则注解">特殊正则注解 </h2>
-<h3 id="空格或者制表符创建代码块">空格或者制表符创建代码块 </h3>
-<blockquote>
-<p>markdown 基本语法允许您通过将行缩进四个空格或一个制表符来创建代码块<br>
-<code>/^((?: {4}| {0,3}\t)[^\n]+(?:\n(?:[ \t]*(?:\n|$))*)?)+/</code><br>
-<code>/^(?: {4}| {0,3}\t)/</code> 匹配空格缩进或者制表符<br>
-<code>/[^\n]+/</code> 匹配代码块的内容<br>
-<code>/(?:\n|$)/</code> 匹配结束或者换行<br>
-<code>/?:[ \t]*(?:\n|$))*/</code> 匹配结束或者换行可以存在任意个空格或者制表符<br>
-<code>/(?:\n(?:[ \t]*(?:\n|$))*)/</code> 代码块结束匹配支持换行但是只能是空白或者制表符</p>
-</blockquote>
-<h3 id="围栏代码块">围栏代码块 </h3>
-<p><code>/^ {0,3}(`{3,}(?=[^`\n]*(?:\n|$))|~{3,})([^\n]*)(?:\n|$)(?:|([\s\S]*?)(?:\n|$))(?: {0,3}\1[~`]* *(?=\n|$)|$)/</code><br>
-<code>/^ {0,3}/</code> 围栏代码块可以有空白缩进<br>
-<code>/(`{3,}(?=[^`\n]*(?:\n|$))|~{3,})/</code> 匹配围栏代码块的代码开始行<br>
-<code>/(`{3,}(?=[^`\n]*(?:\n|$))|~{3,})/</code> 匹配围栏代码块的代码开始行<br>
-<code>([^\n]*)(?:\n|$)(?:|([\s\S]*?)(?:\n|$))</code> 匹配代码正文<br>
-<code>(?: {0,3}\1[~`]* *(?=\n|$)|$)/</code>匹配围栏代码块的代码结束行</p>
-<h2 id="个人感觉">个人感觉 </h2>
-<p>marked的正则对空白的匹配是宽松的</p>
-<h2 id="日志">日志 </h2>
-<ul>
-<li>2025-1-3  解析正则 blockCode</li>
-<li>2025-1-7  解析正则 blockquote</li>
-</ul>
+<h1 id="史学">史学 </h1>
+<h2 id="史书的编写">史书的编写 </h2>
+<p>中国史籍卷帙浩瀚、博大精深。从内容上看，仅被列入正史的“二十四史”就有三千余卷、四千多万字，再加上历代编撰的编年体史书、纪事本末体史书、政书、史评史论等，以及数不清的私史、野史、杂史，可谓浩如海</p>
+<h3 id="历史意识的形成">历史意识的形成 </h3>
+<p>早期的历史记忆与原始历史意识的形成，可以追溯到神话传说时代。那个时代没有文字记载，只有口耳相传的历史。尽管有些神话、传说在当时没有被固定地书写下来，但它们是人类生活经验的总结，是人类精神生活的记忆，曾给予人类巨大的影响。</p>
+<p>周朝已经建立系统的史官制度，史料的收集整理工作日益繁重，史官也有了更明确的分工<br>
+春秋战国，很多诸侯国开始按本国的立场编写史书</p>
+<h2 id="史部的形成">史部的形成 </h2>
+<p>中国史书的形成与发展，若按照史书性质的演变而言，可分为四个阶段：第一阶段为先秦时期，经史不分，如《尚书》和“春秋三传”在后世皆归入经部。第二阶段为秦至西汉，自司马迁著《史记》后，开始系统而自觉地撰写史书。第三阶段为东汉至隋唐，国家开始设立修史机构，史书多为官修，史部著作正式成为独立门类。第四阶段为宋元明清，史书官私兼存，著作内容大增，体例创新多变，史学认知亦向多元化发展</p>
+<h3 id="文化史学">文化史学 </h3>
+<p>文化史学，是从文化的立场来看待历史。这种文化是综合性的，因为史学归根到底，是以历时的方式观察各种文化的演进过程及彼此之间的相互关系，在文化的视野中，史学依经立义，按照人类的理想精神、伦理要求和价值共识，以历史人物、事件、形态的描述来阐释人类的走向</p>
+<h3 id="政治史学">政治史学 </h3>
+<p>政治史学是文化史学的延伸，即著史的目的在于论证国家政权在历史顺序和现实政治格局中的合法、合理地位，因而宣扬着正统的观念，并在由此而形成的历史认同感中，体现出古代政权的连续性、统一性。</p>
+<h3 id="经验史学">经验史学 </h3>
+<p>中国历代史书的主要内容是各朝各代的政务记录、王公将相的世系家谱、各种政治的政教典章等。在这每一部动辄数十万字的史书中，史学家皆赋予其一项不可或缺的功能，那就是以古鉴今，经世致用，着重于历史对现实的借鉴作用。就“二十四史”而言，除《史记》外，其他正史皆是下一朝修前朝历史，史官们显然希望通过史书，探求前朝兴亡之迹，为当朝和后世的皇朝统治者，提供治国安邦的宝典</p>
+<h3 id="资料史学">资料史学 </h3>
+<p>相对于古代史官，现代的史学家更重视史书的资料性，一是通过资料的翔实与否、有用与否来观察前代文献的价值；二是受过严谨的学术训练之后，形成了用史料说话、用史料证明的研究思路，转而更关注于一些没有被整理、取舍、加工和研究的一手资料。</p>
+<h2 id="历史的认知">历史的认知 </h2>
+<p>学术研究有两个指向，一是面向未来的研究，这更多的是预测一种趋势；二是对过往经验的总结，这至少是对历史的总结</p>
 
       </div>
       <div class="md-sidebar-toc">
 <div class="md-toc">
 <details style="padding:0;;padding-left:0px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#前置需要" class="md-toc-link"><p>前置需要</p>
+          <a href="#史学" class="md-toc-link"><p>史学</p>
+</a>
+          </summary>
+        <div>
+          <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#史书的编写" class="md-toc-link"><p>史书的编写</p>
 </a>
           </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#语法介绍" class="md-toc-link">
-            <p>语法介绍</p>
+          <a href="#历史意识的形成" class="md-toc-link">
+            <p>历史意识的形成</p>
+
+          </a></div>
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#史部的形成" class="md-toc-link"><p>史部的形成</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#文化史学" class="md-toc-link">
+            <p>文化史学</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#cst-树" class="md-toc-link">
-            <p>CST 树</p>
+          <a href="#政治史学" class="md-toc-link">
+            <p>政治史学</p>
 
-          </a></div><details style="padding:0;;padding-left:24px;" open="">
-        <summary class="md-toc-link-wrapper">
-          <a href="#ast-树" class="md-toc-link"><p>AST 树</p>
-</a>
-          </summary>
-        <div>
-          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#如何生成" class="md-toc-link">
-            <p>如何生成</p>
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#经验史学" class="md-toc-link">
+            <p>经验史学</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#资料史学" class="md-toc-link">
+            <p>资料史学</p>
 
           </a></div>
         </div>
       </details>
     <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#marked-配置" class="md-toc-link">
-            <p>marked 配置</p>
-
-          </a></div><details style="padding:0;;padding-left:24px;" open="">
-        <summary class="md-toc-link-wrapper">
-          <a href="#特殊正则注解" class="md-toc-link"><p>特殊正则注解</p>
-</a>
-          </summary>
-        <div>
-          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#空格或者制表符创建代码块" class="md-toc-link">
-            <p>空格或者制表符创建代码块</p>
-
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#围栏代码块" class="md-toc-link">
-            <p>围栏代码块</p>
-
-          </a></div>
-        </div>
-      </details>
-    <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#个人感觉" class="md-toc-link">
-            <p>个人感觉</p>
-
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#日志" class="md-toc-link">
-            <p>日志</p>
+          <a href="#历史的认知" class="md-toc-link">
+            <p>历史的认知</p>
 
           </a></div>
         </div>
