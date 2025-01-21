@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WPF基本图形-WPF教程-得鹿梦鱼</title>
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+  <link rel="stylesheet" href="/assets/styles/main.css" />
+  <link rel="stylesheet" href="/assets/styles/katex/common.css" />
+  <link rel="stylesheet" href="/assets/styles/katex/katex.min.css" />
+  <script src="/assets/script/highlight.js"></script>
+</head>
+
+<body data-for="html-export">
+  <div class="w-screen h-screen flex flex-col overflow-hidden">
+    <header class="flex flex-grow-0 justify-between p-4 border-b border-neutral-200">
+      <a href="/" class="flex items-center text-2xl text-neutral-700 cursor-pointer">
+        <img src="/assets/images/logo.svg" class="w-[40px] h-[40px]" alt="得鹿梦鱼"></Image>
+        <span class="text-4 ml-4">得鹿梦鱼</span>
+      </a>
+      <div class="right flex items-center cursor-pointer">
+        <a href="/classify.html" class="mr-2 text-md hover:text-sky-500">知识库</a>
+        <a href="/frontend.html" class="mr-2 text-md hover:text-sky-500">前端技能树</a>
+        <a href="/question.html" class="mr-2 text-md hover:text-sky-500">面试题</a>
+        <a href="/study.html" class="mr-2 text-md hover:text-sky-500">学习资料</a>
+        <a href="/about.html" class="mr-2 text-md hover:text-sky-500">关于本人</a>
+      </div>
+    </header>
+    <main class="flex-grow-1 overflow-hidden scrollHeight">
+      <div class="w-screen flex flex-1">
+        <aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
+          <div class="text-md font-bold text-gray-700 m-4">WPF教程</div>
+          <div class="overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar flex flex-col">
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10032_100000.html">WPF体系结构
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10032_100001.html">WPF应用程序管理
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10032_100002.html">WPF窗体
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10032_100003.html">WPF布局
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10032_100004.html">WPF控件模型
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10032_100005.html">WPF依赖项属性和路由事件
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10032_100006.html">WPF键盘输入、鼠标输入、焦点处理
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10032_100007.html">WPF命令
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10032_100008.html">WPF资源
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10032_100009.html">WPF样式与模板
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10032_100010.html">WPF更换主题
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10032_100011.html">WPF数据绑定
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10032_100012.html">WPF基本图形
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10032_100013.html">WPFBrush
+            </a>
+          </div>
+        </aside>
+        <section class="basis-10/12 overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar">
+          <div id="markdown-container" class="px-4 relative">
+            
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="wpf基本图形">WPF基本图形 </h1>
+<h2 id="基本的图形类型">基本的图形类型 </h2>
+<blockquote>
+<p>对于WPF中的基本图形类主要位于System.Windows.Shapes命名空间，其类包括：</p>
+</blockquote>
+<p><img src="/assets/1000152.png" alt="WPF基本图形"></p>
+<h2 id="shape中的fill-stroke及stretch">Shape中的Fill、Stroke及Stretch </h2>
+<blockquote>
+<p>Shape类是所有图形类的基类，其中包含Fill属性（Brush类型）和Strock属性（Brush类型），分别表示图形的填充及边框；此外还包含一系列的StrockXXX属性，表示边框的各种样式。（对于Line来说只有Stock没有Fill）,Stretch属性，表示如果可用的空间与图形的大小不匹配，则如何调整图形</p>
+</blockquote>
+<h2 id="直线-矩形-椭圆">直线、矩形、椭圆 </h2>
+<blockquote>
+<p>Line、Rectangle、Ellipse在图形中相对简单，直线主要设置其起点和终点的坐标、矩形和椭圆主要设置其左上角的坐标（视其所在的容器可能有所不同，例如Canvas是设置Canvas.Left和Canvas.Top，而如Grid取决于对齐方式其Stretch等）及宽度和高度。通过矩形的RadiusX和RadiusY可以设置圆角矩形。</p>
+</blockquote>
+<h2 id="多线段及多边形">多线段及多边形 </h2>
+<blockquote>
+<p>Polyline用来绘制多线段组成的不封闭的图形而Polygon用来绘制由多线段组成的封闭图形</p>
+</blockquote>
+<h2 id="使用path构建复杂图形">使用Path构建复杂图形 </h2>
+<blockquote>
+<p>Path所构建的图形由Data属性来定义，其属性的类型为Geometry(几何类)，几何类类型的继承关系参考上图</p>
+</blockquote>
+<h2 id="位图操作">位图操作 </h2>
+<blockquote>
+<p>WPF支持以下格式的位图：BMP、JPEG、PNG、TIFF、Windows Media Photo、GIF和ICO。在System.Windows.Media.Imaging命名空间定义了一系列处理图像文件的类型，其中最常使用的是Image类处理位图。</p>
+</blockquote>
+<p><img src="/assets/1000153.png" alt="WPF位图操作"></p>
+<blockquote>
+<p>使用Image类型的Source属性加载图片，Source属性的类型是ImageSource类型。ImageSource有两个子类DrawingImage和BitmapSource，分别用来处理不依赖分辨率的图画对象和依赖分辨率的图画对象（位图）</p>
+</blockquote>
+<p><img src="/assets/1000154.png" alt="ImageSource继承关系"></p>
+
+      </div>
+      <div class="md-sidebar-toc">
+<div class="md-toc">
+<details style="padding:0;;padding-left:0px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#wpf基本图形" class="md-toc-link"><p>WPF基本图形</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#基本的图形类型" class="md-toc-link">
+            <p>基本的图形类型</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#shape中的fill-stroke及stretch" class="md-toc-link">
+            <p>Shape中的Fill、Stroke及Stretch</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#直线-矩形-椭圆" class="md-toc-link">
+            <p>直线、矩形、椭圆</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#多线段及多边形" class="md-toc-link">
+            <p>多线段及多边形</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#使用path构建复杂图形" class="md-toc-link">
+            <p>使用Path构建复杂图形</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#位图操作" class="md-toc-link">
+            <p>位图操作</p>
+
+          </a></div>
+        </div>
+      </details>
+    
+</div>
+</div>
+      <a id="sidebar-toc-btn">≡</a>
+    
+    
+    
+    
+    
+    
+<script>
+
+var sidebarTOCBtn = document.getElementById('sidebar-toc-btn')
+sidebarTOCBtn.addEventListener('click', function(event) {
+  event.stopPropagation()
+  if (document.body.hasAttribute('html-show-sidebar-toc')) {
+    document.body.removeAttribute('html-show-sidebar-toc')
+  } else {
+    document.body.setAttribute('html-show-sidebar-toc', true)
+  }
+})
+</script>
+      
+  
+    
+          </div>
+        </section>
+      </div>
+    </main>
+</body>
+
+</html>

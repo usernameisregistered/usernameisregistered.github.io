@@ -6,13 +6,14 @@ const { log, getOutputDirectory } = require("./common");
 const fs = require("fs")
 module.exports = function buildBaseData(){
     log("任务名称：《构建基础数据》")
+    log("清空历史生成的数据")
     const outputDirectory = getOutputDirectory();
     rimrafSync(outputDirectory)
     fs.mkdirSync(outputDirectory);
     buildCSS();
     log("开始复制静态文件")
     src(path.join(process.cwd(), "./template/assets/**/*")).pipe(dest(path.join(outputDirectory, "assets")))
-    
+    log("=========================================")
 }
 
 function buildCSS(){

@@ -3,9 +3,13 @@ const { createServer } = require("http-server");
 const buildBaseData = require("./job/buildBaseData");
 const generalStatics = require("./job/generalStatics");
 const { getOutputDirectory } = require("./job/common");
-function general(cb) {
+const generalAllChapter = require("./job/generalAllChapter");
+const removeData = require("./job/removeData");
+async function general(cb) {
   buildBaseData();
   generalStatics();
+  await generalAllChapter();
+  removeData();
   cb();
 }
 

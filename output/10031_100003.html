@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS动画与JavaScript动画的性能-Web性能-得鹿梦鱼</title>
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+  <link rel="stylesheet" href="/assets/styles/main.css" />
+  <link rel="stylesheet" href="/assets/styles/katex/common.css" />
+  <link rel="stylesheet" href="/assets/styles/katex/katex.min.css" />
+  <script src="/assets/script/highlight.js"></script>
+</head>
+
+<body data-for="html-export">
+  <div class="w-screen h-screen flex flex-col overflow-hidden">
+    <header class="flex flex-grow-0 justify-between p-4 border-b border-neutral-200">
+      <a href="/" class="flex items-center text-2xl text-neutral-700 cursor-pointer">
+        <img src="/assets/images/logo.svg" class="w-[40px] h-[40px]" alt="得鹿梦鱼"></Image>
+        <span class="text-4 ml-4">得鹿梦鱼</span>
+      </a>
+      <div class="right flex items-center cursor-pointer">
+        <a href="/classify.html" class="mr-2 text-md hover:text-sky-500">知识库</a>
+        <a href="/frontend.html" class="mr-2 text-md hover:text-sky-500">前端技能树</a>
+        <a href="/question.html" class="mr-2 text-md hover:text-sky-500">面试题</a>
+        <a href="/study.html" class="mr-2 text-md hover:text-sky-500">学习资料</a>
+        <a href="/about.html" class="mr-2 text-md hover:text-sky-500">关于本人</a>
+      </div>
+    </header>
+    <main class="flex-grow-1 overflow-hidden scrollHeight">
+      <div class="w-screen flex flex-1">
+        <aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
+          <div class="text-md font-bold text-gray-700 m-4">Web性能</div>
+          <div class="overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar flex flex-col">
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10031_100000.html">概述
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10031_100001.html">渲染页面：浏览器的工作原理
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10031_100002.html">关键渲染路径
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10031_100003.html">CSS动画与JavaScript动画的性能
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10031_100004.html">优化启动性能
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10031_100005.html">使用dns-prefetch
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10031_100006.html">懒加载
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10031_100007.html">感知性能
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10031_100008.html">JavaScript性能优化
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10031_100009.html">css性能优化
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10031_100010.html">HTML性能优化
+            </a>
+          </div>
+        </aside>
+        <section class="basis-10/12 overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar">
+          <div id="markdown-container" class="px-4 relative">
+            
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="css-动画与-javascript-动画的性能">CSS 动画与 JavaScript 动画的性能 </h1>
+<p>对众多应用程序而言，动画对提供友好的用户体验有着关键的作用。我们有很多方式生成 web 动画，比如 CSS transition 和 animation 或者基于 JavaScript 的动画（使用 requestAnimationFrame()）。</p>
+<h2 id="css-过渡和动画">CSS 过渡和动画 </h2>
+<ul>
+<li><strong>CSS transition</strong> 提供了一个简单的方式去创造当前样式与结束状态样式之间的动画，比如一个 button 的普通状态和 hover 状态。</li>
+<li><strong>CSS animation</strong> 许开发者去通过一个初始状态属性值集合与最终状态属性值集合创造动画，而不是单单的初始和最终状态。CSS animations 由两部分组成：描述 CSS 动画的样式，以及一组关键帧，表示动画样式的开始和结束状态，以及可能的中间状态。</li>
+</ul>
+<p>就性能方面来说，无论通过 CSS animation 还是 transition 创造动画，</p>
+<h2 id="requestanimationframe">requestAnimationFrame </h2>
+<p>提供了一种用 JavaScript 代码制作动画的高效方式。本方法的回调函数在绘制下一帧之前由浏览器调用。与需要一个延迟参数的 setTimeout() 或 setInterval() 相比，requestAnimationFrame() 效率高得多。开发人员可以在 requestAnimationFrame() 回调函数中通过简单地改变元素的样式（或者更新画布绘制，等等）来创建动画。</p>
+<h2 id="性能对比transitions-vs-requestanimationframe">性能对比：transitions vs requestAnimationFrame </h2>
+<p>事实上，大多数场景下，基于 CSS 的动画几乎是跟 JavaScript 动画表现一致，</p>
+<p>一些基于 Javascript 的动画库，像GSAP和Velocity.JS，甚至声称他们在性能上可以做得比原生 CSS transition/animation 更好。这是可能的，因为在重绘事件发生之前，CSS transition 和 animation 在主的 UI 线程仅仅是重新采集元素的样式，这跟通过 requestAnimationFrame() 回调获取重新采集元素样式是一样的，也是在下一次重绘之前触发。假如二者都是在主 UI 线程创建的动画，那它们在性能方面没有差异。</p>
+<p>虽然他们在性能之间没有差异，但是仍然认为 CSS 动画是更好的选择。为什么？关键是只要动画涉及的属性不引起 reflow（重新布局），我们可以把采样操作移出主线程。最常见的属性是 CSS transform。如果一个元素被提升为一个 layer，transform 属性动画就可以在 GPU中进行。这意味着更好地性能，特别是在移动设备上。</p>
+
+      </div>
+      <div class="md-sidebar-toc">
+<div class="md-toc">
+<details style="padding:0;;padding-left:0px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#css-动画与-javascript-动画的性能" class="md-toc-link"><p>CSS 动画与 JavaScript 动画的性能</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#css-过渡和动画" class="md-toc-link">
+            <p>CSS 过渡和动画</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#requestanimationframe" class="md-toc-link">
+            <p>requestAnimationFrame</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#性能对比transitions-vs-requestanimationframe" class="md-toc-link">
+            <p>性能对比：transitions vs requestAnimationFrame</p>
+
+          </a></div>
+        </div>
+      </details>
+    
+</div>
+</div>
+      <a id="sidebar-toc-btn">≡</a>
+    
+    
+    
+    
+    
+    
+<script>
+
+var sidebarTOCBtn = document.getElementById('sidebar-toc-btn')
+sidebarTOCBtn.addEventListener('click', function(event) {
+  event.stopPropagation()
+  if (document.body.hasAttribute('html-show-sidebar-toc')) {
+    document.body.removeAttribute('html-show-sidebar-toc')
+  } else {
+    document.body.setAttribute('html-show-sidebar-toc', true)
+  }
+})
+</script>
+      
+  
+    
+          </div>
+        </section>
+      </div>
+    </main>
+</body>
+
+</html>

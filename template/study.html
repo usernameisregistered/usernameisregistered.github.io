@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{subhead}}-{{title}}</title>
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+  <link rel="stylesheet" href="/assets/styles/main.css" />
+  <script src="/assets/script/highlight.js"></script>
+</head>
+
+<body>
+  <div class="w-screen h-screen flex flex-col overflow-hidden">
+    <header class="flex flex-grow-0 justify-between p-4 border-b border-neutral-200">
+      <a href="/" class="flex items-center text-2xl text-neutral-700 cursor-pointer">
+        <img src="/assets/images/logo.svg" class="w-[40px] h-[40px]" alt="{{title}}"></Image>
+        <span class="text-4 ml-4">{{title}}</span>
+      </a>
+      <div class="right flex items-center cursor-pointer">
+        {{#menuList}}
+        <a href="{{&url}}" class="mr-2 text-md hover:text-sky-500">{{name}}</a>
+        {{/menuList}}
+      </div>
+    </header>
+    <main class="flex-grow-1 overflow-y-auto overflow-x-hidden scrollbar scrollHeight">
+      <div class="w-5/6 m-auto pt-20 ">
+        <div class="border-b border-gray-200 pb-4 text-lg text-black text-center">平时收集的学习资料</div>
+        <div class="flex py-4 leading-4 border-b border-neutral-200">
+          <div class="basis-[300px]">名称</div>
+          <div class="flex-1">描述</div>
+        </div>
+        {{#studyList}}
+        <div class="flex py-4 leading-4 border-b border-neutral-200">
+          <div class="basis-[300px] hover:text-blue-300"><a href="{{&url}}" target="_blank">{{name}}</a></div>
+          <div class="flex-1">{{description}}</div>
+        </div>
+        {{/studyList}}
+      </div>
+    </main>
+</body>
+
+</html>
