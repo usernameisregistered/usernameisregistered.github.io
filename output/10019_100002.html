@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>前端根据地理范围换算出瓦片行列号的原理(核心)-WebGIS(三)-得鹿梦鱼</title>
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+  <link rel="stylesheet" href="/assets/styles/main.css" />
+  <link rel="stylesheet" href="/assets/styles/katex/common.css" />
+  <link rel="stylesheet" href="/assets/styles/katex/katex.min.css" />
+  <script src="/assets/script/highlight.js"></script>
+</head>
+
+<body data-for="html-export">
+  <div class="w-screen h-screen flex flex-col overflow-hidden">
+    <header class="flex flex-grow-0 justify-between p-4 border-b border-neutral-200">
+      <a href="/" class="flex items-center text-2xl text-neutral-700 cursor-pointer">
+        <img src="/assets/images/logo.svg" class="w-[40px] h-[40px]" alt="得鹿梦鱼"></Image>
+        <span class="text-4 ml-4">得鹿梦鱼</span>
+      </a>
+      <div class="right flex items-center cursor-pointer">
+        <a href="/classify.html" class="mr-2 text-md hover:text-sky-500">知识库</a>
+        <a href="/frontend.html" class="mr-2 text-md hover:text-sky-500">前端技能树</a>
+        <a href="/question.html" class="mr-2 text-md hover:text-sky-500">面试题</a>
+        <a href="/study.html" class="mr-2 text-md hover:text-sky-500">学习资料</a>
+        <a href="/about.html" class="mr-2 text-md hover:text-sky-500">关于本人</a>
+      </div>
+    </header>
+    <main class="flex-grow-1 overflow-hidden scrollHeight">
+      <div class="w-screen flex flex-1">
+        <aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
+          <div class="text-md font-bold text-gray-700 m-4">WebGIS(三)</div>
+          <div class="overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar flex flex-col">
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10019_100000.html">杂谈
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10019_100001.html">WebGIS前端地图比例尺换算原理
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10019_100002.html">前端根据地理范围换算出瓦片行列号的原理(核心)
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10019_100003.html">地图瓦片在Canvas上的拼接显示原理
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10019_100004.html">栅格、矢量图层的本质
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10019_100005.html">地理坐标与屏幕坐标间的转换原理
+            </a>
+          </div>
+        </aside>
+        <section class="basis-10/12 overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar">
+          <div id="markdown-container" class="px-4 relative">
+            
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="前端根据地理范围换算出瓦片行列号的原理核心">前端根据地理范围换算出瓦片行列号的原理(核心) </h1>
+<h2 id="影像金字塔简介">影像金字塔简介 </h2>
+<p>影像金字塔就是，我们首先将原始影像按照用户的需求，比如用户需要显示多少种比例尺下的数据，需要显示的是原始影像中的哪个区域的数据，将原始影像按照这些需求进行划分和提取</p>
+<p>最低层就是我们提取和划分出的比例尺最小的一级的瓦片，而最上层的则是比例尺最大的一级的瓦片。我们仔细观察可以发现这样的一个规律：比例尺越小的级别瓦片数据越少，反之则越大。而这个规律导致的结果就是：比例尺越小的级别切图的速度越快，同时，同样大小的瓦片所包含的影像范围越多。</p>
+<p>当我们建立好了影像金子塔后，前端再请求地图时，则将只是在切好的瓦片缓存中，找到对应级别里对应的瓦片即可。然后在前端将这些请求到的瓦片拼接出来，便可以得到用户需要的级别下的可视范围内的瓦片了。</p>
+<h2 id="瓦片行列号的换算原理">瓦片行列号的换算原理 </h2>
+<p>假设，地图切图的原点是（x0,y0），地图的瓦片大小是tileSize，地图屏幕上1像素代表的实际距离是resolution。计算坐标点（x,y）所在的瓦片的行列号的公式是：</p>
+<p>col = floor((x0 - x)/( tileSize*resolution))</p>
+<p>row = floor((y0 - y)/( tileSize*resolution))</p>
+<p>简单点说就是，首先算出一个瓦片所包含的实际长度是多少LtileSize，然后再算出此时屏幕上的地理坐标点离瓦片切图的起始点间的实际距离LrealSize，然后用实际距离除以一个瓦片的实际长度，即可得此时的瓦片行列号：LrealSize/LtileSize。</p>
+<h2 id="换算流程">换算流程 </h2>
+<ul>
+<li>originX,originY：地图切图时的切图原点坐标。</li>
+<li>tileSize：瓦片的屏幕像素大小。</li>
+<li>Level：地图级别。</li>
+<li>resolution：某地图级别下屏幕一像素代表的实际单位大小。</li>
+<li>canvasWidth、canvasHeight：屏幕的长宽</li>
+<li>geoMaxX、geoMinX：地理范围中的最大、最小X坐标。</li>
+</ul>
+<h3 id="获得请求地理范围中的中心点centergeopoint">获得请求地理范围中的中心点（centerGeoPoint） </h3>
+<p>为什么我们要首先换算这个中心点呢。原因是我们最后需要的真实地理范围，并不一定是屏幕范围所对应的那个地理范围，它极有可能是大于这个屏幕地理范围的。而事实上是，它一定是大于的，在后面我们讲解瓦片图层类的设计时，会提到一个地理范围缓冲宽度，那时候大家就更能明白为什么是要首先获取地理范围中的中心点了。</p>
+<h3 id="判断请求中是否包含了需要显示的地图级别分别处理">判断请求中是否包含了需要显示的地图级别，分别处理 </h3>
+<h4 id="包含了level">包含了Level </h4>
+<p>如果请求中已经指定了使用的Level，则我们接下来可以直接使用此Level来进行地图实际请求范围的换算。</p>
+<h4 id="没有包含level">没有包含Level </h4>
+<p>当请求中无Level时，我们的换算将会比较复杂一些，这个换算的目的就是求出此时的地图应该以什么Level显示是最合适的，即nearestLevel。它的过程是，首先根据请求中的地理范围和屏幕大小范围，求得此时我们本需要的瓦片实际大小，即：(geoMaxX-geoMinX)/( canvasWidth/tileSize)，也就是用实际地理长度除以此时的瓦片个数，从而得到了我们请求中本需求的瓦片实际大小</p>
+<p>但是，目前我们不能保证我们所切的图中是一定有这个需求里的比例尺的。于是我们还需要做一个遍历，遍历我们的地图中所有的比例尺，找出一个与此需求比例尺下的瓦片实际大小最贴近的真实瓦片实际大小，而这个瓦片实际大小所对应的此时的地图比例尺，即是我们求得到的最合适的比例尺，它所代表的地图级别就是最贴近需求的地图级别，nearestLevel。</p>
+<h3 id="算出屏幕范围所对应的地理范围-minx-miny-maxx-maxy">算出屏幕范围所对应的地理范围 (minX、minY、maxX、maxY) </h3>
+<p>首先得到Level下的一像素代表的实际大小，即resolution。然后用centerGeoPoint加上或减去半个屏幕长度（canvasBounds）乘以resolution后得到的范围便是需求中的屏幕范围在获得的Level下应该对应的实际地理范围。<br>
+以屏幕左上角X所对应的实际地理坐标为例：<br>
+minX =centerGeoPoint - (resolution* canvasWidth)/2;<br>
+这里顺便提一下，算出的这个屏幕范围所对应的地理范围，它的作用是非常大的，在以后的屏幕坐标转换成地理坐标，以及地理坐标转换成屏幕坐标，还有偏移补偿量的换算上是至关重要的一个参数。</p>
+<h3 id="瓦片起始行列号fixedtilelefttopnumx-fixedtilelefttopnumy">瓦片起始行列号(fixedTileLeftTopNumX、fixedTileLeftTopNumY) </h3>
+<p>我们算出来的地理范围并不能保证真实的瓦片的起始瓦片所对应的地理坐标与地理范围的左上角地理范围重合，为此我们应该允许地理范围的一个扩张，这个扩张多少是一个很值得推敲的地方。这里我们默认为扩张至请求到的第一张瓦片左上角所对应的地理坐标。</p>
+<p>fixedTileLeftTopNumX = Math.floor((Math.abs(originX - minX))/resolution*tileSize);</p>
+<p>fixedTileLeftTopNumY = Math.floor((Math.abs(originY - maxY))/resolution*tileSize);</p>
+<h3 id="实际地理范围realminx-realmaxy">实际地理范围(realMinX、realMaxY) </h3>
+<p>realMinX = fixedTileLeftTopNumX * curLevelClipLength + originX;</p>
+<p>realMaxY= originY - fixedTileLeftTopNumY * curLevelClipLength;</p>
+<h3 id="左上角偏移像素offsetx-offsety">左上角偏移像素(offSetX、offSetY) </h3>
+<p>由于地理范围中的第一张瓦片，即左上角的第一张瓦片，并不一定是完全包含在屏幕地理范围内的，于是这里又涉及到另外一对参数，左上角偏移像素。</p>
+<p>为什么要求这个参数呢，原因是，当我们把瓦片都请求回来后还要做一个换算，即换算出每一张瓦片的左上角坐标应该对应在图层（TIleCanvas）上的哪一个屏幕坐标。这个偏移像素便是为了这个换算而做的准备。</p>
+<p>offSetX = ((realMinX- minX )/resolution);</p>
+<p>offSetY = ((maxY - realMaxY )/resolution);</p>
+<h3 id="x-y轴上的瓦片个数mapxclipnum-mapyclipnum">X、Y轴上的瓦片个数(mapXClipNum、mapYClipNum) </h3>
+<p>mapXClipNum = Math.ceil((canvasWidth + Math.abs(offSetX))/tileSize);</p>
+<p>mapYClipNum = Math.ceil((canvasHeight + Math.abs(offSetY))/tileSize);</p>
+<p><img src="/assets/1000067.png" alt="换算流程"></p>
+
+      </div>
+      <div class="md-sidebar-toc">
+<div class="md-toc">
+<details style="padding:0;;padding-left:0px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#前端根据地理范围换算出瓦片行列号的原理核心" class="md-toc-link"><p>前端根据地理范围换算出瓦片行列号的原理(核心)</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#影像金字塔简介" class="md-toc-link">
+            <p>影像金字塔简介</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#瓦片行列号的换算原理" class="md-toc-link">
+            <p>瓦片行列号的换算原理</p>
+
+          </a></div><details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#换算流程" class="md-toc-link"><p>换算流程</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#获得请求地理范围中的中心点centergeopoint" class="md-toc-link">
+            <p>获得请求地理范围中的中心点（centerGeoPoint）</p>
+
+          </a></div><details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#判断请求中是否包含了需要显示的地图级别分别处理" class="md-toc-link"><p>判断请求中是否包含了需要显示的地图级别，分别处理</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#包含了level" class="md-toc-link">
+            <p>包含了Level</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#没有包含level" class="md-toc-link">
+            <p>没有包含Level</p>
+
+          </a></div>
+        </div>
+      </details>
+    <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#算出屏幕范围所对应的地理范围-minx-miny-maxx-maxy" class="md-toc-link">
+            <p>算出屏幕范围所对应的地理范围 (minX、minY、maxX、maxY)</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#瓦片起始行列号fixedtilelefttopnumx-fixedtilelefttopnumy" class="md-toc-link">
+            <p>瓦片起始行列号(fixedTileLeftTopNumX、fixedTileLeftTopNumY)</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#实际地理范围realminx-realmaxy" class="md-toc-link">
+            <p>实际地理范围(realMinX、realMaxY)</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#左上角偏移像素offsetx-offsety" class="md-toc-link">
+            <p>左上角偏移像素(offSetX、offSetY)</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#x-y轴上的瓦片个数mapxclipnum-mapyclipnum" class="md-toc-link">
+            <p>X、Y轴上的瓦片个数(mapXClipNum、mapYClipNum)</p>
+
+          </a></div>
+        </div>
+      </details>
+    
+        </div>
+      </details>
+    
+</div>
+</div>
+      <a id="sidebar-toc-btn">≡</a>
+    
+    
+    
+    
+    
+    
+<script>
+
+var sidebarTOCBtn = document.getElementById('sidebar-toc-btn')
+sidebarTOCBtn.addEventListener('click', function(event) {
+  event.stopPropagation()
+  if (document.body.hasAttribute('html-show-sidebar-toc')) {
+    document.body.removeAttribute('html-show-sidebar-toc')
+  } else {
+    document.body.setAttribute('html-show-sidebar-toc', true)
+  }
+})
+</script>
+      
+  
+    
+          </div>
+        </section>
+      </div>
+    </main>
+</body>
+
+</html>

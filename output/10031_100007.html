@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>感知性能-Web性能-得鹿梦鱼</title>
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+  <link rel="stylesheet" href="/assets/styles/main.css" />
+  <link rel="stylesheet" href="/assets/styles/katex/common.css" />
+  <link rel="stylesheet" href="/assets/styles/katex/katex.min.css" />
+  <script src="/assets/script/highlight.js"></script>
+</head>
+
+<body data-for="html-export">
+  <div class="w-screen h-screen flex flex-col overflow-hidden">
+    <header class="flex flex-grow-0 justify-between p-4 border-b border-neutral-200">
+      <a href="/" class="flex items-center text-2xl text-neutral-700 cursor-pointer">
+        <img src="/assets/images/logo.svg" class="w-[40px] h-[40px]" alt="得鹿梦鱼"></Image>
+        <span class="text-4 ml-4">得鹿梦鱼</span>
+      </a>
+      <div class="right flex items-center cursor-pointer">
+        <a href="/classify.html" class="mr-2 text-md hover:text-sky-500">知识库</a>
+        <a href="/frontend.html" class="mr-2 text-md hover:text-sky-500">前端技能树</a>
+        <a href="/question.html" class="mr-2 text-md hover:text-sky-500">面试题</a>
+        <a href="/study.html" class="mr-2 text-md hover:text-sky-500">学习资料</a>
+        <a href="/about.html" class="mr-2 text-md hover:text-sky-500">关于本人</a>
+      </div>
+    </header>
+    <main class="flex-grow-1 overflow-hidden scrollHeight">
+      <div class="w-screen flex flex-1">
+        <aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
+          <div class="text-md font-bold text-gray-700 m-4">Web性能</div>
+          <div class="overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar flex flex-col">
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10031_100000.html">概述
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10031_100001.html">渲染页面：浏览器的工作原理
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10031_100002.html">关键渲染路径
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10031_100003.html">CSS动画与JavaScript动画的性能
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10031_100004.html">优化启动性能
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10031_100005.html">使用dns-prefetch
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10031_100006.html">懒加载
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10031_100007.html">感知性能
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10031_100008.html">JavaScript性能优化
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10031_100009.html">css性能优化
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10031_100010.html">HTML性能优化
+            </a>
+          </div>
+        </aside>
+        <section class="basis-10/12 overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar">
+          <div id="markdown-container" class="px-4 relative">
+            
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="感知性能">感知性能 </h1>
+<p>感知性能是用户对网站速度的感受。用户如何看待性能与任何客观统计数据一样重要，甚至更重要，但它是主观的，并且不易测量。感知性能是用户视角，而不是指标。</p>
+<h2 id="性能指标">性能指标 </h2>
+<p>目前没有一种单一的指标或测试可以量化用户的“感受”。但是，有一些指标可以作为“有用的指示”：</p>
+<ul>
+<li>首次绘制:第一次绘制运算开始的时间</li>
+<li>首次有内容绘制（FCP）:第一次重要渲染（例如文本、前景或背景图像、画布或 SVG 等）开始的时间。注意，这些内容不一定是有用或有意义的</li>
+<li>首次有意义绘制（FMP）:有用的内容渲染到屏幕上的时间。</li>
+<li>最大内容绘制（LCP）:视口中可见的最大内容元素的渲染时间。</li>
+<li>速度指数: 测量可见屏幕上像素绘制的平均时间。</li>
+<li>可交互时间:UI可用于用户交互的时间（即加载过程中最后一个长任务完成的时间）。</li>
+</ul>
+<h2 id="提升感知性能">提升感知性能 </h2>
+<ul>
+<li>最小化初始加载: 首先下载用户将立即与之交互的内容，然后在“后台”下载其余内容。实际下载的内容总量可能会增加，但用户只需等待非常少的内容，因此会感觉下载更快了</li>
+<li>防止内容跳转和其他重排: 图片或其他资源导致内容下移或跳转到不同位置（例如第三方广告的加载），会让页面感觉仍在加载中，这对感知性能是不利的。若内容重排不是由用户交互触发，则尤其会损害用户体验。如果某些资源的加载速度比其他资源慢，在其他内容已经显示在屏幕上之后才加载这些元素，那么就需要提前规划，在布局中为它们留出空间，以便内容不会跳动或改变大小，尤其是在网站已变得可交互之后。</li>
+<li>避免字体文件延迟: 字体的选择相当重要。选择合适的字体可以极大地改善用户体验。从感知性能的角度来看，“字体导入不佳”可能会导致文本在样式化或回退到其他字体时出现闪烁</li>
+<li>可交互元素是可交互的:确保可见的可交互元素始终可交换且可响应。如果输入元素是可见的，用户应该能够无延迟地与它们交互。当响应时间超过 50 毫秒时，用户会感受到延迟。当内容重绘速度慢于 16.67 毫秒（或每秒 60 帧），或者重绘间隔不均匀时，他们会感觉页面卡顿不流畅。</li>
+<li>使任务启动器显得更具交互性:</li>
+</ul>
+
+      </div>
+      <div class="md-sidebar-toc">
+<div class="md-toc">
+<details style="padding:0;;padding-left:0px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#感知性能" class="md-toc-link"><p>感知性能</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#性能指标" class="md-toc-link">
+            <p>性能指标</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#提升感知性能" class="md-toc-link">
+            <p>提升感知性能</p>
+
+          </a></div>
+        </div>
+      </details>
+    
+</div>
+</div>
+      <a id="sidebar-toc-btn">≡</a>
+    
+    
+    
+    
+    
+    
+<script>
+
+var sidebarTOCBtn = document.getElementById('sidebar-toc-btn')
+sidebarTOCBtn.addEventListener('click', function(event) {
+  event.stopPropagation()
+  if (document.body.hasAttribute('html-show-sidebar-toc')) {
+    document.body.removeAttribute('html-show-sidebar-toc')
+  } else {
+    document.body.setAttribute('html-show-sidebar-toc', true)
+  }
+})
+</script>
+      
+  
+    
+          </div>
+        </section>
+      </div>
+    </main>
+</body>
+
+</html>

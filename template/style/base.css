@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .scrollHeight {
+    height: calc(100vh - 73px);
+  }
+  .scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .scrollbar::-webkit-scrollbar-track {
+    border-radius: 6px;
+    background-color: transparent;
+  }
+  .scrollbar::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    background-color: hsla(0, 0%, 59%, 0.4);
+    border: 4px solid hsla(0, 0%, 59%, 0.4);
+    background-clip: content-box;
+  }
+  .scrollChapterHeight{
+    height: calc(100vh - 8.5rem);
+  }
+}

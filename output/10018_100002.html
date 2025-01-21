@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>数字地形模型（DTM）与地形分析-GIS原理(二)-得鹿梦鱼</title>
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+  <link rel="stylesheet" href="/assets/styles/main.css" />
+  <link rel="stylesheet" href="/assets/styles/katex/common.css" />
+  <link rel="stylesheet" href="/assets/styles/katex/katex.min.css" />
+  <script src="/assets/script/highlight.js"></script>
+</head>
+
+<body data-for="html-export">
+  <div class="w-screen h-screen flex flex-col overflow-hidden">
+    <header class="flex flex-grow-0 justify-between p-4 border-b border-neutral-200">
+      <a href="/" class="flex items-center text-2xl text-neutral-700 cursor-pointer">
+        <img src="/assets/images/logo.svg" class="w-[40px] h-[40px]" alt="得鹿梦鱼"></Image>
+        <span class="text-4 ml-4">得鹿梦鱼</span>
+      </a>
+      <div class="right flex items-center cursor-pointer">
+        <a href="/classify.html" class="mr-2 text-md hover:text-sky-500">知识库</a>
+        <a href="/frontend.html" class="mr-2 text-md hover:text-sky-500">前端技能树</a>
+        <a href="/question.html" class="mr-2 text-md hover:text-sky-500">面试题</a>
+        <a href="/study.html" class="mr-2 text-md hover:text-sky-500">学习资料</a>
+        <a href="/about.html" class="mr-2 text-md hover:text-sky-500">关于本人</a>
+      </div>
+    </header>
+    <main class="flex-grow-1 overflow-hidden scrollHeight">
+      <div class="w-screen flex flex-1">
+        <aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
+          <div class="text-md font-bold text-gray-700 m-4">GIS原理(二)</div>
+          <div class="overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar flex flex-col">
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10018_100000.html">空间分析
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10018_100001.html">空间数据表现与地图制图
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10018_100002.html">数字地形模型（DTM）与地形分析
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10018_100003.html">网络地理信息系统
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10018_100004.html"> 空间建模与空间决策支持
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10018_100005.html">S集成技术
+            </a>
+          </div>
+        </aside>
+        <section class="basis-10/12 overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar">
+          <div id="markdown-container" class="px-4 relative">
+            
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="数字地形模型dtm与地形分析">数字地形模型（DTM）与地形分析 </h1>
+<p>数字地形模型是地形表面形态属性信息的数字表达，是带有空间位置特征和地形属性特征的数字描述</p>
+<p>数字地形模型中地形属性为高程时称为数字高程模型（DEM）</p>
+<h2 id="高程模型表示法">高程模型表示法 </h2>
+<p><img src="/assets/1000058.png" alt="DEM的表示方法"></p>
+<h2 id="主要表示模型">主要表示模型 </h2>
+<ol>
+<li>规则格网模型</li>
+<li>等高线模型</li>
+<li>不规则三角网（TIN）模型</li>
+<li>层次模型</li>
+</ol>
+<h2 id="dem的建立">DEM的建立 </h2>
+<p>为了建立DEM，必需量测一些点的三维坐标，这就是DEM数据采集</p>
+<ol>
+<li>地面测量</li>
+<li>现有地图数字化</li>
+<li>空间传感器</li>
+<li>数字摄影测量方法</li>
+</ol>
+<h2 id="分析和应用">分析和应用 </h2>
+<h3 id="地形曲面拟合">地形曲面拟合 </h3>
+<p>DEM最基础的应用是求DEM范围内任意点的高程，在此基础上进行地形属性分析。由于已知有限个格网点的高程，可以利用这些格网点高程拟合一个地形曲面，推求区域内任意点的高程。曲面拟合方法可以看作是一个已知规则格网点数据进行空间插值的特例，距离倒数加权平均方法，克里金插值方法，样条函数等插值方法均可采用</p>
+<h3 id="立体透视图">立体透视图 </h3>
+<p>从数字高程模型绘制透视立体图是DEM的一个极其重要的应用。透视立体图能更好地反映地形的立体形态，非常直观。与采用等高线表示地形形态相比有其自身独特的优点，更接近人们的直观视觉。特别是随着计算机图形处理工作的增强以及屏幕显示系统的发展，使立体图形的制作具有更大的灵活性，人们可以根据不同的需要，对于同一个地形形态作各种不同的立体显示</p>
+<h3 id="通视分析">通视分析 </h3>
+<p>通视分析有着广泛的应用背景。典型的例子是观察哨所的设定，显然观察哨的位置应该设在能监视某一感兴趣的区域，视线不能被地形挡住。这就是通视分析中典型的点对区域的通视问题。与此类似的问题还有森林中火灾监测点的设定，无线发射塔的设定等</p>
+<ol>
+<li>点对点通视</li>
+<li>点对线通视</li>
+<li>点对区域通视</li>
+</ol>
+<h3 id="流域特征地貌提取与地形自动分割">流域特征地貌提取与地形自动分割 </h3>
+<p>地形因素是影响流域地貌、水文、生物等过程的重要因子，地形属性的空间分布特征一直是人们用于描述这些空间过程变化的重要指标。高精度DEM数据和高分辨率、高光谱、多周期的遥感影像，为人们定量描述流域空间变化过程提供了日益丰富的数据源，而且人们对流域地貌、水文和生物等过程空间变化机理理解的不断加深，可以说人类已经进入了一个“空间模拟”的时代。基于DEM数据自动提取流域地貌特征和进行流域地形自动分割是进行流域空间模拟的基础技术</p>
+<ol>
+<li>流域地貌形态结构定义，定义能反映流域结构的特征地貌，建立格网DEM对应的微地貌特征</li>
+<li>特征地貌自动提取和地形自动分割算法。格网DEM数据是一些离散的高程点数据，每个数据本身不能反映实际地表的复杂性。为了从格网DEM数据中得到流域地貌形态结构，必须采用一个清晰的流域地貌结构模型，然后针对该结构模型设计自动提取算法</li>
+</ol>
+
+      </div>
+      <div class="md-sidebar-toc">
+<div class="md-toc">
+<details style="padding:0;;padding-left:0px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#数字地形模型dtm与地形分析" class="md-toc-link"><p>数字地形模型（DTM）与地形分析</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#高程模型表示法" class="md-toc-link">
+            <p>高程模型表示法</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#主要表示模型" class="md-toc-link">
+            <p>主要表示模型</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#dem的建立" class="md-toc-link">
+            <p>DEM的建立</p>
+
+          </a></div><details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#分析和应用" class="md-toc-link"><p>分析和应用</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#地形曲面拟合" class="md-toc-link">
+            <p>地形曲面拟合</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#立体透视图" class="md-toc-link">
+            <p>立体透视图</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#通视分析" class="md-toc-link">
+            <p>通视分析</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#流域特征地貌提取与地形自动分割" class="md-toc-link">
+            <p>流域特征地貌提取与地形自动分割</p>
+
+          </a></div>
+        </div>
+      </details>
+    
+        </div>
+      </details>
+    
+</div>
+</div>
+      <a id="sidebar-toc-btn">≡</a>
+    
+    
+    
+    
+    
+    
+<script>
+
+var sidebarTOCBtn = document.getElementById('sidebar-toc-btn')
+sidebarTOCBtn.addEventListener('click', function(event) {
+  event.stopPropagation()
+  if (document.body.hasAttribute('html-show-sidebar-toc')) {
+    document.body.removeAttribute('html-show-sidebar-toc')
+  } else {
+    document.body.setAttribute('html-show-sidebar-toc', true)
+  }
+})
+</script>
+      
+  
+    
+          </div>
+        </section>
+      </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>配置-redis-得鹿梦鱼</title>
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+  <link rel="stylesheet" href="/assets/styles/main.css" />
+  <link rel="stylesheet" href="/assets/styles/katex/common.css" />
+  <link rel="stylesheet" href="/assets/styles/katex/katex.min.css" />
+  <script src="/assets/script/highlight.js"></script>
+</head>
+
+<body data-for="html-export">
+  <div class="w-screen h-screen flex flex-col overflow-hidden">
+    <header class="flex flex-grow-0 justify-between p-4 border-b border-neutral-200">
+      <a href="/" class="flex items-center text-2xl text-neutral-700 cursor-pointer">
+        <img src="/assets/images/logo.svg" class="w-[40px] h-[40px]" alt="得鹿梦鱼"></Image>
+        <span class="text-4 ml-4">得鹿梦鱼</span>
+      </a>
+      <div class="right flex items-center cursor-pointer">
+        <a href="/classify.html" class="mr-2 text-md hover:text-sky-500">知识库</a>
+        <a href="/frontend.html" class="mr-2 text-md hover:text-sky-500">前端技能树</a>
+        <a href="/question.html" class="mr-2 text-md hover:text-sky-500">面试题</a>
+        <a href="/study.html" class="mr-2 text-md hover:text-sky-500">学习资料</a>
+        <a href="/about.html" class="mr-2 text-md hover:text-sky-500">关于本人</a>
+      </div>
+    </header>
+    <main class="flex-grow-1 overflow-hidden scrollHeight">
+      <div class="w-screen flex flex-1">
+        <aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
+          <div class="text-md font-bold text-gray-700 m-4">redis</div>
+          <div class="overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar flex flex-col">
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10037_100000.html">介绍
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10037_100001.html">安装
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10037_100002.html">配置
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10037_100003.html">数据类型
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10037_100004.html">命令
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10037_100005.html">高级
+            </a>
+          </div>
+        </aside>
+        <section class="basis-10/12 overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar">
+          <div id="markdown-container" class="px-4 relative">
+            
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="redis-配置">Redis 配置 </h1>
+<h2 id="配置获取">配置获取 </h2>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>config get config_name
+</code></pre><h2 id="配置设置和修改">配置设置和修改 </h2>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>config set config_name config_value 
+</code></pre><h2 id="配置说明">配置说明 </h2>
+<table>
+<thead>
+<tr>
+<th>配置项</th>
+<th>默认值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>daemonize</td>
+<td>no</td>
+<td>redis默认不以守护进程的方式运行可以修改配置项</td>
+</tr>
+<tr>
+<td>pidfile</td>
+<td>/var/run/redis.pid</td>
+<td>当redis以守护进程运行时的oid</td>
+</tr>
+<tr>
+<td>port</td>
+<td>6379</td>
+<td>指定的redis监听端口</td>
+</tr>
+<tr>
+<td>bind</td>
+<td>127.0.0.1</td>
+<td>绑定的主机地址</td>
+</tr>
+<tr>
+<td>timeout</td>
+<td>360</td>
+<td>当客户端多长时间不连接时关闭连接 为0时永不关闭</td>
+</tr>
+<tr>
+<td>loglevel</td>
+<td>notice</td>
+<td>指定日志的记录级别 debug , verbose , notice ，warning</td>
+</tr>
+<tr>
+<td>logfile</td>
+<td>stdout</td>
+<td>日志的记录方式 默认是标准输出</td>
+</tr>
+<tr>
+<td>databases</td>
+<td>16</td>
+<td>设置数据库的个数</td>
+</tr>
+<tr>
+<td>save &lt;seconds&gt; &lt;changes&gt;</td>
+<td>save 900 1</td>
+<td>900 秒（15 分钟）内有 1 个更改 指定在多长时间内，有多少次更新操作，就将数据同步到数据文件</td>
+</tr>
+<tr>
+<td>rdbcompression</td>
+<td>yes</td>
+<td>指定存储至本地数据库时是否压缩数据，默认为 yes</td>
+</tr>
+<tr>
+<td>dbfilename</td>
+<td>dump.rdb</td>
+<td>指定本地数据库文件名</td>
+</tr>
+<tr>
+<td>dir</td>
+<td>./</td>
+<td>指定本地数据库存放目录</td>
+</tr>
+<tr>
+<td>slaveof  &lt;masterip&gt; &lt;masterport&gt;</td>
+<td></td>
+<td>设置当本机为 slav 服务时，设置 master 服务的 IP 地址及端口，在 Redis 启动时，它会自动从 master</td>
+</tr>
+<tr>
+<td>masterauth &lt;master-password&gt;</td>
+<td></td>
+<td>当 master 服务设置了密码保护时，slav 服务连接 master 的密码</td>
+</tr>
+<tr>
+<td>requirepass</td>
+<td></td>
+<td>设置 Redis 连接密码，如果配置了连接密码，客户端在连接 Redis 时需要通过 AUTH &lt;password&gt; 命令提供密码，默认关闭</td>
+</tr>
+<tr>
+<td>maxclients</td>
+<td>128</td>
+<td>设置同一时间最大客户端连接数，默认无限制</td>
+</tr>
+<tr>
+<td>maxmemory</td>
+<td></td>
+<td>指定 Redis 最大内存限制，Redis 在启动时会把数据加载到内存中，达到最大内存后，Redis 会先尝试清除已到期或即将到期的 Key，当此方法处理 后，仍然到达最大内存设置，将无法再进行写入操作，但仍然可以进行读取操作。Redis 新的 vm 机制，会把 Key 存放内存，Value 会存放在 swap 区</td>
+</tr>
+<tr>
+<td>appendonly</td>
+<td>on</td>
+<td>指定是否在每次更新操作后进行日志记录</td>
+</tr>
+<tr>
+<td>appendfilename</td>
+<td>appendonly.aof</td>
+<td>指定更新日志文件名</td>
+</tr>
+<tr>
+<td>inclue</td>
+<td>/path/to/local.conf</td>
+<td>指定包含其它的配置文件，可以在同一主机上多个Redis实例之间使用同一份配置文件，而同时各个实例又拥有自己的特定配置文件</td>
+</tr>
+<tr>
+<td>activerehashing</td>
+<td>yes</td>
+<td>指定是否激活重置哈希，默认为开启</td>
+</tr>
+<tr>
+<td>vm-enabled</td>
+<td>no</td>
+<td>指定是否启用虚拟内存机制，默认值为 no</td>
+</tr>
+</tbody>
+</table>
+
+      </div>
+      <div class="md-sidebar-toc">
+<div class="md-toc">
+<details style="padding:0;;padding-left:0px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#redis-配置" class="md-toc-link"><p>Redis 配置</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#配置获取" class="md-toc-link">
+            <p>配置获取</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#配置设置和修改" class="md-toc-link">
+            <p>配置设置和修改</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#配置说明" class="md-toc-link">
+            <p>配置说明</p>
+
+          </a></div>
+        </div>
+      </details>
+    
+</div>
+</div>
+      <a id="sidebar-toc-btn">≡</a>
+    
+    
+    
+    
+    
+    
+<script>
+
+var sidebarTOCBtn = document.getElementById('sidebar-toc-btn')
+sidebarTOCBtn.addEventListener('click', function(event) {
+  event.stopPropagation()
+  if (document.body.hasAttribute('html-show-sidebar-toc')) {
+    document.body.removeAttribute('html-show-sidebar-toc')
+  } else {
+    document.body.setAttribute('html-show-sidebar-toc', true)
+  }
+})
+</script>
+      
+  
+    
+          </div>
+        </section>
+      </div>
+    </main>
+</body>
+
+</html>

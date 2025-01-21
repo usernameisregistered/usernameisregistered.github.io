@@ -1,0 +1,24 @@
+{
+    "menuList": [
+        {
+            "name": "知识库",
+            "url": "/classify.html"
+        },
+        {
+            "name": "前端技能树",
+            "url": "/frontend.html"
+        },
+        {
+            "name": "面试题",
+            "url": "/question.html"
+        },
+        {
+            "name": "学习资料",
+            "url": "/study.html"
+        },
+        {
+            "name": "关于本人",
+            "url": "/about.html"
+        }
+    ]
+}

@@ -1,44 +1,19 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# passerby
 
-## Getting Started
+（得鹿梦鱼）passerby是一个快速、简洁且高效的博客框架。passerby使用Markdown编写文档，并可以将转化为html,在gitlab和github上发布
 
-First, run the development server:
+## git地址
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
++ [github](https://github.com/usernameisregistered/usernameisregistered.github.io.git)
++ [gitlab](https://gitlab.com/liming_longxi/liming_longxi.gitlab.io.git)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## page地址
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
++ [github](https://usernameisregistered.github.io/)
++ [gitee](https://liming_longxi.gitlab.io/)
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## 版本
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
-
-# react的useState在next中不能使用
-
-挺无语的nextjs的双动态路径页面只能生成最后一个页面，其他的页面不知道是被覆盖了还是
+1. template_develop
+2. vitepress_develop
+3. nextjs_develop
