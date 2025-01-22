@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>支持向量机SVM-验证码识别-得鹿梦鱼</title>
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <meta name="Author" content="liming_longxi@163.com">
+    <meta name="Keywords" content="支持向量机SVM"/>
+  <link rel="stylesheet" href="/assets/styles/main.css" />
+  <link rel="stylesheet" href="/assets/styles/katex/common.css" />
+  <link rel="stylesheet" href="/assets/styles/katex/katex.min.css" />
+  <script src="/assets/script/highlight.js"></script>
+</head>
+
+<body data-for="html-export">
+  <div class="w-screen h-screen flex flex-col overflow-hidden">
+    <header class="flex flex-grow-0 justify-between p-4 border-b border-neutral-200">
+      <a href="/" class="flex items-center text-2xl text-neutral-700 cursor-pointer">
+        <img src="/assets/images/logo.svg" class="w-[40px] h-[40px]" alt="得鹿梦鱼"></Image>
+        <span class="text-4 ml-4">得鹿梦鱼</span>
+      </a>
+      <div class="right flex items-center cursor-pointer">
+        <a href="/classify.html" class="mr-2 text-md hover:text-sky-500">知识库</a>
+        <a href="/frontend.html" class="mr-2 text-md hover:text-sky-500">前端技能树</a>
+        <a href="/question.html" class="mr-2 text-md hover:text-sky-500">面试题</a>
+        <a href="/study.html" class="mr-2 text-md hover:text-sky-500">学习资料</a>
+        <a href="/about.html" class="mr-2 text-md hover:text-sky-500">关于本人</a>
+      </div>
+    </header>
+    <main class="flex-grow-1 overflow-hidden scrollHeight">
+      <div class="w-screen flex flex-1">
+        <aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
+          <div class="text-md font-bold text-gray-700 m-4">验证码识别</div>
+          <div class="overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar flex flex-col">
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10023_100000.html" title="概论">概论
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10023_100001.html" title="预处理技术">预处理技术
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10023_100002.html" title="字符提取技术">字符提取技术
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10023_100003.html" title="字符识别技术">字符识别技术
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10023_100004.html" title="Otsu">Otsu
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10023_100005.html" title="一种基于直方图的图像二值化的算法">一种基于直方图的图像二值化的算法
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10023_100006.html" title="支持向量机SVM">支持向量机SVM
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10023_100007.html" title="灰度图像二值化算法研究">灰度图像二值化算法研究
+            </a>
+          </div>
+        </aside>
+        <section class="basis-10/12 overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar">
+          <div id="markdown-container" class="px-4 relative">
+            
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="支持向量机svm">支持向量机SVM </h1>
+<p>支持向量机(Support Vector Machine)由Vapnik及其合作者发明;这个算法可以利用核函数的特征空间有效的训练线性学习器，同时它还考虑了泛化性理论，并使用了最优化理论。<br>
+SVM是机器学习领域若干技术的集大成者，它主要研究最大间隔超平面、KKT条件、Mercer核、凸二次规划、稀疏解和松弛变量等多项技术。<br>
+SVM的理论体系涵盖的对象极其广泛，包括对偶表示、特征空间、学习理论、优化理论等</p>
+<h2 id="统计学习">统计学习 </h2>
+<p>统计学习理论（Statistical Learning Theory）是研究小样本情况下学习规律的统计学习理论是传统统计学的重要发展和补充为研究有限样本下的机器学习的理论和方法提供了理论框架其核心思想是通过控制学习机器的容量实现推广能力的控制。在这一理论中发展出的支持向量机方法是一种新的通<br>
+用学习机器比以往方法表现出很多理论和实践上的优势</p>
+<p>统计学习理论是<strong>基于结构风险最小化理论不是基于传统统计学的经验风险最小化理论</strong>表现出很多优于传统方法的性能，迅速引起各领域的学者注意和研究兴趣推动了各领域的快速发展。</p>
+<h3 id="经验风险最小">经验风险最小 </h3>
+<p>学习的问题就是从给定的函数集<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>α</mi><mo stretchy="false">)</mo><mo separator="true">,</mo><mi>α</mi><mo>∈</mo><mi>A</mi><mo separator="true">,</mo><mo stretchy="false">(</mo><mi>A</mi><mtext>是参数集合</mtext><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x, \alpha), \alpha \in A,(A是参数集合)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">A</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mopen">(</span><span class="mord mathnormal">A</span><span class="mord cjk_fallback">是参数集合</span><span class="mclose">)</span></span></span></span>中选择出能够最好逼近训练响应器的函数，这种选择是基于训练集的，训练集由根据联合分布<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>F</mi><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo stretchy="false">)</mo><mo>=</mo><mi>F</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mi>F</mi><mo stretchy="false">(</mo><mi>y</mi><mi mathvariant="normal">∣</mi><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">F(x,y) = F(x) F(y|x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mord">∣</span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span>抽取出的<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi></mrow><annotation encoding="application/x-tex">l</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span></span></span></span>个独立同分布观测<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>y</mi><mn>1</mn></msub><mo stretchy="false">)</mo><mo separator="true">,</mo><mo>⋯</mo><mtext> </mtext><mo separator="true">,</mo><mo stretchy="false">(</mo><msub><mi>x</mi><mi>l</mi></msub><mo separator="true">,</mo><msub><mi>y</mi><mi>l</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x_1, y_1), \cdots, (x_l, y_l)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.01968em;">l</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>组成。为了选择对训练响应最好的逼近就需要一种度量给定输入<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span>下响应的<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span>与机器学习给出的响应<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>α</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x, \alpha)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mclose">)</span></span></span></span>之间的损失或者差异，该损失或者差异可以使用<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo stretchy="false">(</mo><mi>y</mi><mo separator="true">,</mo><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>α</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">L(y,f(x, \alpha))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">L</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mclose">))</span></span></span></span>表示。称为损失函数, 其数学期望为<br>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>R</mi><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo><mo>=</mo><mo>∫</mo><mi>L</mi><mo stretchy="false">(</mo><mi>y</mi><mo separator="true">,</mo><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>α</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mi>d</mi><mi>F</mi><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo stretchy="false">)</mo><mo separator="true">;</mo></mrow><annotation encoding="application/x-tex">R(\alpha) = \int L(y, f(x, \alpha))dF(x,y);</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.2222em;vertical-align:-0.8622em;"></span><span class="mop op-symbol large-op" style="margin-right:0.44445em;position:relative;top:-0.0011em;">∫</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">L</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mclose">))</span><span class="mord mathnormal">d</span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mpunct">;</span></span></span></span></span><br>
+他就是风险函数</p>
+
+      </div>
+      <div class="md-sidebar-toc">
+<div class="md-toc">
+<details style="padding:0;;padding-left:0px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#支持向量机svm" class="md-toc-link"><p>支持向量机SVM</p>
+</a>
+          </summary>
+        <div>
+          <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#统计学习" class="md-toc-link"><p>统计学习</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#经验风险最小" class="md-toc-link">
+            <p>经验风险最小</p>
+
+          </a></div>
+        </div>
+      </details>
+    
+        </div>
+      </details>
+    
+</div>
+</div>
+      <a id="sidebar-toc-btn">≡</a>
+    
+    
+    
+    
+    
+    
+<script>
+
+var sidebarTOCBtn = document.getElementById('sidebar-toc-btn')
+sidebarTOCBtn.addEventListener('click', function(event) {
+  event.stopPropagation()
+  if (document.body.hasAttribute('html-show-sidebar-toc')) {
+    document.body.removeAttribute('html-show-sidebar-toc')
+  } else {
+    document.body.setAttribute('html-show-sidebar-toc', true)
+  }
+})
+</script>
+      
+  
+    
+          </div>
+        </section>
+      </div>
+    </main>
+</body>
+
+</html>

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>小波变换-图像去噪-得鹿梦鱼</title>
+  <title>扩展-数据结构与算法-得鹿梦鱼</title>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <meta name="Author" content="liming_longxi@163.com">
+    <meta name="Keywords" content="扩展"/>
   <link rel="stylesheet" href="/assets/styles/main.css" />
   <link rel="stylesheet" href="/assets/styles/katex/common.css" />
   <link rel="stylesheet" href="/assets/styles/katex/katex.min.css" />
@@ -30,17 +32,17 @@
     <main class="flex-grow-1 overflow-hidden scrollHeight">
       <div class="w-screen flex flex-1">
         <aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
-          <div class="text-md font-bold text-gray-700 m-4">图像去噪</div>
+          <div class="text-md font-bold text-gray-700 m-4">数据结构与算法</div>
           <div class="overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar flex flex-col">
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10021_100000.html">概论
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10021_100000.html" title="引言">引言
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10021_100001.html">中值滤波
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10021_100001.html" title="线性表">线性表
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10021_100002.html">基于傅里叶变换的去噪方法
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10021_100002.html" title="栈和队列">栈和队列
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10021_100003.html">基于数学形态学的图像去噪
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10021_100003.html" title="串">串
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10021_100004.html">小波变换
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10021_100004.html" title="扩展">扩展
             </a>
           </div>
         </aside>
@@ -51,53 +53,55 @@
     
       <div class="crossnote markdown-preview  ">
       
-<h1 id="小波变换">小波变换 </h1>
-<h2 id="发展阶段">发展阶段 </h2>
-<ol>
-<li>利用小波变换去相关性进行去噪。其核心思想是进行小波分解后，不同细节层次的相关子带使用不同的阈值。代表方法有Visushrink 方法和SureShrink 方法等。硬阈值、软阈值和半软阈值等阈值函数也是在这一发展阶段提出的。</li>
-<li>基于小波系数的统计性质，建立各种先验模型，其模型主要分为基于尺度内相关性的层内模型、基于尺度间相关性的层间模型和混合模型三种</li>
-<li>研究的重点转向如何利用小波系数层间和层内的相关性。在这个阶段，提出了二元或多元的小波萎缩函数。人们研究的重点是如何使去噪后的图片质量更高</li>
-</ol>
-<h2 id="原理">原理 </h2>
-<p>根据理论我们可知，信号和噪声在频域上分布不同，信号主要分布在低频区域，而噪声主要分布在高频区域，同时图像的细节也分布在高频区域。传统的利用傅里叶变换的图像去噪方法中，若要将信号和噪声区分开，要求信号和噪声的频带重叠区域尽可能小，如果重叠区域比较大，便起不到滤波效果。如何在降低图像噪声的同时，又能较好地保留图像细节</p>
+<h1 id="概述">概述 </h1>
+<h2 id="静态数组">静态数组 </h2>
 <blockquote>
-<p>小波去噪算法是在噪声具有以下三个特性的基础上提出的</p>
+<p>「静态数组」就是一块连续的内存空间，我们可以通过索引来访问这块内存空间中的元素，这才是数组的原始形态</p>
 </blockquote>
-<ol>
-<li>噪声经小波变换后，大多数小波系数变为零或近似为零</li>
-<li>噪声小波系数均匀分布在所有系数中</li>
-<li>噪声水平比较低</li>
-</ol>
-<p>设<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(i,j)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">)</span></span></span></span>是原图像， <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo stretchy="false">(</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">n(i,j)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">n</span><span class="mopen">(</span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">)</span></span></span></span>为高斯白噪声，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false">(</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p(i,j)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">)</span></span></span></span>是受噪声污染后的图像，则<br>
-<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>p</mi><mo stretchy="false">(</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo stretchy="false">)</mo><mo>=</mo><mi>f</mi><mo stretchy="false">(</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo stretchy="false">)</mo><mo>+</mo><mi>n</mi><mo stretchy="false">(</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p(i,j) = f(i,j) + n(i,j)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">n</span><span class="mopen">(</span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">)</span></span></span></span></span><br>
-假定离散小波变换的变换矩阵是<strong>w</strong>, 则<br>
-<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>W</mi><mo stretchy="false">[</mo><mi>p</mi><mo stretchy="false">(</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo stretchy="false">)</mo><mo stretchy="false">]</mo><mo>=</mo><mi>W</mi><mo stretchy="false">[</mo><mi>f</mi><mo stretchy="false">(</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo stretchy="false">)</mo><mo stretchy="false">]</mo><mo>+</mo><mi>W</mi><mo stretchy="false">[</mo><mi>n</mi><mo stretchy="false">(</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo stretchy="false">)</mo><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">W[p(i,j)] = W[f(i,j)] + W[n(i,j)]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mopen">[</span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">)]</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">)]</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">W</span><span class="mopen">[</span><span class="mord mathnormal">n</span><span class="mopen">(</span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">)]</span></span></span></span></span></p>
-<p>由于高斯白噪声经小波变换后仍是高斯分布的，即均匀分布在频率尺度空间的所有部分，信号经小波变换系数后只集中在频率尺度空间上的有限部分，从信号能量的观点来看，噪声能量分布在所有小波系数上，而信号能量只分布在少数小波系数上，因此小波系数分为两类：一类是由噪声变换得到的，其幅值小，数目多；另一类是由信号变换得到的，其幅值大，数目少，其中包含部分噪声的变换结果。根据两类系数幅值的不同，设定一个阈值，将其分开后去除噪声部分，就可以在去除噪声的同时，较好地保留图像的细节信息。</p>
-<p>基于信号和噪声的小波系数在不同尺度上具有不同性质这一特性，首先将混噪图像信号利用小波分解分解到各尺度中，然后在每一尺度中去除噪声的小波系数，保留并增强信号的小波系数，最后将处理后的小波系数利用小波逆变换重构出去噪后的图像</p>
-<ol>
-<li>对混噪图像进行多层小波变换，得到各层小波系数<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>w</mi><mrow><mi>i</mi><mo separator="true">,</mo><mi>j</mi></mrow></msub></mrow><annotation encoding="application/x-tex">w_{i,j}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7167em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span>；</li>
-<li>选择合适的阈值<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span></span></span></span>，对小波系数进行阈值量化处理，得到估计小波系数<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover accent="true"><mi>w</mi><mo>^</mo></mover><mrow><mi>i</mi><mo separator="true">,</mo><mi>j</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\hat w_{i,j}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9805em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1667em;"><span class="mord">^</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span></li>
-<li>对<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover accent="true"><mi>w</mi><mo>^</mo></mover><mrow><mi>i</mi><mo separator="true">,</mo><mi>j</mi></mrow></msub></mrow><annotation encoding="application/x-tex">\hat w_{i,j}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9805em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.1667em;"><span class="mord">^</span></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0269em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span>进行逆小波变换，重构图像</li>
-</ol>
+<p><strong>为什么数组的索引从0开始？</strong></p>
+<blockquote>
+<p>就是方便取地址。arr[0] 就是 arr 的首地址，从这个地址往后的 4 个字节存储着第一个元素的值；arr[1] 就是 arr 的首地址加上 1 * 4 字节，也就是第二个元素的首地址，这个地址往后的 4 个字节存储着第二个元素的值。arr[2], arr[3] 以此类推</p>
+</blockquote>
+<h3 id="时间复杂度">时间复杂度 </h3>
+<p>增：<br>
+在末尾追加元素：O(1)<br>
+在中间（非末尾）插入元素：O(N)<br>
+删：<br>
+删除末尾元素：O(1)<br>
+删除中间（非末尾）元素：O(N)<br>
+查：给定指定索引，查询索引对应的元素的值，时间复杂度O(1)<br>
+改：给定指定索引，修改索引对应的元素的值，时间复杂度O(1)</p>
+<h3 id="扩缩容">扩缩容 </h3>
+<p>在实际使用动态数组时，缩容也是重要的优化手段。比方说一个动态数组开辟了能够存储 1000 个元素的连续内存空间，但是实际只存了 10 个元素，那就有 990 个空间是空闲的。为了避免资源浪费，我们其实可以适当缩小存储空间，这就是缩容</p>
+<p>实现参考<a href="https://github.com/usernameisregistered/algorithm/blob/master/javascript/DynamicArray.js">动态数组</a></p>
 
       </div>
       <div class="md-sidebar-toc">
 <div class="md-toc">
 <details style="padding:0;;padding-left:0px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#小波变换" class="md-toc-link"><p>小波变换</p>
+          <a href="#概述" class="md-toc-link"><p>概述</p>
+</a>
+          </summary>
+        <div>
+          <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#静态数组" class="md-toc-link"><p>静态数组</p>
 </a>
           </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#发展阶段" class="md-toc-link">
-            <p>发展阶段</p>
+          <a href="#时间复杂度" class="md-toc-link">
+            <p>时间复杂度</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#原理" class="md-toc-link">
-            <p>原理</p>
+          <a href="#扩缩容" class="md-toc-link">
+            <p>扩缩容</p>
 
           </a></div>
+        </div>
+      </details>
+    
         </div>
       </details>
     

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>基础-typescript-得鹿梦鱼</title>
+  <title>.WebGL_基础概念-webGL-得鹿梦鱼</title>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <meta name="Author" content="liming_longxi@163.com">
+    <meta name="Keywords" content=".WebGL_基础概念"/>
   <link rel="stylesheet" href="/assets/styles/main.css" />
   <link rel="stylesheet" href="/assets/styles/katex/common.css" />
   <link rel="stylesheet" href="/assets/styles/katex/katex.min.css" />
@@ -30,9 +32,15 @@
     <main class="flex-grow-1 overflow-hidden scrollHeight">
       <div class="w-screen flex flex-1">
         <aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
-          <div class="text-md font-bold text-gray-700 m-4">typescript</div>
+          <div class="text-md font-bold text-gray-700 m-4">webGL</div>
           <div class="overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar flex flex-col">
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10027_100000.html">基础
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10027_100000.html" title=".WebGL_基础概念">.WebGL_基础概念
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10027_100001.html" title=".webGL_工作原理">.webGL_工作原理
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10027_100002.html" title=".WebGL_着色器和GLSL">.WebGL_着色器和GLSL
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10027_100003.html" title=".WebGL_图像处理">.WebGL_图像处理
             </a>
           </div>
         </aside>
@@ -43,83 +51,53 @@
     
       <div class="crossnote markdown-preview  ">
       
-<h1 id="typescript-基础">typescript 基础 </h1>
-<h2 id="typescript的优势">typescript的优势 </h2>
-<ol>
-<li>编译时静态类型检测</li>
-<li>自动提示更加清晰明确</li>
-<li>引入了泛型和一系列的TS特有类型</li>
-<li>强大的d.ts声明文件</li>
-<li>轻松编译成js文件</li>
-<li>灵活性高</li>
-</ol>
-<h3 id="枚举的类型">枚举的类型 </h3>
-<ol>
-<li>字符串枚举</li>
-<li>数字枚举<strong>双向枚举</strong></li>
-</ol>
-<h3 id="any和unknown的区别">any和unknown的区别 </h3>
-<p>相同点：都可以是任意类型的父类<br>
-不同点：any可以任意类型的子类，unknown不行，any可以操作任意的属性和方法unkown不行</p>
-<h2 id="type和interface的区别">type和interface的区别 </h2>
-<h3 id="定义类型">定义类型 </h3>
-<p>interface 只能定义对象类型或者接口打算给你名称的函数类型<br>
-type 可以定义任意类型，包括基础类型、联合类型、交叉类型、元祖</p>
-<h3 id="继承性">继承性 </h3>
-<p>interface可以继承一个或者多个接口或者类实现一个或者多个接口，也可以继承type<br>
-type类型没有继承</p>
-<h3 id="交叉类型">交叉类型 </h3>
-<p>用type交叉类型&amp; 可以让类型中的成员合并为一个新的type,<br>
-interfae不支持交叉合并</p>
+<h1 id="基础概念">基础概念 </h1>
+<p>WebGL仅仅是一个光栅化引擎，它可以根据你的代码绘制出点，线和三角形。 想要利用WebGL完成更复杂任务，取决于你能否提供合适的代码，组合使用点，线和三角形代替实现</p>
+<p>webGL在电脑的GPU中运行，因此你需要使用能够在GPU上运行的代码。 这样的代码需要提供成对的方法。每对方法中一个叫顶点着色器， 另一个叫片段着色器，并且使用一种和C或C++类似的强类型的语言 GLSL。 (GL着色语言)。 每一对组合起来称作一个 program（着色程序）。</p>
+<p>顶点着色器的作用是计算顶点的位置。根据计算出的一系列顶点位置，WebGL可以对点， 线和三角形在内的一些图元进行光栅化处理。当对这些图元进行光栅化处理时需要使用片段着色器方法。 片段着色器的作用是计算出当前绘制图元中每个像素的颜色值。</p>
+<p>几乎整个WebGL API都是关于如何设置这些成对方法的状态值以及运行它们。 对于想要绘制的每一个对象，都需要先设置一系列状态值，然后通过调用 gl.drawArrays 或 gl.drawElements 运行一个着色方法对，使得你的着色器对能够在GPU上运行</p>
+<h2 id="着色器获取数据的4种方法">着色器获取数据的4种方法 </h2>
+<ul>
+<li>属性(attributes)和缓冲</li>
+</ul>
+<p>缓冲是发送到GPU的一些二进制数据序列，通常情况下缓冲数据包括位置，法向量，纹理坐标，顶点颜色值等。 你可以存储任何数据<br>
+属性用来指明怎么从缓冲中获取所需数据并将它提供给顶点着色器。 例如你可能在缓冲中用三个32位的浮点型数据存储一个位置值。 对于一个确切的属性你需要告诉它从哪个缓冲中获取数据，获取什么类型的数据（三个32位的浮点数据）， 起始偏移值是多少，到下一个位置的字节数是多少<br>
+缓冲不是随意读取的。事实上顶点着色器运行的次数是一个指定的确切数字， 每一次运行属性会从指定的缓冲中按照指定规则依次获取下一个值</p>
+<ul>
+<li>全局变量(Unifroms)</li>
+</ul>
+<p>全局变量在着色程序运行前赋值，在运行过程中全局有效。</p>
+<ul>
+<li>纹理(textures)</li>
+</ul>
+<p>纹理是一个数据序列，可以在着色程序运行中随意读取其中的数据，大多数情况存放的是图像数据，但是纹理仅仅是数据序列，你也可以随意存放除了颜色数据以外的其他的数据。</p>
+<ul>
+<li>可变量(varyings)</li>
+</ul>
+<p>可变量是一种顶点着色器给片段着色器传值的方式，依照渲染的图元是点、线、还是三角形，顶点着色器中设置的可变量会在片段着色器运行中获取不同的插值</p>
+<h2 id="webgl-hello-world">webgl hello world </h2>
+<p>webgl只关心两件事，裁剪空间的坐标值和颜色值，使用webgl只需要给它提供这2个东西，你需要提供2个着色器来做这2件事，</p>
+<p>一个顶点着色器提供裁剪空间坐标值，一个片段着色器提供颜色值</p>
+<p>无论你的画布有多大，裁剪空间的坐标范围永远是 -1 到 1 。</p>
 
       </div>
       <div class="md-sidebar-toc">
 <div class="md-toc">
 <details style="padding:0;;padding-left:0px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#typescript-基础" class="md-toc-link"><p>typescript 基础</p>
-</a>
-          </summary>
-        <div>
-          <details style="padding:0;;padding-left:24px;" open="">
-        <summary class="md-toc-link-wrapper">
-          <a href="#typescript的优势" class="md-toc-link"><p>typescript的优势</p>
+          <a href="#基础概念" class="md-toc-link"><p>基础概念</p>
 </a>
           </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#枚举的类型" class="md-toc-link">
-            <p>枚举的类型</p>
+          <a href="#着色器获取数据的4种方法" class="md-toc-link">
+            <p>着色器获取数据的4种方法</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#any和unknown的区别" class="md-toc-link">
-            <p>any和unknown的区别</p>
+          <a href="#webgl-hello-world" class="md-toc-link">
+            <p>webgl hello world</p>
 
           </a></div>
-        </div>
-      </details>
-    <details style="padding:0;;padding-left:24px;" open="">
-        <summary class="md-toc-link-wrapper">
-          <a href="#type和interface的区别" class="md-toc-link"><p>type和interface的区别</p>
-</a>
-          </summary>
-        <div>
-          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#定义类型" class="md-toc-link">
-            <p>定义类型</p>
-
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#继承性" class="md-toc-link">
-            <p>继承性</p>
-
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#交叉类型" class="md-toc-link">
-            <p>交叉类型</p>
-
-          </a></div>
-        </div>
-      </details>
-    
         </div>
       </details>
     

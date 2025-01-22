@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>空间数据获取-GIS原理(一)-得鹿梦鱼</title>
+  <title>地球信息科学和数字地球-GIS原理(三)-得鹿梦鱼</title>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <meta name="Author" content="liming_longxi@163.com">
+    <meta name="Keywords" content="地球信息科学和数字地球"/>
   <link rel="stylesheet" href="/assets/styles/main.css" />
   <link rel="stylesheet" href="/assets/styles/katex/common.css" />
   <link rel="stylesheet" href="/assets/styles/katex/katex.min.css" />
@@ -30,21 +32,19 @@
     <main class="flex-grow-1 overflow-hidden scrollHeight">
       <div class="w-screen flex flex-1">
         <aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
-          <div class="text-md font-bold text-gray-700 m-4">GIS原理(一)</div>
+          <div class="text-md font-bold text-gray-700 m-4">GIS原理(三)</div>
           <div class="overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar flex flex-col">
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10014_100000.html">概述
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10014_100000.html" title="MapServer应用范围">MapServer应用范围
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10014_100001.html">空间数据模型
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10014_100001.html" title="地理信息系统和社会">地理信息系统和社会
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10014_100002.html">空间数据管理
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10014_100002.html" title="地理信息系统标准">地理信息系统标准
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10014_100003.html">空间数据获取
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10014_100003.html" title="地球信息科学和数字地球">地球信息科学和数字地球
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10014_100004.html">从现实世界到比特世界
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10014_100004.html" title="地理信息系统软件工程技术">地理信息系统软件工程技术
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10014_100005.html">GIS中的数据
-            </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10014_100006.html">空间参照系统和地图投影
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10014_100005.html" title="地理信息系统应用项目组织和管理">地理信息系统应用项目组织和管理
             </a>
           </div>
         </aside>
@@ -55,107 +55,59 @@
     
       <div class="crossnote markdown-preview  ">
       
-<h1 id="空间数据获取">空间数据获取 </h1>
-<h2 id="地图数字化">地图数字化 </h2>
-<p>当纸地图经过计算机图形图像系统光——电转换量化为点阵数字图像，经图像处理和曲线矢量化，或者直接进行手扶跟踪数字化后，生成可以为地理信息系统显示、修改、标注、漫游、计算、管理和打印的矢量地图数据文件，这种与纸地图相对应的计算机数据文件称为矢量化电子地图。</p>
-<h3 id="地图数据类型">地图数据类型 </h3>
+<h1 id="地球信息科学和数字地球">地球信息科学和数字地球 </h1>
+<h2 id="地球信息科学">地球信息科学 </h2>
+<p>地理信息科学是1992年Goodchild提出的，与地理信息系统相比，它更加侧重于将地理信息视作为一门科学，而不仅仅是一个技术实现，主要研究在应用计算机技术对地理信息进行处理、存储、提取以及管理和分析过程中提出的一系列基本问题,包括：分布式计算、地理信息的认知、地理信息的互操作、比例尺、空间信息基础设施的未来、地理数据的不确定性和基于GIS的分析、GIS和社会、地理信息系统在环境中的空间分析、空间数据的获取和集成等等</p>
+<h2 id="数字地球的产生背景以及其概念">数字地球的产生背景以及其概念 </h2>
+<p>数字地球的科学背景，包括地理信息科学，地球信息科学等一系列学科，这些学科的发展，为数字地球的产生打下了理论基础；对地观测系统以及计算机网络的发展为数字地球提供了技术支持；全球变化和可持续发展的研究对数字地球的出现起到了推动作用</p>
+<p><img src="/assets/images/1000054.png" alt="数字地球和其它理论以及技术的关系"></p>
+<p>数字地球是指数字化的三维显示的虚拟地球，或指信息化的地球，包括数字化、网络化、智能化和可视化的地球技术系统<br>
+实施数字地球计划，需要有政府、企业和学术界的共同协力参加。实施数字地球计划是社会的行为，需要全社会的关心和支持<br>
+数字地球是一次新的技术革命，将改变人类的生产和生活方式，进一步促进科学技术的发展和推动社会经济的进步</p>
+<h2 id="数字地球核心技术综述">数字地球核心技术综述 </h2>
 <ol>
-<li>空间数据（或图形数据）</li>
+<li>高分辨率卫星遥感数据的快速获取技术</li>
+<li>地球空间数据的存储和处理</li>
+<li>超媒体空间信息系统</li>
+<li>地理信息的分布式计算</li>
+<li>无比例尺数据库</li>
+<li>空间数据仓库</li>
+<li>空间数据融合</li>
+<li>虚拟现实技术</li>
+<li>元数据</li>
 </ol>
-<p>空间数据是构成地图内容要素的几何图形，例如地图上的井、山峰、灯塔、河流、道路、等值线、湖泊、森林界线和土壤类型界线等。为表示这些要素在二维平面上空间图形的定位特征，常用一对平面直角坐标（X,Y）来表示，这种地图数据称为矢量数据；或用其通过栅格单元的左下角坐标（行和列）来表示，称此为栅格数据<br>
-2. 语义数据<br>
-语义数据又称为非几何数据，包括定性数据和定量数据。定性数据用来描述要素的分类或对要素进行标名。定量数据是说明要素的性质、特征或强度的，例如距离、面积、人口、产量、收人、流速，以及温度和高程等</p>
-<h2 id="空间数据录入后的处理">空间数据录入后的处理 </h2>
-<h3 id="图形坐标变换">图形坐标变换 </h3>
-<p>在地图录入完毕后，经常需要进行投影变换，得到经纬度参照系下的地图。对各种投影进行坐标变换的原因主要是输入时地图是一种投影，而输出的地图产物是另外一种投影。进行投影变换有两种方式，一种是<strong>利用多项式拟合</strong>，类似于图像几何纠正；另一种是<strong>直接应用投影变换公式</strong>进行变换</p>
-<h3 id="基本坐标变换">基本坐标变换 </h3>
-<p>在投影变换过程中，有以下三种基本的操作：平移、旋转和缩放</p>
-<h3 id="仿射变换">仿射变换 </h3>
-<p>具体的可以参考计算机图形学中的内容</p>
-<h3 id="图形拼接">图形拼接 </h3>
-<p>在对底图进行数字化以后，由于图幅比较大或者使用小型数字化仪时，难以将研究区域的底图以整幅的形式来完成，这是需要将整个图幅划分成几部分分别输入。在所有部分都输入完毕并进行拼接时，常常会有边界不一致的情况，需要进行边缘匹配处理</p>
-<h3 id="拓扑生成">拓扑生成 </h3>
-<p>在图形数字化——无论是手扶跟踪数字化还是扫描矢量化——完成后，对于大多数地图需要建立拓扑，以正确判别地物之间的拓扑关系</p>
-<ul>
-<li>区域，如果多边形数据DIME数据模型，每个多边形可以用一组封闭的线来表示，而不需要记录封闭线上的所有点，避免两次记录相邻多边形的公共边界，这样减少了数据冗余</li>
-<li>邻接性，另一种可以用拓扑描述的属性是多边形之间的相互邻接性</li>
-<li>连通性，连通性是指对弧段连接的判别，连通性的建立和表现是网络分析的基础</li>
-</ul>
-<h3 id="图形修改">图形修改 </h3>
-<p>在建立拓扑关系的过程中，一些在数字化输入过程中的错误需要被改正，否则，建立的拓扑关系将不能正确地反映地物之间的关系</p>
-<p>ESRI定义了以下判断录入图形是否正确的六个准则</p>
-<ol>
-<li>所有录入的实体都能够表现出来</li>
-<li>没有输入额外的实体</li>
-<li>所有的实体都在正确的位置上，并且其形状和大小正确</li>
-<li>所有具有连接关系的实体都已经连上</li>
-<li>所有的多边形都有且只有一个标志点以识别它们</li>
-<li>所有的实体都在边界之内</li>
-</ol>
-<h3 id="建立拓扑关系">建立拓扑关系 </h3>
-<p>在图形修改完毕之后，就意味着可以建立正确的拓扑关系，拓扑关系可以由计算机自动生成，目前大多数GIS软件也都提供了完善的拓扑功能；但是在某些情况下，需要对计算机创建的拓扑关系进行手工修改，典型的例子是网络连通性</p>
-<p>建立拓扑关系时只需要关注实体之间的连接、相邻关系，而节点的位置、弧段的具体形状等非拓扑属性则不影响拓扑的建立过程</p>
+<h2 id="国家信息基础设施和国家空间数据基础设施">国家信息基础设施和国家空间数据基础设施 </h2>
+<p>国家信息基础设施是一个能够给用户随时提供大容量信息的，由通信网络、计算机、数据库以及日用电子产品组成的完备的网络系统</p>
+<p>国家空间数据基础设施(NSDI)是国家信息基础设施之后的又一个国家级信息基础设施，其目的是为了协调基础地理空间数据集的收集、管理、分发和共享的基础设施。<br>
+空间数据基础设施主要由四个部分组成：数据交互网络体系、基础数据集、法规与标准、机构体系。<br>
+从技术的角度来看，其内容主要有：空间数据标准，基础空间框架数据，空间数据交换网络以及元数据等等。</p>
 
       </div>
       <div class="md-sidebar-toc">
 <div class="md-toc">
 <details style="padding:0;;padding-left:0px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#空间数据获取" class="md-toc-link"><p>空间数据获取</p>
-</a>
-          </summary>
-        <div>
-          <details style="padding:0;;padding-left:24px;" open="">
-        <summary class="md-toc-link-wrapper">
-          <a href="#地图数字化" class="md-toc-link"><p>地图数字化</p>
+          <a href="#地球信息科学和数字地球" class="md-toc-link"><p>地球信息科学和数字地球</p>
 </a>
           </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#地图数据类型" class="md-toc-link">
-            <p>地图数据类型</p>
+          <a href="#地球信息科学" class="md-toc-link">
+            <p>地球信息科学</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#数字地球的产生背景以及其概念" class="md-toc-link">
+            <p>数字地球的产生背景以及其概念</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#数字地球核心技术综述" class="md-toc-link">
+            <p>数字地球核心技术综述</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#国家信息基础设施和国家空间数据基础设施" class="md-toc-link">
+            <p>国家信息基础设施和国家空间数据基础设施</p>
 
           </a></div>
-        </div>
-      </details>
-    <details style="padding:0;;padding-left:24px;" open="">
-        <summary class="md-toc-link-wrapper">
-          <a href="#空间数据录入后的处理" class="md-toc-link"><p>空间数据录入后的处理</p>
-</a>
-          </summary>
-        <div>
-          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#图形坐标变换" class="md-toc-link">
-            <p>图形坐标变换</p>
-
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#基本坐标变换" class="md-toc-link">
-            <p>基本坐标变换</p>
-
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#仿射变换" class="md-toc-link">
-            <p>仿射变换</p>
-
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#图形拼接" class="md-toc-link">
-            <p>图形拼接</p>
-
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#拓扑生成" class="md-toc-link">
-            <p>拓扑生成</p>
-
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#图形修改" class="md-toc-link">
-            <p>图形修改</p>
-
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#建立拓扑关系" class="md-toc-link">
-            <p>建立拓扑关系</p>
-
-          </a></div>
-        </div>
-      </details>
-    
         </div>
       </details>
     

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>地理信息系统标准-GIS原理(三)-得鹿梦鱼</title>
+  <title>数字地形模型（DTM）与地形分析-GIS原理(二)-得鹿梦鱼</title>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <meta name="Author" content="liming_longxi@163.com">
+    <meta name="Keywords" content="数字地形模型（DTM）与地形分析"/>
   <link rel="stylesheet" href="/assets/styles/main.css" />
   <link rel="stylesheet" href="/assets/styles/katex/common.css" />
   <link rel="stylesheet" href="/assets/styles/katex/katex.min.css" />
@@ -30,19 +32,19 @@
     <main class="flex-grow-1 overflow-hidden scrollHeight">
       <div class="w-screen flex flex-1">
         <aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
-          <div class="text-md font-bold text-gray-700 m-4">GIS原理(三)</div>
+          <div class="text-md font-bold text-gray-700 m-4">GIS原理(二)</div>
           <div class="overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar flex flex-col">
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100000.html">MapServer应用范围
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100000.html" title="空间分析">空间分析
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100001.html">地理信息系统和社会
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100001.html" title="空间数据表现与地图制图">空间数据表现与地图制图
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100002.html">地理信息系统标准
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100002.html" title="数字地形模型（DTM）与地形分析">数字地形模型（DTM）与地形分析
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100003.html">地球信息科学和数字地球
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100003.html" title="网络地理信息系统">网络地理信息系统
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100004.html">地理信息系统软件工程技术
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100004.html" title=" 空间建模与空间决策支持"> 空间建模与空间决策支持
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100005.html">地理信息系统应用项目组织和管理
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100005.html" title="S集成技术">S集成技术
             </a>
           </div>
         </aside>
@@ -53,72 +55,92 @@
     
       <div class="crossnote markdown-preview  ">
       
-<h1 id="地理信息系统标准">地理信息系统标准 </h1>
-<h2 id="地理信息系统标准简介">地理信息系统标准简介 </h2>
-<p>地理信息系统标准化主要包括后四个方面的标准，具体内容有：软件工具，如文档，设计、验收、评测标准以及软件的接口规范等；数据，包括数据模型，数据质量，数据产品，数据交换，数据显示，空间坐标投影等；系统开发，系统设计过程，数据工艺流程，标准建库流程等；其它，包括名词术语，管理办法等。一般而言，软件工具，系统开发，管理办法等方面的标准可以借用更为通用的信息技术标准规范，</p>
-<p><img src="/assets/images/1000051.png" alt="地理信息标准对地理信息系统应用的意义"></p>
-<h2 id="isotc211地理信息标准">ISO/TC211地理信息标准 </h2>
-<p>ISO/TC 211地理信息/地球信息科学专业委员会成立于1994年3月，其目的是为了促进全球地理信息资源的开发、利用和共享，即制定ISO/TC 211地理信息/地球信息科学标准，它是对与地球上位置直接或间接有关的物体或现象信息的结构化标准。该标准共分为25个部分</p>
+<h1 id="数字地形模型dtm与地形分析">数字地形模型（DTM）与地形分析 </h1>
+<p>数字地形模型是地形表面形态属性信息的数字表达，是带有空间位置特征和地形属性特征的数字描述</p>
+<p>数字地形模型中地形属性为高程时称为数字高程模型（DEM）</p>
+<h2 id="高程模型表示法">高程模型表示法 </h2>
+<p><img src="/assets/images/1000059.png" alt="DEM的表示方法"></p>
+<h2 id="主要表示模型">主要表示模型 </h2>
 <ol>
-<li>参考模型:是一个独立于任何应用、方法和技术的模型</li>
-<li>综述：提供给潜在用户一个整体的标准系列和个别标准的综合介绍，包括标准的目的、标准以及标准之间的关系等，使用户可以快速查询到所需要的内容，提高标准的可理解性和可接收性</li>
-<li>概念化模式语言：使用一种标准化的模式语言来促进互操作标准的开发，并提供一个快速建立地理信息标准的基础</li>
-<li>术语定义：目的是产生通用的与地理信息标准有关的词汇，供地理信息系统的标准制定者、使用者和开发者使用</li>
-<li>一致性和测试：建立测试方法的标准和保持一致性的原则可以使GIS软件的开发者来核实各类标准的一致性</li>
-<li>专用标准：针对某些具体应用提取出专用标准子集的方法和参考手册</li>
-<li>空间模式</li>
-<li>时间尺度子模式</li>
-<li>应用模式规则</li>
-<li>要素分类方法</li>
-<li>坐标空间参照系统</li>
-<li>基于地理标识的间接参考系统</li>
-<li>质量原则</li>
-<li>质量评价过程</li>
-<li>元数据</li>
-<li>空间信息定位服务</li>
-<li>地理信息描述</li>
-<li>编码</li>
-<li>服务</li>
-<li>功能标准</li>
-<li>图像和栅格数据</li>
-<li>职员的资格认证</li>
-<li>覆盖几何和功能的模式</li>
-<li>图像和栅格数据的成分</li>
-<li>简单要素的访问</li>
+<li>规则格网模型</li>
+<li>等高线模型</li>
+<li>不规则三角网（TIN）模型</li>
+<li>层次模型</li>
 </ol>
-<h2 id="开放的地理数据互操作规范opengis">开放的地理数据互操作规范——OpenGIS </h2>
-<p>OpenGIS(Open Geodata Interoperation Specification,OGIS-开放的地理数据互操作规范)由美国OGC(OpenGIS协会，OpenGIS Consortium)提出。OGC是一个非赢利性组织，目的是促进采用新的技术和商业方式来提高地理信息处理的互操作性(Interoperablity)，OGC会员主要包括GIS相关的计算机硬件和软件制造商（包括ESRI, Intergraph,MapInfo等知名GIS软件开发商），数据生产商以及一些高等院校，政府部门等，其技术委员会负责具体标准的制定工作。</p>
-<p>OpenGIS的目标是，制定一个规范，使得应用系统开发者可以在单一的环境和单一的工作流中，使用分布于网上的任何地理数据和地理处理。它致力于消除地理信息应用（如地理信息系统，遥感，土地信息系统，自动制图/设施管理(AM/FM)系统）之间以及地理应用与其它信息技术应用之间的藩篱，建立一个无“边界”的、分布的、基于构件的地理数据互操作环境，与传统的地理信息处理技术相比，基于该规范的GIS软件将具有很好的可扩展性、可升级性、可移植性、开放性、互操作性和易用性</p>
-<p>OpenGIS规范主要定义了以下三个模型</p>
+<h2 id="dem的建立">DEM的建立 </h2>
+<p>为了建立DEM，必需量测一些点的三维坐标，这就是DEM数据采集</p>
 <ol>
-<li>开放的地理数据(Open Geodata)模型</li>
-<li>OpenGIS服务</li>
-<li>信息团体模型</li>
+<li>地面测量</li>
+<li>现有地图数字化</li>
+<li>空间传感器</li>
+<li>数字摄影测量方法</li>
 </ol>
-<p><img src="/assets/images/1000052.png" alt="OpenGIS抽象规范各个主题之间的依赖关系"></p>
+<h2 id="分析和应用">分析和应用 </h2>
+<h3 id="地形曲面拟合">地形曲面拟合 </h3>
+<p>DEM最基础的应用是求DEM范围内任意点的高程，在此基础上进行地形属性分析。由于已知有限个格网点的高程，可以利用这些格网点高程拟合一个地形曲面，推求区域内任意点的高程。曲面拟合方法可以看作是一个已知规则格网点数据进行空间插值的特例，距离倒数加权平均方法，克里金插值方法，样条函数等插值方法均可采用</p>
+<h3 id="立体透视图">立体透视图 </h3>
+<p>从数字高程模型绘制透视立体图是DEM的一个极其重要的应用。透视立体图能更好地反映地形的立体形态，非常直观。与采用等高线表示地形形态相比有其自身独特的优点，更接近人们的直观视觉。特别是随着计算机图形处理工作的增强以及屏幕显示系统的发展，使立体图形的制作具有更大的灵活性，人们可以根据不同的需要，对于同一个地形形态作各种不同的立体显示</p>
+<h3 id="通视分析">通视分析 </h3>
+<p>通视分析有着广泛的应用背景。典型的例子是观察哨所的设定，显然观察哨的位置应该设在能监视某一感兴趣的区域，视线不能被地形挡住。这就是通视分析中典型的点对区域的通视问题。与此类似的问题还有森林中火灾监测点的设定，无线发射塔的设定等</p>
+<ol>
+<li>点对点通视</li>
+<li>点对线通视</li>
+<li>点对区域通视</li>
+</ol>
+<h3 id="流域特征地貌提取与地形自动分割">流域特征地貌提取与地形自动分割 </h3>
+<p>地形因素是影响流域地貌、水文、生物等过程的重要因子，地形属性的空间分布特征一直是人们用于描述这些空间过程变化的重要指标。高精度DEM数据和高分辨率、高光谱、多周期的遥感影像，为人们定量描述流域空间变化过程提供了日益丰富的数据源，而且人们对流域地貌、水文和生物等过程空间变化机理理解的不断加深，可以说人类已经进入了一个“空间模拟”的时代。基于DEM数据自动提取流域地貌特征和进行流域地形自动分割是进行流域空间模拟的基础技术</p>
+<ol>
+<li>流域地貌形态结构定义，定义能反映流域结构的特征地貌，建立格网DEM对应的微地貌特征</li>
+<li>特征地貌自动提取和地形自动分割算法。格网DEM数据是一些离散的高程点数据，每个数据本身不能反映实际地表的复杂性。为了从格网DEM数据中得到流域地貌形态结构，必须采用一个清晰的流域地貌结构模型，然后针对该结构模型设计自动提取算法</li>
+</ol>
 
       </div>
       <div class="md-sidebar-toc">
 <div class="md-toc">
 <details style="padding:0;;padding-left:0px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#地理信息系统标准" class="md-toc-link"><p>地理信息系统标准</p>
+          <a href="#数字地形模型dtm与地形分析" class="md-toc-link"><p>数字地形模型（DTM）与地形分析</p>
 </a>
           </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#地理信息系统标准简介" class="md-toc-link">
-            <p>地理信息系统标准简介</p>
+          <a href="#高程模型表示法" class="md-toc-link">
+            <p>高程模型表示法</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#isotc211地理信息标准" class="md-toc-link">
-            <p>ISO/TC211地理信息标准</p>
+          <a href="#主要表示模型" class="md-toc-link">
+            <p>主要表示模型</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#开放的地理数据互操作规范opengis" class="md-toc-link">
-            <p>开放的地理数据互操作规范——OpenGIS</p>
+          <a href="#dem的建立" class="md-toc-link">
+            <p>DEM的建立</p>
+
+          </a></div><details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#分析和应用" class="md-toc-link"><p>分析和应用</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#地形曲面拟合" class="md-toc-link">
+            <p>地形曲面拟合</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#立体透视图" class="md-toc-link">
+            <p>立体透视图</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#通视分析" class="md-toc-link">
+            <p>通视分析</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#流域特征地貌提取与地形自动分割" class="md-toc-link">
+            <p>流域特征地貌提取与地形自动分割</p>
 
           </a></div>
+        </div>
+      </details>
+    
         </div>
       </details>
     

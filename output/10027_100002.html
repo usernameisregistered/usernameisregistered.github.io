@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>.WebGL_着色器和GLSL-webGL-得鹿梦鱼</title>
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <meta name="Author" content="liming_longxi@163.com">
+    <meta name="Keywords" content=".WebGL_着色器和GLSL"/>
+  <link rel="stylesheet" href="/assets/styles/main.css" />
+  <link rel="stylesheet" href="/assets/styles/katex/common.css" />
+  <link rel="stylesheet" href="/assets/styles/katex/katex.min.css" />
+  <script src="/assets/script/highlight.js"></script>
+</head>
+
+<body data-for="html-export">
+  <div class="w-screen h-screen flex flex-col overflow-hidden">
+    <header class="flex flex-grow-0 justify-between p-4 border-b border-neutral-200">
+      <a href="/" class="flex items-center text-2xl text-neutral-700 cursor-pointer">
+        <img src="/assets/images/logo.svg" class="w-[40px] h-[40px]" alt="得鹿梦鱼"></Image>
+        <span class="text-4 ml-4">得鹿梦鱼</span>
+      </a>
+      <div class="right flex items-center cursor-pointer">
+        <a href="/classify.html" class="mr-2 text-md hover:text-sky-500">知识库</a>
+        <a href="/frontend.html" class="mr-2 text-md hover:text-sky-500">前端技能树</a>
+        <a href="/question.html" class="mr-2 text-md hover:text-sky-500">面试题</a>
+        <a href="/study.html" class="mr-2 text-md hover:text-sky-500">学习资料</a>
+        <a href="/about.html" class="mr-2 text-md hover:text-sky-500">关于本人</a>
+      </div>
+    </header>
+    <main class="flex-grow-1 overflow-hidden scrollHeight">
+      <div class="w-screen flex flex-1">
+        <aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
+          <div class="text-md font-bold text-gray-700 m-4">webGL</div>
+          <div class="overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar flex flex-col">
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10027_100000.html" title=".WebGL_基础概念">.WebGL_基础概念
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10027_100001.html" title=".webGL_工作原理">.webGL_工作原理
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10027_100002.html" title=".WebGL_着色器和GLSL">.WebGL_着色器和GLSL
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10027_100003.html" title=".WebGL_图像处理">.WebGL_图像处理
+            </a>
+          </div>
+        </aside>
+        <section class="basis-10/12 overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar">
+          <div id="markdown-container" class="px-4 relative">
+            
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="webgl着色器和glsl">webGL着色器和GLSL </h1>
+<h2 id="顶点着色器">顶点着色器 </h2>
+<p>一个顶点着色器的工作是生成裁剪空间坐标值</p>
+<pre data-role="codeBlock" data-info="c" class="language-c c"><code><span class="token keyword keyword-void">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    gl_Position <span class="token operator">=</span> doMathToMakeClipspaceCoordinates
+<span class="token punctuation">}</span>
+
+</code></pre><p>每个顶点调用一次顶点着色器，每次调用都需要设置一个特殊的全局变量gl_Position,该变量的值就是裁剪空间坐标值</p>
+<p>顶点着色器需要的数据，可以通过一下三种方式获得</p>
+<ol>
+<li>Attributes属性（从缓冲中获取的数据）</li>
+<li>Uniforms全局变量（在一次绘制中对所有的顶点保持一致值）</li>
+<li>Textures纹理（从像素或纹理元素中获取的数据）</li>
+</ol>
+<h3 id="attributes属性">Attributes属性 </h3>
+<pre data-role="codeBlock" data-info="js" class="language-javascript js"><code><span class="token keyword keyword-var">var</span> buffer <span class="token operator">=</span> gl<span class="token punctuation">.</span><span class="token method function property-access">createBuffer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+gl<span class="token punctuation">.</span><span class="token method function property-access">bindBuffer</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">ARRAY_BUFFER</span><span class="token punctuation">,</span> buffer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+gl<span class="token punctuation">.</span><span class="token method function property-access">bufferData</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">ARRAY_BUFFER</span><span class="token punctuation">,</span> somedata<span class="token punctuation">,</span> gl<span class="token punctuation">.</span><span class="token constant">STATIC_DRAW</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-var">var</span> position <span class="token operator">=</span> gl<span class="token punctuation">.</span><span class="token method function property-access">getAttribLocation</span><span class="token punctuation">(</span>someShaderProgram<span class="token punctuation">,</span> <span class="token string">"a_position"</span><span class="token punctuation">)</span>
+gl<span class="token punctuation">.</span><span class="token method function property-access">enableVertexAttribArray</span><span class="token punctuation">(</span>position<span class="token punctuation">)</span>
+gl<span class="token punctuation">.</span><span class="token method function property-access">vertexAttribPointer</span><span class="token punctuation">(</span>position<span class="token punctuation">,</span> numComponents<span class="token punctuation">,</span> type<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> stride<span class="token punctuation">,</span> offset<span class="token punctuation">)</span>
+</code></pre><h3 id="uniforms全局变量">Uniforms全局变量 </h3>
+<p>全局变量在一次绘制过程中传递给着色器的值都一样，</p>
+<pre data-role="codeBlock" data-info="c" class="language-c c"><code>attribute vec4 a_position<span class="token punctuation">;</span>
+uniform vec4 u_offset<span class="token punctuation">;</span>
+
+<span class="token keyword keyword-void">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    gl_Position <span class="token operator">=</span> a_position <span class="token operator">+</span> u_offset<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre><pre data-role="codeBlock" data-info="js" class="language-javascript js"><code><span class="token keyword keyword-var">var</span> offsetLoc <span class="token operator">=</span> gl<span class="token punctuation">.</span><span class="token method function property-access">getUniformLocation</span><span class="token punctuation">(</span>someProgram<span class="token punctuation">,</span> <span class="token string">"u_offset"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+gl<span class="token punctuation">.</span><span class="token method function property-access">uniform4fv</span><span class="token punctuation">(</span>offsetLoc<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 向右偏移一半屏幕宽度</span>
+</code></pre><h2 id="片段着色器">片段着色器 </h2>
+<p>一个片段着色器的工作是为当前光栅化的像素提供颜色值，通常是以下的形式</p>
+<pre data-role="codeBlock" data-info="c" class="language-c c"><code>precision mediump <span class="token keyword keyword-float">float</span><span class="token punctuation">;</span>
+
+<span class="token keyword keyword-void">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    gl_FragColor <span class="token operator">=</span> doMathToMakeAColor
+<span class="token punctuation">}</span>
+
+</code></pre><p>每个像素都将调用一次片段着色器，每次调用需要从你设置的特殊全局变量gl_FragColor中获取颜色信息。片段着色器所需的数据，可以通过以下三种方式获取</p>
+<ol>
+<li>Uniforms全局变量</li>
+<li>Textures纹理</li>
+<li>Varyings可变量</li>
+</ol>
+<h3 id="uniforms-全局变量">Uniforms 全局变量 </h3>
+<p>全局变量在一次绘制过程中传递给着色器的值都一样，</p>
+<h3 id="textures纹理">Textures纹理 </h3>
+<p>在着色器中获取纹理信息，可以先创建一个sampler2D类型全局变量，然后用GLSL方法texture2D 从纹理中提取信息</p>
+<pre data-role="codeBlock" data-info="c" class="language-c c"><code>precision mediump <span class="token keyword keyword-float">float</span><span class="token punctuation">;</span>
+ 
+uniform sampler2D u_texture<span class="token punctuation">;</span>
+ 
+<span class="token keyword keyword-void">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   vec2 texcoord <span class="token operator">=</span> <span class="token function">vec2</span><span class="token punctuation">(</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 获取纹理中心的值</span>
+   gl_FragColor <span class="token operator">=</span> <span class="token function">texture2D</span><span class="token punctuation">(</span>u_texture<span class="token punctuation">,</span> texcoord<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre><pre data-role="codeBlock" data-info="js" class="language-javascript js"><code><span class="token keyword keyword-var">var</span> tex <span class="token operator">=</span> gl<span class="token punctuation">.</span><span class="token method function property-access">createTexture</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+gl<span class="token punctuation">.</span><span class="token method function property-access">bindTexture</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">TEXTURE_2D</span><span class="token punctuation">,</span> tex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-var">var</span> level <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-var">var</span> width <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-var">var</span> height <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-var">var</span> data <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">Uint8Array</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+   <span class="token number">255</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">255</span><span class="token punctuation">,</span>   <span class="token comment">// 一个红色的像素</span>
+   <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">255</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">255</span><span class="token punctuation">,</span>   <span class="token comment">// 一个绿色的像素</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+gl<span class="token punctuation">.</span><span class="token method function property-access">texImage2D</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">TEXTURE_2D</span><span class="token punctuation">,</span> level<span class="token punctuation">,</span> gl<span class="token punctuation">.</span><span class="token constant">RGBA</span><span class="token punctuation">,</span> width<span class="token punctuation">,</span> height<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> gl<span class="token punctuation">.</span><span class="token constant">RGBA</span><span class="token punctuation">,</span> gl<span class="token punctuation">.</span><span class="token constant">UNSIGNED_BYTE</span><span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+gl<span class="token punctuation">.</span><span class="token method function property-access">texParameteri</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">TEXTURE_2D</span><span class="token punctuation">,</span> gl<span class="token punctuation">.</span><span class="token constant">TEXTURE_MIN_FILTER</span><span class="token punctuation">,</span> gl<span class="token punctuation">.</span><span class="token constant">LINEAR</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-var">var</span> someSamplerLoc <span class="token operator">=</span> gl<span class="token punctuation">.</span><span class="token method function property-access">getUniformLocation</span><span class="token punctuation">(</span>someProgram<span class="token punctuation">,</span> <span class="token string">"u_texture"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-var">var</span> unit <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>  <span class="token comment">// 挑选一个纹理单元</span>
+gl<span class="token punctuation">.</span><span class="token method function property-access">activeTexture</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">TEXTURE0</span> <span class="token operator">+</span> unit<span class="token punctuation">)</span><span class="token punctuation">;</span>
+gl<span class="token punctuation">.</span><span class="token method function property-access">bindTexture</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">TEXTURE_2D</span><span class="token punctuation">,</span> tex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+gl<span class="token punctuation">.</span><span class="token method function property-access">uniform1i</span><span class="token punctuation">(</span>someSamplerLoc<span class="token punctuation">,</span> unit<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><h3 id="varyings-可变量">Varyings 可变量 </h3>
+<p>可变量是一种顶点着色器给片段着色器传值的方式</p>
+<p>为了使用可变量，要在两个着色器中定义同名的可变量。 给顶点着色器中可变量设置的值，会作为参考值进行内插，在绘制像素时传给片段着色器的可变量</p>
+<pre data-role="codeBlock" data-info="c" class="language-c c"><code>attribute vec4 a_position<span class="token punctuation">;</span>
+ 
+uniform vec4 u_offset<span class="token punctuation">;</span>
+ 
+varying vec4 v_positionWithOffset<span class="token punctuation">;</span>
+ 
+<span class="token keyword keyword-void">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  gl_Position <span class="token operator">=</span> a_position <span class="token operator">+</span> u_offset<span class="token punctuation">;</span>
+  v_positionWithOffset <span class="token operator">=</span> a_position <span class="token operator">+</span> u_offset<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre><pre data-role="codeBlock" data-info="c" class="language-c c"><code>precision mediump <span class="token keyword keyword-float">float</span><span class="token punctuation">;</span>
+ 
+varying vec4 v_positionWithOffset<span class="token punctuation">;</span>
+ 
+<span class="token keyword keyword-void">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 从裁剪空间 (-1 &lt;-&gt; +1) 转换到颜色空间 (0 -&gt; 1).</span>
+  vec4 color <span class="token operator">=</span> v_positionWithOffset <span class="token operator">*</span> <span class="token number">0.5</span> <span class="token operator">+</span> <span class="token number">0.5</span><span class="token punctuation">;</span>
+  gl_FragColor <span class="token operator">=</span> color<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><h2 id="glsl">GLSL </h2>
+<p>GLSL全称是 Graphics Library Shader Language （图形库着色器语言），是着色器使用的语言。 它有一些不同于JavaScript的特性，主要目的是为栅格化图形提供常用的计算功能。 所以它内建的数据类型例如vec2, vec3和 vec4分别代表两个值，三个值和四个值， 类似的还有mat2, mat3 和 mat4 分别代表 2x2, 3x3 和 4x4 矩阵。</p>
+<p>值得注意的是GLSL是一个强类型的语言</p>
+
+      </div>
+      <div class="md-sidebar-toc">
+<div class="md-toc">
+<details style="padding:0;;padding-left:0px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#webgl着色器和glsl" class="md-toc-link"><p>webGL着色器和GLSL</p>
+</a>
+          </summary>
+        <div>
+          <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#顶点着色器" class="md-toc-link"><p>顶点着色器</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#attributes属性" class="md-toc-link">
+            <p>Attributes属性</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#uniforms全局变量" class="md-toc-link">
+            <p>Uniforms全局变量</p>
+
+          </a></div>
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#片段着色器" class="md-toc-link"><p>片段着色器</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#uniforms-全局变量" class="md-toc-link">
+            <p>Uniforms 全局变量</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#textures纹理" class="md-toc-link">
+            <p>Textures纹理</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#varyings-可变量" class="md-toc-link">
+            <p>Varyings 可变量</p>
+
+          </a></div>
+        </div>
+      </details>
+    <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#glsl" class="md-toc-link">
+            <p>GLSL</p>
+
+          </a></div>
+        </div>
+      </details>
+    
+</div>
+</div>
+      <a id="sidebar-toc-btn">≡</a>
+    
+    
+    
+    
+    
+    
+<script>
+
+var sidebarTOCBtn = document.getElementById('sidebar-toc-btn')
+sidebarTOCBtn.addEventListener('click', function(event) {
+  event.stopPropagation()
+  if (document.body.hasAttribute('html-show-sidebar-toc')) {
+    document.body.removeAttribute('html-show-sidebar-toc')
+  } else {
+    document.body.setAttribute('html-show-sidebar-toc', true)
+  }
+})
+</script>
+      
+  
+    
+          </div>
+        </section>
+      </div>
+    </main>
+</body>
+
+</html>

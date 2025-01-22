@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>边界填充算法-计算机图形学及实用编程技术-得鹿梦鱼</title>
+  <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <meta name="Author" content="liming_longxi@163.com">
+    <meta name="Keywords" content="边界填充算法"/>
+  <link rel="stylesheet" href="/assets/styles/main.css" />
+  <link rel="stylesheet" href="/assets/styles/katex/common.css" />
+  <link rel="stylesheet" href="/assets/styles/katex/katex.min.css" />
+  <script src="/assets/script/highlight.js"></script>
+</head>
+
+<body data-for="html-export">
+  <div class="w-screen h-screen flex flex-col overflow-hidden">
+    <header class="flex flex-grow-0 justify-between p-4 border-b border-neutral-200">
+      <a href="/" class="flex items-center text-2xl text-neutral-700 cursor-pointer">
+        <img src="/assets/images/logo.svg" class="w-[40px] h-[40px]" alt="得鹿梦鱼"></Image>
+        <span class="text-4 ml-4">得鹿梦鱼</span>
+      </a>
+      <div class="right flex items-center cursor-pointer">
+        <a href="/classify.html" class="mr-2 text-md hover:text-sky-500">知识库</a>
+        <a href="/frontend.html" class="mr-2 text-md hover:text-sky-500">前端技能树</a>
+        <a href="/question.html" class="mr-2 text-md hover:text-sky-500">面试题</a>
+        <a href="/study.html" class="mr-2 text-md hover:text-sky-500">学习资料</a>
+        <a href="/about.html" class="mr-2 text-md hover:text-sky-500">关于本人</a>
+      </div>
+    </header>
+    <main class="flex-grow-1 overflow-hidden scrollHeight">
+      <div class="w-screen flex flex-1">
+        <aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
+          <div class="text-md font-bold text-gray-700 m-4">计算机图形学及实用编程技术</div>
+          <div class="overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar flex flex-col">
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10011_100000.html" title="计算机图形学基础知识">计算机图形学基础知识
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10011_100001.html" title="直线的生成算法BresenHam">直线的生成算法BresenHam
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10011_100002.html" title="直线的生成算法_DDA">直线的生成算法_DDA
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10011_100003.html" title="圆的生成算法_中点画圆算法">圆的生成算法_中点画圆算法
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10011_100004.html" title="椭圆的生成算法_中点椭圆算法">椭圆的生成算法_中点椭圆算法
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10011_100005.html" title="一个加权剖分简单多边形为凸多边形的算法">一个加权剖分简单多边形为凸多边形的算法
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10011_100006.html" title="一种凹多边形凸分解的全局剖分算法">一种凹多边形凸分解的全局剖分算法
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10011_100007.html" title="改进的加权剖分简单多边形为凸多边形的算法">改进的加权剖分简单多边形为凸多边形的算法
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10011_100008.html" title="边界填充算法">边界填充算法
+            </a>
+          </div>
+        </aside>
+        <section class="basis-10/12 overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar">
+          <div id="markdown-container" class="px-4 relative">
+            
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="边界填充算法">边界填充算法 </h1>
+<p>基本上，边界填充算法是从一个内点开始检测相邻位置的颜色，如果检测位置不是该边界颜色，就将他改为填充颜色，并检测其相邻位置。这个过程延续到检测区域边界颜色范围内的所有像素为止。</p>
+<p>从一个当前检测位置处理相邻像素的两种方法</p>
+<p><img src="/assets/images/1000034.png" alt="连通区域"></p>
+<h2 id="4-连通区域">4-连通区域 </h2>
+<p>检测当前像素的上、下、右、左的4个像素</p>
+<h2 id="8-连通区域">8-连通区域 </h2>
+<p>检测当前像素的上、下、右、左的4个像素以及4个对角元素</p>
+<p>由于上述两种方法需要大量的堆栈空间来存储相邻点，因而通常使用更为有效的方法，沿扫描线填充水平像素区段，从而代替连通的相邻点。然后，仅需将每个水平像素区域的起始位置放进堆栈，而不需将所有当前位置周围的未处理相邻位置都放进堆栈，如果使用找各种方法，将从初始内部点开始，首先填充该像素所在扫描行的连续像素区段，然后将相邻扫描线傻瓜各段的起始位置放入堆栈，这些水平段分别又像素包围，接着逐步从堆栈顶部取出一个开始点，并重复上述过程</p>
+<h2 id="泛滥填充算法">泛滥填充算法 </h2>
+<p>有时，我们要对一个不是单一颜色边界定义的区域进行填充，这时可以通过替换指定的内部颜色而不是搜索边界颜色值来对该区域填色</p>
+<p>从指定的内部点<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(x,y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span>开始，将期望的填充颜色赋给所有当前设置为给定内部颜色的像素，假如所要涂色的区域具有多种内部颜色，可以重新设置像素值，从而使所有的内部点具有相同的颜色，然后使用连通方法，逐步连通各像素位置，直到所有内部点已被涂色</p>
+
+      </div>
+      <div class="md-sidebar-toc">
+<div class="md-toc">
+<details style="padding:0;;padding-left:0px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#边界填充算法" class="md-toc-link"><p>边界填充算法</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#4-连通区域" class="md-toc-link">
+            <p>4-连通区域</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#8-连通区域" class="md-toc-link">
+            <p>8-连通区域</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#泛滥填充算法" class="md-toc-link">
+            <p>泛滥填充算法</p>
+
+          </a></div>
+        </div>
+      </details>
+    
+</div>
+</div>
+      <a id="sidebar-toc-btn">≡</a>
+    
+    
+    
+    
+    
+    
+<script>
+
+var sidebarTOCBtn = document.getElementById('sidebar-toc-btn')
+sidebarTOCBtn.addEventListener('click', function(event) {
+  event.stopPropagation()
+  if (document.body.hasAttribute('html-show-sidebar-toc')) {
+    document.body.removeAttribute('html-show-sidebar-toc')
+  } else {
+    document.body.setAttribute('html-show-sidebar-toc', true)
+  }
+})
+</script>
+      
+  
+    
+          </div>
+        </section>
+      </div>
+    </main>
+</body>
+
+</html>

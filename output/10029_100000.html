@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>概述-Web性能-得鹿梦鱼</title>
+  <title>模态框的最佳实践-杂类-得鹿梦鱼</title>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <meta name="Author" content="liming_longxi@163.com">
+    <meta name="Keywords" content="模态框的最佳实践"/>
   <link rel="stylesheet" href="/assets/styles/main.css" />
   <link rel="stylesheet" href="/assets/styles/katex/common.css" />
   <link rel="stylesheet" href="/assets/styles/katex/katex.min.css" />
@@ -30,29 +32,11 @@
     <main class="flex-grow-1 overflow-hidden scrollHeight">
       <div class="w-screen flex flex-1">
         <aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
-          <div class="text-md font-bold text-gray-700 m-4">Web性能</div>
+          <div class="text-md font-bold text-gray-700 m-4">杂类</div>
           <div class="overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar flex flex-col">
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10029_100000.html">概述
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10029_100000.html" title="模态框的最佳实践">模态框的最佳实践
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10029_100001.html">渲染页面：浏览器的工作原理
-            </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10029_100002.html">关键渲染路径
-            </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10029_100003.html">CSS动画与JavaScript动画的性能
-            </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10029_100004.html">优化启动性能
-            </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10029_100005.html">使用dns-prefetch
-            </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10029_100006.html">懒加载
-            </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10029_100007.html">感知性能
-            </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10029_100008.html">JavaScript性能优化
-            </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10029_100009.html">css性能优化
-            </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10029_100010.html">HTML性能优化
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10029_100001.html" title="前后端渲染之争">前后端渲染之争
             </a>
           </div>
         </aside>
@@ -63,41 +47,79 @@
     
       <div class="crossnote markdown-preview  ">
       
-<h1 id="web性能">web性能 </h1>
-<p>Web性能是客观的衡量标准，是用户对加载时间和运行时的直观体验。Web 性能指页面加载到可交互和可响应所消耗的时间</p>
-<p>主要包括以下内容</p>
+<h1 id="模态框的最佳实践">模态框的最佳实践 </h1>
+<h2 id="定义">定义 </h2>
+<p>模态框是一个定位于应用视窗顶层的元素。它创造了一种模式让自身保持在一个最外层的子视察下显示，并让主视窗失效。用户必须在回到主视窗前在它上面做交互动作</p>
+<p>Modal与Toast、Notification、Message 以及Popover都会在某个时间点被触发弹出一个浮层，但与Modal（模态框）还是有所不同的。定义上看，上述组件都不属于模态框，因为模态框有一个重要的特性，即阻塞原来主视窗下的操作，只能在框内作后续动作。也就是说模态框从界面上彻底打断了用户的操作。</p>
+<p>设计好模态框出现的时机，流畅的弹出体验，必要的上下文信息，以及友好的退出反馈，还是完全可以提升体验的。模态框的目的在于吸引注意，但一定需要提供额外的信息，或是一个重要的用户操作，或是一份重要的协议确认。在本页面即可完成流程或信息告知</p>
+<h2 id="组成">组成 </h2>
 <ul>
-<li><strong>减少总体负载时间</strong> 需要多长时间才能将渲染网站所需的文件下载到用户的计算机上？这往往受到延迟、文件大小、文件数量以及其他因素的影响。一般策略是使文件尽可能小，尽可能减少 HTTP 请求的次数，并采用巧妙的加载技术（例如 preload）使文件更快可用。</li>
-<li><strong>尽快使网站可用</strong> 简单来说就是以合理的顺序加载你的网站资源，以便用户能够更快地开始使用。在用户继续执行主要任务的同时，任何其他资源都可以在后台继续加载。有时我们也会在实际需要时才加载资源（这被称为懒加载）。网站从开始加载，到达到可用状态为止所需的时间被称为交互等待时间</li>
-<li><strong>流畅性和交互性</strong> 应用程序是否可靠，使用起来是否愉快？滚动是否流畅？按钮是否可点击？弹出窗口是否能够快速打开，并且在打开时动画是否流畅？在制作流畅的应用程序时，有很多优秀实践可以参考。例如使用 CSS 动画而不是 JavaScript 来制作动画，并尽量减少由于 DOM 变化而引起重绘 UI 的次数。</li>
-<li><strong>感知性能</strong> 用户所体验到的，是网站看起来有多快，而不是网站实际有多快。用户感受到的性能与任何客观统计数据一样重要，甚至可能更重要。但这种主观的感受不容易测量。感知性能是用户的感受，而不是度量标准。即使操作将花费很长时间（因为延迟或其他原因），也可以通过显示“加载中”的旋转指示器或一系列有用的提示和技巧（或笑话，以及其他你认为合适的内容）来保持用户在等待期间的参与度。这种方法比什么都不显示要好得多<a href="/10029_100007.html">感知性能</a></li>
-<li><strong>性能测量</strong> Web 性能包括测量应用程序的实际速度和感知速度，在可能的情况下进行优化，然后监视性能，以确保已经优化过的内容保持优化状态</li>
+<li>退出的方式</li>
+<li>描述性的标题</li>
+<li>按钮的内容</li>
+<li>大小与位置</li>
+<li>焦点</li>
+<li>用户发起</li>
 </ul>
-<h2 id="关键性能指南">关键性能指南 </h2>
+<h2 id="作用">作用 </h2>
 <ul>
-<li><a href="/10029_100003.html">CSS动画与JavaScript动画的性能</a></li>
-<li><a href="/10029_100004.html">优化启动性能</a></li>
-<li><a href="/10029_100005.html">使用dns-prefetch</a></li>
-<li><a href="/10029_100002.html">关键渲染路径</a></li>
-<li><a href="/10029_100006.html">懒加载</a></li>
-<li><a href="/10029_100001.html">渲染页面：浏览器的工作原理</a></li>
-<li><a href="/10029_100008.html">JavaScript性能优化</a></li>
-<li><a href="/10029_100009.html">css性能优化</a></li>
-<li><a href="/10029_100010.html">HTML性能优化</a></li>
+<li>抓住用户的吸引力</li>
+<li>需要用户输入</li>
+<li>在上下文下显示额外的信息</li>
+<li>不在上下文下显示额外的信息</li>
 </ul>
-
+<h2 id="合理的使用模态框">合理的使用模态框 </h2>
+<ul>
+<li>内容是否相关。模态框是作为当前页面的一种衍生或补充，如果其内容与当前内容毫不相干，那么可以使用其他操作（如新页面跳转）来替代模态框</li>
+<li>模态框内部应该避免有过多的操作。模态框应该给用户一种看完即走，而且走的流畅潇洒的感觉，而不是利用繁杂的交互留住或牵制住用户</li>
+<li>避免出现一个以上的模态框。出现多个模态框会加深了产品的垂直深度，提高了视觉复杂度，而且会让用户烦躁起来</li>
+<li>不要突然打开或自动打开模态框，这个操作应该是用户主动触发的</li>
+<li>大小。对于模态框的大小应该要有相对严格的限制，如果内容过多导致模态框或页面出现滚动条，一般来说这种体验很糟糕</li>
+<li>开启或关闭动画。现在有非常多的设计倾向于用动画完成流畅的过渡，让 Modal 变得不再突兀</li>
+</ul>
+<h2 id="代码实现注意">代码实现注意 </h2>
+<blockquote>
+<p>业务代码对于有状态或无状态模态框的使用方式存在普遍问题</p>
+</blockquote>
+<p>对有状态模态框来说，很多库会支持 .show 直接调用的方式，那么模态框内部渲染逻辑，会在此方法执行时执行，没有什么问题。不过现在流行无状态模态框(Stateless Modal)，模态框的显示与否交由父级组件控制，我们只要将模态框代码预先写好，由外部控制是否显示</p>
+<p>这种无状态模态框的方式，在模态框需要显示复杂逻辑的场景中，会自然将初始化逻辑写在父级，当模态框出现在循环列表中，往往会引发首屏触发 2-30 次模态框初始化运算，而这些运算最佳状态是模态框显示时执行一次，由于模态框同一时间只会出现一个，最次也是首屏初始化一次，但下面看似没问题的代码往往会引发性能危机</p>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token keyword keyword-const">const</span> <span class="token maybe-class-name">TdElement</span> <span class="token operator">=</span> data<span class="token punctuation">.</span><span class="token method function property-access">map</span><span class="token punctuation">(</span><span class="token parameter">item</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword control-flow keyword-return">return</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span><span class="token maybe-class-name">Td</span><span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span><span class="token maybe-class-name">Button</span><span class="token operator">&gt;</span>详情<span class="token operator">&lt;</span><span class="token operator">/</span><span class="token maybe-class-name">Button</span><span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span><span class="token maybe-class-name">Modal</span> show<span class="token operator">=</span><span class="token punctuation">{</span>item<span class="token punctuation">.</span><span class="token property-access">show</span><span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span><span class="token maybe-class-name">Td</span><span class="token operator">&gt;</span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
       </div>
       <div class="md-sidebar-toc">
 <div class="md-toc">
 <details style="padding:0;;padding-left:0px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#web性能" class="md-toc-link"><p>web性能</p>
+          <a href="#模态框的最佳实践" class="md-toc-link"><p>模态框的最佳实践</p>
 </a>
           </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#关键性能指南" class="md-toc-link">
-            <p>关键性能指南</p>
+          <a href="#定义" class="md-toc-link">
+            <p>定义</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#组成" class="md-toc-link">
+            <p>组成</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#作用" class="md-toc-link">
+            <p>作用</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#合理的使用模态框" class="md-toc-link">
+            <p>合理的使用模态框</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#代码实现注意" class="md-toc-link">
+            <p>代码实现注意</p>
 
           </a></div>
         </div>

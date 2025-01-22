@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>地理信息系统应用项目组织和管理-GIS原理(三)-得鹿梦鱼</title>
+  <title>S集成技术-GIS原理(二)-得鹿梦鱼</title>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <meta name="Author" content="liming_longxi@163.com">
+    <meta name="Keywords" content="S集成技术"/>
   <link rel="stylesheet" href="/assets/styles/main.css" />
   <link rel="stylesheet" href="/assets/styles/katex/common.css" />
   <link rel="stylesheet" href="/assets/styles/katex/katex.min.css" />
@@ -30,19 +32,19 @@
     <main class="flex-grow-1 overflow-hidden scrollHeight">
       <div class="w-screen flex flex-1">
         <aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
-          <div class="text-md font-bold text-gray-700 m-4">GIS原理(三)</div>
+          <div class="text-md font-bold text-gray-700 m-4">GIS原理(二)</div>
           <div class="overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar flex flex-col">
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100000.html">MapServer应用范围
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100000.html" title="空间分析">空间分析
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100001.html">地理信息系统和社会
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100001.html" title="空间数据表现与地图制图">空间数据表现与地图制图
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100002.html">地理信息系统标准
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100002.html" title="数字地形模型（DTM）与地形分析">数字地形模型（DTM）与地形分析
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100003.html">地球信息科学和数字地球
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100003.html" title="网络地理信息系统">网络地理信息系统
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100004.html">地理信息系统软件工程技术
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100004.html" title=" 空间建模与空间决策支持"> 空间建模与空间决策支持
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100005.html">地理信息系统应用项目组织和管理
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100005.html" title="S集成技术">S集成技术
             </a>
           </div>
         </aside>
@@ -53,29 +55,83 @@
     
       <div class="crossnote markdown-preview  ">
       
-<h1 id="地理信息系统应用项目组织和管理">地理信息系统应用项目组织和管理 </h1>
-<ol>
-<li>GIS应用项目简介<br>
-<img src="/assets/images/1000054.png" alt="根据场模型和要素模型对GIS应用领域进行划分"></li>
-<li>软件研制和开发的质量管理——对于GIS软件开发组织的指导</li>
-<li>应用项目策略性规划</li>
-<li>应用项目合同</li>
-<li>应用项目实施性规划——软硬件配置</li>
-<li>子项目划分和进度安排</li>
-<li>项目预算</li>
-<li>人员管理</li>
-<li>开发和数据管理</li>
-<li>项目控制与评估</li>
-</ol>
+<h1 id="3s集成技术">3S集成技术 </h1>
+<h2 id="遥感简介">遥感简介 </h2>
+<p>遥感(Remote Sensing)，通常是指通过某种传感器装置，在不与研究对象直接接触的情况下，获得其特征信息，并对这些信息进行提取、加工、表达和应用的一门科学技术</p>
+<p>遥感技术的基础，是通过观测电磁波，从而判读和分析地表的目标以及现象，其中利用了地物的电磁波特性，即“一切物体，由于其种类及环境条件不同，因而具有反射或辐射不同波长电磁波的特性”</p>
+<p>在遥感技术中，接收从目标反射或辐射电磁波的装置叫做遥感器（Remote Sensor），而搭载这些遥感器的移动体叫做遥感平台（Platform），包括飞机、人造卫星等，甚至地面观测车也属于遥感平台。通常称用机载平台的为航空遥感（Aerial Remote Sensing），而用星载平台的称为航天遥感</p>
+<p>按照遥感器的工作原理，可以将遥感分为被动式遥感（Passive Remote Sensing）和主动式遥感（Active Remote Sensing）两种，而每种方式又分为扫描方式和非扫描方式</p>
+<p>遥感数据的处理——通常是图像形式的遥感数据的处理，主要包括纠正（包括辐射纠正和几何纠正）、增强、变换、滤波、分类等功能，其目的主要是为了提取各种专题信息，如土地建设情况、植被覆盖率、农作物产量和水深等等,遥感图像处理可以采取<strong>光学处理</strong>和<strong>数字处理</strong>两种方式，数字图像处理由于其可重复性好、便于与GIS结合等特点</p>
+<h3 id="图像纠正">图像纠正 </h3>
+<p>图像纠正是消除图像畸变的过程，包括辐射纠正和几何纠正。辐射畸变通常由于太阳位置，大气的吸收、散射引起；而几何畸变（图12-5）的原因则包括遥感平台的速度、姿态变化，传感器，地形起伏等，几何纠正包括粗纠正和精纠正两种，前者根据有关参数进行纠正；而后者通过采集地面控制点（GCPs, Ground Control Points），建立纠正多项式，进行纠正</p>
+<h3 id="增强">增强 </h3>
+<p>增强的目的是为了改善图像的视觉效果，并没有增加信息量，包括亮度、对比度变化以及直方图变换等</p>
+<h3 id="滤波">滤波 </h3>
+<p>滤波分为低通滤波、高通滤波和带通滤波等，低通滤波可以去除图像中的噪声，而高通滤波则用于提取一些线性信息</p>
+<h3 id="变换">变换 </h3>
+<p>包括主成分分析(Principal Component Analyst)，色度变换以及傅立叶变换等，还包括一些针对遥感图像的特定变换</p>
+<h3 id="分类">分类 </h3>
+<p>利用遥感图像的主要目的是为了提取各种信息，一些特定的变换可以用于提取信息，但是最主要的手段则是通过遥感图像分类(Classification)。计算机分类的基本原理是计算图像上每个象元的灰度特征，根据不同的准则，进行分类。遥感图像分类有两类方法，即监督分类(Supervised Classification)和非监督分类(Unsupervised Classification)</p>
+<h2 id="全球定位系统简介">全球定位系统简介 </h2>
+<p>全球定位系统(GPS, Global Positioning System)是利用人造地球卫星进行点位测量导航技术的一种</p>
+<p>GPS系统包括三大部分：空间部分——GPS卫星星座；地面控制部分——地面监控系统；用户设备部分——GPS信号接收机</p>
+<p>GPS定位基本原理是利用测距交会确定点位。如下图所示，一颗卫星信号传播到接收机的时间只能决定该卫星到接收机的距离，但并不能确定接收机相对于卫星的方向，在三维空间中，GPS接收机的可能位置构成一个球面；当测到两颗卫星的距离时，接收机的可能位置被确定于两个球面相交构成的圆上；当得到第三颗卫星的距离后，球面与圆相交得到两个可能的点；第四颗卫星用于确定接收机的准确位置。因此，如果接收机能够得到四颗GPS卫星的信号，就可以进行定位；当接收到信号的卫星数目多于四个时，可以优选四颗卫星计算位置</p>
+<p><img src="/assets/images/1000065.png" alt="测距交会定位示意图"></p>
+<h2 id="3s集成综述">3S集成综述 </h2>
+<p>3S技术为科学研究、政府管理、社会生产提供了新一代的观测手段、描述语言和思维工具。3S的结合应用，取长补短，是一个自然的发展趋势，三者之间的相互作用形成了“一个大脑，两只眼睛”的框架</p>
+<p>即RS和GPS向GIS提供或更新区域信息以及空间定位，GIS进行相应的空间分析，以从RS和GPS提供的浩如烟海的数据中提取有用信息，并进行综合集成，使之成为决策的科学依据</p>
+<p><img src="/assets/images/1000066.png" alt="3S的相互作用与集成"></p>
 
       </div>
       <div class="md-sidebar-toc">
 <div class="md-toc">
-<div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
-          <a href="#地理信息系统应用项目组织和管理" class="md-toc-link">
-            <p>地理信息系统应用项目组织和管理</p>
+<details style="padding:0;;padding-left:0px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#3s集成技术" class="md-toc-link"><p>3S集成技术</p>
+</a>
+          </summary>
+        <div>
+          <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#遥感简介" class="md-toc-link"><p>遥感简介</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#图像纠正" class="md-toc-link">
+            <p>图像纠正</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#增强" class="md-toc-link">
+            <p>增强</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#滤波" class="md-toc-link">
+            <p>滤波</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#变换" class="md-toc-link">
+            <p>变换</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#分类" class="md-toc-link">
+            <p>分类</p>
 
           </a></div>
+        </div>
+      </details>
+    <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#全球定位系统简介" class="md-toc-link">
+            <p>全球定位系统简介</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#3s集成综述" class="md-toc-link">
+            <p>3S集成综述</p>
+
+          </a></div>
+        </div>
+      </details>
+    
 </div>
 </div>
       <a id="sidebar-toc-btn">≡</a>

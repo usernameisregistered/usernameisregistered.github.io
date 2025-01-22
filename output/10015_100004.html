@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>地理信息系统软件工程技术-GIS原理(三)-得鹿梦鱼</title>
+  <title> 空间建模与空间决策支持-GIS原理(二)-得鹿梦鱼</title>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <meta name="Author" content="liming_longxi@163.com">
+    <meta name="Keywords" content=" 空间建模与空间决策支持"/>
   <link rel="stylesheet" href="/assets/styles/main.css" />
   <link rel="stylesheet" href="/assets/styles/katex/common.css" />
   <link rel="stylesheet" href="/assets/styles/katex/katex.min.css" />
@@ -30,19 +32,19 @@
     <main class="flex-grow-1 overflow-hidden scrollHeight">
       <div class="w-screen flex flex-1">
         <aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
-          <div class="text-md font-bold text-gray-700 m-4">GIS原理(三)</div>
+          <div class="text-md font-bold text-gray-700 m-4">GIS原理(二)</div>
           <div class="overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar flex flex-col">
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100000.html">MapServer应用范围
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100000.html" title="空间分析">空间分析
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100001.html">地理信息系统和社会
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100001.html" title="空间数据表现与地图制图">空间数据表现与地图制图
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100002.html">地理信息系统标准
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100002.html" title="数字地形模型（DTM）与地形分析">数字地形模型（DTM）与地形分析
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100003.html">地球信息科学和数字地球
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100003.html" title="网络地理信息系统">网络地理信息系统
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100004.html">地理信息系统软件工程技术
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100004.html" title=" 空间建模与空间决策支持"> 空间建模与空间决策支持
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100005.html">地理信息系统应用项目组织和管理
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10015_100005.html" title="S集成技术">S集成技术
             </a>
           </div>
         </aside>
@@ -53,90 +55,190 @@
     
       <div class="crossnote markdown-preview  ">
       
-<h1 id="地理信息系统软件工程技术">地理信息系统软件工程技术 </h1>
-<h2 id="软件工程简介">软件工程简介 </h2>
-<p>计算机软件工程是一类求解的工程。它应用计算机科学、数学及管理科学等原理，借鉴传统工程的原则、方法，创建软件以达到提高质量，降低成本的目的。其中，计算机科学、数学应用于构造模型与算法，工程科学用于制定规范、设计范型，评估成本及确定权衡，管理科学用于计划、资源、质量、成本等管理</p>
-<p>软件工程活动包括需求、设计、实现、确认及支持等，它们对应于软件开发活动的不同阶段，一般来说，软件开发都要经历从分析设计到实现确认的过程。在每个阶段按照相应的规范进行工作，并得到该阶段的成果，是保证整个开发活动成功的关键</p>
-<h2 id="gis领域的体系结构和构件">GIS领域的体系结构和构件 </h2>
-<p>按照应用目的，地理信息系统可以分为区域地理信息系统、专题地理信息系统以及地理信息系统工具，它们共同组成了GIS领域<br>
-所谓领域，是指共享某种功能性(Functionality)的系统或应用程序的集合，换言之，领域表现了一组应用系统共性的方面<br>
-对于地理信息系统而言，其共享的功能就是对空间数据输入、管理、分析和表现，而这恰好是地理信息系统工具所提供的功能</p>
-<h2 id="gis需求分析">GIS需求分析 </h2>
-<p>需求获取是软件开发活动的第一步，获得正确的需求描述是成功软件的前提。<br>
-一般而言，用户需求分为两类，功能性需求和非功能性需求，前者定义了系统做什么，包括输入、输出以及其间的转换；<br>
-后者定义了系统工作时的特性，如效率、可靠性、安全性、可维护性、可移植性等等要求。</p>
-<p>具体的需求获取内容包括</p>
-<ul>
-<li>物理环境，物理设备的位置以及其分布的集中程度；</li>
-<li>接口，与其它软件系统的接口以及对数据格式的要求；</li>
-<li>用户或人的因素，包括系统用户熟练程度，使用系统需要接受的训练；</li>
-<li>功能，系统要完成什么，性能如何；</li>
-<li>文档，需要哪些文档以及其针对的读者；</li>
-<li>数据，数据格式、数据精度、数据量、接收和发送数据的频率；</li>
-<li>资源，使用系统需要的设备，开发需要的人力资源、计算机资源、时间表；</li>
-<li>安全性，对访问信息的控制程度，数据的备份等</li>
-<li>质量保证，对系统的可靠性要求，平均系统出错时间，可移植性，可维护性等。</li>
-</ul>
-<h2 id="数据管理设计">数据管理设计 </h2>
-<p>数据管理部分设计的目的是确定在数据管理系统中存储和检索数据的基本结构，其原则是要隔离数据管理方案的影响，不管该方案是普通文件、关系数据库、面向对象数据库或者是其它方式的</p>
-<p>目前，主要有三种主要的数据管理方法，即文件、关系和面向对象</p>
-<p><strong>普通文件管理</strong>：普通文件管理提供基本的文件处理和分类能力；<br>
-<strong>关系型数据库管理系统（RDBMS）</strong>：关系型数据库管理系统建立在关系理论的基础上，采用多个表来管理数据，每个表的结构遵循一系列“范式”进行规范化，以减少数据冗余。<br>
-<strong>面向对象的数据库管理系统</strong>：面向对象的数据库是一种正在成熟的技术，它通过增加抽象数据类型和继承特性以及一些用来创建和操作类和对象服务，实现对象的持续存储。</p>
-<h2 id="界面设计">界面设计 </h2>
-<p>在设计阶段，除了设计算法，数据结构等内容外，一个很重要的部分就是系统界面的设计，系统界面是人机交互的接口，包括人如何命令系统以及系统如何向用户提交信息。一个设计良好的用户界面使得用户更容易掌握系统，从而增加用户对系统的接受程度。此外，系统用户界面直接影响了用户在使用系统时的情绪</p>
-<h2 id="gis中的设计模式">GIS中的设计模式 </h2>
-<p>在研究软件复用的过程中，设计模式(Design Pattern)的概念被提了出来。所谓设计模式，简单地理解，是一些设计面向对象的软件的经验总结</p>
-<p>一般包括以下四个基本部分</p>
+<h1 id="空间建模与空间决策支持">空间建模与空间决策支持 </h1>
+<h2 id="空间分析过程及其模型">空间分析过程及其模型 </h2>
+<p>空间分析的目的是解决某类与地理空间有关的问题，通常涉及多种空间分析操作的组合。好的空间分析过程设计将十分有利于问题的解决,一般步骤</p>
 <ol>
-<li>模式名称：描述一个设计问题、它的解法和后果</li>
-<li>问题：告诉什么时候要使用该设计模式，解释问题及其背景</li>
-<li>解决方案：描述设计的基本要素、它们的关系、各自的任务以及相互之间的合作</li>
-<li>后果：描述应用设计模式之后的结果和权衡</li>
+<li>明确分析的目的和评价准则</li>
+<li>准备分析数据</li>
+<li>进行空间分析操作</li>
+<li>进行结果分析</li>
+<li>解释评价结构</li>
+<li>结果输出</li>
 </ol>
-<p>E.Gamma提出了23个面向对象的设计模式，这些模式抽象层次较高，可以应用于所有软件的开发过程。在地理信息系统开发中，经常会遇到本领域的特定的一些问题，并且已经形成了有效的解决方案，对其进行归纳总结，形成相应的设计模式，对于GIS软件开发，有着重要的意义</p>
-<h2 id="常用软件">常用软件 </h2>
+<h3 id="空间分析建模">空间分析建模 </h3>
+<p>地图建模可以是一个空间分析流程的逆过程，即从分析的最终结果开始，反向一步步分析为得到最终结果，哪些数据是必须的，并确定每一步要输入的数据以及这些数据是如何派生而来</p>
+<h2 id="空间决策支持模型">空间决策支持模型 </h2>
+<p>区域规划、土地利用规划、设施位置选择、环境管理等都是有关空间行为的决策问题，这些问题的解决方案是由决策者或领域专家在专业领域知识和经验的启发下，在分析大量的空间和非空间信息的基础上得到的。空间决策问题大大超过了地理信息系统通常的空间分析功能的要求。</p>
+<p>决策是一个决策者为达到某种目标或目标集合，根据一定的约束条件下在多种侯选方案里进行选择的复杂过程</p>
+<h3 id="构成部分">构成部分 </h3>
 <ol>
-<li><a href="https://hcn4t3r3b7w9.feishu.cn/wiki/GqpwwPN0RiaN4NkQrhDcZtSNnuh?fromScene=spaceOverview">QGIS</a></li>
-<li><a href="https://hcn4t3r3b7w9.feishu.cn/wiki/O34gwh56wiR2H7kz9nrcQqFcnab?fromScene=spaceOverview">Leaflet</a></li>
+<li>方案集合：决策问题的方案集合是指可以选择的行动方案集合</li>
+<li>状态集合：任何一个决策问题都面临一定的外界环境，称之为状态。系统各种可能的状态，称为状态集合，记为Q</li>
+<li>损益函数：这是决策分析中的一个重要概念。在决策问题中，如果采用策略，假定系统状态出现，系统收益。因此定义映射为决策问题的损益函数</li>
+<li>目标函数（决策准则）：记为F。损益函数只给出了系统的实际收益情况，但没给出收益的评价标准，即“抉择”时的优化准则。决策准则对于不同的决策者、问题、方法都是不同的，它最终决定了方案的形成</li>
 </ol>
+<p><img src="/assets/images/1000060.png" alt="空间决策过程"></p>
+<h2 id="专家系统">专家系统 </h2>
+<p>专家系统是人工智能在信息系统中的应用，它是一个智能计算机程序系统，其内部具有大量专家水平的某个领域知识与经验，能够利用人类专家的知识和解决问题的方法来解决该领域的问题。专家系统的主要功能取决于大量的知识。设计专家系统的关键是知识表达和知识运用。专家系统与一般计算机程序最本质的区别在于：专家系统所解决的问题一般没有算法解，并且往往是要在不完全、不精确或不确定的信息基础上做出结论。一般的专家系统包括数据库，知识库，推理机，解释器及知识获取五个部分组成</p>
+<p><img src="/assets/images/1000061.png" alt="专家系统结构图"></p>
+<h3 id="推理机">推理机 </h3>
+<p>推理是指依据一定规则从已有的事实推出结论的过程。专家系统中的自动推理是知识推理，它是专家系统中问题求解的主要手段<br>
+知识推理方法可分为图搜索方法和逻辑论证方法两类</p>
+<h4 id="图搜索方法">图搜索方法 </h4>
+<p>基于图的知识表达，问题求解的知识推理过程，就是从图中相当于初始状态的出发节点到相当于目标状态的终止节点的路线搜索过程，即搜索从初始状态有效的转移到目标所经历的最优的或最经济的线路，相应的知识推理方法即图搜索方法</p>
+<h4 id="逻辑论证">逻辑论证 </h4>
+<p>当知识表示采用谓词（Predicate）逻辑或其他形式逻辑方法时，知识推理也可以采取逻辑论证方法。在这种情况下，求解一个问题相应于证明一个定理或几个定理，问题求解的知识推理过程，相应于用数理逻辑方法进行定理证明的过程。知识推理方法即逻辑论证方法<br>
+根据问题求解的推理过程是否运用启发性知识，知识推理方法可分为启发推理和非启发推理两类<br>
+根据问题求解的推理过程中结论是否精确，知识推理方法可分为精确推理和不精确推理两类</p>
+<h2 id="数据仓库与空间数据挖掘">数据仓库与空间数据挖掘 </h2>
+<h3 id="数据仓库">数据仓库 </h3>
+<p>数据仓库是指面向主题的、集成的、稳定的、随着时间变化的数据集合，用以支持管理决策<br>
+数据仓库是一种把收集的数据转变成有意义的信息技术</p>
+<p><img src="/assets/images/1000062.png" alt="数据仓库体系结构"></p>
+<h4 id="数据挖掘">数据挖掘 </h4>
+<ol>
+<li>数据选取： 数据仓库中的数据并不都与挖掘的信息有关，第一步就是为了只提取“有用的”数据</li>
+<li>数据转换：在确定要进行挖掘的数据之后，要对这些数据进行必要的变换，使得数据可以被进一步的操作使用</li>
+<li>数据挖掘：在数据转换之后，就要进行数据挖掘，数据挖掘的具体技术很多，如分类、回归分析等</li>
+<li>结果解释：挖掘的信息要参照用户的决策支持目的进行分析，并且要表现给决策者</li>
+</ol>
+<h4 id="空间数据挖掘">空间数据挖掘 </h4>
+<p>空间数据是与占有一定空间的对象有关的数据，空间数据库是通过空间数据类型和空间关系存储和管理空间数据。空间数据通常具有拓扑和距离信息，通过空间索引进行组织和查询</p>
+<p>常用方法</p>
+<ol>
+<li>统计分析方法</li>
+<li>基于概括的方法</li>
+<li>聚类方法</li>
+<li>空间关联规则（Spatial Association Rule）方法</li>
+</ol>
+<h2 id="gis空间分析与空间动态建模">GIS空间分析与空间动态建模 </h2>
+<p>空间动态模型是指现实世界中地球表面特定位置上的某些属性或状态因其驱动力随时间变化而发生改变的一种数学模拟<br>
+空间动态模型就是要计算各空间单元随其时间序列信息或驱动力的变化而产生新状态或属性值。各时刻的状态或属性可以用计算机以动画的形式进行显示，其实质仍然是图形代数和地图模型的自然延伸<br>
+GIS与空间动态模型的结合主要有三种方式：松散结合，交互界面和镶嵌结合</p>
+<h3 id="元胞自动机">元胞自动机 </h3>
+<p>元胞自动机（Cellular Automata，CA）是定义在一个具有离散、有限状态的元胞组成的元胞空间上的，按照一定局部规则，在离散的时间维上演化的动力学系统。元胞自动机的基本单元是元胞（Cell），每个元胞具有一个状态，这个状态只能取有限状态集中的一个，例如“生”或“死”，或者256种颜色中的一种等等；这些元胞规则地排列在被称为“元胞空间”的空间格网上；它们各自的状态随着时间变化，根据一个局部的规则来进行更新，即一个元胞在某时刻的状态取决于且只取决于该元胞周围邻域元胞的状态；元胞空间内的元胞依照此局部规则进行同步的状态更新，整个元胞空间则表现为在离散的时间维上变化</p>
+<p>元胞自动机的最基本的组成包括元胞（Cell），元胞空间（Lattice），邻域（Neighbor），规则（Rule）。元胞自动机可以视为由一个元胞空间和定义在该空间的变换函数所组成</p>
+<p>五个主要特征</p>
+<ol>
+<li>它们由元胞的离散格局构成</li>
+<li>它们在离散时间步序内演化；</li>
+<li>每一元胞的状态均在同一有限集中取值；</li>
+<li>每一元胞的状态依同一确定的法则演化；</li>
+<li>元胞状态的取值法则仅依赖于其自身及其周围邻域元胞的状态值。</li>
+</ol>
+<h2 id="空间相互作用与位置分配模型">空间相互作用与位置——分配模型 </h2>
+<p>对于生产单位和服务企业来说，由于需求和供给两方面总是存在着空间上分布的差异性，因此，机构设施地理位置（Geographic Location）的选择和确定对于它们的经济效益和自身的发展具有至关重要的影响作用。</p>
+<p>机构设施位置评价和优化，是通过对于一个设施或者一个设施网络的供给和需求两者之间的相互作用关系进行分析来实现其空间位置分布模式的优化。机构设施区位评价是对于现有服务设施的空间位置分布模式的评价，机构设施区位优化是对于其最佳位置的搜寻</p>
+<p><img src="/assets/images/1000063.png" alt="中心地理论应用的概念框架"></p>
+<p>中心地理论的古典模型是对包含单一目标的、且内部需求全部针对这个目标中心的具有均质性的市场功能区域进行空间分析和模拟，而中心地理论的现代模型则要针对现实世界中那些具有不确定性的、涉及多目标消费行为和复杂供给行为的市场功能区域进行空间分析和模拟</p>
+<p>空间优化模式用于解决位置——分配问题</p>
+<p>优化模式基本结构由一系列边界条件和一个（或几个，但少见）目标函数组成。在这些边界条件下，求目标函数的极大值或极小值。边界条件代表了规划目标所必须满足的划条件，它们代表了对于目标规划区域功能的基本评价；而优化目标函数（即求目标函数的极值）则代表了一个最大限度可能达到的规划目标。因此，在边界条件中体现出来的关目标函数的规划条件具有首要意义，与优化目标函数相应的规划目标的重要性则稍差一些引入目标函数的极大、极小化意义，在于得到一个定位一配置问题的明确答案（指在一定边界条件下，目标函数有数个可行答案的情况下）</p>
+<p><img src="/assets/images/1000064.png" alt="空间优化模式分类"></p>
 
       </div>
       <div class="md-sidebar-toc">
 <div class="md-toc">
 <details style="padding:0;;padding-left:0px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#地理信息系统软件工程技术" class="md-toc-link"><p>地理信息系统软件工程技术</p>
+          <a href="#空间建模与空间决策支持" class="md-toc-link"><p>空间建模与空间决策支持</p>
+</a>
+          </summary>
+        <div>
+          <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#空间分析过程及其模型" class="md-toc-link"><p>空间分析过程及其模型</p>
 </a>
           </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#软件工程简介" class="md-toc-link">
-            <p>软件工程简介</p>
+          <a href="#空间分析建模" class="md-toc-link">
+            <p>空间分析建模</p>
+
+          </a></div>
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#空间决策支持模型" class="md-toc-link"><p>空间决策支持模型</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#构成部分" class="md-toc-link">
+            <p>构成部分</p>
+
+          </a></div>
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#专家系统" class="md-toc-link"><p>专家系统</p>
+</a>
+          </summary>
+        <div>
+          <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#推理机" class="md-toc-link"><p>推理机</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#图搜索方法" class="md-toc-link">
+            <p>图搜索方法</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#gis领域的体系结构和构件" class="md-toc-link">
-            <p>GIS领域的体系结构和构件</p>
+          <a href="#逻辑论证" class="md-toc-link">
+            <p>逻辑论证</p>
+
+          </a></div>
+        </div>
+      </details>
+    
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#数据仓库与空间数据挖掘" class="md-toc-link"><p>数据仓库与空间数据挖掘</p>
+</a>
+          </summary>
+        <div>
+          <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#数据仓库" class="md-toc-link"><p>数据仓库</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#数据挖掘" class="md-toc-link">
+            <p>数据挖掘</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#gis需求分析" class="md-toc-link">
-            <p>GIS需求分析</p>
+          <a href="#空间数据挖掘" class="md-toc-link">
+            <p>空间数据挖掘</p>
 
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#数据管理设计" class="md-toc-link">
-            <p>数据管理设计</p>
+          </a></div>
+        </div>
+      </details>
+    
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#gis空间分析与空间动态建模" class="md-toc-link"><p>GIS空间分析与空间动态建模</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#元胞自动机" class="md-toc-link">
+            <p>元胞自动机</p>
 
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#界面设计" class="md-toc-link">
-            <p>界面设计</p>
-
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#gis中的设计模式" class="md-toc-link">
-            <p>GIS中的设计模式</p>
-
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#常用软件" class="md-toc-link">
-            <p>常用软件</p>
+          </a></div>
+        </div>
+      </details>
+    <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#空间相互作用与位置分配模型" class="md-toc-link">
+            <p>空间相互作用与位置——分配模型</p>
 
           </a></div>
         </div>

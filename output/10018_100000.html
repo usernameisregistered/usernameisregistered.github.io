@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>_地球椭球体与大地控制-地理信息系统原理-得鹿梦鱼</title>
+  <title>_第一章算法设计与分析-地理信息系统算法基础-得鹿梦鱼</title>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <meta name="Author" content="liming_longxi@163.com">
+    <meta name="Keywords" content="_第一章算法设计与分析"/>
   <link rel="stylesheet" href="/assets/styles/main.css" />
   <link rel="stylesheet" href="/assets/styles/katex/common.css" />
   <link rel="stylesheet" href="/assets/styles/katex/katex.min.css" />
@@ -30,21 +32,25 @@
     <main class="flex-grow-1 overflow-hidden scrollHeight">
       <div class="w-screen flex flex-1">
         <aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
-          <div class="text-md font-bold text-gray-700 m-4">地理信息系统原理</div>
+          <div class="text-md font-bold text-gray-700 m-4">地理信息系统算法基础</div>
           <div class="overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar flex flex-col">
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10018_100000.html">_地球椭球体与大地控制
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10018_100000.html" title="_第一章算法设计与分析">_第一章算法设计与分析
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10018_100001.html">_地图投影概述
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10018_100001.html" title="_第二章GIS算法中的计算几何基础">_第二章GIS算法中的计算几何基础
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10018_100002.html">_地图投影的应用
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10018_100002.html" title="_第三章空间数据的变换算法">_第三章空间数据的变换算法
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10018_100003.html">_栅格数据结构
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10018_100003.html" title="_空间数据的组织算法">_空间数据的组织算法
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10018_100004.html">_矢量数据结构
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10018_100004.html" title="_第四章空间数据转换算法">_第四章空间数据转换算法
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10018_100005.html">_空间认知模型
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10018_100005.html" title="_空间度量算法">_空间度量算法
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10018_100006.html">_空间实体模型
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10018_100006.html" title="_空间数据索引算法">_空间数据索引算法
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10018_100007.html" title="_空间数据挖掘算法">_空间数据挖掘算法
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10018_100008.html" title="_数据输出算法">_数据输出算法
             </a>
           </div>
         </aside>
@@ -55,150 +61,140 @@
     
       <div class="crossnote markdown-preview  ">
       
-<h2 id="地球椭球体">地球椭球体 </h2>
-<p>地球表面是一个高低不平、极其复杂的表面，在地球表面上分布着山地、盆地以及海洋。其中海洋的面积约占71％，陆地约占29％。从高达8844.43m的世界最高点――珠穆朗玛峰，到深达11022m的太平洋西部马里亚纳海沟，两者相差近两万米</p>
-<p>假定海水处于“完全”静止状态，把海水面延伸到大陆上去，形成包围整个地球的连续表面，我们通常称它为大地水准面，它包围的球体称为大地体。大地测量中用水准量测方法得到地面上各点的高程就是依据这个水准面来确定的，大地水准面上任何一点的铅垂线都与大地水准面成正交，而铅垂线的方向又受地球内部质量分布不均匀和地面高低起伏的影响，致使大地水准面产生微小起伏，所以大地水准面仍是一个不规则的、不能用简单数学公式表达的曲面</p>
-<p>为了便于测量成果的计算和制图工作的需要，我们选用一个大小和形状同 大地体极为近似的、可以用数学方法表 达的旋转椭球来代替。旋转椭球是以椭 圆的短轴（地轴）为轴旋转而成的</p>
-<p>地球椭球的形状和大小常用长半径 a（赤道半径）、短半径b（极轴半径）、扁率α、 第一偏心率e、第二偏心率e′表示，这 些数据又称为椭球元素</p>
-<p>表 常见地球椭球体数据</p>
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>年代</th>
-<th>长半径a(m)</th>
-<th>短半径b(m)</th>
-<th>扁率α</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>白赛尔</td>
-<td>1841</td>
-<td>6377397</td>
-<td>6356079</td>
-<td>1:299.15</td>
-</tr>
-<tr>
-<td>克拉克</td>
-<td>1866</td>
-<td>6378206</td>
-<td>6356534</td>
-<td>1:295.0</td>
-</tr>
-<tr>
-<td>克拉克</td>
-<td>1880</td>
-<td>6378249</td>
-<td>6356515</td>
-<td>1:293.47</td>
-</tr>
-<tr>
-<td>海伏特</td>
-<td>1910</td>
-<td>6378388</td>
-<td>6356912</td>
-<td>1:297.0</td>
-</tr>
-<tr>
-<td>克拉索夫斯基</td>
-<td>1940</td>
-<td>6378245</td>
-<td>6356863</td>
-<td>1:298.3</td>
-</tr>
-<tr>
-<td>国际椭球</td>
-<td>1975</td>
-<td>6378140</td>
-<td>6356755</td>
-<td>1:298.257</td>
-</tr>
-<tr>
-<td>国际椭球</td>
-<td>1979</td>
-<td>6378137</td>
-<td></td>
-<td>1:298.257</td>
-</tr>
-</tbody>
-</table>
-<h2 id="大地控制">大地控制 </h2>
-<p>大地控制的主要任务是确定地面点在地球椭球体上的位置，包括点在地球椭球面上的平面位置和点到大地水准面的高度，即经纬度和高程。</p>
-<h3 id="地理坐标系">地理坐标系 </h3>
-<p>经线和纬线是地球表面上两组正交（相交为900）的曲线，这两组正交线构成的坐标称为地理坐标系</p>
-<h3 id="中国大地坐标系">中国大地坐标系 </h3>
+<h1 id="算法设计与分析">算法设计与分析 </h1>
+<h2 id="概述">概述 </h2>
+<blockquote>
+<p>算法是解决问题方法的精确描述;但是并不是所有问题都有算法，有些问题经研究可行，则相应的有算法，但这并不是说问题就有结果，上述中的“可行”，是指对算法的研究可行</p>
+</blockquote>
+<h3 id="待解问题的描述">待解问题的描述 </h3>
+<p>待解问题的描述应精确、简练、清楚、使用形式化模型刻画问题是最恰当的。例如，使用数学模型刻画问题是最简明、严格的，一旦问题形式化了，就可依据严格的模型对问题求解</p>
+<h3 id="算法设计">算法设计 </h3>
+<p>算法设计的任务是对各类具体问题设计良好的的算法以及研究设计算法的规律和方法，常用的算法有穷举搜索法、递归法、回溯法、贪心法、分治法等</p>
+<h3 id="算法分析">算法分析 </h3>
+<p>算法分析的任务是对设计出的每一个具体的算法，利用数学工具，讨论各种复杂度度，探讨某种具体算法适用于哪类问题或某类问题宜采用那种算法。</p>
+<h2 id="算法设计原则">算法设计原则 </h2>
+<blockquote>
+<p>设计的真谛，就是在一些互相冲突的需求和越少条件之间寻找平衡点，什么是一个良好的算法，这个问题可以从许多方面来阐述，不管是那种情况，都无法放之四海而皆准，但总有一些原则是在不断的探索中被发现并潜移默化的影响着我们的思维。算法的设计应当遵循一下一些原则</p>
+</blockquote>
+<h3 id="正确性">正确性 </h3>
+<blockquote>
+<p>算法的正确性是指对于一个问题，之所以将其放在第一位是因为如果一个算法自身存在缺陷，或者不适合于问题的求解，那么该算法将不会解决问题。</p>
+</blockquote>
+<h3 id="确定性">确定性 </h3>
+<blockquote>
+<p>算法的确定性是指算法的每个步骤必须含义明确，对每种可能的情况，算法都能给出确定的操作。即采用同一种算法，在同样的条件下无论计算多少次，始终能够得到确定的结果</p>
+</blockquote>
+<h3 id="清晰行">清晰行 </h3>
+<blockquote>
+<p>一个良好的算法必须思路清晰，结构合理。算法的设计要模块化，模块化是指将一个大的算法分解成若干小而简单的部分---模块。每个模块可以独立的编写、测试，最后组装完成整个算法。模块化的目的是使算法的结构清晰，容易阅读、容易理解、容易测试、容易修改。模块的分割原则是要符合抽象原则，即指每个模块都要有明确的抽象意义。例如，在面向对象方法中，建立一个类的主要依据是该类描述的抽象数据类型</p>
+</blockquote>
+<h2 id="算法复杂性的度量">算法复杂性的度量 </h2>
+<blockquote>
+<p>算法复杂性的包括算法的时间复杂性和空间复杂性。为了说明复杂性的概念。先介绍问题规模的概念，用一个与问题相关的整数量来衡量问题的大小，该整数量表示输入数据量的尺度，称为问题的规模。例如，行列式的规模可以用其阶数n来表示，图问题的规模可以用其边数或者定点数来表示等。</p>
+</blockquote>
+<p>利用某算法来处理一个问题规模为n的输入所需要的的时间称为该算法的时间复杂度，它显示是n的函数记为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">T(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></p>
+<p>类似的可以定义算法的空间复杂性<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">S(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></p>
+<h3 id="时间复杂性">时间复杂性 </h3>
+<h4 id="阶的增长">阶的增长 </h4>
+<p>显而易见，说一个算法A对于输入x，要用y秒运行是没有意义的，这是因为影响实际时间的因素不仅有相应的算法，还有其他诸多因素，例如，算法在什么机器上和怎样执行的，用的是哪一种编程语言，甚至于编译程序或者程序员的能力都有影响。因此只要的出确切实际的近似数就可以了，但是最重要的是，在评估一个算法效率的时候，我们需要的是确切时间还是近似时间，事实上，我们甚至不需要近似时间，这是由许多因素造成的，首先，在分析算法运行时间时，我们通常会将算法和解决同一个问题甚至是不同问题的算法相比较，这样，估计时间是相对的而不是绝对的，其次，我们希望一个算法不仅是独立于机器的，而且他能够用各种语言来表示，甚至是人类语言，再者，它还应该是技术独立的，也就是说，无论科技如何进步，我们对算法运行时间的测量始终成立，第四，我们主要不是关心小规模输入量的情况，最关心的是在大的输入实例时算法的运行情况</p>
+<p>事实上，在算法的某个“合理”实现中的计算运算次数，是比它所需要的的多了一些，作为上面第四种因素的推论，我们可以前进一大步，要精确计算所有的运算次数，如果不是不可能的话，也是非常麻烦的，由于我们只对大的输入时的运行时间感兴趣，可以讨论运行时间的增长率或者增长的阶，例如，如果可以寻找到某个常量c &gt; 0, 当给算法A以大小为n的输入时，算法的运行时间至多为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><msup><mi>n</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">cn^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord mathnormal">c</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>,随着n越来越大，c将主键不起作用，进一步吧这个函数和另一个求解同一个问题的算法B的不同阶函数(<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><msup><mi>n</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">dn^3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord mathnormal">d</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span>)作比较，很明显，该常量并不会有太大的作用。同样的道理使用与函数<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo><mo>=</mo><msup><mi>n</mi><mn>2</mn></msup><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo>+</mo><mn>10</mn><msup><mi>n</mi><mn>2</mn></msup><mo>+</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">f(n)=n^2logn+10n^2+n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0085em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord">10</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>中的低阶项，我们观察到，当n的值越大，低阶项<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>10</mn><msup><mi>n</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">10n^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">10</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>和n的影响就越小，因此，可以说算法A和B的运行时间分别是“<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>n</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">n^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>阶”和“<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>n</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">n^3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span>阶”的或者属于“<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>n</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">n^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>阶”和“<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>n</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">n^3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span></span></span></span>阶”，类似的我们可以说上面的函数<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>是<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>n</mi><mn>2</mn></msup><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">n^2logn</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0085em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">n</span></span></span></span>阶的</p>
+<p>一旦去除了表示算法运行时间的函数中的低阶项和首项常数，就成是在度量算法的渐近运行时间，与此相同，在算法分析的术语中，可以用更为技术性的术语“时间复杂性”来表示这一渐近时间</p>
+<p>对任何计算步骤，他的代价总是以一个时间常量为上界，而不管输入数据或者执行的算法，我们称该计算步骤为“元运算”。例如，取2个整数相加的运算，不管使用何种算法，我们都规定他的运算对象的大小是固定的，这一运算的运行时间是常数，而且由于显示是处理渐近的运行时间，我们可以任意选择正整数k为计算模型的“字长”</p>
+<h3 id="空间复杂性">空间复杂性 </h3>
+<p>我们把算法使用的空间定义成：为了求解问题的实例而执行的计算步骤所需要的的内存空间数目，他不包括分配用来存储输入的空间；换句话说，仅仅是算法需要的工作空间</p>
+<h2 id="算法的评价">算法的评价 </h2>
+<h3 id="如何估计算法运行时间">如何估计算法运行时间 </h3>
 <ul>
-<li>
-<p>1954年北京坐标系<br>
-从苏联1942年坐标系联测并经过平差计算而引伸到我国，建立了1954年北京坐标系；该坐标系的原点在苏联西部的普尔科夫，采用克拉索夫斯基椭球元素。</p>
-</li>
-<li>
-<p>1980年国家大地坐标系<br>
-选用了1975年国际大地测量协会推荐的参考椭球，其具体参数为a=6378140m，image0 =1/298.257；1980年国家大地原点设在我国中部西安市附近的泾阳县境内。由于大地原点在我国居中位置</p>
-</li>
+<li>计算迭代次数</li>
+<li>计算基本运算的频度</li>
 </ul>
-<h3 id="高程系">高程系 </h3>
-<p>绝对高程是指由高程基准面起算的地面点的垂直高度<br>
-地面点之间的高程差，称为相对高程（简称高差）<br>
-在不同地点的验潮站所得的平均海水面之间存在着差异，选用不同的基准面就有不同的高程系统。</p>
-<ol>
-<li>
-<p>1956年黄海高程系<br>
-以青岛验潮站1950年~1956年测定的黄海平均海水面，作为我国统一高程基准面，凡由该基准面起算的高程，统称为“1956年黄海高程系”。其水准原点设在青岛市的观家山上，对黄海平均海水面的高程值为72.298m</p>
-</li>
-<li>
-<p>1985年国家高程基准<br>
-采用青岛验潮站1952～1979年潮汐观测计算的平均海水面，国家水准原点的高程值为72.260m，使高程控制点的高程产生了微小变化</p>
-</li>
-</ol>
-<h3 id="大地控制网">大地控制网 </h3>
-<p>在广阔的区域上进行测量和制图，不可能独家一次完成，必须要由许多单位分期分批完成，为了保证测量成果的精度符合国家的统一要求，首先必须在全国范围内选取若干具有控制意义的点，然后精确测定其平面位置和高程，构成统一的大地控制网。大地控制网由平面控制网和高程控制网组成</p>
-<h4 id="平面控制网水平控制网">平面控制网[水平控制网] </h4>
-<p>主要目的是确定控制点的平面位置，主要的方法为三角测量和导线测量。<br>
-三角测量:是在地面上选择一系列控制点，并建立起相互连接的三角形，组成三角锁和三角网，测量一段精确的距离作为起始边，在这个边的两端点，采用天文观测的方法确定起点位，精确测定各三角形的内角。<br>
-导线测量:是把各个控制点连接成连续的折线，然后测定这些折线的边长和转角，最后根据起算点的坐标和方位角推算其他各点坐标。</p>
-<h4 id="高程控制网">高程控制网 </h4>
-<p>是在全国范围内按照统一规范，由精确测定高程的地面点所组成的控制网，是测定其他地面点高程的控制基础。</p>
 
       </div>
       <div class="md-sidebar-toc">
 <div class="md-toc">
-<div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
-          <a href="#地球椭球体" class="md-toc-link">
-            <p>地球椭球体</p>
-
-          </a></div><details style="padding:0;;padding-left:0px;" open="">
+<details style="padding:0;;padding-left:0px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#大地控制" class="md-toc-link"><p>大地控制</p>
+          <a href="#算法设计与分析" class="md-toc-link"><p>算法设计与分析</p>
+</a>
+          </summary>
+        <div>
+          <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#概述" class="md-toc-link"><p>概述</p>
 </a>
           </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#地理坐标系" class="md-toc-link">
-            <p>地理坐标系</p>
+          <a href="#待解问题的描述" class="md-toc-link">
+            <p>待解问题的描述</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#中国大地坐标系" class="md-toc-link">
-            <p>中国大地坐标系</p>
+          <a href="#算法设计" class="md-toc-link">
+            <p>算法设计</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#高程系" class="md-toc-link">
-            <p>高程系</p>
+          <a href="#算法分析" class="md-toc-link">
+            <p>算法分析</p>
 
-          </a></div><details style="padding:0;;padding-left:24px;" open="">
+          </a></div>
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:24px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#大地控制网" class="md-toc-link"><p>大地控制网</p>
+          <a href="#算法设计原则" class="md-toc-link"><p>算法设计原则</p>
 </a>
           </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#平面控制网水平控制网" class="md-toc-link">
-            <p>平面控制网[水平控制网]</p>
+          <a href="#正确性" class="md-toc-link">
+            <p>正确性</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#高程控制网" class="md-toc-link">
-            <p>高程控制网</p>
+          <a href="#确定性" class="md-toc-link">
+            <p>确定性</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#清晰行" class="md-toc-link">
+            <p>清晰行</p>
+
+          </a></div>
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#算法复杂性的度量" class="md-toc-link"><p>算法复杂性的度量</p>
+</a>
+          </summary>
+        <div>
+          <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#时间复杂性" class="md-toc-link"><p>时间复杂性</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#阶的增长" class="md-toc-link">
+            <p>阶的增长</p>
+
+          </a></div>
+        </div>
+      </details>
+    <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#空间复杂性" class="md-toc-link">
+            <p>空间复杂性</p>
+
+          </a></div>
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#算法的评价" class="md-toc-link"><p>算法的评价</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#如何估计算法运行时间" class="md-toc-link">
+            <p>如何估计算法运行时间</p>
 
           </a></div>
         </div>
