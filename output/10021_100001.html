@@ -72,10 +72,12 @@
         <span class="token function">ListLength</span><span class="token punctuation">(</span>L<span class="token punctuation">)</span>
         <span class="token function">Localte</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span>e<span class="token punctuation">)</span>
         <span class="token function">GetData</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span>i<span class="token punctuation">)</span>
+        <span class="token function">InsertData</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span>i<span class="token punctuation">,</span> el<span class="token punctuation">)</span>
+        <span class="token function">DeleteData</span><span class="token punctuation">(</span>L<span class="token punctuation">,</span>i<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 </code></pre><h2 id="顺序存储">顺序存储 </h2>
 <p>在计算机内可以用不同的方法来存储数据信息，最常用的方法就是顺序存储。顺序存储是指在内存中用一块地址连续的存储空间按顺序存储线性表的各个数据元素。采用顺序存储结构的线性表称为<strong>顺序表</strong>表顺序表中逻辑上相邻的数据元素在物理存储位置上也是相邻的。</p>
-<p><img src="/assets/images/1000092.png" alt="如图所示"></p>
+<p><img src="/assets/images/1000101.png" alt="如图所示"></p>
 <p>设第一个元素存放地址为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mi>C</mi><mo stretchy="false">(</mo><msub><mi>a</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">OC(a_0)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">OC</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>, 每个元素占用的空间大小为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi></mrow><annotation encoding="application/x-tex">d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">d</span></span></span></span>个字节，则元素<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>的存放地址为<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>L</mi><mi>O</mi><mi>C</mi><mo stretchy="false">(</mo><msub><mi>a</mi><mi>i</mi></msub><mo stretchy="false">)</mo><mo>=</mo><mi>L</mi><mi>O</mi><mi>C</mi><mo stretchy="false">(</mo><msub><mi>a</mi><mn>0</mn></msub><mo stretchy="false">)</mo><mo>+</mo><mi>d</mi><mo>∗</mo><mo stretchy="false">(</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">LOC(a_i) = LOC(a_0) + d * (i - 1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">L</span><span class="mord mathnormal" style="margin-right:0.07153em;">OC</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">L</span><span class="mord mathnormal" style="margin-right:0.07153em;">OC</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">d</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span></p>
 <p><strong>特点</strong>：是用物理位置上的相邻来表示数据元素之间逻辑相邻的关系，存储密度高，且能随机存取数据元素。但线性表在进行插入、删除时需要移动大量数据元素，运行效率低，而且顺序表需要预先分配存储空间，若表长*变化较大，则存储规模难以事先确定，估算过大会造成存储空间的浪费</p>
 <h2 id="链式存储">链式存储 </h2>
@@ -86,7 +88,7 @@
 <p><strong>静态链表</strong>是用数组实现的，每个数据元素除了存储数据信息外，还要存储逻辑相邻的下一个数据元素在数组中的位置。</p>
 <p>实现参考<a href="https://github.com/usernameisregistered/algorithm/blob/master/javascript/LinkedList.js">动态数组</a></p>
 <h2 id="顺序表和链表的比较">顺序表和链表的比较 </h2>
-<h3 id="顺序表有点">顺序表有点 </h3>
+<h3 id="顺序表优点">顺序表优点 </h3>
 <ul>
 <li>用数组存储数据元素，操作方法简单，容易实现</li>
 <li>无须为表示结点间的逻辑关系而增加额外的存储开销。#</li>
@@ -98,7 +100,6 @@
 <li>做插入、删除操作时，须大量地移动数据元素，效率比较低</li>
 <li>要占用连续的存储空间，存储分配只能预先进行。如果估计过大，可能导致后部大量空间闲置；如果预先分配过小，又会造成数据溢出</li>
 </ul>
-<p><strong>链表的优缺点刚好和顺序表相反</strong></p>
 
       </div>
       <div class="md-sidebar-toc">
@@ -132,8 +133,8 @@
           </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#顺序表有点" class="md-toc-link">
-            <p>顺序表有点</p>
+          <a href="#顺序表优点" class="md-toc-link">
+            <p>顺序表优点</p>
 
           </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
           <a href="#顺序表缺点" class="md-toc-link">

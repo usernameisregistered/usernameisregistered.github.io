@@ -4,10 +4,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>低代码引擎介绍-低代码引擎技术-得鹿梦鱼</title>
+  <title>编译器_创建编译器-vue2源码解读-得鹿梦鱼</title>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
     <meta name="Author" content="liming_longxi@163.com">
-    <meta name="Keywords" content="低代码引擎介绍"/>
+    <meta name="Keywords" content="编译器_创建编译器"/>
   <link rel="stylesheet" href="/assets/styles/main.css" />
   <link rel="stylesheet" href="/assets/styles/katex/common.css" />
   <link rel="stylesheet" href="/assets/styles/katex/katex.min.css" />
@@ -32,11 +32,23 @@
     <main class="flex-grow-1 overflow-hidden scrollHeight">
       <div class="w-screen flex flex-1">
         <aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
-          <div class="text-md font-bold text-gray-700 m-4">低代码引擎技术</div>
+          <div class="text-md font-bold text-gray-700 m-4">vue2源码解读</div>
           <div class="overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar flex flex-col">
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10042_100000.html" title="低代码基础">低代码基础
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10042_100000.html" title="核心_初始化init">核心_初始化init
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10042_100001.html" title="低代码引擎介绍">低代码引擎介绍
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10042_100001.html" title="编译器_创建编译器">编译器_创建编译器
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10042_100002.html" title="核心_数据响应式原理">核心_数据响应式原理
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10042_100003.html" title="编译器_模板解析">编译器_模板解析
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10042_100004.html" title="核心_初始化选项api">核心_初始化选项api
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10042_100005.html" title="核心_初始化组合式api">核心_初始化组合式api
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10042_100006.html" title="核心_观察者模式">核心_观察者模式
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10042_100007.html" title="核心_定义计算属性">核心_定义计算属性
             </a>
           </div>
         </aside>
@@ -47,63 +59,28 @@
     
       <div class="crossnote markdown-preview  ">
       
-<h1 id="低代码引擎介绍">低代码引擎介绍 </h1>
-<blockquote>
-<p>低代码引擎是一款为低代码平台开发者提供的，具备强大定制扩展能力的低代码设计器研发框架</p>
-</blockquote>
-<blockquote>
-<p>低代码引擎的核心是设计器，通过扩展插件、周边生态等可以产出各式各样的设计器。它不是一套可以适合所有人的低代码平台，而是帮助低代码平台的开发者 快速 制作自定义 低代码平台的工具</p>
-</blockquote>
-<h2 id="面向用户">面向用户 </h2>
-<blockquote>
-<p>低代码引擎是前端SDK ，是一款面向前端研发人员的技术产品</p>
-</blockquote>
-<h2 id="设计器骨架">设计器骨架 </h2>
-<p><img src="/assets/images/1000166.png" alt="设计器骨架图"></p>
+<h1 id="创建编译器-createcompiler">创建编译器 createCompiler </h1>
 <ol>
-<li>画布 ( MainArea)：用户可视化设计和配置的主要区域，一般融合了产品的渲染、拖拽、选择等一系列可视化编辑的操作和功能</li>
-<li>顶部面板 ( TopArea)：位于顶部的面板，一般放置页面级的操作，如保存、预览</li>
-<li>功能面板 (LeftArea )：位于左侧的功能面板，用作为编辑器增加扩展功能模块的面板。这类面板通常会提供一个图标，并在点击图标之后在左侧唤出一个配置面板</li>
-<li>设置面板 ( RightArea)：位于右侧的设置面板，通常用作组件的属性配置面板</li>
-<li>工具栏 ( ToolBar)：位于画布的顶部，一般放置画布级的快捷操作，在关系图编排的场景较为常见</li>
+<li>通过parse函数解析template, 转化为ast树</li>
+<li>如果配置项中存在optimize不为false，则通过函数optimize优化代码</li>
+<li>通过优化后的ast树生成代码函数名为generate</li>
 </ol>
-<p><strong>低代码设计器 = 低代码引擎 + (设计器插件  + 物料  + 设置器) * n</strong></p>
-<h2 id="插件定制">插件定制 </h2>
-<blockquote>
-<p>设计器定制的依赖之一就是设计器插件，我们可以直接使用生态中流通的插件，也可以根据 我们自己的需求进行插件的开发。通过编写不同的插件和引擎核心模块进行交互，不仅 满足多样化的功能的同时， 同时也与 低代码引擎解耦</p>
-</blockquote>
-<h2 id="物料定制">物料定制 </h2>
-<blockquote>
-<p>低代码引擎生态已经提供了几套官方物料，还有强大的物料定制功能，可以将现有的组件之间转化为低代码组件，并在低代码引擎中使用</p>
-</blockquote>
-<p><img src="/assets/images/1000167.png" alt="低代码平台架构"></p>
+<h2 id="parse-模板解析02编译器_模板解析md"><a href="/10042_100003.html">parse 模板解析</a> </h2>
 
       </div>
       <div class="md-sidebar-toc">
 <div class="md-toc">
 <details style="padding:0;;padding-left:0px;" open="">
         <summary class="md-toc-link-wrapper">
-          <a href="#低代码引擎介绍" class="md-toc-link"><p>低代码引擎介绍</p>
+          <a href="#创建编译器-createcompiler" class="md-toc-link"><p>创建编译器 createCompiler</p>
 </a>
           </summary>
         <div>
           <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#面向用户" class="md-toc-link">
-            <p>面向用户</p>
+          <a href="#parse-模板解析02编译器_模板解析md" class="md-toc-link">
+            </a><p><a href="#parse-模板解析02编译器_模板解析md" class="md-toc-link"></a><a href="/10042_100003.html">parse 模板解析</a></p>
 
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#设计器骨架" class="md-toc-link">
-            <p>设计器骨架</p>
-
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#插件定制" class="md-toc-link">
-            <p>插件定制</p>
-
-          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
-          <a href="#物料定制" class="md-toc-link">
-            <p>物料定制</p>
-
-          </a></div>
+          </div>
         </div>
       </details>
     

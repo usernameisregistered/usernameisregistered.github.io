@@ -79,7 +79,7 @@
 <p>同时由于编译执行线程在编译执行需要执行的对应平台的机器码时，需要在编译缓存区中进行寻找，如果在寻找的过程中即时编译线程并没有将所需执行的机器码所对应得字节码进行编译，则编译线程则需要进行等待，增加了JavaScript引擎的执行时间。此外，主线程如果在解释执行的过程中在字节码中遇到了跳转标记，则需要调用编译执行线程对跳转标记中所对应的热点区域的机器码进行编译执行，如果即时编译线程并没有将所需执行的机器码所对应得字节码进行编译，则编译线程则需要进行等待，而主线程也将等待使得JavaScript引擎的等待开销大量增加，降低了用户体验性能。</p>
 <h2 id="并行系统架构设计">并行系统架构设计 </h2>
 <p>JavaScript引擎的并行处理架构是基于WebKit小组开发的SquirrelFishExtremeJavaScript引擎是将JavaScript引擎的各个功能模块进多线程任务的划分和并行化设计后所形成的多线程系统。它使用了一系列的优化方案，目的在于能够利用当前的多核处理器平台，实现对于热点区域代码块的即时编译与优化缓存区。使得JavaScript引擎能够减少内存消耗和网页的加载时间</p>
-<p><img src="/assets/images/1000136.png" alt="并行模型"></p>
+<p><img src="/assets/images/1000145.png" alt="并行模型"></p>
 <h3 id="模块分析">模块分析 </h3>
 <p>架构上看，JavaScript引擎并行系统分为个功能模块，分别为：初始化模块、解释执行模块、热点区域探测模块、即时编译模块、缓存区管理模块、编译执行模块。</p>
 <ul>
@@ -95,10 +95,10 @@
 <p>JavaScript 引擎并行系统的执行分为主线程、探测线程、即时编译线程和编译执行线程四个线程</p>
 <p>主线程在JavaScript 引擎开始执行时便已存在，经过初始化模块和翻译模块后主线程便启动探测线程，经过热点区域探测模块后主线程便启动即时编译线程</p>
 <p>主线程主要负责初始化模块、翻译模块和解释执行模块。探测线程主要负责热点区域探测模块，而即时编译线程主要负责即时编译模块和缓存区管理模块</p>
-<p><img src="/assets/images/1000137.png" alt="主线程工作流程"></p>
-<p><img src="/assets/images/1000138.png" alt="探测线程工作流程"></p>
-<p><img src="/assets/images/1000139.png" alt="即时编译线程"></p>
-<p><img src="/assets/images/1000140.png" alt="编译执行工作流程"></p>
+<p><img src="/assets/images/1000146.png" alt="主线程工作流程"></p>
+<p><img src="/assets/images/1000147.png" alt="探测线程工作流程"></p>
+<p><img src="/assets/images/1000148.png" alt="即时编译线程"></p>
+<p><img src="/assets/images/1000149.png" alt="编译执行工作流程"></p>
 <h2 id="线程的实现">线程的实现 </h2>
 <pre data-role="codeBlock" data-info="c++" class="language-cpp c++"><code><span class="token keyword keyword-class">class</span> <span class="token class-name">JSThread</span><span class="token punctuation">{</span>
     <span class="token keyword keyword-public">public</span><span class="token operator">:</span>
@@ -127,10 +127,10 @@
         <span class="token keyword keyword-static">static</span> <span class="token keyword keyword-void">void</span><span class="token operator">*</span> <span class="token function">routine</span><span class="token punctuation">(</span><span class="token keyword keyword-void">void</span><span class="token operator">*</span> arg<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
-</code></pre><p><img src="/assets/images/1000141.png" alt="线程运行流程"></p>
+</code></pre><p><img src="/assets/images/1000150.png" alt="线程运行流程"></p>
 <h2 id="线程资源锁的设计与实现">线程资源锁的设计与实现 </h2>
 <p>当即时编译线程在字节码中添加跳转标记时如果主线程正在对字节码进行解释执行，则即时编译线程必须等待主线程将该段字节码解释执行完成之后才进行修改。因此即时编译线程会与解释执行线程出现互斥现象，需要加锁机制来解决</p>
-<p><img src="/assets/images/1000142.png" alt="主线程与即时编译线程互斥流程"></p>
+<p><img src="/assets/images/1000151.png" alt="主线程与即时编译线程互斥流程"></p>
 <h2 id="消息通信的设计">消息通信的设计 </h2>
 <p>消息通信实现了线程间的信息交流。在JavaScript引擎的并行系统中，线程间的消息交换需要递交给主线程的消息交换模块，由消息交换模块根据各个线程的优先等级和递交先后进行处</p>
 <p>消息交换模块 中含有根据各个线程的优先等级将线程传递的消息进行排序的队列。当某个线程发送消息到消息交换模块后，消息交换模块根据各个线程的有<br>

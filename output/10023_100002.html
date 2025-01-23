@@ -79,14 +79,14 @@
 </thead>
 <tbody>
 <tr>
-<td><img src="/assets/images/1000113.jpg" alt="原图"></td>
-<td><img src="/assets/images/1000114.jpg" alt="灰度图"></td>
+<td><img src="/assets/images/1000122.jpg" alt="原图"></td>
+<td><img src="/assets/images/1000123.jpg" alt="灰度图"></td>
 <td><img src="./assets/ebsR5/%E8%A3%81%E5%89%AA.jpg" alt="裁剪图"></td>
-<td><img src="/assets/images/1000115.jpg" alt="切分1"></td>
+<td><img src="/assets/images/1000124.jpg" alt="切分1"></td>
 <td><img src="./assets/ebsR5/%E5%B9%B3%E5%9D%87%E6%8B%86%E5%88%86_1.jpg" alt="切分2"></td>
-<td><img src="/assets/images/1000116.jpg" alt="切分3"></td>
+<td><img src="/assets/images/1000125.jpg" alt="切分3"></td>
 <td><img src="./assets/ebsR5/%E5%B9%B3%E5%9D%87%E6%8B%86%E5%88%86_3.jpg" alt="切分4"></td>
-<td><img src="/assets/images/1000117.jpg" alt="切分5"></td>
+<td><img src="/assets/images/1000126.jpg" alt="切分5"></td>
 </tr>
 </tbody>
 </table>
@@ -106,12 +106,12 @@
 </thead>
 <tbody>
 <tr>
-<td><img src="/assets/images/1000118.jpg" alt="原图"></td>
-<td><img src="/assets/images/1000119.jpg" alt="灰度图"></td>
+<td><img src="/assets/images/1000127.jpg" alt="原图"></td>
+<td><img src="/assets/images/1000128.jpg" alt="灰度图"></td>
 <td><img src="./assets/ebsR5/%E8%A3%81%E5%89%AA2.jpg" alt="裁剪图"></td>
-<td><img src="/assets/images/1000120.jpg" alt="直方图"></td>
+<td><img src="/assets/images/1000129.jpg" alt="直方图"></td>
 <td><img src="./assets/ebsR5/%E5%9E%82%E7%9B%B4%E6%8A%95%E5%BD%B1%E6%8B%86%E5%88%86_0.jpg" alt="切分1"></td>
-<td><img src="/assets/images/1000121.jpg" alt="切分2"></td>
+<td><img src="/assets/images/1000130.jpg" alt="切分2"></td>
 <td><img src="./assets/ebsR5/%E5%9E%82%E7%9B%B4%E6%8A%95%E5%BD%B1%E6%8B%86%E5%88%86_2.jpg" alt="切分3"></td>
 </tr>
 </tbody>
@@ -136,13 +136,13 @@
 <p>滴水算法基本思想是模拟水滴从高处向低处滴落的过程来对粘连字符进行分割。在重力作用下，水滴从字符串之间的顶部向下滴落，当水滴遇到字符时只能沿字符轮廓向下滴落或者水平左右滚动。当水滴陷在轮廓的凹陷处时，则进行渗透处理，即从轮廓最低点渗漏到字符笔画中，然后穿透笔画继续滴落，最终水滴所经过的轨迹就是分割路径</p>
 <p>常用于分割含有粘连字符或垂直方向有重叠字符的验证码，用水滴流过的痕迹来表示分割的路径。起始位置和滴落规则是影响滴水算法有效性中最重要的两个因素，</p>
 <p>起始位置是指水滴开始滴落的位置，也就算法开始计算的位置。滴水算法中每个像素的移动轨迹是由这个像素的两侧和其下方三个像素点的值决定的，如图<br>
-<img src="/assets/images/1000122.png" alt="滴水分割"><br>
+<img src="/assets/images/1000131.png" alt="滴水分割"><br>
 w 表示像素值为255，b表示像素值为0，w/b 表示像素值为0 或255，*表示或两者皆可.</p>
 <h3 id="起始点的设计">起始点的设计 </h3>
 <p>一般来说， 字符的粘连点会出现在竖直投影直方图中的极小值处.</p>
-<p><img src="/assets/images/1000123.png" alt="最佳起始点选择"></p>
+<p><img src="/assets/images/1000132.png" alt="最佳起始点选择"></p>
 <p>局部扫描模块是指根据分割字符的宽度W，取粘连字符0.2W和0.8W之间为扫描区域，选择这个区域是为了消去粘连字符两端的开始、结尾笔画的影响，即把起始点选择区域集中在粘连字符居中的位置，对区域按找从左到右从上到下的以此扫描像素点，选出最初满足的像素分布的一行，将所有满足条件的白像素点的位置坐标存放在列表中，接着将数值投影法中存在极小值带你的位置按照大小存入列表中，最后参照字符中间位置坐标，选择列表中最右边的白像素点作为最优滴落起始点</p>
-<p><img src="/assets/images/1000124.png" alt="通用性优化设计"></p>
+<p><img src="/assets/images/1000133.png" alt="通用性优化设计"></p>
 
       </div>
       <div class="md-sidebar-toc">

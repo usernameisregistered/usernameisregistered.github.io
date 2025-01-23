@@ -4,10 +4,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>紫薇斗数-国学-得鹿梦鱼</title>
+  <title>核心_初始化组合式api-vue2源码解读-得鹿梦鱼</title>
   <link rel="shortcut icon" href="/assets/images/favicon.ico">
     <meta name="Author" content="liming_longxi@163.com">
-    <meta name="Keywords" content="紫薇斗数"/>
+    <meta name="Keywords" content="核心_初始化组合式api"/>
   <link rel="stylesheet" href="/assets/styles/main.css" />
   <link rel="stylesheet" href="/assets/styles/katex/common.css" />
   <link rel="stylesheet" href="/assets/styles/katex/katex.min.css" />
@@ -32,15 +32,23 @@
     <main class="flex-grow-1 overflow-hidden scrollHeight">
       <div class="w-screen flex flex-1">
         <aside class="basis-2/12 border-r border-gray-300 h-full overflow-hidden">
-          <div class="text-md font-bold text-gray-700 m-4">国学</div>
+          <div class="text-md font-bold text-gray-700 m-4">vue2源码解读</div>
           <div class="overflow-x-hidden overflow-y-auto scrollChapterHeight scrollbar flex flex-col">
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10043_100000.html" title="国学_史学">国学_史学
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10042_100000.html" title="核心_初始化init">核心_初始化init
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10043_100001.html" title="国学_子学">国学_子学
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10042_100001.html" title="编译器_创建编译器">编译器_创建编译器
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10043_100002.html" title="国学_经学">国学_经学
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10042_100002.html" title="核心_数据响应式原理">核心_数据响应式原理
             </a>
-            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10043_100003.html" title="紫薇斗数">紫薇斗数
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10042_100003.html" title="编译器_模板解析">编译器_模板解析
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10042_100004.html" title="核心_初始化选项api">核心_初始化选项api
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10042_100005.html" title="核心_初始化组合式api">核心_初始化组合式api
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10042_100006.html" title="核心_观察者模式">核心_观察者模式
+            </a>
+            <a class="text-md block mx-4 mb-2 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap hover:text-sky-300" href="/10042_100007.html" title="核心_定义计算属性">核心_定义计算属性
             </a>
           </div>
         </aside>
@@ -51,18 +59,26 @@
     
       <div class="crossnote markdown-preview  ">
       
-<h1 id="紫薇斗数">紫薇斗数 </h1>
-<p><img src="/assets/images/1000168.png" alt="十二宫位示意图"></p>
-<p><img src="/assets/images/1000169.png" alt="命宫坐不同地支"></p>
+<h1 id="初始化组合式api">初始化组合式api </h1>
+<h2 id="initsetup">initSetup </h2>
 
       </div>
       <div class="md-sidebar-toc">
 <div class="md-toc">
-<div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:18px">
-          <a href="#紫薇斗数" class="md-toc-link">
-            <p>紫薇斗数</p>
+<details style="padding:0;;padding-left:0px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#初始化组合式api" class="md-toc-link"><p>初始化组合式api</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#initsetup" class="md-toc-link">
+            <p>initSetup</p>
 
           </a></div>
+        </div>
+      </details>
+    
 </div>
 </div>
       <a id="sidebar-toc-btn">≡</a>

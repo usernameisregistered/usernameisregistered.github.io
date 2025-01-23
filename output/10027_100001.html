@@ -58,7 +58,7 @@
 <span class="token keyword keyword-var">var</span> count <span class="token operator">=</span> <span class="token number">9</span><span class="token punctuation">;</span>
 gl<span class="token punctuation">.</span><span class="token method function property-access">drawArrays</span><span class="token punctuation">(</span>primitiveType<span class="token punctuation">,</span> offset<span class="token punctuation">,</span> count<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-</code></pre><p><img src="/assets/images/1000143.gif" alt="顶点着色器运行"></p>
+</code></pre><p><img src="/assets/images/1000152.gif" alt="顶点着色器运行"></p>
 <p>左侧是你提供的数据，顶点着色器是你写进GLSL中的一个方法，每个顶点调用一次，在这个方法中做一些数学运算后设置一个特殊的gl_position变量，这个变量就是该顶点转换到裁剪空间中坐标值，GPU接收该值并将其保存起来。<br>
 假设你正在画三角形，顶点着色器每完成三次顶点处理，WebGL就会用这三个顶点画一个三角形。 它计算出这三个顶点对应的像素后，就会光栅化这个三角形，“光栅化”其实就是“用像素画出来” 的花哨叫法。对于每一个像素，它会调用你的片段着色器询问你使用什么颜色。 你通过给片段着色器的一个特殊变量gl_FragColor设置一个颜色值，实现自定义像素颜色。</p>
 <h2 id="关于buffer和attribute的代码是干什么的">关于buffer和attribute的代码是干什么的 </h2>
