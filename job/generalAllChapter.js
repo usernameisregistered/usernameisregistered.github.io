@@ -1,4 +1,4 @@
-const { log, getData, getOutputDirectory, getTemplateContent, mergeData } = require("./common");
+const { log, getData, getOutputDirectory, getTemplateContent, mergeData, getDocDirectory } = require("./common");
 const { Notebook } = require("crossnote");
 const path = require("path");
 const fs = require("fs");
@@ -50,7 +50,7 @@ async function parseMarked(filePath) {
       path.dirname(filePath),
       decodeURIComponent(result[1])
     );
-    const fileName = crypto.createHash("md5").update(decodeURIComponent(result[1])).digest("hex");
+    const fileName = crypto.createHash("md5").update(fileFullPath.slice(getDocDirectory().length)).digest("hex");
     const outputFile = path.join(
       getOutputDirectory(),
       "assets/images",
