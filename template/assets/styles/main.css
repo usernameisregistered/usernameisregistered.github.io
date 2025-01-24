@@ -592,8 +592,16 @@ video {
   position: relative;
 }
 
+.left-1 {
+  left: 0.25rem;
+}
+
 .left-3 {
   left: 0.75rem;
+}
+
+.top-1\/4 {
+  top: 25%;
 }
 
 .top-2 {

@@ -1,7 +1,8 @@
-const { log, getData, getOutputDirectory, getTemplateContent, mergeData, writeData } = require("./common");
+const { log, getData, getOutputDirectory, getTemplateContent, mergeData } = require("./common");
 const { Notebook } = require("crossnote");
 const path = require("path");
 const fs = require("fs");
+const crypto = require("crypto")
 const Mustache = require("mustache");
 let uid = 1000000;
 module.exports = async function generalAllChapter() {
@@ -49,7 +50,7 @@ async function parseMarked(filePath) {
       path.dirname(filePath),
       decodeURIComponent(result[1])
     );
-    const fileName = uid++;
+    const fileName = crypto.createHash("md5").update(decodeURIComponent(result[1])).digest("hex");
     const outputFile = path.join(
       getOutputDirectory(),
       "assets/images",
@@ -102,7 +103,8 @@ function getChapterList(bookId){
  return {bookName: result.bookName, chapterList: result.value}
 }
 function generalPage(result) {
-  const content = Mustache.render(getTemplateContent("chapter.html"), result);
+  let content = Mustache.render(getTemplateContent("chapter.html"), result);
+  content = content.replace(/[(\r\n)|(\n)]/g, '')
   fs.writeFileSync(path.join(getOutputDirectory(), result.id + ".html"), content);
 }
 

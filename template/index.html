@@ -4,15 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{title}}-{{subhead}}</title>
-    <link rel="shortcut icon" href="/assets/images/favicon.ico">
-    <meta name="Author" content="{{author}}">
-    <meta name="Keywords" content="{{subhead}}"/>
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" />
+    <meta name="Author" content="{{author}}" />
+    <meta name="Keywords" content="{{subhead}}" />
     <link rel="stylesheet" href="/assets/styles/main.css" />
   </head>
   <body>
-    <div
-      class="w-screen h-screen overflow-hidden flex items-center"
-    >
+    <div class="w-screen h-screen overflow-hidden flex items-center">
       <main class="flex w-screen flex-col gap-8 items-center">
         <img
           src="/assets/images/logo.svg"
@@ -20,7 +18,8 @@
           class="mr-2 w-[80px] h-[80px]"
         />
         <div class="text-3xl text-neutral-600">
-          {{title}}<span class="relative top-2 left-3 text-base text-neutral-500"
+          <span class="hover:text-sky-600">{{title}}</span>
+          <span class="relative top-2 left-3 text-base text-neutral-500"
             >{{subhead}}</span
           >
         </div>
@@ -46,7 +45,11 @@
             href="mailto:{{author}}"
             title="{{author}}"
           >
-            <img class="mr-4 w-[20px] h-[20px]" src="/assets/images/connect.svg" alt="开始" />
+            <img
+              class="mr-4 w-[20px] h-[20px]"
+              src="/assets/images/connect.svg"
+              alt="开始"
+            />
             联系
           </a>
         </div>

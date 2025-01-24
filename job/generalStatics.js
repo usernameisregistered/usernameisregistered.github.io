@@ -9,8 +9,8 @@ const {
 const Mustache = require("mustache");
 const fs = require("fs");
 const path = require("path");
-let bookId = 10000;
-let chapterId = 100000;
+let bookId = 10;
+let chapterId = 100;
 let chapterInfos = [];
 let bookInfos = [];
 module.exports = function generalStatics() {
@@ -22,10 +22,11 @@ module.exports = function generalStatics() {
 
 function generalIndex() {
   log("构建静态文件首页");
-  const content = Mustache.render(
+  let content = Mustache.render(
     getTemplateContent("index.html"),
     getData("base.json")
   );
+  content = content.replace(/[(\r\n)|(\n)]/g, '')
   fs.writeFileSync(path.join(getOutputDirectory(), "index.html"), content);
 }
 
@@ -43,7 +44,8 @@ function generalPage() {
     if (templateName.split(".")[0] === "study") {
       Object.assign(data, { studyList: generalStudy() });
     }
-    const content = Mustache.render(getTemplateContent(templateName), data);
+    let content = Mustache.render(getTemplateContent(templateName), data);
+    content = content.replace(/[(\r\n)|(\n)]/g, '')
     fs.writeFileSync(path.join(getOutputDirectory(), templateName), content);
   });
 }
@@ -100,7 +102,9 @@ function getClassifyBooks(classifyPath) {
         chapterList: getBookChapters(bookPath),
         type: "book",
         url: `/${id}_${chapterId}.html`,
+        chapterLength: 0,
       };
+      bookInfo.chapterLength = bookInfo.chapterList.length;
       result.push(bookInfo);
       bookInfos.push({ value: bookInfo.chapterList,key: id, bookName: bookName });
       bookId++;

@@ -48,8 +48,9 @@
               <div dir="ltr" class="border-neutral-300 w-full overflow-y-auto scrollbar h-48">
                   <div class="flex flex-col">
                     {{#books}}
-                    <a class="mb-2 cursor-pointer block hover:text-sky-600"
-                      href="{{&url}}">{{name}}</a>
+                    <a class="mb-2 cursor-pointer block hover:text-sky-600 overflow-hidden text-ellipsis whitespace-nowrap"
+                      href="{{&url}}" title="{{name}}({{chapterLength}})">{{name}} 
+                      <span class="text-sky-300 relative text-sm top-1/4 left-1 font-semibold">[{{chapterLength}}]</span></a>
                     {{/books}}
                   </div>
               </div>
