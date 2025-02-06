@@ -5,6 +5,7 @@ const {
   getData,
   getDocDirectory,
   writeData,
+  getWorkSpaceDirectory,
 } = require("./common");
 const Mustache = require("mustache");
 const fs = require("fs");
@@ -43,6 +44,9 @@ function generalPage() {
     }
     if (templateName.split(".")[0] === "study") {
       Object.assign(data, { studyList: generalStudy() });
+    }
+    if (templateName.split(".")[0] === "question") {
+      Object.assign(data, { questionList: generalQuestion() });
     }
     let content = Mustache.render(getTemplateContent(templateName), data);
     content = content.replace(/[(\r\n)|(\n)]/g, '')
@@ -148,4 +152,9 @@ function getBookChapters(bookPath) {
 
 function generalStudy() {
   return getData(path.join(getDocDirectory(), "study.json"));
+}
+
+function generalQuestion(){
+  const data = getData("certificate.json")
+  return getData(path.join(getWorkSpaceDirectory(), "data/feishu", data.spaceId + ".json"));
 }

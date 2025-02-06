@@ -1,6 +1,16 @@
 const moment = require("moment");
 const fs = require("fs");
 const path = require("path");
+function getWorkSpaceDirectory(){
+  return process.cwd();
+}
+function getData(fileName) {
+  let filePath = fileName
+  if(!path.isAbsolute(filePath)){
+    filePath = path.join(getWorkSpaceDirectory(), "data", fileName);
+  }
+  return JSON.parse(fs.readFileSync(filePath).toString());
+}
 exports.log = function log(message) {
   console.log(`[${moment().format("HH:mm:ss")}] ${message}`);
 };
@@ -8,22 +18,23 @@ exports.getOutputDirectory = function getOutputDirectory() {
   const config = getData("base.json");
   let outputDirectory = config.outputDirectory;
   if (!path.isAbsolute(config.outputDirectory)) {
-    outputDirectory = path.join(process.cwd(), outputDirectory);
+    outputDirectory = path.join(getWorkSpaceDirectory(), outputDirectory);
   }
   return outputDirectory;
 };
 
 exports.getDocDirectory = function getDocDirectory() {
   const config = getData("base.json");
+
   let docDirectory = config.docDirectory;
   if (!path.isAbsolute(config.docDirectory)) {
-    docDirectory = path.join(process.cwd(), docDirectory);
+    docDirectory = path.join(getWorkSpaceDirectory(), docDirectory);
   }
   return docDirectory;
 };
 
 exports.getTemplateContent = function getTemplateFile(fileName) {
-  const filePath = path.join(process.cwd(), "template", fileName);
+  const filePath = path.join(getWorkSpaceDirectory(), "template", fileName);
   return fs.readFileSync(filePath).toString();
 };
 
@@ -37,21 +48,20 @@ exports.mergeData = function mergeData() {
 };
 
 exports.writeData = function writeData(fileName, data){
-  fs.writeFileSync(path.join(process.cwd(), "data", fileName), JSON.stringify(data, null, 4))
-}
-
-function getData(fileName) {
-  if (!path.isAbsolute(fileName)) {
-    fileName = path.join(process.cwd(), "data", fileName);
-  }
-  return JSON.parse(fs.readFileSync(fileName).toString());
+  fs.writeFileSync(path.join(getWorkSpaceDirectory(), "data", fileName), JSON.stringify(data, null, 4))
 }
 
 exports.removeDataFile = function removeDataFile (fileName){
-  if (!path.isAbsolute(fileName)) {
-    fileName = path.join(process.cwd(), "data", fileName);
+  let filePath = fileName;
+  if (!path.isAbsolute(filePath)) {
+    filePath = path.join(getWorkSpaceDirectory(), "data", fileName);
   }
-  fs.rmSync(fileName)
+  fs.rmSync(filePath)
 }
 
-exports.getData = getData;
+exports.existData = function existData(fileName){
+  const filePath = path.join(getWorkSpaceDirectory(), "data", fileName);
+  return fs.existsSync(filePath)
+}
+exports.getWorkSpaceDirectory = getWorkSpaceDirectory;
+exports.getData =  getData;

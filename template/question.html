@@ -49,19 +49,12 @@
           2. 联系站主索要离线的pdf版本，后续会写一个自动化脚本，自动导出pdf，发送最新而不是历史版本的
         </div>
         <div class="text-xl text-neutral-900 mb-4 mt-8">前端面试题已有的内容</div>
-        <div class="mx-2 mt-6 text-neutral-600 text-md">
-          1. 前端基础知识
+        {{#questionList}}
+        <div class="mt-2 text-neutral-700 text-md">
+          {{title}} <span class="text-sky-500 px-2">{{length}}</span>
         </div>
-        <div class="mx-2 my-6 text-neutral-600 text-md">
-          2. 框架相关的vue、react
-        </div>
-        <div class="mx-2 my-6 text-neutral-600 text-md">
-          3. 性能优化专题
-        </div>
-        <div class="mx-2 my-6 text-neutral-600 text-md">
-          4. 编程、工程化、可视化等
-        </div>
-        <div class="text-red-600 p-4 border border-red-200 rounded-md">
+        {{/questionList}}
+        <div class="text-red-600 p-4 border border-red-200 rounded-md mt-4">
           声明：面试题内容有部分来自于网络，如有侵权，请联系本人清除，资源仅学习交流使用，如果你不认可，烦请离开
         </div>
       </div>

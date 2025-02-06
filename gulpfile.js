@@ -6,7 +6,7 @@ const { getOutputDirectory } = require("./job/common");
 const generalAllChapter = require("./job/generalAllChapter");
 const removeData = require("./job/removeData");
 async function general(cb) {
-  buildBaseData();
+  await buildBaseData();
   generalStatics();
   await generalAllChapter();
   removeData();
