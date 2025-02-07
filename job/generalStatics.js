@@ -7,6 +7,7 @@ const {
   writeData,
   getWorkSpaceDirectory,
 } = require("./common");
+const { execSync } = require('node:child_process');
 const Mustache = require("mustache");
 const fs = require("fs");
 const path = require("path");
@@ -18,9 +19,16 @@ module.exports = function generalStatics() {
   log("任务名称：《构建非章节内容》");
   generalIndex();
   generalPage();
+  buildCSS();
   log("=========================================");
 };
 
+function buildCSS(){
+  log("开始编译css")
+  const inputFile = path.join(process.cwd(), "./template/style/base.css")
+  const outputFile = path.join(process.cwd(), "./template/assets/styles/main.css")
+  execSync(`npx tailwindcss -i ${inputFile} -o ${outputFile}`)
+}
 function generalIndex() {
   log("构建静态文件首页");
   let content = Mustache.render(

@@ -24,9 +24,6 @@
 
 + [前端面试题]
 
-*目前还缺少获取二级子页面的面试题汇总*
-
 ### 安装sdk
 
 `npm install @larksuiteoapi/node-sdk`
-

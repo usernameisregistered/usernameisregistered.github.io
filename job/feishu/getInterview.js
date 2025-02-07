@@ -4,6 +4,7 @@ const {
   getWorkSpaceDirectory,
   existData,
   getData,
+  log,
 } = require("../common");
 const path = require("path");
 const fs = require("fs");
@@ -66,12 +67,40 @@ async function getSpecificWiki(spaceId) {
       },
       lark.withUserAccessToken(certificate.userAccessToken)
     );
-    const list = result.data.items.map((el) => {
-      return { spaceId: el.space_id, title: el.title, doc_id: el.obj_token };
-    });
+    let list = [];
+    let item = result.data.items.shift();
+    while(item){
+      list.push({ spaceId: item.space_id, title: item.title, doc_id: item.obj_token, level: 1 , pid: item.node_token})
+      if(item.has_child){
+        await sleep(2);
+        log("开始请求子节点：" + item.title)
+        const result2 = await client.wiki.v2.spaceNode.list(
+          {
+            path: {
+              space_id: item.space_id,
+            },
+            params: {
+              page_size: 50,
+              parent_node_token: item.node_token,
+            },
+          },
+          lark.withUserAccessToken(certificate.userAccessToken)
+        );
+        let item2 = result2.data.items.shift();
+        while(item2){
+          if(list.findIndex(el => el.doc_id === item2.obj_token) === -1){
+            list.push({ spaceId: item2.space_id, title: item2.title, doc_id: item2.obj_token, level: 2, pid: item2.node_token})
+          }
+          item2 = result2.data.items.shift();
+        }
+      }
+      item = result.data.items.shift();
+    }
     let tempDoc = list.shift();
     let docList = [];
     while (tempDoc) {
+      await sleep(2)
+      log("开始请求文档详情：" + tempDoc.title)
       await getSpecificDocs(tempDoc.doc_id);
       tempDoc.length = getData(`feishu/${tempDoc.doc_id}.json`).length;
       docList.push(tempDoc);
@@ -112,4 +141,13 @@ async function getSpecificDocs(docId) {
       });
   }
   writeData(name, list);
+}
+
+function sleep(time){
+  return new Promise((resolve)=>{
+    setTimeout(()=>{
+      log("睡眠" + time + "s")
+      resolve();
+    }, time * 1000)
+  })
 }
