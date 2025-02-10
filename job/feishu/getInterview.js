@@ -100,7 +100,7 @@ async function getSpecificWiki(spaceId) {
     let docList = [];
     while (tempDoc) {
       await sleep(2)
-      log("开始请求文档详情：" + tempDoc.title)
+      log("开始请求文档详情：" + tempDoc.title + tempDoc.doc_id)
       await getSpecificDocs(tempDoc.doc_id);
       tempDoc.length = getData(`feishu/${tempDoc.doc_id}.json`).length;
       docList.push(tempDoc);
