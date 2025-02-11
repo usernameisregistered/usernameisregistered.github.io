@@ -2,7 +2,7 @@ const moment = require("moment");
 const fs = require("fs");
 const path = require("path");
 function getWorkSpaceDirectory(){
-  return process.cwd();
+  return __filename.slice(0, -14);
 }
 function getData(fileName) {
   let filePath = fileName

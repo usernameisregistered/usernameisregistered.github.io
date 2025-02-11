@@ -5,6 +5,7 @@ const generalStatics = require("./job/generalStatics");
 const { getOutputDirectory } = require("./job/common");
 const generalAllChapter = require("./job/generalAllChapter");
 const removeData = require("./job/removeData");
+const exportPdf = require("./job/feishu/exportPdf");
 async function general(cb) {
   await buildBaseData();
   generalStatics();
@@ -21,5 +22,11 @@ function preview(cb) {
   cb();
 }
 
+async function exportFile(cb){
+  await exportPdf();
+  cb();
+}
+
 exports.general = task(general);
 exports.preview = task(preview);
+exports.exportFile = task(exportFile);

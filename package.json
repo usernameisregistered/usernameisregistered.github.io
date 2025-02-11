@@ -5,7 +5,8 @@
   "main": "build.js",
   "scripts": {
     "general": "gulp general",
-    "preview": "gulp preview"
+    "preview": "gulp preview",
+    "export": "gulp exportFile"
   },
   "author": "liming_longxi@163.com",
   "license": "ISC",
@@ -21,6 +22,7 @@
     "http-server": "^14.1.1",
     "moment": "^2.29.4",
     "mustache": "^4.2.0",
+    "nodemailer": "^6.10.0",
     "rimraf": "^6.0.1"
   }
 }
