@@ -25,3 +25,4 @@ yarn-error.log*
 error*
 /data/feishu/*
 data/certificate.json
+data/chromePath.txt
