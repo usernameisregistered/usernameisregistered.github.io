@@ -31,7 +31,13 @@
 ### 邮件发送
 
 1. 修改`job/feishu/sendEmail.js`文件的`emailAddress`的内容
-2. 执行命令 `npm run export` 获取最新的面试题记录
+2. 执行命令 `npm run exportFeishuFile` 获取最新的面试题记录
 3. 执行命令 `node job/feishu/sendEmail.js`
 
 注意：**代码无法自动获取token**
+
+### 报错
+
++ error spawn ebook-convert ENOENT
+
+> 请参考[文章](https://shd101wyy.github.io/markdown-preview-enhanced/#/zh-cn/ebook?id=%e5%ae%89%e8%a3%85-ebook-convert)

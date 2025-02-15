@@ -17,17 +17,26 @@ exports.log = function log(message) {
 exports.getOutputDirectory = function getOutputDirectory() {
   const config = getData("base.json");
   let outputDirectory = config.outputDirectory;
-  if (!path.isAbsolute(config.outputDirectory)) {
+  if (!path.isAbsolute(outputDirectory)) {
     outputDirectory = path.join(getWorkSpaceDirectory(), outputDirectory);
   }
   return outputDirectory;
 };
 
+exports.getPDFExportDirctory = function getPDFExportDirctory(){
+  const config = getData("base.json");
+  let outputDirectory = config.pdfExportDirctory;
+  if (!path.isAbsolute(outputDirectory)) {
+    outputDirectory = path.join(getWorkSpaceDirectory(), outputDirectory);
+  }
+  return outputDirectory;
+}
+
 exports.getDocDirectory = function getDocDirectory() {
   const config = getData("base.json");
 
   let docDirectory = config.docDirectory;
-  if (!path.isAbsolute(config.docDirectory)) {
+  if (!path.isAbsolute(docDirectory)) {
     docDirectory = path.join(getWorkSpaceDirectory(), docDirectory);
   }
   return docDirectory;

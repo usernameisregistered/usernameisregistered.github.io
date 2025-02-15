@@ -6,7 +6,8 @@
   "scripts": {
     "general": "gulp general",
     "preview": "gulp preview",
-    "export": "gulp exportFile"
+    "exportFeishu": "gulp exportFeishuFile",
+    "exportDoc": "gulp exportDocPDF"
   },
   "author": "liming_longxi@163.com",
   "license": "ISC",

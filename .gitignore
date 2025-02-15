@@ -26,3 +26,4 @@ error*
 /data/feishu/*
 data/certificate.json
 data/chromePath.txt
+/pdf
