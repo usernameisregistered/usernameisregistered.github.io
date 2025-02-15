@@ -37,7 +37,7 @@ async function generalCategory() {
       fs.mkdirSync(dir, {recursive: true});
     }
     if(fs.existsSync(el.fullPath)){
-      // await _generalPDF(el.fullPath);
+      await _generalPDF(el.fullPath);
       clearPDF(el.fullPath);
     }
     el = result.shift();
@@ -97,11 +97,12 @@ function clearPDF(direcotry){
       const fullPath = path.join(direcotry, item);
       if (fs.statSync(fullPath).isFile()) {
         if (path.extname(item) === ".pdf") {
-          log(`删除临时的历史数据${path.basename(item, ".pdf")}》`)
+          log(`删除临时的历史数据《${path.basename(item, ".pdf")}》`)
           fs.rmSync(fullPath)
         }
+      } else{
+        clearPDF(fullPath)
       }
-
     }
     item = dirs.shift();
   }
