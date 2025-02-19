@@ -1,0 +1,12 @@
+[
+    "简述Rollup与Webpack的主要区别是什么？",
+    "Rollup适用于哪些类型的项目？",
+    "请解释Rollup中的“Tree-shaking”是什么，以及它的主要优势是什么？",
+    "在Rollup配置中，如何指定入口文件和输出文件？",
+    "Rollup中的插件机制是怎样的？请列举几个常用的Rollup插件",
+    "如何在Rollup中实现代码分割？",
+    "请描述Rollup的构建流程",
+    "Rollup如何支持ES6模块的输出？",
+    "在Rollup中，如何处理CSS、图片等非JavaScript资源？",
+    "Rollup与Webpack相比，在构建速度和打包结果上有什么优势"
+]
