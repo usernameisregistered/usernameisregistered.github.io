@@ -11,8 +11,9 @@ const { execSync } = require('node:child_process');
 const Mustache = require("mustache");
 const fs = require("fs");
 const path = require("path");
-let bookId = 10;
-let chapterId = 100;
+const crypto = require('crypto');
+let bookId;
+let chapterId = 1;
 let chapterInfos = [];
 let bookInfos = [];
 module.exports = function generalStatics() {
@@ -105,21 +106,21 @@ function getClassifyBooks(classifyPath) {
     let bookName = list.shift();
     while (bookName) {
       const bookPath = path.join(classifyPath, bookName);
-      const id = bookId.toString();
+      const hash = crypto.createHash('md5');
+      bookId = hash.update(bookName).digest('hex');
       console.log(`开始获取书籍《${bookName}》下的章节信息`);
       const bookInfo = {
-        id: id,
+        id: bookId,
         name: bookName,
         fullPath: bookPath,
         chapterList: getBookChapters(bookPath),
         type: "book",
-        url: `/${id}_${chapterId}.html`,
+        url: `/${bookId}_${chapterId}.html`,
         chapterLength: 0,
       };
       bookInfo.chapterLength = bookInfo.chapterList.length;
       result.push(bookInfo);
-      bookInfos.push({ value: bookInfo.chapterList,key: id, bookName: bookName });
-      bookId++;
+      bookInfos.push({ value: bookInfo.chapterList,key: bookId, bookName: bookName });
       bookName = list.shift();
     }
   }
