@@ -35,7 +35,9 @@
 3. 执行命令 `node job/feishu/sendEmail.js`
 
 注1：**代码无法自动获取token**
+
 注2：**由于字节的免费版API调用次数是有限制的，因此不在每次构建时获取数据，使用历史数据**
+
 注3: **文件certificate.json内容**
 
 ```json
